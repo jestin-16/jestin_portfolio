@@ -1,0 +1,6 @@
+{
+  "name": "Jestin Shaji Portfolio",
+  "description": "Cinematic, interactive, AI-powered personal portfolio website for Jestin Shaji, showcasing Java, Spring Boot, DevOps, and Full-Stack engineering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
