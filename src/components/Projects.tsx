@@ -128,16 +128,15 @@ export default function Projects() {
         {/* Chapter Header */}
         <div className="mb-24">
           <div className="flex items-center gap-3 mb-3">
-            <div className="h-[1px] w-12 bg-gradient-to-r from-purple-500 to-transparent" />
-            <span className="text-[10px] font-mono tracking-widest text-purple-400 uppercase font-bold">
-              CHAPTER 03 / PROJECT WORLDS
+            <span className="text-[10px] font-mono tracking-widest text-[#777] uppercase font-bold">
+              // CASE STUDIES
             </span>
           </div>
-          <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tight text-white mb-3">
-            Engineered Systems.
+          <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-white mb-3">
+            Featured Systems
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base max-w-xl font-sans">
-            Interactive visual setups constructed to demonstrate enterprise readiness. Walk through real simulation nodes.
+          <p className="text-neutral-500 text-sm sm:text-base max-w-xl font-sans mt-3">
+            Interactive system sandboxes engineered to demonstrate enterprise readiness and cloud-native simulation loops.
           </p>
         </div>
 
@@ -156,20 +155,20 @@ export default function Projects() {
                 {/* Information Block */}
                 <div className={`lg:col-span-5 space-y-6 ${isLeft ? "lg:order-1" : "lg:order-2"}`}>
                   <div className="flex items-center gap-3 font-mono text-xs">
-                    <span className="text-[#06B6D4] font-bold uppercase block tracking-wider">
+                    <span className="text-neutral-400 font-bold uppercase block tracking-wider">
                       {proj.subtitle}
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
-                    <span className="text-[9px] uppercase bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded text-gray-400 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-800" />
+                    <span className="text-[9px] uppercase bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded text-neutral-400 font-bold">
                       {proj.category}
                     </span>
                   </div>
 
-                  <h3 className="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-white">
+                  <h3 className="text-3xl sm:text-4xl font-sans font-black tracking-tight text-white">
                     {proj.title}
                   </h3>
 
-                  <p className="text-gray-400 text-sm sm:text-base leading-relaxed font-sans">
+                  <p className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans">
                     {proj.description}
                   </p>
 
@@ -178,7 +177,7 @@ export default function Projects() {
                     {proj.tags.map((tg) => (
                       <span
                         key={tg}
-                        className="text-gray-300 bg-white/[0.02] border border-white/[0.06] hover:border-white/15 px-3.5 py-1 rounded-full text-[10px] font-mono transition-colors"
+                        className="text-neutral-400 bg-neutral-950 border border-neutral-900 hover:border-neutral-800 px-3.5 py-1 rounded-full text-[10px] font-mono transition-colors"
                       >
                         #{tg}
                       </span>
@@ -186,13 +185,13 @@ export default function Projects() {
                   </div>
 
                   {/* Performance Indicators */}
-                  <div className="grid grid-cols-3 gap-4 border-t border-white/[0.05] pt-6 font-mono text-xs">
+                  <div className="grid grid-cols-3 gap-4 border-t border-neutral-900 pt-6 font-mono text-xs">
                     {proj.metrics.map((met) => (
                       <div key={met.label} className="space-y-1">
                         <span className="text-white font-extrabold text-base block">
                           {met.value}
                         </span>
-                        <span className="text-[9px] uppercase tracking-wider text-gray-500 font-bold">
+                        <span className="text-[9px] uppercase tracking-wider text-neutral-500 font-bold">
                           {met.label}
                         </span>
                       </div>
@@ -203,16 +202,16 @@ export default function Projects() {
                   <div className="flex items-center gap-4 pt-4">
                     <button
                       onClick={() => setSelectedProject(proj)}
-                      className="px-6 py-3 rounded-full border border-white/15 bg-white/[0.02] text-white hover:bg-white/5 text-[11px] font-mono font-bold tracking-wider transition-all flex items-center gap-2 cursor-pointer uppercase"
+                      className="px-6 py-3 rounded-full border border-neutral-800 bg-neutral-950 hover:bg-neutral-900 text-white text-[11px] font-mono font-bold tracking-wider transition-all flex items-center gap-2 cursor-pointer uppercase"
                     >
-                      <Layers className="w-3.5 h-3.5 text-[#06B6D4]" />
+                      <Layers className="w-3.5 h-3.5 text-neutral-400" />
                       Analyze Blueprint
                     </button>
                     <a
                       href={proj.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-5 py-2.5 rounded-full text-gray-400 hover:text-white hover:bg-white/[0.01] text-[11px] font-mono tracking-wider transition-all flex items-center gap-1.5 uppercase"
+                      className="px-5 py-2.5 rounded-full text-neutral-500 hover:text-white text-[11px] font-mono tracking-wider transition-all flex items-center gap-1.5 uppercase"
                     >
                       <Github className="w-3.5 h-3.5" />
                       Repository
@@ -222,24 +221,24 @@ export default function Projects() {
 
                 {/* Simulation Stage Console Window */}
                 <div className={`lg:col-span-7 relative ${isLeft ? "lg:order-2" : "lg:order-1"}`}>
-                  <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/[0.08] p-1 bg-[#09090e] shadow-2xl">
+                  <div className="relative aspect-video rounded-3xl overflow-hidden border border-neutral-900 p-1 bg-[#09090e] shadow-2xl">
                     
                     {/* Shadow atmospheric overlays */}
                     <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#050505]/80 to-transparent pointer-events-none z-10" />
 
                     {/* Simulation Module 1: CI/CD Pipeline */}
                     {proj.id === "microservices-cicd" && (
-                      <div className="w-full h-full flex flex-col font-mono text-xs text-gray-400 p-6 bg-[#0a0a0f] space-y-4 h-[280px]">
-                        <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
+                      <div className="w-full h-full flex flex-col font-mono text-xs text-neutral-400 p-6 bg-[#0a0a0f] space-y-4 min-h-[280px]">
+                        <div className="flex items-center justify-between border-b border-neutral-900 pb-3">
                           <div className="flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                            <span className="text-gray-500 text-[9px] ml-2 font-black uppercase tracking-widest block">
+                            <span className="w-2.5 h-2.5 rounded-full bg-neutral-800" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-neutral-600" />
+                            <span className="text-neutral-500 text-[9px] ml-2 font-black uppercase tracking-widest block">
                               Jenkins Kubernetes Orchestrator Sandbox
                             </span>
                           </div>
-                          <span className="text-[9px] text-[#3B82F6] font-bold bg-[#3B82F6]/5 px-2.5 py-1 rounded border border-[#3B82F6]/10">
+                          <span className="text-[9px] text-neutral-400 font-bold bg-neutral-900 px-2.5 py-1 rounded border border-neutral-800">
                             V2.414 LTS
                           </span>
                         </div>
@@ -249,7 +248,7 @@ export default function Projects() {
                           <button
                             onClick={handleRunPipeline}
                             disabled={jenkinsStatus === "building"}
-                            className="bg-[#3B82F6]/10 text-[#3B82F6] border border-[#3B82F6]/20 hover:bg-[#3B82F6]/20 px-4 py-2 rounded-lg text-[9px] font-bold tracking-widest transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                            className="bg-white/5 text-white border border-neutral-800 hover:bg-white/10 px-4 py-2 rounded-lg text-[9px] font-bold tracking-widest transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
                           >
                             <Play className="w-3 h-3" />
                             {jenkinsStatus === "building" ? "EXECUTING HOOK SEQUENCE..." : "TRIGGER PIPELINE RELEASE"}
@@ -257,9 +256,9 @@ export default function Projects() {
                         </div>
 
                         {/* Internal Terminal Output */}
-                        <div className="flex-1 bg-black/50 rounded-xl border border-white/[0.03] p-4 overflow-y-auto space-y-2 text-[10px] scrollbar-none">
+                        <div className="flex-1 bg-black/50 rounded-xl border border-neutral-900 p-4 overflow-y-auto space-y-2 text-[10px] scrollbar-none">
                           {jenkinsStatus === "idle" && (
-                            <div className="h-full flex flex-col justify-center items-center text-center text-gray-600 font-sans">
+                            <div className="h-full flex flex-col justify-center items-center text-center text-neutral-600 font-sans">
                               <Terminal className="w-7 h-7 opacity-20 mb-2" />
                               <span>Click "TRIGGER PIPELINE RELEASE" to simulate docker layer triggers and rolling deployments.</span>
                             </div>
@@ -270,12 +269,12 @@ export default function Projects() {
                               key={lidx}
                               className={`leading-relaxed font-mono ${
                                 log.includes("[SUCCESS]")
-                                  ? "text-emerald-400 font-bold"
+                                  ? "text-neutral-200 font-bold"
                                   : log.includes("[DOCKER]")
-                                  ? "text-[#06B6D4]"
+                                  ? "text-neutral-300 font-bold"
                                   : log.includes("[INFO]")
-                                  ? "text-[#3B82F6]"
-                                  : "text-gray-400"
+                                  ? "text-neutral-400"
+                                  : "text-neutral-500"
                               }`}
                             >
                               {log}
@@ -287,12 +286,12 @@ export default function Projects() {
 
                     {/* Simulation Module 2: Lab Automation Seating */}
                     {proj.id === "lab-automation" && (
-                      <div className="w-full h-full flex flex-col font-mono text-xs text-gray-400 p-6 bg-[#0a0a0f] space-y-4 h-[280px]">
-                        <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
-                          <span className="text-[9px] text-gray-500 font-black uppercase tracking-widest">
+                      <div className="w-full h-full flex flex-col font-mono text-xs text-neutral-400 p-6 bg-[#0a0a0f] space-y-4 min-h-[280px]">
+                        <div className="flex items-center justify-between border-b border-neutral-900 pb-3">
+                          <span className="text-[9px] text-[#777] font-black uppercase tracking-widest">
                             Device Checkin & Attendance Registry System
                           </span>
-                          <span className="text-[9px] text-[#06B6D4] font-bold">
+                          <span className="text-[9px] text-neutral-400 font-bold">
                             Node Server Ready
                           </span>
                         </div>
@@ -301,19 +300,19 @@ export default function Projects() {
                         <div className="space-y-4">
                           <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                             <div className="flex items-center gap-2">
-                              <label className="text-[9px] text-gray-500 uppercase font-black tracking-widest">
+                              <label className="text-[9px] text-neutral-500 uppercase font-black tracking-widest">
                                 RFID BADGE NO:
                               </label>
                               <input
                                 type="text"
                                 value={barcodeInput}
                                 onChange={(e) => setBarcodeInput(e.target.value)}
-                                className="bg-black/50 border border-white/10 px-3 py-1.5 rounded-lg text-xs text-white max-w-[150px] font-mono focus:border-[#06B6D4] outline-none"
+                                className="bg-black/50 border border-neutral-800 px-3 py-1.5 rounded-lg text-xs text-white max-w-[150px] font-mono focus:border-neutral-700 outline-none"
                               />
                             </div>
                             <button
                               onClick={handleBarcodeScan}
-                              className="px-4 py-2 bg-[#06B6D4]/10 text-[#06B6D4] border border-[#06B6D4]/20 hover:bg-[#06B6D4]/20 rounded-lg text-[9px] font-bold tracking-widest cursor-pointer uppercase"
+                              className="px-4 py-2 bg-white/5 text-neutral-200 border border-neutral-800 hover:bg-white/10 rounded-lg text-[9px] font-bold tracking-widest cursor-pointer uppercase"
                             >
                               Scan Student ID
                             </button>
@@ -321,22 +320,22 @@ export default function Projects() {
 
                           {/* Seating Assignment Visual Matrix */}
                           <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-2">
-                            <div className="sm:col-span-5 bg-black/40 border border-white/[0.03] rounded-xl p-4 flex flex-col justify-center items-center text-center">
-                              <span className="text-[8px] text-gray-500 block uppercase font-bold tracking-widest">ALLOCATED STATION</span>
+                            <div className="sm:col-span-5 bg-black/40 border border-neutral-900 rounded-xl p-4 flex flex-col justify-center items-center text-center">
+                              <span className="text-[8px] text-neutral-500 block uppercase font-bold tracking-widest">ALLOCATED STATION</span>
                               <span className="text-xl font-black text-white mt-2">
                                 {lastAllocatedSeat ? lastAllocatedSeat : "WAITING DISPATCH"}
                               </span>
-                              <div className="w-2 h-2 rounded-full mt-3 bg-emerald-400 animate-pulse animate-duration-500" />
+                              <div className="w-2 h-2 rounded-full mt-3 bg-neutral-600 animate-pulse" />
                             </div>
 
-                            <div className="sm:col-span-7 bg-black/50 border border-white/[0.04] rounded-xl p-3 text-[9px] h-20 overflow-y-auto space-y-1">
+                            <div className="sm:col-span-7 bg-black/50 border border-neutral-900 rounded-xl p-3 text-[9px] h-20 overflow-y-auto space-y-1">
                               {allocationLog.length === 0 ? (
-                                <span className="text-gray-600 block text-center pt-4 font-sans italic">
+                                <span className="text-neutral-600 block text-center pt-4 font-sans italic">
                                   Submit or edit an ID scan above to trigger allocation database pipelines.
                                 </span>
                               ) : (
                                 allocationLog.map((log, iidx) => (
-                                  <div key={iidx} className="text-[#06B6D4] leading-relaxed">
+                                  <div key={iidx} className="text-neutral-400 leading-relaxed">
                                     {log}
                                   </div>
                                 ))
@@ -349,12 +348,12 @@ export default function Projects() {
 
                     {/* Simulation Module 3: Event Booking */}
                     {proj.id === "event-management" && (
-                      <div className="w-full h-full flex flex-col font-mono text-xs text-gray-400 p-6 bg-[#0a0a0f] space-y-4 h-[280px]">
-                        <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
-                          <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest font-black">
+                      <div className="w-full h-full flex flex-col font-mono text-xs text-neutral-400 p-6 bg-[#0a0a0f] space-y-4 min-h-[280px]">
+                        <div className="flex items-center justify-between border-b border-neutral-900 pb-3">
+                          <span className="text-[9px] text-[#777] font-bold uppercase tracking-widest font-black">
                             PostgreSQL Transaction Schedules Node
                           </span>
-                          <span className="text-[#A855F7] text-[9px] font-bold bg-[#A855F7]/10 px-2.5 py-1 rounded border border-[#A855F7]/15">
+                          <span className="text-white text-[9px] font-bold bg-neutral-900 px-2.5 py-1 rounded border border-neutral-800">
                             ACID Transaction Map
                           </span>
                         </div>
@@ -370,11 +369,11 @@ export default function Projects() {
                                 key={i}
                                 className={`rounded-xl border p-3 flex flex-col justify-between transition-colors ${
                                   isReserved
-                                    ? "bg-red-500/5 border-red-500/10 text-red-400"
-                                    : "bg-[#A855F7]/5 border-[#A855F7]/10 text-[#A855F7]"
+                                    ? "bg-neutral-950/40 border-neutral-900 text-neutral-600"
+                                    : "bg-white/[0.02] border-neutral-800 text-neutral-200"
                                 }`}
                               >
-                                <span className="text-[8px] font-mono block text-gray-500">MAY {dateNum}</span>
+                                <span className="text-[8px] font-mono block text-neutral-500">MAY {dateNum}</span>
                                 <div className="text-xs font-bold leading-none py-2 font-display">
                                   {isReserved ? "RESERVED" : "VACANT"}
                                 </div>
@@ -385,7 +384,7 @@ export default function Projects() {
                             );
                           })}
                         </div>
-                        <div className="text-[9px] text-gray-500 flex items-center justify-between pt-2 border-t border-white/[0.04]">
+                        <div className="text-[9px] text-neutral-500 flex items-center justify-between pt-2 border-t border-neutral-900">
                           <span>System audit log: "Simultaneous check-ins balanced via isolation level database routines."</span>
                           <span>60 FPS</span>
                         </div>
@@ -394,30 +393,30 @@ export default function Projects() {
 
                     {/* Simulation Module 4: Music Mood AI */}
                     {proj.id === "music-recommender" && (
-                      <div className="w-full h-full flex flex-col font-mono text-xs text-gray-400 p-6 bg-[#0a0a0f] space-y-4 h-[280px]">
-                        <div className="flex items-center justify-between border-b border-white/[0.05] pb-3">
-                          <span className="text-[9px] text-gray-500 font-bold uppercase tracking-widest block font-black">
+                      <div className="w-full h-full flex flex-col font-mono text-xs text-neutral-400 p-6 bg-[#0a0a0f] space-y-4 min-h-[280px]">
+                        <div className="flex items-center justify-between border-b border-neutral-900 pb-3">
+                          <span className="text-[9px] text-[#777] font-bold uppercase tracking-widest block font-black">
                             Facial Contour Sentiment Recsys Module
                           </span>
-                          <span className="text-emerald-400 text-[9px] font-bold bg-emerald-400/5 px-2 py-0.5 rounded border border-emerald-400/10">
+                          <span className="text-white text-[9px] font-bold bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
                             92.4% Neural Precision
                           </span>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
                           {/* Face wireframe loop */}
-                          <div className="relative rounded-xl bg-black/50 border border-white/[0.04] p-4 flex flex-col justify-between overflow-hidden">
-                            <span className="absolute top-2 left-2 text-[8px] font-bold text-[#3B82F6]/70 uppercase">FRONT_CAM NODE</span>
+                          <div className="relative rounded-xl bg-black/50 border border-neutral-900 p-4 flex flex-col justify-between overflow-hidden">
+                            <span className="absolute top-2 left-2 text-[8px] font-bold text-neutral-500 uppercase">FRONT_CAM NODE</span>
                             
                             {/* Scanning head shape */}
                             <div className="flex-1 flex justify-center items-center relative py-6">
-                              <div className="w-16 h-16 rounded-full border border-dashed border-[#06B6D4] relative flex justify-center items-center">
-                                <div className="absolute top-5 left-3 w-1.5 h-1.5 rounded-full bg-[#06B6D4]" />
-                                <div className="absolute top-5 right-3 w-1.5 h-1.5 rounded-full bg-[#06B6D4]" />
-                                <div className="w-8 h-4 border-b-2 border-[#06B6D4] rounded-b-full mt-3 animate-pulse" />
+                              <div className="w-16 h-16 rounded-full border border-dashed border-neutral-700 relative flex justify-center items-center">
+                                <div className="absolute top-5 left-3 w-1.5 h-1.5 rounded-full bg-neutral-500" />
+                                <div className="absolute top-5 right-3 w-1.5 h-1.5 rounded-full bg-neutral-500" />
+                                <div className="w-8 h-4 border-b-2 border-neutral-600 rounded-b-full mt-3 animate-pulse" />
                               </div>
                               {/* Scan Beam */}
-                              <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#06B6D4] to-transparent animate-bounce top-2" />
+                              <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-neutral-500 to-transparent animate-bounce top-2" />
                             </div>
 
                             <div className="flex gap-1 justify-center">
@@ -427,8 +426,8 @@ export default function Projects() {
                                   onClick={() => handleMoodSelect(md)}
                                   className={`text-[8px] py-1 px-2 rounded-full border transition-all cursor-pointer ${
                                     selectedMusicMood === md
-                                      ? "bg-[#06B6D4] text-black border-[#06B6D4] font-bold"
-                                      : "bg-white/[0.01] border-white/5 text-gray-400 hover:text-white"
+                                      ? "bg-white text-black border-white font-bold"
+                                      : "bg-white/[0.01] border-neutral-800 text-neutral-400 hover:text-white"
                                   }`}
                                 >
                                   {md.split(" - ")[0]}
@@ -438,23 +437,23 @@ export default function Projects() {
                           </div>
 
                           {/* Music rec queue results */}
-                          <div className="bg-black/60 border border-white/[0.04] p-4 rounded-xl flex flex-col justify-between">
+                          <div className="bg-black/60 border border-neutral-900 p-4 rounded-xl flex flex-col justify-between">
                             <div>
-                              <span className="text-[8px] text-gray-500 uppercase font-black block mb-2">NEURAL MATCHED QUEUE:</span>
+                              <span className="text-[8px] text-neutral-500 uppercase font-black block mb-2">NEURAL MATCHED QUEUE:</span>
                               {emotionScanning ? (
-                                <div className="py-6 text-center text-[10px] text-gray-500 animate-pulse">Querying recommender vector map...</div>
+                                <div className="py-6 text-center text-[10px] text-neutral-500 animate-pulse">Querying recommender vector map...</div>
                               ) : (
                                 <div className="space-y-1.5">
                                   {simulatedTracks.map((tr, tidx) => (
-                                    <div key={tidx} className="flex items-center gap-2 text-[10px] text-gray-300">
-                                      <Play className="w-2.5 h-2.5 text-[#06B6D4]" />
+                                    <div key={tidx} className="flex items-center gap-2 text-[10px] text-neutral-300">
+                                      <Play className="w-2.5 h-2.5 text-neutral-400" />
                                       <span className="truncate">{tr}</span>
                                     </div>
                                   ))}
                                 </div>
                               )}
                             </div>
-                            <span className="text-[8px] text-[#06B6D4] font-bold uppercase tracking-wider">
+                            <span className="text-[8px] text-neutral-500 font-bold uppercase tracking-wider">
                               Synchronized with Spotify API Feed
                             </span>
                           </div>

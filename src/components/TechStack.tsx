@@ -145,7 +145,7 @@ export default function TechStack() {
             >
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-mono font-extrabold text-[#3b82f6] uppercase tracking-widest">
+                  <span className="text-[10px] font-mono font-extrabold text-neutral-400 uppercase tracking-widest">
                     Active Node Spec analysis
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />

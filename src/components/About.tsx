@@ -85,7 +85,7 @@ export default function About() {
             >
               <div className="flex items-center gap-4 mb-4">
                 {/* Large high-contrast index indicator */}
-                <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs font-mono font-black text-[#3b82f6]">
+                <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs font-mono font-black text-white">
                   {appr.step}
                 </div>
                 <h4 className="text-sm font-bold text-white tracking-tight">

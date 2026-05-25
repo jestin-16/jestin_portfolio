@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { BLOG_POSTS } from "../data";
 import { BlogPost } from "../types";
-import { BookOpen, Calendar, Clock, Terminal, ChevronRight, Share2, Search, CheckCircle2 } from "lucide-react";
+import { Calendar, Search, ChevronRight, Share2, Terminal } from "lucide-react";
 
 export default function Blog() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
@@ -28,18 +28,16 @@ export default function Blog() {
   };
 
   return (
-    <section id="blog" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-white/[0.03] select-none">
+    <section id="blog" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-neutral-900 select-none">
       
       {/* Background atmospheres */}
-      <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.02)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.02)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_70%)] pointer-events-none" />
 
       {/* Chapter Marker */}
       <div className="max-w-7xl mx-auto mb-16">
         <div className="flex items-center gap-3">
-          <div className="h-[1px] w-12 bg-gradient-to-r from-cyan-500 to-transparent" />
-          <span className="text-[10px] font-mono tracking-widest text-cyan-400 uppercase font-bold">
-            CHAPTER 05 / VAULT
+          <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase font-bold">
+            // WRITING & GUIDES
           </span>
         </div>
       </div>
@@ -47,23 +45,23 @@ export default function Blog() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div>
-            <h2 className="text-4xl sm:text-6xl font-display font-black tracking-tight text-white mb-3">
-              Knowledge Vault.
+            <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-white mb-3">
+              Knowledge Archives
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base max-w-xl font-sans">
-              Decoupling backend patterns, Spring Boot validation layers, and Kubernetes setups into granular engineering manuals.
+            <p className="text-neutral-500 text-sm sm:text-base max-w-xl font-sans mt-3">
+              Technical guides covering microservices decoupled layouts, Spring validation pipelines, and container isolation setups.
             </p>
           </div>
 
-          {/* Clean High Contract Search bar */}
-          <div className="flex items-center gap-2 bg-[#0b0b10] border border-white/[0.06] rounded-full px-5 py-3.5 w-full md:max-w-sm focus-withinit:border-[#3B82F6]/50 transition-all">
-            <Search className="w-4 h-4 text-gray-500 shrink-0" />
+          {/* Clean High Contrast Search bar */}
+          <div className="flex items-center gap-2 bg-[#0a0a0f] border border-neutral-900 rounded-full px-5 py-3.5 w-full md:max-w-sm focus-within:border-neutral-700 transition-all">
+            <Search className="w-4 h-4 text-neutral-500 shrink-0" />
             <input
               type="text"
               placeholder="Search writing, tags, systems..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-transparent border-none text-xs text-white focus:outline-none w-full placeholder-gray-600 font-mono"
+              className="bg-transparent border-none text-xs text-white focus:outline-none w-full placeholder-neutral-700 font-mono"
             />
           </div>
         </div>
@@ -77,7 +75,7 @@ export default function Blog() {
               className={`px-5 py-2 rounded-full text-[10px] tracking-wider uppercase border transition-all cursor-pointer ${
                 activeCategory === cat
                   ? "bg-white text-black border-white font-black"
-                  : "bg-[#0b0b10] border-white/5 text-gray-400 hover:text-white hover:border-white/10"
+                  : "bg-[#0b0b10] border-neutral-900 text-neutral-400 hover:text-white hover:border-neutral-800"
               }`}
             >
               {cat === "all" ? "[Show All Archive]" : cat}
@@ -94,38 +92,35 @@ export default function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-[#0b0b10] border border-white/[0.04] p-6 hover:bg-white/[0.02] hover:border-white/10 rounded-2xl flex flex-col justify-between transition-all duration-300 relative group"
+              className="bg-[#0b0b10] border border-neutral-900 p-6 hover:bg-[#0a0a0f] hover:border-neutral-800 rounded-2xl flex flex-col justify-between transition-all duration-300 relative group"
             >
               <div>
-                <div className="flex items-center gap-3 text-gray-500 text-[9px] font-mono mb-4 uppercase tracking-wider font-extrabold">
-                  <span className="text-[#06B6D4]">#{post.category}</span>
+                <div className="flex items-center gap-3 text-neutral-500 text-[9px] font-mono mb-4 uppercase tracking-wider font-extrabold">
+                  <span className="text-neutral-400 font-bold">#{post.category}</span>
                   <span className="opacity-30">•</span>
                   <span>{post.readTime}</span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white group-hover:text-[#3B82F6] transition-colors line-clamp-2 leading-snug">
+                <h3 className="text-lg font-bold text-white group-hover:text-neutral-200 transition-colors line-clamp-2 leading-snug">
                   {post.title}
                 </h3>
 
-                <p className="text-gray-400 text-xs leading-relaxed mt-3 line-clamp-3 font-sans">
+                <p className="text-neutral-400 text-xs leading-relaxed mt-3 line-clamp-3 font-sans">
                   {post.summary}
                 </p>
               </div>
 
               {/* Action row footer */}
-              <div className="flex items-center justify-between border-t border-white/[0.04] pt-4 mt-8">
-                <span className="text-[9px] font-mono text-gray-500">{post.date}</span>
+              <div className="flex items-center justify-between border-t border-neutral-900 pt-4 mt-8">
+                <span className="text-[9px] font-mono text-neutral-500">{post.date}</span>
                 <button
                   onClick={() => setSelectedPost(post)}
-                  className="text-[10px] font-mono font-bold uppercase tracking-wider text-white hover:text-[#06B6D4] flex items-center gap-1.5 cursor-pointer"
+                  className="text-[10px] font-mono font-bold uppercase tracking-wider text-white hover:text-neutral-300 flex items-center gap-1.5 cursor-pointer"
                 >
                   DECRYPT BLUEPRINT
-                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-neutral-500" />
                 </button>
               </div>
-
-              {/* Edge highlight line */}
-              <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#06B6D4]/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </motion.div>
           ))}
         </div>
@@ -148,44 +143,44 @@ export default function Blog() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.92, opacity: 0, y: 30 }}
               transition={{ type: "spring", duration: 0.8 }}
-              className="relative w-full max-w-2xl bg-[#0c0c12] border border-white/10 rounded-3xl max-h-[85vh] overflow-y-auto p-6 md:p-10 z-10 space-y-6 shadow-2xl"
+              className="relative w-full max-w-2xl bg-[#0a0a0f] border border-neutral-900 rounded-3xl max-h-[85vh] overflow-y-auto p-6 md:p-10 z-10 space-y-6 shadow-2xl"
             >
               <button
                 onClick={() => setSelectedPost(null)}
-                className="absolute top-4 right-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-full p-2.5 cursor-pointer transition-colors"
+                className="absolute top-4 right-4 bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-white rounded-full p-2.5 cursor-pointer transition-colors text-xs font-mono font-bold"
               >
                 &lt;Close /&gt;
               </button>
 
               <div className="space-y-4 pt-4">
-                <div className="flex items-center gap-3 text-[10px] font-mono text-gray-500 uppercase tracking-wider font-extrabold">
-                  <span className="text-[#3B82F6]">#{selectedPost.category}</span>
+                <div className="flex items-center gap-3 text-[10px] font-mono text-neutral-500 uppercase tracking-wider font-extrabold">
+                  <span className="text-white font-bold">#{selectedPost.category}</span>
                   <span className="opacity-30">•</span>
                   <span>{selectedPost.readTime}</span>
                   <span className="opacity-30">•</span>
                   <span>{selectedPost.date}</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-display font-black text-white">
+                <h3 className="text-2xl sm:text-3xl font-sans font-black text-white">
                   {selectedPost.title}
                 </h3>
 
-                <div className="h-[1px] bg-white/[0.05] w-full my-4" />
+                <div className="h-[1px] bg-neutral-900 w-full my-4" />
 
-                <div className="text-gray-300 text-sm sm:text-base leading-relaxed antialiased font-sans pr-2 space-y-4">
+                <div className="text-neutral-300 text-sm sm:text-base leading-relaxed antialiased font-sans pr-2 space-y-4">
                   <p>{selectedPost.content}</p>
-                  <p className="text-gray-400">
-                    To construct safe systems, it is vital to decouple heavy processing segments. By separating routing endpoints, database connections, and cache lifetimes, latency is minimized. Jestin implements these patterns directly into spring-boot projects to ensure absolute container performance.
+                  <p className="text-neutral-400 text-xs italic">
+                    To construct resilient systems, it is vital to decouple heavy processing segments. By separating routing endpoints, database connections, and cache lifetimes, latency is minimized. Jestin implements these patterns directly into spring-boot projects to ensure absolute container performance.
                   </p>
                 </div>
 
                 {/* Simulated Spec card */}
-                <div className="bg-black/40 border border-white/[0.04] rounded-2xl p-5 mt-6 font-mono text-xs">
-                  <span className="text-emerald-400 uppercase font-bold text-[10px] block mb-3 tracking-widest flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="bg-black/40 border border-neutral-900 rounded-2xl p-5 mt-6 font-mono text-xs">
+                  <span className="text-white uppercase font-bold text-[10px] block mb-3 tracking-widest flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 animate-pulse" />
                     [SECURE_KNOWLEDGE_PIPELINE] ARCHITECTURE SPECIFICATION
                   </span>
-                  <div className="space-y-2 text-gray-400">
+                  <div className="space-y-2 text-neutral-400 text-[11px] leading-relaxed">
                     <p>• Avoid core memory leaks by establishing strictly mapped thread contextual configurations.</p>
                     <p>• Clean Docker multi-stage builds consistently drop target weight indicators down by up to 75%.</p>
                     <p>• Restrict authorization exceptions using custom, isolated filter chains inside security configurations.</p>
@@ -193,17 +188,17 @@ export default function Blog() {
                 </div>
 
                 {/* Modal footer shares */}
-                <div className="flex items-center justify-between border-t border-white/[0.05] pt-6 mt-8">
-                  <span className="text-[9px] font-mono text-gray-500">
+                <div className="flex items-center justify-between border-t border-neutral-900 pt-6 mt-8">
+                  <span className="text-[9px] font-mono text-neutral-500">
                     AUTHOR: JESTIN SHAJI • SPRING EXPERT
                   </span>
                   
                   <button
                     onClick={handleShare}
-                    className="flex items-center gap-1.5 text-xs font-mono text-gray-400 hover:text-white transition-colors cursor-pointer"
+                    className="flex items-center gap-1.5 text-xs font-mono text-neutral-400 hover:text-white transition-colors cursor-pointer"
                   >
                     <Share2 className="w-3.5 h-3.5" />
-                    <span>{hasCopied ? "[COPIED TOSTR]" : "EXPORT LINK"}</span>
+                    <span>{hasCopied ? "[COPIED]" : "EXPORT LINK"}</span>
                   </button>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Github, Linkedin, Mail, ArrowDown, FileText, Compass, Sparkles, Server } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, FileText, Compass, Server } from "lucide-react";
 import { JESTIN_BIO } from "../data";
 
 interface HeroProps {
@@ -8,7 +8,7 @@ interface HeroProps {
   onOpenChat: () => void;
 }
 
-export default function Hero({ onScrollToProjects, onScrollToContact, onOpenChat }: HeroProps) {
+export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProps) {
   
   const handleDownloadCV = () => {
     // Elegant CV simulation download
@@ -49,7 +49,6 @@ export default function Hero({ onScrollToProjects, onScrollToContact, onOpenChat
       
       {/* Background Cinematic Lighting (Ambient Vignettes) */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.015)_0%,transparent_50%)] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.02)_0%,transparent_70%)] pointer-events-none" />
 
       {/* Grid Pattern overlays for fine structure */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.005)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.005)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
@@ -66,7 +65,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact, onOpenChat
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex items-center gap-2.5"
           >
-            <span className="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-white opacity-85" />
             <span className="text-sm font-sans text-neutral-400 font-semibold tracking-wide">
               I am {JESTIN_BIO.name}
             </span>
@@ -169,7 +168,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact, onOpenChat
           >
             {/* Elegant glowing background ring inside illustration container */}
             <div className="absolute inset-4 rounded-[2.5rem] border border-dashed border-neutral-800/60 flex items-center justify-center overflow-hidden pointer-events-none">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.02)_0%,transparent_60%)] animate-pulse" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_60%)]" />
             </div>
 
             {/* Simulated Technical Blueprint Node Layout (Clean SVG-based monochrome schematic representation of full-stack developer architecture) */}
@@ -178,7 +177,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact, onOpenChat
               {/* Dynamic Coordinate Badge */}
               <div className="flex justify-between items-center text-[#777]">
                 <span>SCALE_NODE: 2026.1_CORE</span>
-                <span className="text-[#3b82f6] font-bold">SYSTEM_ACTIVE</span>
+                <span className="text-white font-bold">SYSTEM_ACTIVE</span>
               </div>
 
               {/* Central Abstract Monochrome Structural Portrait Representation */}
@@ -191,22 +190,22 @@ export default function Hero({ onScrollToProjects, onScrollToContact, onOpenChat
                 {/* Conceptual stylized representation of modern full-stack developer brain node */}
                 <div className="w-24 h-24 rounded-full bg-black border-2 border-neutral-800 shadow-xl flex flex-col items-center justify-center relative group-hover:border-neutral-500 transition-colors duration-500">
                   <Server className="w-8 h-8 text-neutral-400 group-hover:text-white transition-colors duration-500 mb-1" />
-                  <span className="text-[8px] text-neutral-500 uppercase tracking-widest font-extrabold group-hover:text-[#3b82f6]">SPRING</span>
+                  <span className="text-[8px] text-neutral-500 uppercase tracking-widest font-extrabold group-hover:text-white">SPRING</span>
                   
                   {/* Miniature connection signals */}
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-neutral-600 animate-bounce" />
-                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#3b82f6] animate-pulse" />
+                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
                 </div>
 
                 {/* Left node anchor: React */}
                 <div className="absolute left-6 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-[#0d0d12] border border-neutral-800 shadow-md text-neutral-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#06b6d4]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
                   <span>REACT</span>
                 </div>
 
                 {/* Right node anchor: Docker */}
                 <div className="absolute right-6 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-[#0d0d12] border border-neutral-800 shadow-md text-neutral-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#3b82f6]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
                   <span>K8S</span>
                 </div>
               </div>
