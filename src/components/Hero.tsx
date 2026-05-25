@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { ArrowDown, MessageSquare, Terminal, Eye, Award } from "lucide-react";
+import { motion } from "motion/react";
+import { Github, Linkedin, Mail, ArrowDown, FileText, Compass, Sparkles, Server } from "lucide-react";
 import { JESTIN_BIO } from "../data";
 
 interface HeroProps {
@@ -10,172 +9,240 @@ interface HeroProps {
 }
 
 export default function Hero({ onScrollToProjects, onScrollToContact, onOpenChat }: HeroProps) {
-  const [typedTitleIndex, setTypedTitleIndex] = useState(0);
-  const titles = [
-    "Building Scalable Digital Experiences",
-    "Full Stack Spring Boot Architect",
-    "Intelligent Software Developer",
-    "Orchestrating DevOps Pipelines"
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTypedTitleIndex((prev) => (prev + 1) % titles.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+  
+  const handleDownloadCV = () => {
+    // Elegant CV simulation download
+    const cvText = `
+    ====================================================
+    JESTIN SHAJI - FULL STACK SPRING BOOT ARCHITECT
+    ====================================================
+    Email: ${JESTIN_BIO.email}
+    Phone: ${JESTIN_BIO.phone}
+    Location: ${JESTIN_BIO.location}
+    
+    Professional Overview:
+    ${JESTIN_BIO.aboutFull}
+    
+    Core Competencies:
+    - Java, Spring Boot, Microservices, Spring Security
+    - Docker, Kubernetes, Jenkins, CI/CD automated pipelines
+    - React.js, Tailwind CSS, TypeScript
+    - PostgreSQL, MySQL, Relational Database tuning
+    
+    ----------------------------------------------------
+    Generated dynamically on Jestin's Portfolio Vault.
+    ====================================================
+    `;
+    const blob = new Blob([cvText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "Jestin_Shaji_Resume.txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 overflow-hidden bg-[#050505]">
-      {/* 1. Futuristic Grid & Lighting Layers */}
-      <div className="absolute inset-0 cyber-grid opacity-15 pointer-events-none" />
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 radial-glow rounded-full animate-pulse-slow pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 radial-glow-cyan rounded-full animate-pulse pointer-events-none" />
-      <div className="absolute top-2/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] radial-glow-purple rounded-full opacity-60 pointer-events-none" />
+    <section id="home" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 lg:px-24 pt-32 pb-16 overflow-hidden bg-[#050505] selection:bg-neutral-800">
+      
+      {/* Background Cinematic Lighting (Ambient Vignettes) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(255,255,255,0.015)_0%,transparent_50%)] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.02)_0%,transparent_70%)] pointer-events-none" />
 
-      {/* 2. Floating Code Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
+      {/* Grid Pattern overlays for fine structure */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.005)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.005)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center z-10 flex-1">
+        
+        {/* Left Hand: High Quality Editorial Narrative Block */}
+        <div className="lg:col-span-7 flex flex-col justify-center text-left space-y-8">
+          
+          {/* Subtle Accent Mini Hook */}
           <motion.div
-            key={i}
-            className="absolute bg-white/5 border border-white/10 rounded-lg p-2 font-mono text-[9px] text-[#3B82F6]/60 backdrop-blur-sm hidden md:block"
-            style={{
-              top: `${20 + i * 13}%`,
-              left: `${8 + (i % 2 === 0 ? i * 12 : i * 15)}%`,
-            }}
-            animate={{
-              y: [0, -15, 0],
-              opacity: [0.4, 0.8, 0.4],
-            }}
-            transition={{
-              duration: 5 + i,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            initial={{ opacity: 0, x: -15 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex items-center gap-2.5"
           >
-            {i === 0 && "@SpringBootApplication"}
-            {i === 1 && "kubectl apply -f deployment.yml"}
-            {i === 2 && "public class MicroserviceApplication {}"}
-            {i === 3 && "const ai = new GoogleGenAI();"}
-            {i === 4 && "git commit -m 'Release Pipeline live'"}
-            {i === 5 && "SELECT seat_id FROM college_lab_seats;"}
+            <span className="w-2 h-2 rounded-full bg-[#3b82f6] animate-pulse" />
+            <span className="text-sm font-sans text-neutral-400 font-semibold tracking-wide">
+              I am {JESTIN_BIO.name}
+            </span>
           </motion.div>
-        ))}
+
+          {/* Majestic Hero Display Heading */}
+          <div className="space-y-3">
+            <motion.h1
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-6xl md:text-7xl font-sans font-black tracking-tight text-white leading-[1.05]"
+            >
+              Full-Stack Developer <br className="hidden sm:block" />
+              <span className="text-neutral-500 font-medium font-sans">
+                &amp; Spring Architect
+              </span>
+            </motion.h1>
+          </div>
+
+          {/* Narrative contextual statements matching text block */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-[#999999] text-base sm:text-lg max-w-xl leading-relaxed font-sans"
+          >
+            Blending thoughtful, highly secure backend microservices with fully automated continuous cloud integration to deploy digital platforms that are bulletproof, responsive, and incredibly fast.
+          </motion.p>
+
+          {/* Call to action element buttons */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+          >
+            <button
+              onClick={handleDownloadCV}
+              className="px-8 py-4 bg-[#121212] hover:bg-[#1c1c1c] text-white border border-neutral-800 rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg flex items-center justify-center gap-2.5 cursor-pointer"
+            >
+              <FileText className="w-4 h-4 text-neutral-400" />
+              <span>Download CV</span>
+            </button>
+
+            <button
+              onClick={onScrollToProjects}
+              className="px-8 py-4 bg-white text-black hover:bg-neutral-200 rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-white/5"
+            >
+              <Compass className="w-4 h-4 text-black" />
+              <span>Explore Works</span>
+            </button>
+          </motion.div>
+
+          {/* Social connections cleanly arranged below button line */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="flex items-center gap-3 pt-6"
+          >
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub Profile Link"
+              className="w-10 h-10 rounded-full bg-[#111] hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-900 hover:border-neutral-700 font-mono text-sm flex items-center justify-center transition-all hover:scale-105"
+            >
+              <Github className="w-4 h-4" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn Profile Link"
+              className="w-10 h-10 rounded-full bg-[#111] hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-900 hover:border-neutral-700 font-mono text-sm flex items-center justify-center transition-all hover:scale-105"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <button
+              onClick={onScrollToContact}
+              title="Send Direct Message"
+              aria-label="Navigate to email direct channel"
+              className="w-10 h-10 rounded-full bg-[#111] hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-900 hover:border-neutral-700 font-mono text-sm flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
+            >
+              <Mail className="w-4 h-4" />
+            </button>
+          </motion.div>
+
+        </div>
+
+        {/* Right Hand: Immersive Black and White Architectural Visual Canvas Widget */}
+        <div className="lg:col-span-5 flex justify-center items-center relative py-8">
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-[3rem] bg-gradient-to-b from-[#13131a] to-[#09090d] border border-neutral-800 p-6 flex items-center justify-center overflow-hidden shadow-2xl group"
+          >
+            {/* Elegant glowing background ring inside illustration container */}
+            <div className="absolute inset-4 rounded-[2.5rem] border border-dashed border-neutral-800/60 flex items-center justify-center overflow-hidden pointer-events-none">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.02)_0%,transparent_60%)] animate-pulse" />
+            </div>
+
+            {/* Simulated Technical Blueprint Node Layout (Clean SVG-based monochrome schematic representation of full-stack developer architecture) */}
+            <div className="w-full h-full relative z-10 flex flex-col justify-between p-4 font-mono text-[10px]">
+              
+              {/* Dynamic Coordinate Badge */}
+              <div className="flex justify-between items-center text-[#777]">
+                <span>SCALE_NODE: 2026.1_CORE</span>
+                <span className="text-[#3b82f6] font-bold">SYSTEM_ACTIVE</span>
+              </div>
+
+              {/* Central Abstract Monochrome Structural Portrait Representation */}
+              <div className="flex-1 flex justify-center items-center relative py-4">
+                
+                {/* Visual orbital waves representing cloud deployment networks */}
+                <div className="absolute w-48 h-48 rounded-full border border-neutral-800/40 animate-[spin_40s_linear_infinite]" />
+                <div className="absolute w-36 h-36 rounded-full border border-dashed border-neutral-800/20 animate-[spin_25s_linear_infinite_reverse]" />
+
+                {/* Conceptual stylized representation of modern full-stack developer brain node */}
+                <div className="w-24 h-24 rounded-full bg-black border-2 border-neutral-800 shadow-xl flex flex-col items-center justify-center relative group-hover:border-neutral-500 transition-colors duration-500">
+                  <Server className="w-8 h-8 text-neutral-400 group-hover:text-white transition-colors duration-500 mb-1" />
+                  <span className="text-[8px] text-neutral-500 uppercase tracking-widest font-extrabold group-hover:text-[#3b82f6]">SPRING</span>
+                  
+                  {/* Miniature connection signals */}
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-neutral-600 animate-bounce" />
+                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#3b82f6] animate-pulse" />
+                </div>
+
+                {/* Left node anchor: React */}
+                <div className="absolute left-6 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-[#0d0d12] border border-neutral-800 shadow-md text-neutral-400 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#06b6d4]" />
+                  <span>REACT</span>
+                </div>
+
+                {/* Right node anchor: Docker */}
+                <div className="absolute right-6 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-[#0d0d12] border border-neutral-800 shadow-md text-neutral-400 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#3b82f6]" />
+                  <span>K8S</span>
+                </div>
+              </div>
+
+              {/* Diagnostic data blocks at container base */}
+              <div className="space-y-1 pt-3 border-t border-neutral-800/40 text-neutral-500">
+                <div className="flex justify-between">
+                  <span>LATENCY TIMEPOINT</span>
+                  <span className="text-white font-semibold">&lt; 120ms</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>ACADEMIC VECTOR</span>
+                  <span className="text-white font-semibold">FISAT MCA</span>
+                </div>
+              </div>
+
+            </div>
+
+          </motion.div>
+        </div>
+
       </div>
 
-      <div className="relative z-10 text-center max-w-5xl mt-12">
-        {/* Upper Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md mb-8"
-        >
-          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-mono text-gray-400 tracking-wider uppercase font-medium">
-            Pursuing MCA • Available for Architectures
-          </span>
-        </motion.div>
-
-        {/* Dynamic Typography Header */}
-        <h1 className="text-4xl sm:text-6xl md:text-8xl font-display font-extrabold tracking-tight text-white mb-6 select-none leading-[1.05]">
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-gray-500">
-            Jestin Shaji
-          </span>
-          <div className="h-[72px] sm:h-[96px] md:h-[120px] relative flex justify-center items-center mt-2">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={typedTitleIndex}
-                initial={{ y: 25, opacity: 0, filter: "blur(4px)" }}
-                animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                exit={{ y: -25, opacity: 0, filter: "blur(4px)" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#06B6D4] to-purple-500 text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight px-4"
-              >
-                {titles[typedTitleIndex]}
-              </motion.span>
-            </AnimatePresence>
-          </div>
-        </h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-base sm:text-lg md:text-xl text-gray-400 font-sans max-w-2xl mx-auto mb-12 leading-relaxed"
-        >
-          {JESTIN_BIO.tagline}
-        </motion.p>
-
-        {/* Action Controls */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-16"
-        >
-          <button
-            onClick={onScrollToProjects}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl font-medium text-sm transition-all duration-300 relative group overflow-hidden bg-white text-black hover:scale-105 active:scale-95 shadow-lg shadow-white/5 active:shadow-none cursor-pointer"
-          >
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              <Eye className="w-4 h-4" />
-              Explore Architectures
-            </span>
-            <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-          </button>
-
-          <button
-            onClick={onOpenChat}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl font-medium text-sm transition-all duration-300 relative group overflow-hidden bg-transparent border border-white/10 hover:border-[#3B82F6]/50 text-white shadow-xl hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
-          >
-            <MessageSquare className="w-4 h-4 text-[#06B6D4] group-hover:animate-bounce" />
-            <span>Consult Jestin AI</span>
-          </button>
-
-          <button
-            onClick={onScrollToContact}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl font-mono text-xs tracking-wider transition-all duration-300 border border-transparent hover:border-white/10 hover:bg-white/[0.02] text-gray-400 hover:text-white cursor-pointer"
-          >
-            &lt;Get In Touch /&gt;
-          </button>
-        </motion.div>
-      </div>
-
-      {/* 3. Infinite Stats Row */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7, duration: 0.8 }}
-        className="w-full max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-4 px-4 py-8 rounded-2xl glass-panel relative"
-      >
-        {JESTIN_BIO.stats.map((stat, i) => (
-          <div
-            key={i}
-            className="text-center py-4 flex flex-col justify-center items-center border-r last:border-r-0 border-white/[0.05]"
-          >
-            <span className="font-display font-extrabold text-2xl md:text-3xl text-white tracking-tight bg-clip-text bg-gradient-to-r from-white to-gray-400">
-              {stat.value}
-            </span>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#06B6D4] mt-2 font-medium">
-              {stat.label}
-            </span>
-          </div>
-        ))}
-      </motion.div>
-
-      {/* Down indicators */}
-      <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-6 flex flex-col items-center gap-1 cursor-pointer opacity-40 hover:opacity-100 transition-opacity"
+      {/* Bounce continuous scrolling indicator matching design */}
+      <div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-25 hover:opacity-100 transition-opacity cursor-pointer pointer-events-auto"
         onClick={onScrollToProjects}
       >
-        <span className="text-[10px] uppercase font-mono tracking-widest text-gray-500">
-          Scroll Down
-        </span>
-        <ArrowDown className="w-4 h-4 text-gray-500" />
-      </motion.div>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ArrowDown className="w-4 h-4 text-white" />
+        </motion.div>
+      </div>
+
     </section>
   );
 }

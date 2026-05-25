@@ -3,7 +3,9 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ArrowUp, Cpu, Server, ShieldCheck, Mail, Database, Terminal, Compass, Layers } from "lucide-react";
 
 // Section imports
+import CinematicCanvas from "./components/CinematicCanvas";
 import Hero from "./components/Hero";
+import Services from "./components/Services";
 import About from "./components/About";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
@@ -73,7 +75,10 @@ export default function App() {
   return (
     <div id="app-root" className="min-h-screen bg-[#050505] text-gray-100 overflow-x-hidden relative font-sans">
       
-      {/* 1. Cinematic Compiling Entrance Sequence */}
+      {/* 1. Cinematic Floating Particle & Volumetric Fog Backdrop Canvas */}
+      <CinematicCanvas />
+
+      {/* 2. Cinematic Compiling Entrance Sequence */}
       <AnimatePresence>
         {systemLoading && (
           <motion.div
@@ -130,70 +135,71 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* 2. Sticky Glassmorphic Header */}
+      {/* 2. Refined Floating Pill Header/Navbar (Inspired by reference) */}
       <header
         id="navbar"
-        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-mono tracking-wider ${
+        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
           scrolled
-            ? "bg-[#050505]/85 backdrop-blur-md py-4 border-b border-white/[0.05] shadow-lg shadow-black/40"
-            : "bg-transparent py-6 border-b border-transparent"
+            ? "py-4 bg-[#050505]/90 backdrop-blur-md border-b border-neutral-900 shadow-xl shadow-black/80"
+            : "py-6 bg-transparent border-b border-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Brand/logo anchor */}
+          
+          {/* Solid circular logo icon */}
           <button
-            onClick={() => handleScrollToSection("app-root")}
-            className="flex items-center gap-2 text-white font-extrabold text-sm tracking-tight cursor-pointer"
+            onClick={() => handleScrollToSection("home")}
+            className="w-10 h-10 rounded-full bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex items-center justify-center font-bold text-white uppercase text-xs cursor-pointer select-none tracking-wider shadow-lg hover:scale-105 transition-all duration-300"
           >
-            <span className="text-[#3B82F6] font-mono">&lt;</span>
-            <span className="font-display text-gray-200">Jestin.S</span>
-            <span className="text-[#06B6D4] font-mono">/&gt;</span>
+            js
           </button>
 
-          {/* Desktop Nav Actions */}
-          <nav role="navigation" className="hidden md:flex items-center gap-8 text-xs font-semibold text-gray-400">
+          {/* Centered Floating Nav Bar (As shown in screenshot) */}
+          <nav role="navigation" className="hidden md:flex items-center gap-1.5 p-1 bg-[#121216]/60 border border-neutral-900 rounded-full backdrop-blur-md">
+            <button
+              onClick={() => handleScrollToSection("home")}
+              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => handleScrollToSection("services")}
+              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
+            >
+              Services
+            </button>
             <button
               onClick={() => handleScrollToSection("about")}
-              className="hover:text-[#3B82F6] transition-colors cursor-pointer"
+              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
             >
-              Identity
+              About
             </button>
             <button
               onClick={() => handleScrollToSection("tech")}
-              className="hover:text-[#06B6D4] transition-colors cursor-pointer"
+              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
             >
-              Arsenal
+              Skills
             </button>
             <button
               onClick={() => handleScrollToSection("projects")}
-              className="hover:text-purple-400 transition-colors cursor-pointer"
+              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
             >
-              Works
-            </button>
-            <button
-              onClick={() => handleScrollToSection("experience")}
-              className="hover:text-[#3B82F6] transition-colors cursor-pointer"
-            >
-              Timeline
-            </button>
-            <button
-              onClick={() => handleScrollToSection("blog")}
-              className="hover:text-[#06B6D4] transition-colors cursor-pointer"
-            >
-              Writeups
-            </button>
-            <button
-              onClick={() => handleScrollToSection("contact")}
-              className="px-4 py-2 bg-white text-black hover:bg-neutral-200 rounded-lg text-xs font-bold transition-all hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              Connect
+              Projects
             </button>
           </nav>
+
+          {/* Let's Talk Pill shape trigger */}
+          <button
+            onClick={() => handleScrollToSection("contact")}
+            className="hidden md:inline-block px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white border border-neutral-800 rounded-full text-xs font-bold tracking-wide transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg"
+          >
+            Let's Talk
+          </button>
 
           {/* Handheld Trigger toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-400 hover:text-white p-2 border border-white/5 bg-white/[0.01] rounded-lg cursor-pointer"
+            className="md:hidden text-gray-400 hover:text-white p-2 border border-neutral-900 bg-neutral-950 rounded-lg cursor-pointer"
           >
             {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -207,44 +213,44 @@ export default function App() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-[#0c0c12] border-b border-white/[0.08]"
+              className="md:hidden bg-[#0a0a0d] border-b border-neutral-900"
             >
               <nav role="navigation" className="flex flex-col p-6 gap-4 text-xs font-mono font-bold text-gray-400">
                 <button
-                  onClick={() => handleScrollToSection("about")}
-                  className="text-left py-2 border-b border-white/[0.03] hover:text-white"
+                  onClick={() => handleScrollToSection("home")}
+                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
                 >
-                  // Identity
+                  // Home
+                </button>
+                <button
+                  onClick={() => handleScrollToSection("services")}
+                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
+                >
+                  // Services
+                </button>
+                <button
+                  onClick={() => handleScrollToSection("about")}
+                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
+                >
+                  // About Me
                 </button>
                 <button
                   onClick={() => handleScrollToSection("tech")}
-                  className="text-left py-2 border-b border-white/[0.03] hover:text-white"
+                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
                 >
-                  // Arsenal
+                  // Skills Stack
                 </button>
                 <button
                   onClick={() => handleScrollToSection("projects")}
-                  className="text-left py-2 border-b border-white/[0.03] hover:text-white"
+                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
                 >
-                  // Works
-                </button>
-                <button
-                  onClick={() => handleScrollToSection("experience")}
-                  className="text-left py-2 border-b border-white/[0.03] hover:text-white"
-                >
-                  // Timeline
-                </button>
-                <button
-                  onClick={() => handleScrollToSection("blog")}
-                  className="text-left py-2 border-b border-white/[0.03] hover:text-white"
-                >
-                  // Writeups
+                  // Projects
                 </button>
                 <button
                   onClick={() => handleScrollToSection("contact")}
-                  className="w-full text-center py-3 bg-white text-black rounded-lg mt-2 font-bold select-none cursor-pointer"
+                  className="w-full text-center py-3 bg-white text-black rounded-full mt-2 font-bold select-none cursor-pointer uppercase tracking-widest text-[11px]"
                 >
-                  Initiate Connect Sequence
+                  Let's Talk
                 </button>
               </nav>
             </motion.div>
@@ -267,6 +273,9 @@ export default function App() {
             }
           }}
         />
+
+        {/* Modular Tech Capabilities Services Grid */}
+        <Services />
 
         {/* Details Profile info */}
         <About />

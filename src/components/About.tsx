@@ -1,166 +1,134 @@
 import { motion } from "motion/react";
-import { User, MapPin, Mail, Phone, Award, Compass, Heart, Database } from "lucide-react";
 import { JESTIN_BIO } from "../data";
 
 export default function About() {
-  const customBioMetrics = [
+  const approaches = [
     {
-      icon: <Database className="w-5 h-5 text-[#3B82F6]" />,
-      title: "Backend Focus",
-      value: "95%",
-      description: "Dedicated specialization in Spring Boot microservices and enterprise database schemas.",
+      step: "01",
+      title: "Analyze Scope & Schema",
+      description: "Deconstructing domain models, analyzing relational dependency cascades, and planning database isolation metrics.",
     },
     {
-      icon: <Compass className="w-5 h-5 text-[#06B6D4]" />,
-      title: "Solutions Architecting",
-      value: "Scalable",
-      description: "Engineering clean separation of concerns, Docker clustering, and self-repairing nodes.",
+      step: "02",
+      title: "Design SOLID Core APIs",
+      description: "Writing strictly typed, encapsulated controller paths, exception resolvers, and Spring Security token validations.",
     },
     {
-      icon: <Award className="w-5 h-5 text-purple-500" />,
-      title: "Academic Excellence",
-      value: "MCA Candidate",
-      description: "Focusing on distributed database algorithms, REST system security, and data structures.",
-    },
-    {
-      icon: <Heart className="w-5 h-5 text-rose-500" />,
-      title: "Self-Driven Learning",
-      value: "Continuous",
-      description: "Actively deploying personal micro-services blueprints to Docker Hub and local Kubernetes nodes.",
+      step: "03",
+      title: "Containerize & Release",
+      description: "Packaging targets into optimized lightweight Docker image layers and routing via Kubernetes automated cloud clusters.",
     },
   ];
 
   return (
-    <section id="about" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-white/[0.03]">
-      {/* Visual backgrounds */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 radial-glow rounded-full opacity-30 pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-80 h-80 radial-glow-cyan rounded-full opacity-20 pointer-events-none" />
+    <section id="about" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-neutral-900 select-none">
+      
+      {/* Visual background atmospheric elements */}
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto">
-        {/* Title Group */}
-        <div className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-3 mb-2"
-          >
-            <div className="h-[2px] w-8 bg-gradient-to-r from-[#3B82F6] to-[#06B6D4]" />
-            <span className="text-xs font-mono tracking-widest text-[#06B6D4] uppercase font-bold">
-              01 / Core Identity
-            </span>
-          </motion.div>
+      <div className="max-w-4xl mx-auto text-center space-y-8">
+        
+        {/* Main Section Header */}
+        <div className="space-y-4">
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-display font-black tracking-tight text-white"
+            transition={{ duration: 0.8 }}
+            className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-white"
           >
-            Behind the Architecture.
+            About Me
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-neutral-500 text-xs font-mono tracking-widest uppercase font-extrabold"
+          >
+            // Pursuing Master of Computer Applications (MCA)
+          </motion.p>
         </div>
 
-        {/* Brand layout in premium Split grids */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left Column: Storyteller Profile & Details */}
-          <div className="lg:col-span-7 space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="glass-panel p-8 md:p-10 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#3B82F6]/10 to-transparent rounded-bl-full pointer-events-none" />
-              <p className="font-mono text-xs text-[#3B82F6] uppercase tracking-wider mb-4 font-semibold">
-                &lt;Professional Brief /&gt;
-              </p>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 leading-snug">
-                MCA student by record. Cloud Architect and Spring Boot engineer by conviction.
-              </h3>
-              <p className="text-gray-400 font-sans leading-relaxed text-base mb-6">
-                {JESTIN_BIO.aboutFull}
-              </p>
-              <p className="text-gray-400 font-sans leading-relaxed text-base">
-                My workflow integrates systematic, clean code-writing principles (SOLID, DRY) with bleeding-edge deployment operations. Whether establishing secure REST filters or orchestrating heavy multi-stage Jenkins pipelines inside Kubernetes workloads, I commit to delivery latency benchmarks and pristine architecture.
-              </p>
-            </motion.div>
+        {/* Long Narrative Paragraph representing text block */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.1 }}
+          className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans max-w-3xl mx-auto"
+        >
+          I am a forward-thinking Full Stack &amp; Spring Boot Developer currently pursuing my Master of Computer Applications (MCA). My core passion lies in engineering ultra-scalable backend systems, orchestrating automated cloud-native infrastructures, and deploying intelligent software networks. Focusing deeply on REST APIs, microservices, and robust performance engineering, I bridge the software discipline of JVM services with sleek, responsive client views.
+        </motion.p>
 
-            {/* Quick Contact Credentials Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4"
-            >
-              <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-5 flex flex-col justify-between">
-                <div>
-                  <MapPin className="w-5 h-5 text-[#3B82F6] mb-3" />
-                  <span className="text-xs font-mono text-gray-400 tracking-wider block mb-1">LOCATION</span>
-                </div>
-                <span className="text-sm font-semibold text-white">{JESTIN_BIO.location}</span>
-              </div>
+        {/* High quality divider */}
+        <div className="h-px bg-neutral-900 w-full my-12" />
 
-              <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-5 flex flex-col justify-between">
-                <div>
-                  <Mail className="w-5 h-5 text-[#06B6D4] mb-3" />
-                  <span className="text-xs font-mono text-gray-400 tracking-wider block mb-1">EMAIL</span>
-                </div>
-                <a
-                  href={`mailto:${JESTIN_BIO.email}`}
-                  className="text-sm font-semibold text-white hover:text-[#06B6D4] truncate transition-colors"
-                >
-                  {JESTIN_BIO.email}
-                </a>
-              </div>
-
-              <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-5 flex flex-col justify-between">
-                <div>
-                  <Phone className="w-5 h-5 text-purple-500 mb-3" />
-                  <span className="text-xs font-mono text-gray-400 tracking-wider block mb-1">DIAL</span>
-                </div>
-                <a
-                  href={`tel:${JESTIN_BIO.phone}`}
-                  className="text-sm font-semibold text-white hover:text-purple-400 transition-colors"
-                >
-                  {JESTIN_BIO.phone}
-                </a>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right Column: Visual Metrics Cards in Bento Grid */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {customBioMetrics.map((itm, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-6 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300 relative group"
-              >
-                <div className="p-2.5 bg-white/[0.03] border border-white/[0.08] rounded-lg inline-block text-white mb-4 group-hover:scale-110 transition-transform">
-                  {itm.icon}
-                </div>
-                <div className="text-xs font-mono text-gray-500 tracking-wider uppercase mb-1">
-                  {itm.title}
-                </div>
-                <div className="text-2xl font-extrabold text-white mb-2 font-display bg-clip-text bg-gradient-to-r from-white to-gray-400">
-                  {itm.value}
-                </div>
-                <div className="text-xs text-gray-400 leading-relaxed">
-                  {itm.description}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
+        {/* Sub-heading Approach */}
+        <div className="space-y-3">
+          <h3 className="text-xl font-bold text-white tracking-tight">
+            My Approach
+          </h3>
+          <div className="w-12 h-0.5 bg-neutral-800 mx-auto rounded" />
         </div>
+
+        {/* Tri-fold Horizontal Approach Bento Containers */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 text-left">
+          {approaches.map((appr, aidx) => (
+            <motion.div
+              key={aidx}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: aidx * 0.12 }}
+              className="bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6 relative overflow-hidden group hover:border-neutral-800 transition-all"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                {/* Large high-contrast index indicator */}
+                <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs font-mono font-black text-[#3b82f6]">
+                  {appr.step}
+                </div>
+                <h4 className="text-sm font-bold text-white tracking-tight">
+                  {appr.title}
+                </h4>
+              </div>
+              <p className="text-neutral-400 text-xs leading-relaxed font-sans">
+                {appr.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Large Counter-based Statistics Grid below, exactly mirroring image */}
+        <div className="grid grid-cols-3 gap-4 md:gap-8 pt-12 text-center max-w-3xl mx-auto">
+          <div className="space-y-1 bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6">
+            <span className="text-3xl sm:text-4xl font-black text-white block tracking-tight font-sans">
+              01+
+            </span>
+            <span className="text-[10px] font-mono tracking-wider text-neutral-500 uppercase block font-bold">
+              Years Experience
+            </span>
+          </div>
+
+          <div className="space-y-1 bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6">
+            <span className="text-3xl sm:text-4xl font-black text-white block tracking-tight font-sans">
+              15+
+            </span>
+            <span className="text-[10px] font-mono tracking-wider text-neutral-500 uppercase block font-bold">
+              Projects Completed
+            </span>
+          </div>
+
+          <div className="space-y-1 bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6">
+            <span className="text-3xl sm:text-4xl font-black text-white block tracking-tight font-sans">
+              99.9%
+            </span>
+            <span className="text-[10px] font-mono tracking-wider text-neutral-500 uppercase block font-bold">
+              Production SLA Target
+            </span>
+          </div>
+        </div>
+
       </div>
     </section>
   );
