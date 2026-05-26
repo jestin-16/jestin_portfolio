@@ -182,6 +182,10 @@ async function setupServer() {
   });
 }
 
-setupServer().catch((err) => {
-  console.error("Failed to bootstrap the full-stack server:", err);
-});
+if (!process.env.VERCEL) {
+  setupServer().catch((err) => {
+    console.error("Failed to bootstrap the full-stack server:", err);
+  });
+}
+
+export default app;
