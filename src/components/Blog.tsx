@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { BLOG_POSTS } from "../data";
+import { useFirebase } from "../context/FirebaseContext";
 import { BlogPost } from "../types";
 import { Calendar, Search, ChevronRight, Share2, Terminal } from "lucide-react";
 
 export default function Blog() {
+  const { blogPosts } = useFirebase();
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
@@ -12,7 +13,7 @@ export default function Blog() {
 
   const filterCategories = ["all", "microservices", "springboot", "kubernetes"];
 
-  const filteredPosts = BLOG_POSTS.filter((post) => {
+  const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           post.summary.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = activeCategory === "all" || post.category === activeCategory;

@@ -1,0 +1,132 @@
+{
+  "entities": {
+    "bio": {
+      "title": "Biography",
+      "description": "Jestin Shaji’s professional biography configuration details.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of developer" },
+        "title": { "type": "string", "description": "Professional engineering title" },
+        "subtitle": { "type": "string", "description": "Professional engineering tech focus" },
+        "aboutFull": { "type": "string", "description": "Exhaustive description of experience and aspirations" },
+        "tagline": { "type": "string", "description": "Short catchy tagline" },
+        "location": { "type": "string", "description": "Geographical coordinates and location tag" },
+        "email": { "type": "string", "format": "email", "description": "Primary electronic contact address" },
+        "phone": { "type": "string", "description": "Primary telephone link" },
+        "socials": {
+          "type": "object",
+          "description": "Social network links maps"
+        },
+        "stats": {
+          "type": "array",
+          "description": "Custom key performance statistical metrics"
+        }
+      },
+      "required": ["name", "title", "aboutFull", "email", "phone"]
+    },
+    "project": {
+      "title": "Software Project",
+      "description": "An engineered utility, application, or layout designed by the developer.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "description": { "type": "string" },
+        "longDescription": { "type": "string" },
+        "category": { "type": "string", "enum": ["devops", "automation", "fullstack", "ai_ml"] },
+        "tags": { "type": "array" },
+        "colorPreset": { "type": "string" },
+        "metrics": { "type": "array" },
+        "features": { "type": "array" },
+        "architectureDiagramTitle": { "type": "string" },
+        "architectureDetails": { "type": "array" },
+        "steps": { "type": "array" },
+        "githubUrl": { "type": "string" }
+      },
+      "required": ["id", "title", "description", "category", "tags"]
+    },
+    "techItem": {
+      "title": "Skill Token",
+      "description": "A specific piece of software engineering proficiency.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string", "enum": ["frontend", "backend", "database", "devops", "programming", "ai_ml", "tools"] },
+        "proficiency": { "type": "string" },
+        "glowingColor": { "type": "string" }
+      },
+      "required": ["name", "category", "proficiency"]
+    },
+    "experienceItem": {
+      "title": "Professional Experience",
+      "description": "Academic, industrial, or certification experience node.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "period": { "type": "string" },
+        "role": { "type": "string" },
+        "institution": { "type": "string" },
+        "location": { "type": "string" },
+        "description": { "type": "string" },
+        "achievements": { "type": "array" },
+        "category": { "type": "string", "enum": ["academic", "development", "certification"] }
+      },
+      "required": ["id", "period", "role", "institution", "category"]
+    },
+    "blogPost": {
+      "title": "Technical Blog Post",
+      "description": "A blog article written by Jestin Shaji.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "summary": { "type": "string" },
+        "date": { "type": "string" },
+        "readTime": { "type": "string" },
+        "content": { "type": "string" }
+      },
+      "required": ["id", "title", "category", "summary", "content"]
+    },
+    "message": {
+      "title": "Contact Transmission Message",
+      "description": "A system message dispatched via the portfolio contact gate.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "email", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/bio/{docId}": {
+      "schema": "bio",
+      "description": "Core profile configuration maps"
+    },
+    "/projects/{projectId}": {
+      "schema": "project",
+      "description": "Portfolio projects collection"
+    },
+    "/techStack/{techId}": {
+      "schema": "techItem",
+      "description": "Dynamic tech skills collection"
+    },
+    "/experiences/{experienceId}": {
+      "schema": "experienceItem",
+      "description": "Education and career growth milestones"
+    },
+    "/blogPosts/{blogPostId}": {
+      "schema": "blogPost",
+      "description": "Technical insights articles"
+    },
+    "/messages/{messageId}": {
+      "schema": "message",
+      "description": "Dispatched inquiries and messages"
+    }
+  }
+}

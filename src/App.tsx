@@ -13,6 +13,7 @@ import Experience from "./components/Experience";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import ChatBot from "./components/ChatBot";
+import AdminDashboard from "./components/AdminDashboard";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -314,6 +315,7 @@ export default function App() {
 
       {/* 4. Floating AI Companion Assistant & Back to Top Widgets */}
       <ChatBot />
+      <AdminDashboard />
 
       <AnimatePresence>
         {showScrollTop && (

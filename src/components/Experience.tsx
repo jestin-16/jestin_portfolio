@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
-import { EXPERIENCES } from "../data";
+import { useFirebase } from "../context/FirebaseContext";
 import { GraduationCap, Award, Terminal, Calendar } from "lucide-react";
 
 export default function Experience() {
+  const { experiences } = useFirebase();
   return (
     <section id="experience" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-neutral-900 select-none">
       
@@ -31,7 +32,7 @@ export default function Experience() {
         {/* Timeline Line Vector */}
         <div className="relative max-w-5xl mx-auto pl-8 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-x-12 before:absolute before:inset-y-0 before:left-8 sm:before:left-1/2 before:-translate-x-1/2 before:w-[1px] before:bg-neutral-900">
           
-          {EXPERIENCES.map((exp, idx) => {
+          {experiences.map((exp, idx) => {
             const isLeft = idx % 2 === 0;
 
             return (

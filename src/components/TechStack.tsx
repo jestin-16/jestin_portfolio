@@ -1,6 +1,8 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useFirebase } from "../context/FirebaseContext";
 import { Cpu, Server, Database, Cloud, Terminal, CheckCircle } from "lucide-react";
+import { TechItem } from "../types";
 
 interface TechNode {
   name: string;
@@ -9,53 +11,58 @@ interface TechNode {
 }
 
 export default function TechStack() {
+  const { techStack } = useFirebase();
   const [selectedSkill, setSelectedSkill] = useState<TechNode>({
     name: "Spring Boot",
     proficiency: "Expert / Core System",
     specs: "Developing solid, high-throughput microservices, transaction filters, and secure token access.",
   });
 
-  const categories = [
-    {
-      title: "Core Backend Stack",
-      icon: <Server className="w-5 h-5 text-neutral-400" />,
-      skills: [
-        { name: "Java Language", proficiency: "Expert", specs: "Enforcing thread-safety, memory management, and clean SOLID structures." },
-        { name: "Spring Boot", proficiency: "Expert / Core System", specs: "Developing solid, high-throughput microservices, transaction filters, and secure token access." },
-        { name: "REST APIs", proficiency: "Expert", specs: "Designing clean endpoint schemas, request filtering, and status code alignment." },
-        { name: "Java Enterprise", proficiency: "Advanced", specs: "Developing dependency injections and transaction management schemas." },
-      ],
-    },
-    {
-      title: "Frontend & UI Tech",
-      icon: <Cpu className="w-5 h-5 text-neutral-400" />,
-      skills: [
-        { name: "React.js", proficiency: "Advanced", specs: "Building customized component state hooks and smooth router animations." },
-        { name: "JavaScript", proficiency: "Expert", specs: "Optimized memory layouts, async tasks orchestration, and ES6 triggers." },
-        { name: "CSS3 / HTML5", proficiency: "Expert", specs: "Setting semantic visual grids, dark styling variables, and touch boundaries." },
-        { name: "Tailwind CSS", proficiency: "Expert", specs: "Using utility definitions and fully fluent responsive viewport classes." },
-      ],
-    },
-    {
-      title: "Database Ecosystems",
-      icon: <Database className="w-5 h-5 text-neutral-400" />,
-      skills: [
-        { name: "PostgreSQL", proficiency: "Advanced", specs: "Relational tuning, secure indexes, and balanced connection parameters." },
-        { name: "MySQL", proficiency: "Advanced", specs: "Structuring ACID-complying tables and writing fast nested queries." },
-        { name: "MongoDB", proficiency: "Intermediate", specs: "Establishing document stores and flexible dynamic configuration models." },
-      ],
-    },
-    {
-      title: "DevOps & Cloud Systems",
-      icon: <Cloud className="w-5 h-5 text-neutral-400" />,
-      skills: [
-        { name: "Docker", proficiency: "Advanced", specs: "Writing lightweight alpine configurations and creating clean cached layers." },
-        { name: "Kubernetes", proficiency: "Intermediate", specs: "Orchestrating multi-pod replications and rolling updates." },
-        { name: "Jenkins Pipelines", proficiency: "Advanced", specs: "Triggering automated workflows, integration compiling, and webhooks." },
-        { name: "Git & GitHub", proficiency: "Expert", specs: "Executing secure repositories control, branch merging, and tags audits." },
-      ],
-    },
-  ];
+  // Align active skill on load
+  useEffect(() => {
+    if (techStack && techStack.length > 0) {
+      const springBoot = techStack.find(t => t.name.toLowerCase().includes("spring"));
+      const first = springBoot || techStack[0];
+      setSelectedSkill({
+        name: first.name,
+        proficiency: first.proficiency || "Advanced",
+        specs: `Proficient execution of ${first.name} capabilities to drive stable backend logic.`
+      });
+    }
+  }, [techStack]);
+
+  // Dynamically map category names to titles and icons
+  const categoryMetaData: Record<string, { title: string; icon: React.ReactNode }> = {
+    backend: { title: "Core Backend Stack", icon: <Server className="w-5 h-5 text-neutral-400" /> },
+    frontend: { title: "Frontend & UI Tech", icon: <Cpu className="w-5 h-5 text-neutral-400" /> },
+    database: { title: "Database Ecosystems", icon: <Database className="w-5 h-5 text-neutral-400" /> },
+    devops: { title: "DevOps & Cloud Systems", icon: <Cloud className="w-5 h-5 text-neutral-400" /> },
+    programming: { title: "Languages & Frameworks", icon: <Terminal className="w-5 h-5 text-neutral-400" /> },
+    ai_ml: { title: "AI & Machine Learning", icon: <Database className="w-5 h-5 text-neutral-400" /> },
+    tools: { title: "Productivity Tools", icon: <Cpu className="w-5 h-5 text-neutral-400" /> },
+  };
+
+  // Group techStack dynamically by category
+  const categoriesMap = techStack.reduce((acc, tech) => {
+    const cat = tech.category;
+    if (!acc[cat]) acc[cat] = [];
+    acc[cat].push(tech);
+    return acc;
+  }, {} as Record<string, TechItem[]>);
+
+  // Render Category grids
+  const categories = (Object.entries(categoriesMap) as [string, TechItem[]][]).map(([key, list]) => {
+    const meta = categoryMetaData[key] || { title: key.toUpperCase(), icon: <Cpu className="w-5 h-5 text-neutral-400" /> };
+    return {
+      title: meta.title,
+      icon: meta.icon,
+      skills: list.map(item => ({
+        name: item.name,
+        proficiency: item.proficiency || "Advanced",
+        specs: `Proficient execution of ${item.name} capabilities to drive stable backend logic.`
+      }))
+    };
+  });
 
   return (
     <section id="tech" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-neutral-900 select-none">

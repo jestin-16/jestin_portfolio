@@ -1,0 +1,145 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default catch-all gate: BLOCK ALL by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Reuseable global helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+             request.auth.token.email == "jestinshaji777@gmail.com" &&
+             request.auth.token.email_verified == true;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 100 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // -- Entity Validation Helpers --
+
+    function isValidBio(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.title is string && data.title.size() > 0 && data.title.size() <= 100 &&
+             data.subtitle is string && data.subtitle.size() <= 200 &&
+             data.aboutFull is string && data.aboutFull.size() <= 5000 &&
+             data.tagline is string && data.tagline.size() <= 500 &&
+             data.location is string && data.location.size() <= 100 &&
+             data.email is string && data.email.size() <= 150 &&
+             data.phone is string && data.phone.size() <= 50;
+    }
+
+    function isValidProject(data) {
+      return data.id is string && data.id.size() <= 100 &&
+             data.title is string && data.title.size() > 0 && data.title.size() <= 200 &&
+             data.subtitle is string && data.subtitle.size() <= 200 &&
+             data.description is string && data.description.size() <= 1000 &&
+             data.longDescription is string && data.longDescription.size() <= 5000 &&
+             data.category is string && (data.category == "devops" || data.category == "automation" || data.category == "fullstack" || data.category == "ai_ml") &&
+             data.tags is list && data.tags.size() <= 20 &&
+             data.colorPreset is string &&
+             data.metrics is list && data.metrics.size() <= 10 &&
+             data.features is list && data.features.size() <= 50 &&
+             data.architectureDiagramTitle is string &&
+             data.architectureDetails is list && data.architectureDetails.size() <= 20 &&
+             data.steps is list && data.steps.size() <= 20 &&
+             data.githubUrl is string;
+    }
+
+    function isValidTechItem(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.category is string && (data.category == "frontend" || data.category == "backend" || data.category == "database" || data.category == "devops" || data.category == "programming" || data.category == "ai_ml" || data.category == "tools") &&
+             data.proficiency is string && data.proficiency.size() <= 50;
+    }
+
+    function isValidExperienceItem(data) {
+      return data.id is string && data.id.size() <= 100 &&
+             data.period is string && data.period.size() <= 50 &&
+             data.role is string && data.role.size() <= 200 &&
+             data.institution is string && data.institution.size() <= 200 &&
+             data.location is string && data.location.size() <= 100 &&
+             data.description is string && data.description.size() <= 2000 &&
+             data.achievements is list && data.achievements.size() <= 20 &&
+             data.category is string && (data.category == "academic" || data.category == "development" || data.category == "certification");
+    }
+
+    function isValidBlogPost(data) {
+      return data.id is string && data.id.size() <= 100 &&
+             data.title is string && data.title.size() <= 200 &&
+             data.category is string && data.category.size() <= 100 &&
+             data.summary is string && data.summary.size() <= 1000 &&
+             data.date is string && data.date.size() <= 100 &&
+             data.readTime is string && data.readTime.size() <= 50 &&
+             data.content is string && data.content.size() <= 20000;
+    }
+
+    function isValidMessage(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() <= 150 &&
+             data.email is string && data.email.size() > 0 && data.email.size() <= 150 &&
+             data.subject is string && data.subject.size() <= 300 &&
+             data.message is string && data.message.size() > 0 && data.message.size() <= 5000 &&
+             data.createdAt == request.time;
+    }
+
+    // -- Match Rules for Collections --
+
+    // Bio Collection
+    match /bio/{docId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidBio(incoming());
+      allow delete: if isAdmin();
+    }
+
+    // Projects Collection
+    match /projects/{projectId} {
+      allow read: if isValidId(projectId);
+      allow create: if isAdmin() && isValidId(projectId) && isValidProject(incoming());
+      allow update: if isAdmin() && isValidId(projectId) && isValidProject(incoming()) && incoming().id == existing().id;
+      allow delete: if isAdmin() && isValidId(projectId);
+    }
+
+    // TechStack Collection
+    match /techStack/{techId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidTechItem(incoming());
+      allow delete: if isAdmin();
+    }
+
+    // Experiences Collection
+    match /experiences/{experienceId} {
+      allow read: if isValidId(experienceId);
+      allow create: if isAdmin() && isValidId(experienceId) && isValidExperienceItem(incoming());
+      allow update: if isAdmin() && isValidId(experienceId) && isValidExperienceItem(incoming()) && incoming().id == existing().id;
+      allow delete: if isAdmin() && isValidId(experienceId);
+    }
+
+    // BlogPosts Collection
+    match /blogPosts/{blogPostId} {
+      allow read: if isValidId(blogPostId);
+      allow create: if isAdmin() && isValidId(blogPostId) && isValidBlogPost(incoming());
+      allow update: if isAdmin() && isValidId(blogPostId) && isValidBlogPost(incoming()) && incoming().id == existing().id;
+      allow delete: if isAdmin() && isValidId(blogPostId);
+    }
+
+    // Messages Collection
+    match /messages/{messageId} {
+      allow read: if isAdmin();
+      allow create: if isValidMessage(incoming());
+      allow update, delete: if false;
+    }
+  }
+}

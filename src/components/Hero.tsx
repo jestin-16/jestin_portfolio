@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Github, Linkedin, Mail, ArrowDown, FileText, Compass, Server } from "lucide-react";
-import { JESTIN_BIO } from "../data";
+import { useFirebase } from "../context/FirebaseContext";
 
 interface HeroProps {
   onScrollToProjects: () => void;
@@ -9,6 +9,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProps) {
+  const { bio } = useFirebase();
   
   const handleDownloadCV = () => {
     // Elegant CV simulation download
@@ -16,12 +17,12 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
     ====================================================
     JESTIN SHAJI - BACKEND JAVA & SPRING BOOT ARCHITECT
     ====================================================
-    Email: ${JESTIN_BIO.email}
-    Phone: ${JESTIN_BIO.phone}
-    Location: ${JESTIN_BIO.location}
+    Email: ${bio.email}
+    Phone: ${bio.phone}
+    Location: ${bio.location}
     
     Professional Overview:
-    ${JESTIN_BIO.aboutFull}
+    ${bio.aboutFull}
     
     Core Competencies:
     - Core Java, Advanced Multithreading, JVM Performance Tuning
@@ -67,7 +68,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
           >
             <span className="w-1.5 h-1.5 rounded-full bg-white opacity-85" />
             <span className="text-sm font-sans text-neutral-400 font-semibold tracking-wide">
-              I am {JESTIN_BIO.name}
+              I am {bio.name}
             </span>
           </motion.div>
 
@@ -79,9 +80,9 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
               transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl sm:text-6xl md:text-7xl font-sans font-black tracking-tight text-white leading-[1.05]"
             >
-              Backend Java Developer <br className="hidden sm:block" />
+              {bio.title} <br className="hidden sm:block" />
               <span className="text-neutral-500 font-medium font-sans">
-                &amp; Spring Boot Architect
+                &amp; {bio.subtitle}
               </span>
             </motion.h1>
           </div>
@@ -93,8 +94,9 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             transition={{ duration: 1, delay: 0.2 }}
             className="text-[#999999] text-base sm:text-lg max-w-xl leading-relaxed font-sans"
           >
-            Blending thoughtful, highly secure backend microservices with fully automated continuous cloud integration to deploy digital platforms that are bulletproof, responsive, and incredibly fast.
+            {bio.tagline}
           </motion.p>
+
 
           {/* Call to action element buttons */}
           <motion.div
@@ -128,7 +130,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             className="flex items-center gap-3 pt-6"
           >
             <a
-              href="https://github.com"
+              href={bio.socials?.github || "https://github.com"}
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub Profile Link"
@@ -137,7 +139,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
               <Github className="w-4 h-4" />
             </a>
             <a
-              href="https://linkedin.com"
+              href={bio.socials?.linkedin || "https://linkedin.com"}
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn Profile Link"

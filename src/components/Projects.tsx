@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { PROJECTS } from "../data";
+import { useFirebase } from "../context/FirebaseContext";
 import { Project } from "../types";
 import {
   Github,
@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 
 export default function Projects() {
+  const { projects } = useFirebase();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Simulation pipeline states
@@ -142,7 +143,7 @@ export default function Projects() {
 
         {/* Narrative columns of Project Worlds */}
         <div className="space-y-40">
-          {PROJECTS.map((proj, idx) => {
+          {projects.map((proj, idx) => {
             const isLeft = idx % 2 === 0;
 
             return (

@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
-import { JESTIN_BIO } from "../data";
+import { useFirebase } from "../context/FirebaseContext";
 
 export default function About() {
+  const { bio } = useFirebase();
+
   const approaches = [
     {
       step: "01",
@@ -56,10 +58,11 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans max-w-3xl mx-auto"
+          className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans max-w-3xl mx-auto whitespace-pre-line"
         >
-          I am a forward-thinking Backend Java &amp; Spring Boot Developer currently pursuing my Master of Computer Applications (MCA). My core passion lies in engineering ultra-scalable backend systems, custom security filter chains, and orchestrating cloud-native architectures. Focusing deeply on REST APIs, microservices, JVM performance tuning, and robust performance engineering, I bridge the software discipline of highly performant JVM services with modern, cloud-native deployments.
+          {bio.aboutFull}
         </motion.p>
+
 
         {/* High quality divider */}
         <div className="h-px bg-neutral-900 w-full my-12" />
@@ -100,34 +103,19 @@ export default function About() {
         </div>
 
         {/* Large Counter-based Statistics Grid below, exactly mirroring image */}
-        <div className="grid grid-cols-3 gap-4 md:gap-8 pt-12 text-center max-w-3xl mx-auto">
-          <div className="space-y-1 bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6">
-            <span className="text-3xl sm:text-4xl font-black text-white block tracking-tight font-sans">
-              01+
-            </span>
-            <span className="text-[10px] font-mono tracking-wider text-neutral-500 uppercase block font-bold">
-              Years Experience
-            </span>
-          </div>
-
-          <div className="space-y-1 bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6">
-            <span className="text-3xl sm:text-4xl font-black text-white block tracking-tight font-sans">
-              15+
-            </span>
-            <span className="text-[10px] font-mono tracking-wider text-neutral-500 uppercase block font-bold">
-              Projects Completed
-            </span>
-          </div>
-
-          <div className="space-y-1 bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6">
-            <span className="text-3xl sm:text-4xl font-black text-white block tracking-tight font-sans">
-              99.9%
-            </span>
-            <span className="text-[10px] font-mono tracking-wider text-neutral-500 uppercase block font-bold">
-              Production SLA Target
-            </span>
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 pt-12 text-center max-w-4xl mx-auto">
+          {bio.stats && bio.stats.map((stat: any, sIdx: number) => (
+            <div key={sIdx} className="space-y-1 bg-[#0b0b10] border border-neutral-900 rounded-2xl p-5 hover:border-neutral-800 transition-colors">
+              <span className="text-2xl sm:text-3xl font-black text-white block tracking-tight font-sans">
+                {stat.value}
+              </span>
+              <span className="text-[9px] font-mono tracking-wider text-neutral-500 uppercase block font-bold">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
+
 
       </div>
     </section>
