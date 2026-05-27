@@ -136,7 +136,7 @@ export default function Contact() {
               <span className="font-mono text-[10px] text-[#3B82F6] font-bold block uppercase tracking-wider">
                 [SECURE FILTER PIPELINE]
               </span>
-              <p>All transmitted logs are safely validated and queued in memory on full-stack nodes running in container infrastructures.</p>
+              <p>All transmitted messages are safely validated and queued in memory on backend JVM nodes running inside secure container infrastructures.</p>
             </div>
           </div>
 

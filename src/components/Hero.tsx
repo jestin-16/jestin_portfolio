@@ -14,7 +14,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
     // Elegant CV simulation download
     const cvText = `
     ====================================================
-    JESTIN SHAJI - FULL STACK SPRING BOOT ARCHITECT
+    JESTIN SHAJI - BACKEND JAVA & SPRING BOOT ARCHITECT
     ====================================================
     Email: ${JESTIN_BIO.email}
     Phone: ${JESTIN_BIO.phone}
@@ -24,10 +24,10 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
     ${JESTIN_BIO.aboutFull}
     
     Core Competencies:
-    - Java, Spring Boot, Microservices, Spring Security
-    - Docker, Kubernetes, Jenkins, CI/CD automated pipelines
-    - React.js, Tailwind CSS, TypeScript
-    - PostgreSQL, MySQL, Relational Database tuning
+    - Core Java, Advanced Multithreading, JVM Performance Tuning
+    - Spring Boot, Spring Security, Spring Cloud, REST APIs, Microservices
+    - Docker, Kubernetes, Jenkins, Automated Cloud Pipelines
+    - PostgreSQL, MySQL, Relational Database optimization
     
     ----------------------------------------------------
     Generated dynamically on Jestin's Portfolio Vault.
@@ -79,9 +79,9 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
               transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl sm:text-6xl md:text-7xl font-sans font-black tracking-tight text-white leading-[1.05]"
             >
-              Full-Stack Developer <br className="hidden sm:block" />
+              Backend Java Developer <br className="hidden sm:block" />
               <span className="text-neutral-500 font-medium font-sans">
-                &amp; Spring Architect
+                &amp; Spring Boot Architect
               </span>
             </motion.h1>
           </div>
@@ -171,7 +171,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_60%)]" />
             </div>
 
-            {/* Simulated Technical Blueprint Node Layout (Clean SVG-based monochrome schematic representation of full-stack developer architecture) */}
+            {/* Simulated Technical Blueprint Node Layout (Clean SVG-based monochrome schematic representation of backend java developer architecture) */}
             <div className="w-full h-full relative z-10 flex flex-col justify-between p-4 font-mono text-[10px]">
               
               {/* Dynamic Coordinate Badge */}
@@ -187,7 +187,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
                 <div className="absolute w-48 h-48 rounded-full border border-neutral-800/40 animate-[spin_40s_linear_infinite]" />
                 <div className="absolute w-36 h-36 rounded-full border border-dashed border-neutral-800/20 animate-[spin_25s_linear_infinite_reverse]" />
 
-                {/* Conceptual stylized representation of modern full-stack developer brain node */}
+                {/* Conceptual stylized representation of modern backend developer brain node */}
                 <div className="w-24 h-24 rounded-full bg-black border-2 border-neutral-800 shadow-xl flex flex-col items-center justify-center relative group-hover:border-neutral-500 transition-colors duration-500">
                   <Server className="w-8 h-8 text-neutral-400 group-hover:text-white transition-colors duration-500 mb-1" />
                   <span className="text-[8px] text-neutral-500 uppercase tracking-widest font-extrabold group-hover:text-white">SPRING</span>
@@ -197,10 +197,10 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
                   <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
                 </div>
 
-                {/* Left node anchor: React */}
+                {/* Left node anchor: REST APIs */}
                 <div className="absolute left-6 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-[#0d0d12] border border-neutral-800 shadow-md text-neutral-400 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-500" />
-                  <span>REACT</span>
+                  <span>REST</span>
                 </div>
 
                 {/* Right node anchor: Docker */}

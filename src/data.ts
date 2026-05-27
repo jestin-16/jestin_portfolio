@@ -2,10 +2,10 @@ import { Project, TechItem, ExperienceItem, BlogPost } from "./types";
 
 export const JESTIN_BIO = {
   name: "Jestin Shaji",
-  title: "Full Stack Developer",
-  subtitle: "Spring Boot Specialist & Cloud Architect Enthusiast",
-  aboutFull: `I am a forward-thinking Full Stack & Spring Boot Developer currently pursuing my Master of Computer Applications (MCA). My core passion lies in engineering ultra-scalable backend systems, orchestrating automated cloud-native infrastructures, and deploying intelligent software networks. Focusing deeply on REST APIs, microservices, and robust performance engineering, I bridge the gap between software discipline and modern architectural innovation.`,
-  tagline: "I engineer scalable digital products, cloud-native architectures, and intelligent applications that solve real-world problems.",
+  title: "Backend Java Developer",
+  subtitle: "Spring Boot Architect & Cloud Security Enthusiast",
+  aboutFull: `I am a forward-thinking Backend Java & Spring Boot Developer currently pursuing my Master of Computer Applications (MCA). My core passion lies in engineering ultra-scalable backend systems, microservices coordination patterns, and designing highly secure API filter chains. Focusing deeply on REST APIs, JVM memory optimization, and decoupled architectures, I ensure absolute performance, data isolation, and cloud efficiency on JVM-based systems.`,
+  tagline: "I design ultra-scalable REST APIs, secure microservices, and high-performance backend systems running inside robust container clouds.",
   location: "Kerala, India",
   email: "jestinshaji777@gmail.com",
   phone: "+91 9020336092",
@@ -228,14 +228,14 @@ export const EXPERIENCES: ExperienceItem[] = [
   {
     id: "exp-dev",
     period: "2023 - Present",
-    role: "Independent Full Stack Engineer & Open-Source Contributor",
+    role: "Independent Backend Engineer & Open-Source Contributor",
     institution: "Digital Solutions & GitHub Lab Network",
     location: "Remote / Kerala, India",
-    description: "Architecting, writing, and hosting bespoke software solutions and micro-services. Specialized in refactoring monolithic codebases into robust horizontal spring boot microservice units with secure JSON token endpoints.",
+    description: "Architecting, writing, and hosting high-performance software solutions and micro-services. Specialized in refactoring monolithic architectures into robust horizontal Spring Boot microservice networks with secure JWT endpoints.",
     achievements: [
-      "Wrote and configured several deployment routines running cleanly on local Docker swarms and clusters.",
-      "Optimized query bottlenecks in multi-table PostgreSQL systems, improving load rates by 40%.",
-      "Created reusable modern UI kits incorporating framer animation loops and custom web-socket streams."
+      "Wrote and configured several deployment routines running cleanly on local Docker swarms and Kubernetes clusters.",
+      "Optimized query bottlenecks in multi-table PostgreSQL systems, reducing query latency by up to 45%.",
+      "Designed and mapped secure REST interfaces coupled with automated filter validation, CORS controls, and role privileges."
     ],
     category: "development"
   },

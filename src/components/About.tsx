@@ -58,7 +58,7 @@ export default function About() {
           transition={{ duration: 1, delay: 0.1 }}
           className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans max-w-3xl mx-auto"
         >
-          I am a forward-thinking Full Stack &amp; Spring Boot Developer currently pursuing my Master of Computer Applications (MCA). My core passion lies in engineering ultra-scalable backend systems, orchestrating automated cloud-native infrastructures, and deploying intelligent software networks. Focusing deeply on REST APIs, microservices, and robust performance engineering, I bridge the software discipline of JVM services with sleek, responsive client views.
+          I am a forward-thinking Backend Java &amp; Spring Boot Developer currently pursuing my Master of Computer Applications (MCA). My core passion lies in engineering ultra-scalable backend systems, custom security filter chains, and orchestrating cloud-native architectures. Focusing deeply on REST APIs, microservices, JVM performance tuning, and robust performance engineering, I bridge the software discipline of highly performant JVM services with modern, cloud-native deployments.
         </motion.p>
 
         {/* High quality divider */}

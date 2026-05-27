@@ -17,9 +17,9 @@ export default function Services() {
     },
     {
       icon: <Cpu className="w-5 h-5 text-neutral-400" />,
-      title: "Modern Full-Stack Client",
-      description: "Building ultra-responsive React.js components, styled cleanly with Tailwind CSS, supporting fluid layout motion and clean states.",
-      tags: ["Vite / React.js", "Tailwind Framework"],
+      title: "Responsive Frontend Integration",
+      description: "Integrating reactive React.js interfaces styled cleanly with Tailwind CSS to perfectly consume, bind, and visualize backend APIs and microservices workflows.",
+      tags: ["Vite / React.js", "Tailwind CSS"],
     },
     {
       icon: <Database className="w-5 h-5 text-neutral-400" />,

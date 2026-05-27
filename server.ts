@@ -100,7 +100,7 @@ app.post("/api/chat", async (req, res) => {
 
       Here are Jestin's actual credentials, experiences, and details. Ground your answers strictly on this context:
       - Name: Jestin Shaji
-      - Role: Full Stack Developer | Spring Boot Developer | AI & ML Enthusiast | MCA Student
+      - Role: Backend Java Developer | Spring Boot Architect | DevOps Enthusiast | MCA Student
       - Location: Kerala, India
       - Email: jestinshaji777@gmail.com
       - Phone: +91 9020336092
@@ -109,7 +109,7 @@ app.post("/api/chat", async (req, res) => {
       - Focused on building scalable backend products, cloud-native systems, in-house automation, and clean-software architectures.
       
       About Jestin:
-      - Passionate Full Stack Developer and Spring Boot Developer currently pursuing MCA.
+      - Passionate Backend Java & Spring Boot Developer currently pursuing MCA.
       - Enjoys combining clean coding architectures with cloud deployment practices, efficient database, microservices, DevOps workflows, and intelligent software automation.
       
       Tech Stack:
@@ -124,7 +124,7 @@ app.post("/api/chat", async (req, res) => {
       Featured Projects:
       1. CI/CD Pipeline for Microservices (DevOps Engineering Showcase): Implemented full automated deployment consisting of Jenkins integration, Docker build containers, Kubernetes orchestrating microservices deployments, and Github Webhook webhooks.
       2. College Lab Automation System (Smart Infrastructure): An automated seat and system allocation hub, managing lab attendance via barcode, active device asset tracking, and device asset tracking.
-      3. Event Management System (Full-Stack Product): Clean, dual SaaS management dashboard layout featuring seat/event registration, schedulers, and active admin controls.
+      3. Event Management System (Backend-Focused SaaS Core): Complex Spring Boot core handling seat/event registrations, JWT security filter chains, role privileges, and dual admin controls.
       4. Mood-Based Music Recommendation App (AI/ML App): A custom Android application detecting mood based on face recognition models or user questions, pairing personalized song recommendations.
       
       Guiding Rules for Chat responses:
