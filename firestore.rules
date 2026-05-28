@@ -106,7 +106,8 @@ service cloud.firestore {
 
     // Projects Collection
     match /projects/{projectId} {
-      allow read: if isValidId(projectId);
+      allow get: if isValidId(projectId);
+      allow list: if true;
       allow create: if isAdmin() && isValidId(projectId) && isValidProject(incoming());
       allow update: if isAdmin() && isValidId(projectId) && isValidProject(incoming()) && incoming().id == existing().id;
       allow delete: if isAdmin() && isValidId(projectId);
@@ -114,14 +115,16 @@ service cloud.firestore {
 
     // TechStack Collection
     match /techStack/{techId} {
-      allow read: if true;
+      allow get: if isValidId(techId);
+      allow list: if true;
       allow create, update: if isAdmin() && isValidTechItem(incoming());
       allow delete: if isAdmin();
     }
 
     // Experiences Collection
     match /experiences/{experienceId} {
-      allow read: if isValidId(experienceId);
+      allow get: if isValidId(experienceId);
+      allow list: if true;
       allow create: if isAdmin() && isValidId(experienceId) && isValidExperienceItem(incoming());
       allow update: if isAdmin() && isValidId(experienceId) && isValidExperienceItem(incoming()) && incoming().id == existing().id;
       allow delete: if isAdmin() && isValidId(experienceId);
@@ -129,7 +132,8 @@ service cloud.firestore {
 
     // BlogPosts Collection
     match /blogPosts/{blogPostId} {
-      allow read: if isValidId(blogPostId);
+      allow get: if isValidId(blogPostId);
+      allow list: if true;
       allow create: if isAdmin() && isValidId(blogPostId) && isValidBlogPost(incoming());
       allow update: if isAdmin() && isValidId(blogPostId) && isValidBlogPost(incoming()) && incoming().id == existing().id;
       allow delete: if isAdmin() && isValidId(blogPostId);
