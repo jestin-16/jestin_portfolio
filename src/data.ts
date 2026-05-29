@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
     description: "A smart infrastructure hub that automates physical laboratory attendance, live seat distribution, and active tracking for workstation computing resources.",
     longDescription: "Engineered a high-performance system for university computer labs. Utilizing real-time barcode scanning systems, the platform manages attendance, automates individual desktop seating assignments based on student IDs, and features a clean administrator interface to audit server memory usage, dynamic hardware configurations, and asset lifecycles.",
     category: "automation",
-    tags: ["Java", "Spring Boot", "MySQL", "Barcode SDK", "Thymeleaf", "Responsive UI"],
+    tags: ["React.js", "Node.js", "MySQL", "Barcode SDK", "Tailwind CSS", "Responsive UI"],
     colorPreset: "cyan",
     metrics: [
       { label: "Daily Active Seats", value: "120+ allocated" },
@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
     ],
     steps: [
       { title: "Badge Swipe", description: "Hardware scanner grabs physical student ID.", time: "0.0s" },
-      { title: "Active Auth", description: "Spring Boot checks database registers for student validation.", time: "+0.1s" },
+      { title: "Active Auth", description: "React application validates student session with fast REST request.", time: "+0.1s" },
       { title: "Seat Lock", description: "Allocation Engine locks healthy terminal & sends token to screen.", time: "+0.3s" },
       { title: "Terminal Live", description: "Workstation session active, administrative monitoring log saved.", time: "+0.5s" }
     ],
