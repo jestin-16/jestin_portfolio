@@ -166,10 +166,10 @@ export default function InteractiveConsole() {
   };
 
   return (
-    <div className="relative w-full max-w-[460px] aspect-[4/5] sm:aspect-square md:max-w-none md:w-[480px] lg:w-[440px] xl:w-[480px] rounded-3xl bg-[#09090e]/95 border border-white/10 overflow-hidden shadow-[0_0_50px_rgba(30,58,138,0.15)] flex flex-col font-sans group select-none">
+    <div className="relative w-full max-w-[460px] aspect-[4/5] sm:aspect-square md:max-w-none md:w-[480px] lg:w-[440px] xl:w-[480px] rounded-3xl glass-panel overflow-hidden shadow-[0_0_50px_rgba(30,58,138,0.20)] hover:scale-[1.02] hover:shadow-[0_12px_40px_rgba(6,182,212,0.15)] transition-all duration-300 flex flex-col font-sans group select-none relative z-10 bg-[#09090e]/90">
       
       {/* Decorative top glass bar */}
-      <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 opacity-80" />
+      <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-500 opacity-90" />
 
       {/* Control console head tabs */}
       <div className="flex justify-between items-center bg-[#0d0d14]/90 px-4 py-3 border-b border-white/[0.08] shrink-0">

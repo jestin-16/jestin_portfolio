@@ -76,7 +76,7 @@ export default function About() {
         </div>
 
         {/* Tri-fold Horizontal Approach Bento Containers */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 text-left">
           {approaches.map((appr, aidx) => (
             <motion.div
               key={aidx}
@@ -84,18 +84,21 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: aidx * 0.12 }}
-              className="bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6 relative overflow-hidden group hover:border-neutral-800 transition-all"
+              className="glass-panel p-6 relative overflow-hidden group hover:scale-[1.02] hover:border-blue-500/30 transition-all duration-300"
             >
-              <div className="flex items-center gap-4 mb-4">
-                {/* Large high-contrast index indicator */}
-                <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-xs font-mono font-black text-white">
+              {/* Internal subtle shift glow background */}
+              <div className="absolute -inset-24 bg-gradient-to-r from-blue-500/[0.02] via-purple-500/[0.01] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              <div className="flex items-center gap-4 mb-4 relative z-10">
+                {/* Large high-contrast index indicator with glow styling */}
+                <div className="w-10 h-10 rounded-xl bg-neutral-950 border border-neutral-800/80 group-hover:border-blue-500/30 group-hover:text-blue-400 group-hover:shadow-[0_0_12px_rgba(59,130,246,0.15)] flex items-center justify-center text-xs font-mono font-black text-neutral-400 transition-all duration-300">
                   {appr.step}
                 </div>
-                <h4 className="text-sm font-bold text-white tracking-tight">
+                <h4 className="text-sm font-bold text-white tracking-tight group-hover:text-blue-100 transition-colors">
                   {appr.title}
                 </h4>
               </div>
-              <p className="text-neutral-400 text-xs leading-relaxed font-sans">
+              <p className="text-neutral-400 text-xs leading-relaxed font-sans relative z-10">
                 {appr.description}
               </p>
             </motion.div>
@@ -105,11 +108,16 @@ export default function About() {
         {/* Large Counter-based Statistics Grid below, exactly mirroring image */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 pt-12 text-center max-w-4xl mx-auto">
           {bio.stats && bio.stats.map((stat: any, sIdx: number) => (
-            <div key={sIdx} className="space-y-1 bg-[#0b0b10] border border-neutral-900 rounded-2xl p-5 hover:border-neutral-800 transition-colors">
-              <span className="text-2xl sm:text-3xl font-black text-white block tracking-tight font-sans">
+            <div
+              key={sIdx}
+              className="space-y-1 glass-panel p-5 hover:border-indigo-500/30 hover:scale-[1.03] hover:shadow-[0_4px_24px_rgba(99,102,241,0.08)] transition-all duration-300 relative overflow-hidden"
+            >
+              {/* Internal ambient backglow */}
+              <div className="absolute -inset-10 bg-radial from-indigo-500/[0.015] to-transparent pointer-events-none" />
+              <span className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-indigo-200 block tracking-tight font-sans relative z-10">
                 {stat.value}
               </span>
-              <span className="text-[9px] font-mono tracking-wider text-neutral-500 uppercase block font-bold">
+              <span className="text-[9px] font-mono tracking-wider text-neutral-500 uppercase block font-semibold relative z-10">
                 {stat.label}
               </span>
             </div>

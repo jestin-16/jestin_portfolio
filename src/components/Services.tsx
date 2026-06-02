@@ -64,19 +64,22 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.7, delay: sidx * 0.1 }}
-            className="group relative bg-[#0b0b10] border border-neutral-900 rounded-2xl p-6 flex flex-col justify-between hover:bg-neutral-900/30 hover:border-neutral-800 transition-all duration-300 pointer-events-auto"
+            className="group relative glass-panel p-6 flex flex-col justify-between hover:scale-[1.03] transition-all duration-300 pointer-events-auto overflow-hidden"
           >
-            {/* Subtle light reflections inside the card */}
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent pointer-events-none" />
+            {/* Absolute radial glow centered around the hover position inside card */}
+            <div className="absolute -inset-40 bg-radial from-blue-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-            <div className="space-y-4">
-              {/* Header Visual */}
-              <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 group-hover:text-white transition-all">
+            {/* Subtle light reflections inside the card */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
+
+            <div className="space-y-4 relative z-10">
+              {/* Header Visual with dynamic glow */}
+              <div className="w-10 h-10 rounded-xl bg-neutral-950/80 border border-neutral-800/80 flex items-center justify-center text-neutral-400 group-hover:text-cyan-400 group-hover:border-cyan-500/30 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all duration-300">
                 {serv.icon}
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-base font-bold text-white tracking-tight group-hover:text-white/90">
+                <h3 className="text-base font-bold text-white tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-cyan-200 transition-all duration-300">
                   {serv.title}
                 </h3>
                 <p className="text-neutral-400 text-xs leading-relaxed font-sans font-medium">
@@ -86,19 +89,19 @@ export default function Services() {
             </div>
 
             {/* Bottom tag items pills */}
-            <div className="flex flex-col gap-2 pt-6 mt-4 border-t border-neutral-900/60 font-mono text-[9px] uppercase tracking-wider text-neutral-500">
+            <div className="flex flex-col gap-2 pt-6 mt-4 border-t border-white/[0.05] font-mono text-[9px] uppercase tracking-wider relative z-10">
               {serv.tags.map((tg, ti) => (
                 <div
                   key={ti}
-                  className="px-3.5 py-1.5 rounded-lg bg-[#07070a]/80 border border-neutral-900 flex items-center justify-between text-neutral-400 hover:text-white transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-[#07070a]/40 border border-neutral-900 flex items-center justify-between text-neutral-400 group-hover:text-neutral-200 group-hover:border-neutral-800 transition-all duration-300"
                 >
                   <span>{tg}</span>
                 </div>
               ))}
             </div>
 
-            {/* High quality visual line at card base */}
-            <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-neutral-800 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            {/* Glowing line at card base */}
+            <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
           </motion.div>
         ))}
       </div>

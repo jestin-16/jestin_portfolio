@@ -53,10 +53,10 @@ export default function Experience() {
                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7, delay: idx * 0.12 }}
-                  className="bg-[#0b0b10] border border-neutral-900 p-6 hover:bg-neutral-950 hover:border-neutral-800 rounded-2xl transition-all duration-300 relative group overflow-hidden"
+                  className="glass-panel p-6 hover:scale-[1.02] transition-all duration-300 relative group overflow-hidden bg-[#0b0b10]/40"
                 >
-                  {/* Subtle hover offset */}
-                  <div className="absolute -inset-px bg-white/[0.01] opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
+                  {/* Subtle hover offset and internal shift glow */}
+                  <div className="absolute -inset-40 bg-radial from-blue-500/[0.01] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                   {/* Header */}
                   <div className="flex items-center gap-2 mb-3">

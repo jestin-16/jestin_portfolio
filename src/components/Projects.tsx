@@ -221,8 +221,11 @@ export default function Projects() {
                 </div>
 
                 {/* Simulation Stage Console Window */}
-                <div className={`lg:col-span-7 relative ${isLeft ? "lg:order-2" : "lg:order-1"}`}>
-                  <div className="relative aspect-video rounded-3xl overflow-hidden border border-neutral-900 p-1 bg-[#09090e] shadow-2xl">
+                <div className={`lg:col-span-7 relative ${isLeft ? "lg:order-2" : "lg:order-1"} group/console`}>
+                  {/* Outer atmospheric dynamic glow blur */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/15 rounded-[2rem] blur-xl opacity-0 group-hover/console:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  
+                  <div className="relative aspect-video rounded-3xl overflow-hidden glass-panel p-1 shadow-2xl hover:border-cyan-500/20 transition-all duration-500 z-10 bg-[#09090e]/80">
                     
                     {/* Shadow atmospheric overlays */}
                     <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#050505]/80 to-transparent pointer-events-none z-10" />
