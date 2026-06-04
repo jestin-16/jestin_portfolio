@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ArrowUp, Cpu, Server, ShieldCheck, Mail, Database, Terminal, Compass, Layers } from "lucide-react";
+import { Menu, X, ArrowUp, Cpu, Server, ShieldCheck, Mail, Database, Terminal, Compass, Layers, Github, Linkedin } from "lucide-react";
 
 // Section imports
 import CinematicCanvas from "./components/CinematicCanvas";
@@ -298,18 +298,117 @@ export default function App() {
       </main>
 
       {/* 3. Footer */}
-      <footer className="py-12 border-t border-white/[0.04] bg-[#050505] text-center font-mono text-xs text-gray-500 relative select-none">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="tracking-wide">
-            &copy; 2026 Jestin Shaji. Engineered on clean modular architectures.
-          </p>
-          <div className="flex items-center gap-4 text-gray-600">
-            <span className="hover:text-white">Java Spring Boot</span>
-            <span>•</span>
-            <span className="hover:text-white">DevOps Automatic Pipelines</span>
-            <span>•</span>
-            <span className="hover:text-white">Intelligent AI Networks</span>
+      <footer className="relative pt-20 pb-12 border-t border-white/[0.05] bg-[#050505] overflow-hidden select-none">
+        {/* Ambient bottom glow lights */}
+        <div className="absolute bottom-0 left-1/3 w-[500px] h-[300px] bg-gradient-to-t from-blue-500/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-gradient-to-t from-cyan-500/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          
+          {/* Main Footer Interaction Core */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/[0.05]">
+            
+            {/* Column 1: Brand & Bio Hook */}
+            <div className="md:col-span-5 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center font-bold text-white text-xs uppercase tracking-widest shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                  JS
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white tracking-wide">Jestin Shaji</h3>
+                  <p className="text-[10px] font-mono uppercase tracking-widest text-[#06B6D4] font-bold">
+                    Backend Developer &amp; Cloud Security Enthusiast
+                  </p>
+                </div>
+              </div>
+              <p className="text-gray-400 text-xs leading-relaxed max-w-sm font-sans font-medium">
+                Designing ultra-scalable APIs, automated pipelines, and cloud-native systems with modular precision and high performance.
+              </p>
+            </div>
+
+            {/* Column 2: System Status Indicators */}
+            <div className="md:col-span-4 space-y-4">
+              <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-extrabold pb-1">
+                // ACTIVE SYSTEM STUDS
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-neutral-900 flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                  <div>
+                    <span className="text-[9px] text-gray-500 uppercase block font-bold">DB FLOWS</span>
+                    <span className="text-gray-300 font-semibold text-[10px]">FIRESTORE SECURE</span>
+                  </div>
+                </div>
+                <div className="p-3 rounded-xl bg-neutral-950/60 border border-neutral-900 flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
+                  <div>
+                    <span className="text-[9px] text-gray-500 uppercase block font-bold">DEPLOY HOST</span>
+                    <span className="text-gray-300 font-semibold text-[10px]">CLOUD RUN READY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 3: Communication & Socials */}
+            <div className="md:col-span-3 space-y-4">
+              <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-extrabold pb-1">
+                // EXTERNAL CHANNELS
+              </h4>
+              <div className="flex gap-3">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-blue-500/30 hover:shadow-[0_0_12px_rgba(59,130,246,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
+                  title="GitHub profile"
+                >
+                  <Github className="w-4.5 h-4.5" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-indigo-500/30 hover:shadow-[0_0_12px_rgba(99,102,241,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
+                  title="LinkedIn profile"
+                >
+                  <Linkedin className="w-4.5 h-4.5" />
+                </a>
+                <a
+                  href="mailto:jestinshaji777@gmail.com"
+                  className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-cyan-500/30 hover:shadow-[0_0_12px_rgba(6,182,212,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
+                  title="Email"
+                >
+                  <Mail className="w-4.5 h-4.5" />
+                </a>
+              </div>
+              <p className="text-[10px] text-gray-500 font-mono tracking-normal leading-relaxed">
+                Response factor: Within 24 hours.
+              </p>
+            </div>
+
           </div>
+
+          {/* Sub Footer Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 font-mono text-[11px] text-gray-500">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+              <span className="tracking-wide text-gray-400">
+                &copy; 2026 Jestin Shaji. All rights reserved.
+              </span>
+              <span className="hidden sm:inline text-neutral-800">|</span>
+              <span className="text-[10px] text-gray-500">
+                Engineered with React &amp; Tailwind CSS
+              </span>
+            </div>
+
+            <div className="flex items-center gap-4 text-gray-650 font-mono text-[10px] uppercase tracking-wider">
+              <span className="hover:text-blue-400 transition-colors cursor-help" title="Modern React Frontend">React SPA</span>
+              <span>•</span>
+              <span className="hover:text-cyan-400 transition-colors cursor-help" title="NoSQL Serverless DB">Firebase</span>
+              <span>•</span>
+              <span className="hover:text-indigo-400 transition-colors cursor-help" title="Automated DevOps line">Automated Pipelines</span>
+            </div>
+          </div>
+
         </div>
       </footer>
 
