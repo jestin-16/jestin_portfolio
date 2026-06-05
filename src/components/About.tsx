@@ -28,10 +28,10 @@ export default function About() {
       {/* Visual background atmospheric elements */}
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="max-w-7xl mx-auto space-y-16">
         
         {/* Main Section Header */}
-        <div className="space-y-4">
+        <div className="space-y-4 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -52,20 +52,36 @@ export default function About() {
           </motion.p>
         </div>
 
-        {/* Long Narrative Paragraph representing text block */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.1 }}
-          className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans max-w-3xl mx-auto whitespace-pre-line"
-        >
-          {bio.aboutFull}
-        </motion.p>
+        {/* Beautiful Typography Full Narrative BIO */}
+        <div className="max-w-3xl mx-auto space-y-8 text-center">
+          <div className="space-y-3">
+            <span className="text-[10px] font-mono text-[#06b6d4] font-bold uppercase tracking-widest block">
+              [SYSTEM INTRODUCTORY] BIOGRAPHY
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+              Fusing high-performance Java JVM execution with agile cloud-native APIs.
+            </h3>
+          </div>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.1 }}
+            className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans whitespace-pre-line font-medium"
+          >
+            {bio.aboutFull}
+          </motion.p>
 
+          <div className="flex flex-wrap justify-center gap-4 text-xs font-mono text-[#06b6d4] pt-2">
+            <span className="px-4 py-2 bg-neutral-950/60 border border-neutral-900 rounded-xl">STATUS: Actively Engineering APIs</span>
+            <span className="px-4 py-2 bg-neutral-950/60 border border-neutral-900 rounded-xl">DEGREE: Master of Computer Applications</span>
+            <span className="px-4 py-2 bg-neutral-950/60 border border-neutral-900 rounded-xl">LOCATION: {bio.location}</span>
+          </div>
+        </div>
 
         {/* High quality divider */}
-        <div className="h-px bg-neutral-900 w-full my-12" />
+        <div className="h-px bg-neutral-900 w-full my-8" />
 
         {/* Sub-heading Approach */}
         <div className="space-y-3">

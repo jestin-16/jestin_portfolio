@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
-import { Github, Linkedin, Mail, ArrowDown, FileText, Compass, Server, Shield } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, FileText, Compass } from "lucide-react";
 import { useFirebase } from "../context/FirebaseContext";
-import InteractiveConsole from "./InteractiveConsole";
+import ProfileStudio from "./ProfileStudio";
 
 interface HeroProps {
   onScrollToProjects: () => void;
@@ -62,8 +62,8 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
 
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center z-10 flex-1">
         
-        {/* Left Hand: High Quality Editorial Narrative Block */}
-        <div className="lg:col-span-7 flex flex-col justify-center text-left space-y-8">
+        {/* Left Hand: High Quality Editorial Narrative Block (Col span: 5) */}
+        <div className="lg:col-span-5 flex flex-col justify-center text-left space-y-8">
           
           {/* Subtle Accent Mini Hook */}
           <motion.div
@@ -84,7 +84,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl font-sans font-extrabold tracking-tight leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400"
+              className="text-4xl sm:text-5xl font-sans font-extrabold tracking-tight leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400"
             >
               {bio.title}
             </motion.h1>
@@ -92,7 +92,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-sm sm:text-base md:text-lg font-sans font-medium bg-gradient-to-r from-blue-400 via-indigo-300 to-[#06B6D4] bg-clip-text text-transparent tracking-wide leading-relaxed"
+              className="text-sm font-sans font-medium bg-gradient-to-r from-blue-400 via-indigo-300 to-[#06B6D4] bg-clip-text text-transparent tracking-wide leading-relaxed"
             >
               {bio.subtitle}
             </motion.p>
@@ -103,7 +103,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[#999999] text-xs sm:text-sm md:text-base max-w-lg leading-relaxed font-sans"
+            className="text-[#999999] text-xs sm:text-sm leading-relaxed font-sans"
           >
             {bio.tagline}
           </motion.p>
@@ -118,7 +118,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
           >
             <button
               onClick={handleDownloadCV}
-              className="px-8 py-4 bg-[#121212] hover:bg-[#1c1c1c] text-white border border-neutral-800 rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg flex items-center justify-center gap-2.5 cursor-pointer"
+              className="px-6 py-4 bg-[#121212] hover:bg-[#1c1c1c] text-white border border-neutral-800 rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <FileText className="w-4 h-4 text-neutral-400" />
               <span>Download CV</span>
@@ -126,7 +126,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
 
             <button
               onClick={onScrollToProjects}
-              className="px-8 py-4 bg-white text-black hover:bg-neutral-200 rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-white/5"
+              className="px-6 py-4 bg-white text-black hover:bg-neutral-200 rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-white/5"
             >
               <Compass className="w-4 h-4 text-black" />
               <span>Explore Works</span>
@@ -138,7 +138,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="flex items-center gap-3 pt-6"
+            className="flex items-center gap-3 pt-4"
           >
             <a
               href={bio.socials?.github || "https://github.com"}
@@ -170,19 +170,19 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
 
         </div>
 
-        {/* Right Hand: Immersive Black and White Architectural Visual Canvas Widget */}
-        <div className="lg:col-span-5 flex justify-center items-center relative py-4 lg:py-8">
+        {/* Right Hand: Embedded Interactive Portrait Face Editor & Motion Canvas (Col span: 7) */}
+        <div className="lg:col-span-7 flex justify-center items-center relative py-4 lg:py-8">
           
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full flex justify-center items-center"
+            className="relative w-full"
           >
-            {/* Soft glowing base behind interactive console */}
-            <div className="absolute -inset-0.5 rounded-[2rem] bg-gradient-to-b from-[#3b82f6]/20 via-[#06b6d4]/10 to-transparent blur-xl pointer-events-none opacity-60" />
+            {/* Soft glowing base behind Profile Studio */}
+            <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-b from-[#3b82f6]/10 via-[#06b6d4]/5 to-transparent blur-2xl pointer-events-none opacity-40" />
             
-            <InteractiveConsole />
+            <ProfileStudio />
           </motion.div>
 
         </div>
