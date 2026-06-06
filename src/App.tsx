@@ -20,35 +20,15 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Cinematic mock initialization compiling screen state
+  // Premium minimalistic intro preloader state
   const [systemLoading, setSystemLoading] = useState(true);
-  const [compilingLogs, setCompilingLogs] = useState<string[]>([]);
-  const [currentCompileStep, setCurrentCompileStep] = useState(0);
 
-  const compileSequence = [
-    "BOOTSTRAP_INIT: Spawning remote digital sandbox environment...",
-    "MAVEN_RESOLVER: Fetching Spring Boot dependency jars...",
-    "ROUTER_MAPPING: Allocating core proxy paths in memory nodes...",
-    "GEMINI_SYNC: Establishing model configurations (gemini-3.5-flash)...",
-    "SUCCESS: Security handshake approved. Ready to deploy view systems!"
-  ];
-
-  // Simulated initialization compilation sequence
   useEffect(() => {
-    if (currentCompileStep < compileSequence.length) {
-      const delay = currentCompileStep === 4 ? 600 : 350;
-      const t = setTimeout(() => {
-        setCompilingLogs((prev) => [...prev, compileSequence[currentCompileStep]]);
-        setCurrentCompileStep((p) => p + 1);
-      }, delay);
-      return () => clearTimeout(t);
-    } else {
-      const waitT = setTimeout(() => {
-        setSystemLoading(false);
-      }, 700);
-      return () => clearTimeout(waitT);
-    }
-  }, [currentCompileStep]);
+    const timer = setTimeout(() => {
+      setSystemLoading(false);
+    }, 2400); // 2.4 seconds presentation before revealing portfolio
+    return () => clearTimeout(timer);
+  }, []);
 
   // Handle header background shadows on scroll
   useEffect(() => {
@@ -79,58 +59,66 @@ export default function App() {
       {/* 1. Cinematic Floating Particle & Volumetric Fog Backdrop Canvas */}
       <CinematicCanvas />
 
-      {/* 2. Cinematic Compiling Entrance Sequence */}
+      {/* 2. Premium Cinematic Entrance Sequence displaying Name */}
       <AnimatePresence>
         {systemLoading && (
           <motion.div
             key="preloader"
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0, filter: "blur(20px)" }}
-            transition={{ duration: 0.8 }}
-            className="fixed inset-0 z-[100] bg-[#050505] flex flex-col justify-center items-center p-6 text-white font-mono selection:bg-none"
+            exit={{ opacity: 0, filter: "blur(20px)", y: -10 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[100] bg-[#050505] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden"
           >
-            <div className="max-w-xl w-full space-y-6">
-              {/* Header label */}
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-4 mb-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                  <span className="text-xs text-gray-500 tracking-wider font-extrabold uppercase">
-                    Jestin Shaji Compilation Engine
-                  </span>
-                </div>
-                <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
-                  v2026.5.25
+            {/* Soft decorative background glow to frame the text */}
+            <div className="absolute w-[400px] h-[400px] rounded-full bg-blue-500/[0.03] blur-[120px] pointer-events-none" />
+            
+            <div className="text-center space-y-5 relative z-10">
+              
+              {/* Elegant Accent Tagline */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+                className="flex items-center justify-center gap-2 mb-2"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-[pulse_2s_infinite]" />
+                <span className="text-[10px] font-mono tracking-[0.25em] text-neutral-500 uppercase font-semibold">
+                  PORTFOLIO &bull; INTRO
                 </span>
-              </div>
+              </motion.div>
 
-              {/* Logs area */}
-              <div className="space-y-2 h-[180px] overflow-y-auto text-[11px] leading-relaxed text-gray-400 select-none scrollbar-none">
-                {compilingLogs.map((log, li) => (
-                  <div
-                    key={li}
-                    className={`flex items-start gap-2 ${
-                      log.includes("SUCCESS") ? "text-emerald-400 font-bold" : ""
-                    }`}
-                  >
-                    <span className="text-gray-600">[{li + 1}]</span>
-                    <span>{log}</span>
-                  </div>
-                ))}
-              </div>
+              {/* Main Display Typography Name */}
+              <h1 className="overflow-hidden py-1">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="block text-4xl sm:text-6xl font-sans tracking-[0.3em] font-extrabold uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-neutral-400 pl-[0.3em]"
+                >
+                  JESTIN SHAJI
+                </motion.span>
+              </h1>
 
-              {/* Loader layout bar */}
-              <div className="w-full h-[3px] bg-white/[0.05] rounded-full overflow-hidden">
+              {/* Sub-label showing after short offset */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 0.6 }}
+                className="text-xs sm:text-sm font-mono tracking-[0.16em] text-neutral-400 font-medium uppercase"
+              >
+                Backend Developer &amp; Cloud Security Architect
+              </motion.p>
+              
+              {/* Sleek minimal progress line ticker */}
+              <div className="w-[120px] h-[1px] bg-white/[0.05] relative overflow-hidden mx-auto mt-4">
                 <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 2.1, ease: "easeInOut" }}
-                  className="h-full bg-gradient-to-r from-[#3B82F6] via-[#06B6D4] to-purple-500"
+                  initial={{ left: "-100%" }}
+                  animate={{ left: "100%" }}
+                  transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
+                  className="absolute h-full w-[40%] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
                 />
               </div>
 
-              <div className="text-[10px] text-gray-600 text-center select-none uppercase tracking-widest font-extrabold">
-                BOOTING PORTFOLIO NODE CONTEXT...
-              </div>
             </div>
           </motion.div>
         )}
