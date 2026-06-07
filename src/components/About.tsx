@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useFirebase } from "../context/FirebaseContext";
+import InteractiveConsole from "./InteractiveConsole";
 
 export default function About() {
   const { bio } = useFirebase();
@@ -52,39 +53,57 @@ export default function About() {
           </motion.p>
         </div>
 
-        {/* Beautiful Typography Full Narrative BIO */}
-        <div className="max-w-3xl mx-auto space-y-8 text-center">
-          <div className="space-y-3">
-            <span className="text-[10px] font-mono text-[#06b6d4] font-bold uppercase tracking-widest block">
-              [SYSTEM INTRODUCTORY] BIOGRAPHY
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-              Fusing high-performance Java JVM execution with agile cloud-native APIs.
-            </h3>
-          </div>
+        {/* Balanced Grid for bio and interactive terminal simulation */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.1 }}
-            className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans whitespace-pre-line font-medium"
-          >
-            {bio.aboutFull}
-          </motion.p>
+          {/* Left Block: Biography Narrative (Col span: 6/7) */}
+          <div className="lg:col-span-7 space-y-8 flex flex-col justify-center text-left">
+            <div className="space-y-3">
+              <span className="text-[10px] font-mono text-[#06b6d4] font-bold uppercase tracking-widest block">
+                [SYSTEM INTRODUCTORY] BIOGRAPHY
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
+                Fusing high-performance Java JVM execution with agile cloud-native APIs.
+              </h3>
+            </div>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.1 }}
+              className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans whitespace-pre-line font-medium"
+            >
+              {bio.aboutFull}
+            </motion.p>
 
-          <div className="flex flex-wrap justify-center gap-4 text-xs font-mono text-[#06b6d4] pt-2">
-            <span className="px-4 py-2 bg-neutral-950/60 border border-neutral-900 rounded-xl">STATUS: Actively Engineering APIs</span>
-            <span className="px-4 py-2 bg-neutral-950/60 border border-neutral-900 rounded-xl">DEGREE: Master of Computer Applications</span>
-            <span className="px-4 py-2 bg-neutral-950/60 border border-neutral-900 rounded-xl">LOCATION: {bio.location}</span>
+            <div className="flex flex-wrap gap-3 text-[10px] font-mono text-[#06b6d4] pt-2">
+              <span className="px-3.5 py-2 bg-neutral-950/60 border border-neutral-900 rounded-xl">STATUS: Actively Engineering APIs</span>
+              <span className="px-3.5 py-2 bg-[#09090d] border border-neutral-850 rounded-xl">DEGREE: Master of Computer Applications</span>
+              <span className="px-3.5 py-2 bg-neutral-950/60 border border-neutral-900 rounded-xl font-bold">LOCATION: {bio.location}</span>
+            </div>
           </div>
+
+          {/* Right Block: Live Spring Boot Actuator console (Col span: 5) */}
+          <div className="lg:col-span-5 flex justify-center items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, type: "spring" }}
+              className="w-full flex justify-center"
+            >
+              <InteractiveConsole />
+            </motion.div>
+          </div>
+
         </div>
 
         {/* High quality divider */}
         <div className="h-px bg-neutral-900 w-full my-8" />
 
         {/* Sub-heading Approach */}
-        <div className="space-y-3">
+        <div className="space-y-3 text-center">
           <h3 className="text-xl font-bold text-white tracking-tight">
             My Approach
           </h3>
@@ -100,7 +119,8 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: aidx * 0.12 }}
-              className="glass-panel p-6 relative overflow-hidden group hover:scale-[1.02] hover:border-blue-500/30 transition-all duration-300"
+              whileHover={{ y: -6, scale: 1.01, transition: { duration: 0.2, ease: "easeOut" } }}
+              className="glass-panel p-6 relative overflow-hidden group hover:border-[#06b6d4]/35 transition-all duration-300"
             >
               {/* Internal subtle shift glow background */}
               <div className="absolute -inset-24 bg-gradient-to-r from-blue-500/[0.02] via-purple-500/[0.01] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -124,9 +144,14 @@ export default function About() {
         {/* Large Counter-based Statistics Grid below, exactly mirroring image */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 pt-12 text-center max-w-4xl mx-auto">
           {bio.stats && bio.stats.map((stat: any, sIdx: number) => (
-            <div
+            <motion.div
               key={sIdx}
-              className="space-y-1 glass-panel p-5 hover:border-indigo-500/30 hover:scale-[1.03] hover:shadow-[0_4px_24px_rgba(99,102,241,0.08)] transition-all duration-300 relative overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", delay: sIdx * 0.1, duration: 0.6 }}
+              whileHover={{ scale: 1.03, y: -4, transition: { duration: 0.2 } }}
+              className="space-y-1 glass-panel p-5 hover:border-indigo-500/30 hover:shadow-[0_4px_24px_rgba(99,102,241,0.08)] transition-all duration-300 relative overflow-hidden"
             >
               {/* Internal ambient backglow */}
               <div className="absolute -inset-10 bg-radial from-indigo-500/[0.015] to-transparent pointer-events-none" />
@@ -136,7 +161,7 @@ export default function About() {
               <span className="text-[9px] font-mono tracking-wider text-neutral-500 uppercase block font-semibold relative z-10">
                 {stat.label}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
 

@@ -93,12 +93,18 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Column: Fast Connect and Info cards */}
-          <div className="lg:col-span-4 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
+            className="lg:col-span-4 space-y-6"
+          >
             
             {/* Quick click copy container */}
             <motion.div
-              whileHover={{ scale: 1.01 }}
-              className="glass-panel p-6 relative overflow-hidden"
+              whileHover={{ y: -4, scale: 1.015, transition: { duration: 0.2 } }}
+              className="glass-panel p-6 relative overflow-hidden group hover:border-[#06B6D4]/30 transition-all duration-300 bg-[#0b0b10]/40"
             >
               <div className="flex items-start justify-between">
                 <div>
@@ -122,8 +128,8 @@ export default function Contact() {
 
             {/* Direct Dial Endpoint */}
             <motion.div
-              whileHover={{ scale: 1.01 }}
-              className="glass-panel p-6"
+              whileHover={{ y: -4, scale: 1.015, transition: { duration: 0.2 } }}
+              className="glass-panel p-6 group hover:border-purple-500/30 transition-all duration-300 bg-[#0b0b10]/40"
             >
               <Phone className="w-5 h-5 text-purple-500 mb-4" />
               <span className="text-[10px] font-mono text-gray-400 block uppercase tracking-wider mb-1">
@@ -148,13 +154,18 @@ export default function Contact() {
               </span>
               <p>All transmitted messages are safely validated and queued in memory on backend JVM nodes running inside secure container infrastructures.</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact form */}
           <div className="lg:col-span-8">
             <motion.form
               onSubmit={handleFormSubmit}
-              className="glass-panel p-6 md:p-8 space-y-6 relative"
+              initial={{ opacity: 0, x: 35 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
+              whileHover={{ border: "1px solid rgba(59, 130, 246, 0.3)", transition: { duration: 0.3 } }}
+              className="glass-panel p-6 md:p-8 space-y-6 relative hover:shadow-[0_0_25px_rgba(59,130,246,0.03)] transition-all duration-300 bg-[#0b0b10]/40"
             >
               <p className="text-xs font-mono text-[#06B6D4] uppercase tracking-wider mb-2 font-bold select-none">
                 &lt;Interactive Dispatch Protocol /&gt;

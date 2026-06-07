@@ -22,12 +22,44 @@ export default function App() {
 
   // Premium minimalistic intro preloader state
   const [systemLoading, setSystemLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setSystemLoading(false);
     }, 2400); // 2.4 seconds presentation before revealing portfolio
     return () => clearTimeout(timer);
+  }, []);
+
+  // Track active section in viewport for high-end navigation pill morphing
+  useEffect(() => {
+    const sections = ["home", "services", "about", "tech", "projects", "contact"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-25% 0px -55% 0px", // Trigger when section occupies the active view space
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+    };
   }, []);
 
   // Handle header background shadows on scroll
@@ -144,37 +176,28 @@ export default function App() {
           </button>
 
           {/* Centered Floating Nav Bar (As shown in screenshot) */}
-          <nav role="navigation" className="hidden md:flex items-center gap-1.5 p-1 bg-[#121216]/60 border border-neutral-900 rounded-full backdrop-blur-md">
-            <button
-              onClick={() => handleScrollToSection("home")}
-              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => handleScrollToSection("services")}
-              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => handleScrollToSection("about")}
-              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
-            >
-              About
-            </button>
-            <button
-              onClick={() => handleScrollToSection("tech")}
-              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => handleScrollToSection("projects")}
-              className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-all cursor-pointer rounded-full hover:bg-neutral-900/40"
-            >
-              Projects
-            </button>
+          <nav role="navigation" className="hidden md:flex items-center gap-1.5 p-1 bg-[#121216]/60 border border-neutral-900 rounded-full backdrop-blur-md relative">
+            {["home", "services", "about", "tech", "projects"].map((item) => {
+              const isActive = activeSection === item;
+              return (
+                <button
+                  key={item}
+                  onClick={() => handleScrollToSection(item)}
+                  className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-300 cursor-pointer rounded-full relative z-10`}
+                >
+                  <span className={`relative z-10 ${isActive ? "text-white" : "text-neutral-400 hover:text-white"}`}>
+                    {item === "tech" ? "Skills" : item}
+                  </span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavItem"
+                      className="absolute inset-0 bg-white/[0.06] rounded-full z-0"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Let's Talk Pill shape trigger */}
@@ -201,46 +224,37 @@ export default function App() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden bg-[#0a0a0d] border-b border-neutral-900"
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="md:hidden bg-[#0a0a0d] border-b border-neutral-900 overflow-hidden"
             >
-              <nav role="navigation" className="flex flex-col p-6 gap-4 text-xs font-mono font-bold text-gray-400">
-                <button
-                  onClick={() => handleScrollToSection("home")}
-                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
-                >
-                  // Home
-                </button>
-                <button
-                  onClick={() => handleScrollToSection("services")}
-                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
-                >
-                  // Services
-                </button>
-                <button
-                  onClick={() => handleScrollToSection("about")}
-                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
-                >
-                  // About Me
-                </button>
-                <button
-                  onClick={() => handleScrollToSection("tech")}
-                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
-                >
-                  // Skills Stack
-                </button>
-                <button
-                  onClick={() => handleScrollToSection("projects")}
-                  className="text-left py-2 border-b border-neutral-900/40 hover:text-white uppercase tracking-wider"
-                >
-                  // Projects
-                </button>
-                <button
+              <nav role="navigation" className="flex flex-col p-6 gap-2 text-xs font-mono font-bold text-gray-400">
+                {[
+                  { id: "home", label: "Home" },
+                  { id: "services", label: "Services" },
+                  { id: "about", label: "About Me" },
+                  { id: "tech", label: "Skills Stack" },
+                  { id: "projects", label: "Projects" },
+                ].map((item, idx) => (
+                  <motion.button
+                    key={item.id}
+                    initial={{ x: -16, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    onClick={() => handleScrollToSection(item.id)}
+                    className="text-left py-2 border-b border-neutral-900/45 hover:text-white uppercase tracking-wider cursor-pointer"
+                  >
+                    // {item.label}
+                  </motion.button>
+                ))}
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.25 }}
                   onClick={() => handleScrollToSection("contact")}
-                  className="w-full text-center py-3 bg-white text-black rounded-full mt-2 font-bold select-none cursor-pointer uppercase tracking-widest text-[11px]"
+                  className="w-full text-center py-3 bg-white text-black rounded-full mt-4 font-bold select-none cursor-pointer uppercase tracking-widest text-[11px]"
                 >
                   Let's Talk
-                </button>
+                </motion.button>
               </nav>
             </motion.div>
           )}

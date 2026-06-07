@@ -64,7 +64,8 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.7, delay: sidx * 0.1 }}
-            className="group relative glass-panel p-6 flex flex-col justify-between hover:scale-[1.03] transition-all duration-300 pointer-events-auto overflow-hidden"
+            whileHover={{ y: -8, scale: 1.025, transition: { duration: 0.2, ease: "easeOut" } }}
+            className="group relative glass-panel p-6 flex flex-col justify-between pointer-events-auto overflow-hidden bg-[#0a0a0f]/40"
           >
             {/* Absolute radial glow centered around the hover position inside card */}
             <div className="absolute -inset-40 bg-radial from-blue-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

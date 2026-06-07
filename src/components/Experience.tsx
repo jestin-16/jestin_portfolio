@@ -39,13 +39,19 @@ export default function Experience() {
               <div key={exp.id} className={`relative mb-16 sm:mb-24 flex flex-col justify-start items-stretch ${isLeft ? "sm:col-start-1" : "sm:col-start-2 sm:translate-y-12"}`}>
                 
                 {/* Orbital Node Pin */}
-                <div className="absolute left-[-24px] sm:left-auto sm:right-0 sm:translate-x-[calc(50%+24px)] top-2 sm:top-6 z-20">
-                  <div className="w-10 h-10 rounded-full bg-[#0a0a0f] border border-neutral-850 hover:border-neutral-700 flex items-center justify-center text-white shadow-2xl transition-all scale-110">
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1.1, opacity: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ type: "spring", stiffness: 200, damping: 15, delay: idx * 0.12 }}
+                  className="absolute left-[-24px] sm:left-auto sm:right-0 sm:translate-x-[calc(50%+24px)] top-2 sm:top-6 z-20"
+                >
+                  <div className="w-10 h-10 rounded-full bg-[#0a0a0f] border border-neutral-850 hover:border-neutral-700 flex items-center justify-center text-white shadow-2xl transition-all">
                     {exp.category === "academic" && <GraduationCap className="w-4 h-4 text-neutral-400" />}
                     {exp.category === "development" && <Terminal className="w-4 h-4 text-neutral-400" />}
                     {exp.category === "certification" && <Award className="w-4 h-4 text-neutral-400" />}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Core Narrative Card */}
                 <motion.div

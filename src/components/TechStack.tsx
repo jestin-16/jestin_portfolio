@@ -103,7 +103,8 @@ export default function TechStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: cidx * 0.1 }}
-              className="glass-panel p-6 space-y-6 hover:border-neutral-700/50 hover:scale-[1.02] transition-all duration-300 group overflow-hidden"
+              whileHover={{ y: -6, scale: 1.015, transition: { duration: 0.2, ease: "easeOut" } }}
+              className="glass-panel p-6 space-y-6 hover:border-neutral-700/50 transition-all duration-300 group overflow-hidden bg-[#0a0a0f]/40"
             >
               {/* Category Identifier */}
               <div className="flex items-center gap-3">
@@ -120,18 +121,20 @@ export default function TechStack() {
                 {cat.skills.map((skill, sidx) => {
                   const isActive = selectedSkill.name === skill.name;
                   return (
-                    <button
+                    <motion.button
                       key={sidx}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       onClick={() => setSelectedSkill(skill)}
                       onMouseEnter={() => setSelectedSkill(skill)}
-                      className={`px-3.5 py-2 rounded-full text-xs font-sans tracking-tight transition-all uppercase cursor-pointer border ${
+                      className={`px-3.5 py-2 rounded-full text-xs font-sans tracking-tight transition-colors uppercase cursor-pointer border ${
                         isActive
-                          ? "bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 text-white border-transparent font-bold scale-[1.04] shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                          ? "bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 text-white border-transparent font-bold shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                           : "bg-[#07070a]/40 border-neutral-900 text-neutral-400 hover:text-white hover:border-neutral-850"
                       }`}
                     >
                       {skill.name}
-                    </button>
+                    </motion.button>
                   );
                 })}
               </div>

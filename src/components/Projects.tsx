@@ -154,7 +154,13 @@ export default function Projects() {
                 }`}
               >
                 {/* Information Block */}
-                <div className={`lg:col-span-5 space-y-6 ${isLeft ? "lg:order-1" : "lg:order-2"}`}>
+                <motion.div
+                  initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
+                  className={`lg:col-span-5 space-y-6 ${isLeft ? "lg:order-1" : "lg:order-2"}`}
+                >
                   <div className="flex items-center gap-3 font-mono text-xs">
                     <span className="text-neutral-400 font-bold uppercase block tracking-wider">
                       {proj.subtitle}
@@ -176,19 +182,20 @@ export default function Projects() {
                   {/* Highlights capsules */}
                   <div className="flex flex-wrap gap-2 pt-2">
                     {proj.tags.map((tg) => (
-                      <span
+                      <motion.span
                         key={tg}
-                        className="text-neutral-400 bg-neutral-950 border border-neutral-900 hover:border-neutral-800 px-3.5 py-1 rounded-full text-[10px] font-mono transition-colors"
+                        whileHover={{ scale: 1.05, y: -1 }}
+                        className="text-neutral-400 bg-neutral-950 border border-neutral-900 hover:border-neutral-800 px-3.5 py-1 rounded-full text-[10px] font-mono transition-colors cursor-default"
                       >
                         #{tg}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
                   {/* Performance Indicators */}
                   <div className="grid grid-cols-3 gap-4 border-t border-neutral-900 pt-6 font-mono text-xs">
                     {proj.metrics.map((met) => (
-                      <div key={met.label} className="space-y-1">
+                      <div key={met.label} className="space-y-1 division-line">
                         <span className="text-white font-extrabold text-base block">
                           {met.value}
                         </span>
@@ -218,10 +225,16 @@ export default function Projects() {
                       Repository
                     </a>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Simulation Stage Console Window */}
-                <div className={`lg:col-span-7 relative ${isLeft ? "lg:order-2" : "lg:order-1"} group/console`}>
+                <motion.div
+                  initial={{ opacity: 0, x: isLeft ? 40 : -40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
+                  className={`lg:col-span-7 relative ${isLeft ? "lg:order-2" : "lg:order-1"} group/console`}
+                >
                   {/* Outer atmospheric dynamic glow blur */}
                   <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/15 rounded-[2rem] blur-xl opacity-0 group-hover/console:opacity-100 transition-opacity duration-700 pointer-events-none" />
                   
@@ -466,7 +479,7 @@ export default function Projects() {
                     )}
 
                   </div>
-                </div>
+                </motion.div>
               </div>
             );
           })}
