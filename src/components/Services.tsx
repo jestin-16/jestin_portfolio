@@ -4,25 +4,41 @@ import { Database, Server, Cpu, Layers } from "lucide-react";
 export default function Services() {
   const servicesData = [
     {
-      icon: <Server className="w-5 h-5 text-neutral-400" />,
+      icon: <Server className="w-5 h-5 text-amber-400" />,
+      glowColor: "from-amber-500/10 to-transparent",
+      hoverBorder: "group-hover:border-amber-500/45 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.18)]",
+      hoverIconBg: "group-hover:bg-amber-950/20 group-hover:border-amber-500/30",
+      bottomLine: "via-amber-500/40",
       title: "Backend API Integrity (Java & Spring)",
       description: "Delivering modular controllers, global exceptions handler templates, Spring Security filter chains, and decoupled service layers.",
       tags: ["RESTful Endpoints", "SOLID Principles"],
     },
     {
-      icon: <Layers className="w-5 h-5 text-neutral-400" />,
+      icon: <Layers className="w-5 h-5 text-fuchsia-400" />,
+      glowColor: "from-fuchsia-500/10 to-transparent",
+      hoverBorder: "group-hover:border-fuchsia-500/45 group-hover:shadow-[0_0_15px_rgba(240,46,170,0.18)]",
+      hoverIconBg: "group-hover:bg-fuchsia-950/20 group-hover:border-fuchsia-500/30",
+      bottomLine: "via-fuchsia-500/40",
       title: "DevOps & Cloud Orchestration",
       description: "Automated delivery pipelines using Docker multi-layered files, Jenkins workflow hooks, and local Kubernetes clusters.",
       tags: ["Docker Hub Sync", "Kubernetes Pods"],
     },
     {
-      icon: <Cpu className="w-5 h-5 text-neutral-400" />,
+      icon: <Cpu className="w-5 h-5 text-emerald-400" />,
+      glowColor: "from-emerald-500/10 to-transparent",
+      hoverBorder: "group-hover:border-emerald-500/45 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.18)]",
+      hoverIconBg: "group-hover:bg-emerald-950/20 group-hover:border-emerald-500/30",
+      bottomLine: "via-emerald-500/40",
       title: "Responsive Frontend Integration",
       description: "Integrating reactive React.js interfaces styled cleanly with Tailwind CSS to perfectly consume, bind, and visualize backend APIs and microservices workflows.",
       tags: ["Vite / React.js", "Tailwind CSS"],
     },
     {
-      icon: <Database className="w-5 h-5 text-neutral-400" />,
+      icon: <Database className="w-5 h-5 text-cyan-400" />,
+      glowColor: "from-cyan-500/10 to-transparent",
+      hoverBorder: "group-hover:border-cyan-500/45 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.18)]",
+      hoverIconBg: "group-hover:bg-cyan-950/20 group-hover:border-cyan-500/30",
+      bottomLine: "via-cyan-500/40",
       title: "Relational Storage Systems",
       description: "Rigorous PostgreSQL and MySQL schema alignment, connection pooling configurations, query speed optimization, and secure indexes.",
       tags: ["Database Pools", "Index Optimization"],
@@ -30,10 +46,10 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-neutral-900 select-none">
+    <section id="services" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#020205] to-[#04040b] relative overflow-hidden border-t border-neutral-900/60 select-none">
       
       {/* Soft visual glow background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.005)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.015)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto text-center space-y-4 mb-16">
         <motion.h2
@@ -41,7 +57,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-white"
+          className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400"
         >
           Services
         </motion.h2>
@@ -50,7 +66,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-neutral-500 text-sm sm:text-base max-w-xl mx-auto font-sans"
+          className="text-neutral-400 font-sans text-sm sm:text-base max-w-xl mx-auto"
         >
           Architecting clean, scalable backends and modern responsive interfaces
         </motion.p>
@@ -65,17 +81,17 @@ export default function Services() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.7, delay: sidx * 0.1 }}
             whileHover={{ y: -8, scale: 1.025, transition: { duration: 0.2, ease: "easeOut" } }}
-            className="group relative glass-panel p-6 flex flex-col justify-between pointer-events-auto overflow-hidden bg-[#0a0a0f]/40"
+            className={`group relative glass-panel p-6 flex flex-col justify-between pointer-events-auto overflow-hidden bg-[#0a0a0f]/40 transition-all duration-350 hover:bg-[#0c0c16]/70 ${serv.hoverBorder}`}
           >
             {/* Absolute radial glow centered around the hover position inside card */}
-            <div className="absolute -inset-40 bg-radial from-blue-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className={`absolute -inset-40 bg-radial ${serv.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
 
             {/* Subtle light reflections inside the card */}
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.1] to-transparent pointer-events-none" />
 
-            <div className="space-y-4 relative z-10">
+            <div className="space-y-4 relative z-10 font-sans">
               {/* Header Visual with dynamic glow */}
-              <div className="w-10 h-10 rounded-xl bg-neutral-950/80 border border-neutral-800/80 flex items-center justify-center text-neutral-400 group-hover:text-cyan-400 group-hover:border-cyan-500/30 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all duration-300">
+              <div className={`w-10 h-10 rounded-xl bg-neutral-950/80 border border-neutral-800/80 flex items-center justify-center transition-all duration-300 ${serv.hoverIconBg}`}>
                 {serv.icon}
               </div>
 
@@ -94,7 +110,7 @@ export default function Services() {
               {serv.tags.map((tg, ti) => (
                 <div
                   key={ti}
-                  className="px-3 py-1.5 rounded-lg bg-[#07070a]/40 border border-neutral-900 flex items-center justify-between text-neutral-400 group-hover:text-neutral-200 group-hover:border-neutral-800 transition-all duration-300"
+                  className="px-3 py-1.5 rounded-lg bg-[#07070a]/40 border border-neutral-900/80 flex items-center justify-between text-neutral-400 group-hover:text-neutral-200 group-hover:border-neutral-800/80 transition-all duration-300"
                 >
                   <span>{tg}</span>
                 </div>
@@ -102,7 +118,7 @@ export default function Services() {
             </div>
 
             {/* Glowing line at card base */}
-            <div className="absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            <div className={`absolute bottom-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent ${serv.bottomLine} to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
           </motion.div>
         ))}
       </div>

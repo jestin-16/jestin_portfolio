@@ -118,25 +118,25 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden select-none">
+    <section id="projects" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040d] via-[#020205] to-[#030308] relative overflow-hidden select-none">
       
       {/* Background atmospheres */}
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.03)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.03)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.055)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.045)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         
         {/* Chapter Header */}
         <div className="mb-24">
           <div className="flex items-center gap-3 mb-3">
-            <span className="text-[10px] font-mono tracking-widest text-[#777] uppercase font-bold">
+            <span className="text-[10px] font-mono tracking-widest bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent font-black uppercase">
               // CASE STUDIES
             </span>
           </div>
-          <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-white mb-3">
+          <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-indigo-300 mb-3">
             Featured Systems
           </h2>
-          <p className="text-neutral-500 text-sm sm:text-base max-w-xl font-sans mt-3">
+          <p className="text-neutral-400 text-sm sm:text-base max-w-xl font-sans mt-3">
             Interactive system sandboxes engineered to demonstrate enterprise readiness and cloud-native simulation loops.
           </p>
         </div>
@@ -162,11 +162,11 @@ export default function Projects() {
                   className={`lg:col-span-5 space-y-6 ${isLeft ? "lg:order-1" : "lg:order-2"}`}
                 >
                   <div className="flex items-center gap-3 font-mono text-xs">
-                    <span className="text-neutral-400 font-bold uppercase block tracking-wider">
+                    <span className="text-cyan-400 font-extrabold uppercase block tracking-widest">
                       {proj.subtitle}
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-800" />
-                    <span className="text-[9px] uppercase bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded text-neutral-400 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/45" />
+                    <span className="text-[9px] uppercase bg-cyan-950/20 border border-cyan-500/20 px-2.5 py-1 rounded text-cyan-300 font-bold select-none shadow-[0_0_10px_rgba(6,182,212,0.04)]">
                       {proj.category}
                     </span>
                   </div>
@@ -175,7 +175,7 @@ export default function Projects() {
                     {proj.title}
                   </h3>
 
-                  <p className="text-neutral-400 text-sm sm:text-base leading-relaxed font-sans">
+                  <p className="text-neutral-300 text-sm sm:text-base leading-relaxed font-sans font-medium">
                     {proj.description}
                   </p>
 
@@ -185,7 +185,7 @@ export default function Projects() {
                       <motion.span
                         key={tg}
                         whileHover={{ scale: 1.05, y: -1 }}
-                        className="text-neutral-400 bg-neutral-950 border border-neutral-900 hover:border-neutral-800 px-3.5 py-1 rounded-full text-[10px] font-mono transition-colors cursor-default"
+                        className="text-neutral-300 bg-[#0c0c16]/50 border border-neutral-900/60 hover:border-cyan-500/30 hover:text-cyan-300 px-3.5 py-1 rounded-full text-[10px] font-mono transition-all cursor-default shadow-sm"
                       >
                         #{tg}
                       </motion.span>
@@ -193,13 +193,13 @@ export default function Projects() {
                   </div>
 
                   {/* Performance Indicators */}
-                  <div className="grid grid-cols-3 gap-4 border-t border-neutral-900 pt-6 font-mono text-xs">
+                  <div className="grid grid-cols-3 gap-4 border-t border-neutral-900/60 pt-6 font-mono text-xs">
                     {proj.metrics.map((met) => (
                       <div key={met.label} className="space-y-1 division-line">
-                        <span className="text-white font-extrabold text-base block">
+                        <span className="bg-gradient-to-r from-cyan-400 to-indigo-300 bg-clip-text text-transparent font-black text-lg block">
                           {met.value}
                         </span>
-                        <span className="text-[9px] uppercase tracking-wider text-neutral-500 font-bold">
+                        <span className="text-[9px] uppercase tracking-wider text-neutral-400 font-bold">
                           {met.label}
                         </span>
                       </div>
@@ -210,16 +210,16 @@ export default function Projects() {
                   <div className="flex items-center gap-4 pt-4">
                     <button
                       onClick={() => setSelectedProject(proj)}
-                      className="px-6 py-3 rounded-full border border-neutral-800 bg-neutral-950 hover:bg-neutral-900 text-white text-[11px] font-mono font-bold tracking-wider transition-all flex items-center gap-2 cursor-pointer uppercase"
+                      className="px-6 py-3 rounded-full border border-cyan-500/20 bg-cyan-950/20 hover:bg-cyan-900/30 text-cyan-300 hover:text-white text-[11px] font-mono font-bold tracking-wider transition-all flex items-center gap-2 cursor-pointer uppercase shadow-[0_0_15px_rgba(6,182,212,0.04)] hover:border-cyan-550/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.18)]"
                     >
-                      <Layers className="w-3.5 h-3.5 text-neutral-400" />
+                      <Layers className="w-3.5 h-3.5 text-cyan-400 group-hover:text-cyan-300" />
                       Analyze Blueprint
                     </button>
                     <a
                       href={proj.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-5 py-2.5 rounded-full text-neutral-500 hover:text-white text-[11px] font-mono tracking-wider transition-all flex items-center gap-1.5 uppercase"
+                      className="px-5 py-2.5 rounded-full text-neutral-400 hover:text-cyan-400 text-[11px] font-mono tracking-wider transition-colors flex items-center gap-1.5 uppercase font-bold"
                     >
                       <Github className="w-3.5 h-3.5" />
                       Repository

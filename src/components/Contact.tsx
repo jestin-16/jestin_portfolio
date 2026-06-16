@@ -68,24 +68,24 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-white/[0.03]">
+    <section id="contact" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#030308] via-[#020205] to-[#04040a] relative overflow-hidden border-t border-white/[0.03]">
       {/* Dynamic background lights */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 radial-glow-cyan rounded-full opacity-10 pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] radial-glowRounded-full opacity-15 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.045)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(240,46,170,0.035)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Title Block */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-2">
-            <div className="h-[2px] w-8 bg-gradient-to-r from-purple-500 to-[#3B82F6]" />
-            <span className="text-xs font-mono tracking-widest text-[#3B82F6] uppercase font-bold">
+            <div className="h-[2px] w-8 bg-gradient-to-r from-cyan-400 to-[#3B82F6]" />
+            <span className="text-xs font-mono tracking-widest bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent font-black uppercase">
               06 / Transmission
             </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-display font-black tracking-tight text-white mb-2">
+          <h2 className="text-3xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-indigo-300 mb-2">
             Get In Touch.
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base max-w-xl">
+          <p className="text-neutral-400 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
             Establish a secure connection with Jestin. Dispatch system inquiries, technical briefs, or academic collaborations instantly.
           </p>
         </div>
@@ -104,12 +104,12 @@ export default function Contact() {
             {/* Quick click copy container */}
             <motion.div
               whileHover={{ y: -4, scale: 1.015, transition: { duration: 0.2 } }}
-              className="glass-panel p-6 relative overflow-hidden group hover:border-[#06B6D4]/30 transition-all duration-300 bg-[#0b0b10]/40"
+              className="glass-panel p-6 relative overflow-hidden group hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] bg-[#0a0a11]/40 transition-all duration-300 animate-none"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <Mail className="w-5 h-5 text-[#06B6D4] mb-4" />
-                  <span className="text-[10px] font-mono text-gray-400 block uppercase tracking-wider mb-1">
+                  <Mail className="w-5 h-5 text-cyan-400 mb-4" />
+                  <span className="text-[10px] font-mono text-gray-450 block uppercase tracking-wider mb-1 font-bold">
                     Direct Email Endpoint
                   </span>
                   <p className="text-sm font-bold text-white font-mono break-all leading-tight select-all">
@@ -129,10 +129,10 @@ export default function Contact() {
             {/* Direct Dial Endpoint */}
             <motion.div
               whileHover={{ y: -4, scale: 1.015, transition: { duration: 0.2 } }}
-              className="glass-panel p-6 group hover:border-purple-500/30 transition-all duration-300 bg-[#0b0b10]/40"
+              className="glass-panel p-6 group hover:border-purple-500/40 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] bg-[#0a0a11]/40 transition-all duration-300"
             >
-              <Phone className="w-5 h-5 text-purple-500 mb-4" />
-              <span className="text-[10px] font-mono text-gray-400 block uppercase tracking-wider mb-1">
+              <Phone className="w-5 h-5 text-purple-400 mb-4" />
+              <span className="text-[10px] font-mono text-gray-450 block uppercase tracking-wider mb-1 font-bold">
                 Direct Telephony Line
               </span>
               <a
@@ -142,17 +142,17 @@ export default function Contact() {
                 {bio.phone}
               </a>
 
-              <span className="text-[10px] text-gray-500 block mt-2">
+              <span className="text-[10px] text-neutral-450 block mt-2 font-medium">
                 Available: IST working hours
               </span>
             </motion.div>
 
             {/* Verification Security Notice */}
-            <div className="text-xs text-gray-500 leading-relaxed space-y-2 select-none border-l-2 border-white/10 pl-4 py-1">
-              <span className="font-mono text-[10px] text-[#3B82F6] font-bold block uppercase tracking-wider">
+            <div className="text-xs text-neutral-400 leading-relaxed space-y-2 select-none border-l-2 border-cyan-500/30 pl-4 py-1">
+              <span className="font-mono text-[10px] text-cyan-400 font-bold block uppercase tracking-wider">
                 [SECURE FILTER PIPELINE]
               </span>
-              <p>All transmitted messages are safely validated and queued in memory on backend JVM nodes running inside secure container infrastructures.</p>
+              <p className="font-medium">All transmitted messages are safely validated and queued in memory on backend JVM nodes running inside secure container infrastructures.</p>
             </div>
           </motion.div>
 
@@ -164,16 +164,16 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
-              whileHover={{ border: "1px solid rgba(59, 130, 246, 0.3)", transition: { duration: 0.3 } }}
-              className="glass-panel p-6 md:p-8 space-y-6 relative hover:shadow-[0_0_25px_rgba(59,130,246,0.03)] transition-all duration-300 bg-[#0b0b10]/40"
+              whileHover={{ border: "1px solid rgba(62,184,212,0.25)", transition: { duration: 0.3 } }}
+              className="glass-panel p-6 md:p-8 space-y-6 relative hover:shadow-[0_0_25px_rgba(6,182,212,0.02)] transition-all duration-300 bg-[#0a0a11]/40"
             >
-              <p className="text-xs font-mono text-[#06B6D4] uppercase tracking-wider mb-2 font-bold select-none">
+              <p className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-2 font-bold select-none">
                 &lt;Interactive Dispatch Protocol /&gt;
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-xs font-mono text-gray-400 uppercase tracking-widest block font-bold">
+                  <label htmlFor="name" className="text-xs font-mono text-cyan-400 uppercase tracking-widest block font-bold">
                     YOUR NAME *
                   </label>
                   <input
@@ -183,12 +183,12 @@ export default function Contact() {
                     onChange={handleFormInputChange}
                     placeholder="e.g. Alexis Carter"
                     required
-                    className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#3B82F6] outline-none transition-colors"
+                    className="w-full bg-[#08080c]/60 border border-neutral-900 focus:border-cyan-500/60 focus:shadow-[0_0_15px_rgba(6,182,212,0.18)] focus:ring-1 focus:ring-cyan-500/10 rounded-xl px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder-neutral-600 font-medium"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-xs font-mono text-gray-400 uppercase tracking-widest block font-bold">
+                  <label htmlFor="email" className="text-xs font-mono text-cyan-400 uppercase tracking-widest block font-bold">
                     EMAIL ADDRESS *
                   </label>
                   <input
@@ -198,13 +198,13 @@ export default function Contact() {
                     onChange={handleFormInputChange}
                     placeholder="e.g. alexis@cloud.org"
                     required
-                    className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#3B82F6] outline-none transition-colors"
+                    className="w-full bg-[#08080c]/60 border border-neutral-900 focus:border-cyan-500/60 focus:shadow-[0_0_15px_rgba(6,182,212,0.18)] focus:ring-1 focus:ring-cyan-500/10 rounded-xl px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder-neutral-600 font-medium"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-xs font-mono text-gray-400 uppercase tracking-widest block font-bold">
+                <label htmlFor="subject" className="text-xs font-mono text-cyan-400 uppercase tracking-widest block font-bold">
                   SUBJECT TOPIC
                 </label>
                 <input
@@ -213,12 +213,12 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleFormInputChange}
                   placeholder="e.g. Scaling Spring Boot Microservices Blueprints"
-                  className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#3B82F6] outline-none transition-colors"
+                  className="w-full bg-[#08080c]/60 border border-neutral-900 focus:border-cyan-500/60 focus:shadow-[0_0_15px_rgba(6,182,212,0.18)] focus:ring-1 focus:ring-cyan-500/10 rounded-xl px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder-neutral-600 font-medium"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-xs font-mono text-gray-400 uppercase tracking-widest block font-bold">
+                <label htmlFor="message" className="text-xs font-mono text-cyan-400 uppercase tracking-widest block font-bold">
                   TRANSMISSION BODY *
                 </label>
                 <textarea
@@ -228,7 +228,7 @@ export default function Contact() {
                   rows={4}
                   placeholder="Deconstruct your message content here..."
                   required
-                  className="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:border-[#3B82F6] outline-none transition-colors resize-none"
+                  className="w-full bg-[#08080c]/60 border border-neutral-900 focus:border-cyan-500/60 focus:shadow-[0_0_15px_rgba(6,182,212,0.18)] focus:ring-1 focus:ring-cyan-500/10 rounded-xl px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder-neutral-600 font-medium resize-none"
                 />
               </div>
 
@@ -239,9 +239,9 @@ export default function Contact() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-4 rounded-xl flex items-start gap-3 text-xs"
+                    className="bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 p-4 rounded-xl flex items-start gap-3 text-xs"
                   >
-                    <ShieldCheck className="w-5 h-5 shrink-0 mt-0.5" />
+                    <ShieldCheck className="w-5 h-5 shrink-0 mt-0.5 text-emerald-400" />
                     <div>
                       <span className="font-extrabold uppercase font-mono tracking-wide block mb-1">DISPATCH RECEIVED</span>
                       {statusMessage}
@@ -254,9 +254,9 @@ export default function Contact() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl flex items-start gap-3 text-xs"
+                    className="bg-red-500/10 border border-red-500/25 text-red-500 p-4 rounded-xl flex items-start gap-3 text-xs"
                   >
-                    <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5" />
+                    <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5 text-red-500" />
                     <div>
                       <span className="font-extrabold uppercase font-mono tracking-wide block mb-1">TRANSMISSION OVERFLOW</span>
                       {statusMessage}
@@ -268,10 +268,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={contactStatus === "loading"}
-                className="w-full bg-white hover:bg-neutral-200 text-black py-4 px-6 rounded-xl font-medium text-sm hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center gap-2 font-mono uppercase tracking-widest shadow-lg shadow-white/5 active:shadow-none disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-550 text-white py-4 px-6 rounded-xl font-black text-sm hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center gap-2 font-mono uppercase tracking-widest shadow-[0_0_20px_rgba(6,182,212,0.22)] hover:shadow-[0_0_30px_rgba(6,182,212,0.32)] disabled:opacity-50 border-none"
               >
                 {contactStatus === "loading" ? (
-                  <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
