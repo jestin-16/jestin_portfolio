@@ -45,12 +45,12 @@ export default function InteractiveConsole() {
     { timestamp: "03:55:11", level: "SUCCESS", thread: "exec-1", class: "o.s.s.web.FilterChainProxy", message: "Spring Security Filter Chain initialized. Secure parameters enforced ✔" },
   ]);
 
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
 
-  // Auto scroll logs
+  // Auto scroll logs internally without scrolling the window
   useEffect(() => {
-    if (terminalEndRef.current) {
-      terminalEndRef.current.scrollIntoView({ behavior: "smooth" });
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTop = terminalContainerRef.current.scrollHeight;
     }
   }, [logs]);
 
@@ -233,7 +233,7 @@ export default function InteractiveConsole() {
           <div className="flex-1 flex flex-col overflow-hidden">
             
             {/* Realtime stream box */}
-            <div className="flex-1 overflow-y-auto font-mono text-[9px] text-[#dedede] leading-relaxed space-y-1.5 pr-1.5 custom-scrollbar">
+            <div ref={terminalContainerRef} className="flex-1 overflow-y-auto font-mono text-[9px] text-[#dedede] leading-relaxed space-y-1.5 pr-1.5 custom-scrollbar">
               {logs.map((log, idx) => (
                 <div key={idx} className="hover:bg-white/[0.02] py-0.5 rounded transition-colors flex items-start gap-1">
                   <span className="text-neutral-600 shrink-0">{log.timestamp}</span>
@@ -248,7 +248,6 @@ export default function InteractiveConsole() {
                   <span className={`${log.level === "SUCCESS" ? "text-emerald-300 font-medium" : log.level === "WARN" ? "text-amber-200" : "text-[#eaeaea]"}`}>{log.message}</span>
                 </div>
               ))}
-              <div ref={terminalEndRef} />
             </div>
 
             {/* Quick Trigger Dispatch buttons */}

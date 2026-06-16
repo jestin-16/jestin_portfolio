@@ -31,6 +31,13 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Force scroll lock to top when preloader turns off
+  useEffect(() => {
+    if (!systemLoading) {
+      window.scrollTo(0, 0);
+    }
+  }, [systemLoading]);
+
   // Track active section in viewport for high-end navigation pill morphing
   useEffect(() => {
     const sections = ["home", "services", "about", "tech", "projects", "contact"];
