@@ -185,7 +185,7 @@ export default function Projects() {
                       <motion.span
                         key={tg}
                         whileHover={{ scale: 1.05, y: -1 }}
-                        className="text-neutral-300 bg-[#0c0c16]/50 border border-neutral-900/60 hover:border-cyan-500/30 hover:text-cyan-300 px-3.5 py-1 rounded-full text-[10px] font-mono transition-all cursor-default shadow-sm"
+                        className="text-neutral-300 glass-chip px-3.5 py-1 text-[10px] font-mono hover:text-cyan-300 hover:border-cyan-500/20 active:scale-95 cursor-pointer shadow-sm font-semibold"
                       >
                         #{tg}
                       </motion.span>
@@ -193,7 +193,7 @@ export default function Projects() {
                   </div>
 
                   {/* Performance Indicators */}
-                  <div className="grid grid-cols-3 gap-4 border-t border-neutral-900/60 pt-6 font-mono text-xs">
+                  <div className="grid grid-cols-3 gap-4 border-t border-white/[0.05] pt-6 font-mono text-xs">
                     {proj.metrics.map((met) => (
                       <div key={met.label} className="space-y-1 division-line">
                         <span className="bg-gradient-to-r from-cyan-400 to-indigo-300 bg-clip-text text-transparent font-black text-lg block">
@@ -210,7 +210,7 @@ export default function Projects() {
                   <div className="flex items-center gap-4 pt-4">
                     <button
                       onClick={() => setSelectedProject(proj)}
-                      className="px-6 py-3 rounded-full border border-cyan-500/20 bg-cyan-950/20 hover:bg-cyan-900/30 text-cyan-300 hover:text-white text-[11px] font-mono font-bold tracking-wider transition-all flex items-center gap-2 cursor-pointer uppercase shadow-[0_0_15px_rgba(6,182,212,0.04)] hover:border-cyan-550/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.18)]"
+                      className="px-6 py-3 rounded-full glass-button text-cyan-300 hover:text-white text-[11px] font-mono font-bold tracking-wider flex items-center gap-2 cursor-pointer uppercase shadow-[0_0_15px_rgba(6,182,212,0.04)]"
                     >
                       <Layers className="w-3.5 h-3.5 text-cyan-400 group-hover:text-cyan-300" />
                       Analyze Blueprint

@@ -170,10 +170,10 @@ export default function TechStack() {
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setSelectedSkill(skill)}
                       onMouseEnter={() => setSelectedSkill(skill)}
-                      className={`px-3.5 py-2 rounded-full text-xs font-sans tracking-tight transition-colors uppercase cursor-pointer border ${
+                      className={`px-3.5 py-2 rounded-full text-xs font-sans tracking-tight transition-all duration-300 uppercase cursor-pointer border ${
                         isActive
-                          ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white border-transparent font-bold shadow-[0_0_15px_rgba(6,182,212,0.35)] scale-[1.03]"
-                          : "bg-[#07070a]/40 border-neutral-900 text-neutral-400 hover:text-white hover:border-neutral-850"
+                          ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white border-transparent font-black shadow-[0_0_15px_rgba(6,182,212,0.35)] scale-[1.03]"
+                          : "bg-white/[0.02] border-white/[0.04] backdrop-blur-md text-neutral-400 hover:text-white hover:border-white/[0.12] hover:bg-white/[0.05]"
                       }`}
                     >
                       {skill.name}
@@ -194,7 +194,7 @@ export default function TechStack() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.3 }}
-              className="glass-panel p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)] hover:border-cyan-500/30 bg-[#07070d]/50"
+              className="glass-panel-ultra p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
@@ -213,7 +213,7 @@ export default function TechStack() {
               </div>
 
               {/* Specs Badge */}
-              <div className="bg-neutral-950/90 border border-neutral-850 rounded-xl p-5 self-start md:self-center font-mono text-xs space-y-2 shrink-0 shadow-lg min-w-[200px]">
+              <div className="bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-xl p-5 self-start md:self-center font-mono text-xs space-y-2 shrink-0 shadow-lg min-w-[200px]">
                 <div className="space-y-1">
                   <span className="text-[9px] text-neutral-500 block uppercase font-bold tracking-widest">PROFICIENCY COEFFICIENT</span>
                   <span className="text-cyan-400 font-extrabold block text-sm">{selectedSkill.proficiency}</span>

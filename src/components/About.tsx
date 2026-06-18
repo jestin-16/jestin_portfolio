@@ -87,15 +87,15 @@ export default function About() {
             </motion.p>
 
             <div className="flex flex-wrap gap-3 text-[10px] font-mono pt-2">
-              <span className="px-3.5 py-2 bg-cyan-950/25 border border-cyan-500/20 text-cyan-300 rounded-xl flex items-center gap-1.5 shadow-[0_0_15px_rgba(6,182,212,0.04)]">
+              <span className="px-3.5 py-2 bg-white/[0.02] border border-cyan-500/10 hover:border-cyan-500/30 text-cyan-300 rounded-xl flex items-center gap-1.5 shadow-[0_0_15px_rgba(6,182,212,0.03)] backdrop-blur-md transition-all">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping inline-block" />
                 STATUS: Actively Engineering APIs
               </span>
-              <span className="px-3.5 py-2 bg-fuchsia-950/25 border border-fuchsia-500/20 text-fuchsia-300 rounded-xl flex items-center gap-1.5 shadow-[0_0_15px_rgba(240,46,170,0.04)]">
+              <span className="px-3.5 py-2 bg-white/[0.02] border border-fuchsia-500/10 hover:border-fuchsia-500/30 text-fuchsia-300 rounded-xl flex items-center gap-1.5 shadow-[0_0_15px_rgba(240,46,170,0.03)] backdrop-blur-md transition-all">
                 <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400 inline-block" />
                 DEGREE: Master of Computer Applications
               </span>
-              <span className="px-3.5 py-2 bg-violet-950/25 border border-violet-500/20 text-violet-300 rounded-xl flex items-center gap-1.5 shadow-[0_0_15px_rgba(139,92,246,0.04)] font-bold">
+              <span className="px-3.5 py-2 bg-white/[0.02] border border-violet-500/10 hover:border-violet-500/30 text-violet-300 rounded-xl flex items-center gap-1.5 shadow-[0_0_15px_rgba(139,92,246,0.03)] font-bold backdrop-blur-md transition-all">
                 <span className="w-1.5 h-1.5 rounded-full bg-violet-400 inline-block" />
                 LOCATION: {bio.location}
               </span>

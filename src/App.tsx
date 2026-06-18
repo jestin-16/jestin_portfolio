@@ -168,7 +168,7 @@ export default function App() {
         id="navbar"
         className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
           scrolled
-            ? "py-4 bg-[#050505]/90 backdrop-blur-md border-b border-neutral-900 shadow-xl shadow-black/80"
+            ? "py-4 bg-[#050508]/40 backdrop-blur-xl border-b border-white/[0.05] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
             : "py-6 bg-transparent border-b border-transparent"
         }`}
       >
@@ -177,13 +177,13 @@ export default function App() {
           {/* Solid circular logo icon */}
           <button
             onClick={() => handleScrollToSection("home")}
-            className="w-10 h-10 rounded-full bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 flex items-center justify-center font-bold text-white uppercase text-xs cursor-pointer select-none tracking-wider shadow-lg hover:scale-105 transition-all duration-300"
+            className="w-10 h-10 rounded-full bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-cyan-500/30 flex items-center justify-center font-black text-white uppercase text-xs cursor-pointer select-none tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(6,182,212,0.18)] hover:scale-105 transition-all duration-300"
           >
             js
           </button>
 
           {/* Centered Floating Nav Bar (As shown in screenshot) */}
-          <nav role="navigation" className="hidden md:flex items-center gap-1.5 p-1 bg-[#121216]/60 border border-neutral-900 rounded-full backdrop-blur-md relative">
+          <nav role="navigation" className="hidden md:flex items-center gap-1.5 p-1 bg-white/[0.02] border border-white/[0.06] rounded-full backdrop-blur-xl relative">
             {["home", "services", "about", "tech", "projects"].map((item) => {
               const isActive = activeSection === item;
               return (
@@ -192,13 +192,13 @@ export default function App() {
                   onClick={() => handleScrollToSection(item)}
                   className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-300 cursor-pointer rounded-full relative z-10`}
                 >
-                  <span className={`relative z-10 ${isActive ? "text-white" : "text-neutral-400 hover:text-white"}`}>
+                  <span className={`relative z-10 ${isActive ? "text-cyan-300 font-bold" : "text-neutral-400 hover:text-white"}`}>
                     {item === "tech" ? "Skills" : item}
                   </span>
                   {isActive && (
                     <motion.div
                       layoutId="activeNavItem"
-                      className="absolute inset-0 bg-white/[0.06] rounded-full z-0"
+                      className="absolute inset-0 bg-white/[0.06] border border-white/[0.05] rounded-full z-0 shadow-inner"
                       transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -210,7 +210,7 @@ export default function App() {
           {/* Let's Talk Pill shape trigger */}
           <button
             onClick={() => handleScrollToSection("contact")}
-            className="hidden md:inline-block px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white border border-neutral-800 rounded-full text-xs font-bold tracking-wide transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg"
+            className="hidden md:inline-block px-5 py-2.5 bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 hover:from-cyan-500/20 hover:to-indigo-500/20 text-cyan-300 hover:text-white border border-cyan-500/20 hover:border-cyan-500/40 rounded-full text-xs font-black tracking-wide transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg backdrop-blur-md"
           >
             Let's Talk
           </button>
@@ -218,7 +218,7 @@ export default function App() {
           {/* Handheld Trigger toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-400 hover:text-white p-2 border border-neutral-900 bg-neutral-950 rounded-lg cursor-pointer"
+            className="md:hidden text-gray-300 hover:text-white p-2 border border-white/10 bg-white/[0.03] backdrop-blur-md rounded-lg cursor-pointer"
           >
             {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -232,7 +232,7 @@ export default function App() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="md:hidden bg-[#0a0a0d] border-b border-neutral-900 overflow-hidden"
+              className="md:hidden bg-[#07070b]/80 backdrop-blur-2xl border-b border-white/[0.05] overflow-hidden"
             >
               <nav role="navigation" className="flex flex-col p-6 gap-2 text-xs font-mono font-bold text-gray-400">
                 {[
@@ -248,7 +248,8 @@ export default function App() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: idx * 0.05, duration: 0.3 }}
                     onClick={() => handleScrollToSection(item.id)}
-                    className="text-left py-2 border-b border-neutral-900/45 hover:text-white uppercase tracking-wider cursor-pointer"
+                    className="text-left py-2 border-b border-white/[0.03] hover:text-white uppercase tracking-wider cursor-pointer font-medium"
+                    style={{ textShadow: "0 0 10px rgba(0,0,0,0.5)" }}
                   >
                     // {item.label}
                   </motion.button>
@@ -258,7 +259,7 @@ export default function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25 }}
                   onClick={() => handleScrollToSection("contact")}
-                  className="w-full text-center py-3 bg-white text-black rounded-full mt-4 font-bold select-none cursor-pointer uppercase tracking-widest text-[11px]"
+                  className="w-full text-center py-3 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/20 hover:border-cyan-500/40 rounded-full mt-4 font-black select-none cursor-pointer uppercase tracking-widest text-[11px] backdrop-blur-md"
                 >
                   Let's Talk
                 </motion.button>

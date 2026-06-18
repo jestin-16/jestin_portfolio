@@ -110,7 +110,7 @@ export default function Services() {
               {serv.tags.map((tg, ti) => (
                 <div
                   key={ti}
-                  className="px-3 py-1.5 rounded-lg bg-[#07070a]/40 border border-neutral-900/80 flex items-center justify-between text-neutral-400 group-hover:text-neutral-200 group-hover:border-neutral-800/80 transition-all duration-300"
+                  className="px-3 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.04] backdrop-blur-md flex items-center justify-between text-neutral-300 group-hover:text-neutral-100 group-hover:border-white/[0.08] group-hover:bg-white/[0.04] transition-all duration-300"
                 >
                   <span>{tg}</span>
                 </div>
