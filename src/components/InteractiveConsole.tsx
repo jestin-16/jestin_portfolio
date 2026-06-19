@@ -257,7 +257,7 @@ export default function InteractiveConsole() {
                 <button
                   onClick={() => triggerEndpoint("/api/v1/auth")}
                   disabled={activePathNode !== null}
-                  className="flex items-center justify-between px-3 py-2 rounded-lg bg-white/[0.02] border border-white/[0.06] hover:border-blue-500/40 hover:bg-blue-500/[0.03] text-[9px] font-mono text-neutral-300 cursor-pointer transition-all disabled:opacity-45Disabled"
+                  className="flex items-center justify-between px-3 py-2 rounded-lg bg-white/[0.02] border border-white/[0.06] hover:border-blue-500/40 hover:bg-blue-500/[0.03] text-[9px] font-mono text-neutral-300 cursor-pointer transition-all disabled:opacity-45"
                 >
                   <span className="flex items-center gap-1.5">
                     <span className="text-[#3B82F6] font-bold">GET</span>

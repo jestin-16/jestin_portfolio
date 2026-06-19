@@ -25,6 +25,13 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Simulation pipeline states
+  const [deploymentTarget, setDeploymentTarget] = useState<"Minikube" | "AWS EKS" | "Cloud Run">("Minikube");
+  const [selectedLaboratory, setSelectedLaboratory] = useState<"MCA Lab 3" | "B.Tech DSP" | "Mainframe Core">("MCA Lab 3");
+  const [eventSlots, setEventSlots] = useState<boolean[]>([
+    true, false, false, true, false, true, false, false
+  ]);
+  const [eventBookingLog, setEventBookingLog] = useState<string>("Click slots below to toggle ACID locking constraints.");
+
   const [jenkinsLogs, setJenkinsLogs] = useState<string[]>([]);
   const [jenkinsStatus, setJenkinsStatus] = useState<"idle" | "building" | "success">("idle");
   const [barcodeInput, setBarcodeInput] = useState("JS-MCA-2026-902");
@@ -51,17 +58,33 @@ export default function Projects() {
         ]);
       }, 1000);
       const t2 = setTimeout(() => {
+        let platformLog = "";
+        if (deploymentTarget === "Minikube") {
+          platformLog = "[K8S] Dynamic rolling upgrade command dispatched to local Minikube cluster nodes.";
+        } else if (deploymentTarget === "AWS EKS") {
+          platformLog = "[AWS] Dispatching production Helm charts over target AWS EKS multi-AZ spot nodegroups.";
+        } else {
+          platformLog = "[GCP] Dispatching container manifest layout descriptor to Serverless Cloud Run service entrypoint.";
+        }
         setJenkinsLogs(prev => [
           ...prev,
           "[DOCKER] Packing target payload into alpine-java-jre image layer",
           "[DOCKER] Syncing artifacts -> Docker Hub Registry [jestinshaji/spring-node]",
-          "[K8S] Dynamic rolling upgrade command dispatched to Minikube."
+          platformLog
         ]);
       }, 2000);
       const t3 = setTimeout(() => {
+        let successLog = "";
+        if (deploymentTarget === "Minikube") {
+          successLog = "[SUCCESS] Local cluster rolling update complete! 0-downtime transition secured under 1.2s.";
+        } else if (deploymentTarget === "AWS EKS") {
+          successLog = "[SUCCESS] High-availability multi-region EKS traffic balance verified! Scaled nodes stable under high load.";
+        } else {
+          successLog = "[SUCCESS] Cloud Run revision traffic routing 100% updated dynamically. Cold starts bypassed successfully!";
+        }
         setJenkinsLogs(prev => [
           ...prev,
-          "[SUCCESS] Rolling deployment complete! 0-downtime transition secured under 1.2s."
+          successLog
         ]);
         setJenkinsStatus("success");
       }, 3200);
@@ -72,7 +95,7 @@ export default function Projects() {
         clearTimeout(t3);
       };
     }
-  }, [jenkinsStatus]);
+  }, [jenkinsStatus, deploymentTarget]);
 
   const handleRunPipeline = () => {
     setJenkinsStatus("building");
@@ -80,14 +103,35 @@ export default function Projects() {
 
   const handleBarcodeScan = () => {
     if (!barcodeInput) return;
-    const labMachines = ["Node-9B_WS", "Node-12A_WS", "Node-3C_WS", "Node-7F_WS"];
+    let labMachines: string[] = [];
+    if (selectedLaboratory === "MCA Lab 3") {
+      labMachines = ["MCA-Station-9B", "MCA-Station-12A", "MCA-Station-3C", "MCA-Station-7F"];
+    } else if (selectedLaboratory === "B.Tech DSP") {
+      labMachines = ["DSP-Rig-101", "DSP-Rig-204", "DSP-Rig-402", "DSP-Rig-305"];
+    } else {
+      labMachines = ["CORE-Cabinet-01A", "CORE-Cabinet-03F", "CORE-Cabinet-02B"];
+    }
     const randomMachine = labMachines[Math.floor(Math.random() * labMachines.length)];
     setLastAllocatedSeat(randomMachine);
     setAllocationLog([
-      `[AUTH] Barcode decrypted: "${barcodeInput}" verified.`,
-      `[NODEALLOC] Auditing laboratory occupancy... Workstation list synchronized.`,
-      `[RESERVED] Seat ${randomMachine} initialized for ${barcodeInput}.`
+      `[AUTH] Barcode '${barcodeInput}' decrypted & securely authenticated.`,
+      `[NODEALLOC] Target Grid: '${selectedLaboratory}' selected. Recounting current density factor...`,
+      `[RESERVED] Session active. Device assigned -> Station: ${randomMachine}.`
     ]);
+  };
+
+  const handleToggleEventSlot = (index: number) => {
+    const nextSlots = [...eventSlots];
+    const isNowReserved = !nextSlots[index];
+    nextSlots[index] = isNowReserved;
+    setEventSlots(nextSlots);
+
+    const dateNum = 24 + index;
+    if (isNowReserved) {
+      setEventBookingLog(`[TX_OK] May ${dateNum} secured. SERIALIZABLE lock acquired, database sequence updated.`);
+    } else {
+      setEventBookingLog(`[TX_RELEASE] May ${dateNum} released. Row lock de-allocated. Shared buffers reclaimed.`);
+    }
   };
 
   const handleMoodSelect = (mood: string) => {
@@ -261,15 +305,29 @@ export default function Projects() {
                         </div>
 
                         {/* Control actions */}
-                        <div className="flex items-center gap-3">
+                        <div className="flex flex-wrap items-center gap-3">
                           <button
                             onClick={handleRunPipeline}
                             disabled={jenkinsStatus === "building"}
-                            className="bg-white/5 text-white border border-neutral-800 hover:bg-white/10 px-4 py-2 rounded-lg text-[9px] font-bold tracking-widest transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                            className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 hover:opacity-90 text-white px-4 py-2 rounded-lg text-[9px] font-black tracking-widest transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50 shadow-md"
                           >
                             <Play className="w-3 h-3" />
-                            {jenkinsStatus === "building" ? "EXECUTING HOOK SEQUENCE..." : "TRIGGER PIPELINE RELEASE"}
+                            {jenkinsStatus === "building" ? "EXECUTING HOOK..." : "TRIGGER PIPELINE RELEASE"}
                           </button>
+
+                          <div className="flex items-center gap-1 bg-neutral-950 px-2 py-1 border border-neutral-850 rounded-lg">
+                            <span className="text-[8px] text-neutral-500 font-bold uppercase tracking-widest">Platform:</span>
+                            <select
+                              value={deploymentTarget}
+                              onChange={(e) => setDeploymentTarget(e.target.value as any)}
+                              disabled={jenkinsStatus === "building"}
+                              className="bg-transparent text-[8.5px] text-cyan-300 font-bold uppercase outline-none cursor-pointer border-none p-0.5"
+                            >
+                              <option value="Minikube" className="bg-neutral-950 text-neutral-300">Minikube (Local)</option>
+                              <option value="AWS EKS" className="bg-neutral-950 text-neutral-300">AWS EKS (Secure Cloud)</option>
+                              <option value="Cloud Run" className="bg-neutral-950 text-neutral-300">GCP Cloud Run</option>
+                            </select>
+                          </div>
                         </div>
 
                         {/* Internal Terminal Output */}
@@ -315,7 +373,7 @@ export default function Projects() {
 
                         {/* Barcode Scanner Inputs */}
                         <div className="space-y-4">
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                          <div className="flex flex-wrap items-center gap-3">
                             <div className="flex items-center gap-2">
                               <label className="text-[9px] text-neutral-500 uppercase font-black tracking-widest">
                                 RFID BADGE NO:
@@ -324,15 +382,29 @@ export default function Projects() {
                                 type="text"
                                 value={barcodeInput}
                                 onChange={(e) => setBarcodeInput(e.target.value)}
-                                className="bg-black/50 border border-neutral-800 px-3 py-1.5 rounded-lg text-xs text-white max-w-[150px] font-mono focus:border-neutral-700 outline-none"
+                                className="bg-black/55 border border-neutral-850 px-3 py-1.5 rounded-lg text-xs text-white max-w-[140px] font-mono focus:border-cyan-500/30 outline-none"
                               />
                             </div>
+                            
                             <button
                               onClick={handleBarcodeScan}
-                              className="px-4 py-2 bg-white/5 text-neutral-200 border border-neutral-800 hover:bg-white/10 rounded-lg text-[9px] font-bold tracking-widest cursor-pointer uppercase"
+                              className="px-4 py-2 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 hover:from-purple-500/20 hover:to-indigo-500/20 text-purple-300 border border-purple-500/20 hover:border-purple-500/40 rounded-lg text-[9px] font-bold tracking-widest cursor-pointer uppercase transition-all"
                             >
                               Scan Student ID
                             </button>
+
+                            <div className="flex items-center gap-1 bg-neutral-950 px-2 py-1 border border-neutral-850 rounded-lg">
+                              <span className="text-[8px] text-neutral-500 font-bold uppercase tracking-widest">Lab:</span>
+                              <select
+                                value={selectedLaboratory}
+                                onChange={(e) => setSelectedLaboratory(e.target.value as any)}
+                                className="bg-transparent text-[8.5px] text-[#06B6D4] font-bold uppercase outline-none cursor-pointer border-none p-0.5"
+                              >
+                                <option value="MCA Lab 3" className="bg-neutral-950 text-neutral-300">MCA Computing Lab 3</option>
+                                <option value="B.Tech DSP" className="bg-neutral-950 text-neutral-300">Aeronautics DSP Lab 1</option>
+                                <option value="Mainframe Core" className="bg-neutral-950 text-neutral-300">Central Core Mainframe</option>
+                              </select>
+                            </div>
                           </div>
 
                           {/* Seating Assignment Visual Matrix */}
@@ -370,40 +442,42 @@ export default function Projects() {
                           <span className="text-[9px] text-[#777] font-bold uppercase tracking-widest font-black">
                             PostgreSQL Transaction Schedules Node
                           </span>
-                          <span className="text-white text-[9px] font-bold bg-neutral-900 px-2.5 py-1 rounded border border-neutral-800">
-                            ACID Transaction Map
+                          <span className="text-cyan-400 text-[9px] font-bold bg-neutral-950 px-2.5 py-1 rounded border border-neutral-850">
+                            ACID Transaction Map (Click to Toggle)
                           </span>
                         </div>
 
                         {/* Calendar visual booking slots */}
                         <div className="grid grid-cols-4 gap-2 text-center text-[10px] flex-1">
-                          {[...Array(8)].map((_, i) => {
+                          {eventSlots.map((isReserved, i) => {
                             const dateNum = 24 + i;
-                            const isReserved = i % 3 === 0;
 
                             return (
-                              <div
+                              <button
                                 key={i}
-                                className={`rounded-xl border p-3 flex flex-col justify-between transition-colors ${
+                                onClick={() => handleToggleEventSlot(i)}
+                                className={`rounded-xl border p-3 flex flex-col justify-between transition-all duration-300 transform active:scale-95 text-left cursor-pointer ${
                                   isReserved
-                                    ? "bg-neutral-950/40 border-neutral-900 text-neutral-600"
-                                    : "bg-white/[0.02] border-neutral-800 text-neutral-200"
+                                    ? "bg-red-950/20 border-red-500/20 text-red-300 hover:bg-red-900/10 hover:border-red-500/30 shadow-[inset_0_1px_10px_rgba(239,68,68,0.05)]"
+                                    : "bg-emerald-950/10 border-emerald-500/10 text-emerald-300 hover:bg-emerald-950/25 hover:border-emerald-500/30"
                                 }`}
                               >
-                                <span className="text-[8px] font-mono block text-neutral-500">MAY {dateNum}</span>
-                                <div className="text-xs font-bold leading-none py-2 font-display">
+                                <span className="text-[8px] font-mono block opacity-60">MAY {dateNum}</span>
+                                <div className="text-xs font-black leading-none py-1.5 font-sans tracking-wide">
                                   {isReserved ? "RESERVED" : "VACANT"}
                                 </div>
-                                <span className="text-[8px] opacity-60 block tracking-widest font-bold">
-                                  {isReserved ? "NODE LOCK" : "STABLE ID"}
+                                <span className="text-[7.5px] opacity-40 block tracking-wider uppercase font-black">
+                                  {isReserved ? "ROW LOCK" : "RESERVE"}
                                 </span>
-                              </div>
+                              </button>
                             );
                           })}
                         </div>
-                        <div className="text-[9px] text-neutral-500 flex items-center justify-between pt-2 border-t border-neutral-900">
-                          <span>System audit log: "Simultaneous check-ins balanced via isolation level database routines."</span>
-                          <span>60 FPS</span>
+                        
+                        {/* Interactive transaction audit log display */}
+                        <div className="p-2 px-3 rounded-lg bg-neutral-950 border border-neutral-850/80 text-[8.5px] text-zinc-400 leading-relaxed font-mono flex items-center gap-1.5 min-h-[28px]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping inline-block shrink-0" />
+                          <span>{eventBookingLog}</span>
                         </div>
                       </div>
                     )}
