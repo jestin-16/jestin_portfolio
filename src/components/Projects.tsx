@@ -162,11 +162,11 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040d] via-[#020205] to-[#030308] relative overflow-hidden select-none">
+    <section id="projects" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040e] via-[#050519] to-[#020206] relative overflow-hidden select-none">
       
       {/* Background atmospheres */}
-      <div className="absolute top-1/3 left-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.055)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.045)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         
@@ -177,10 +177,10 @@ export default function Projects() {
               // CASE STUDIES
             </span>
           </div>
-          <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-indigo-300 mb-3">
+          <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow mb-3">
             Featured Systems
           </h2>
-          <p className="text-neutral-400 text-sm sm:text-base max-w-xl font-sans mt-3">
+          <p className="text-neutral-300 text-sm sm:text-base max-w-xl font-sans mt-3 font-medium">
             Interactive system sandboxes engineered to demonstrate enterprise readiness and cloud-native simulation loops.
           </p>
         </div>

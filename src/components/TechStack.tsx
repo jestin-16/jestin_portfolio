@@ -107,11 +107,11 @@ export default function TechStack() {
   });
 
   return (
-    <section id="tech" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040b] via-[#020205] to-[#04040d] relative overflow-hidden border-t border-neutral-900/60 select-none">
+    <section id="tech" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040d] via-[#060618] to-[#04040e] relative overflow-hidden border-t border-white/[0.04] select-none">
       
       {/* Background atmospheres */}
-      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.035)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.025)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-1/4 w-[450px] h-[450px] bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.06)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         
@@ -122,7 +122,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400"
+            className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow"
           >
             Skills
           </motion.h2>
@@ -131,7 +131,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto font-sans"
+            className="text-neutral-300 text-sm sm:text-base max-w-xl mx-auto font-sans font-medium"
           >
             Crafting seamless enterprise backend components and super fluid front-end utilities
           </motion.p>
@@ -147,7 +147,7 @@ export default function TechStack() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: cidx * 0.1 }}
               whileHover={{ y: -6, scale: 1.015, transition: { duration: 0.2, ease: "easeOut" } }}
-              className="glass-panel p-6 space-y-6 transition-all duration-300 group overflow-hidden bg-[#0a0a0f]/40 hover:bg-[#0d0d18]/60 hover:shadow-[0_4px_30px_rgba(255,255,255,0.01)]"
+              className="glass-panel p-6 space-y-6 transition-all duration-300 group overflow-hidden bg-white/[0.02] border-white/[0.04] backdrop-blur-md hover:bg-white/[0.05] hover:border-cyan-500/35 hover:shadow-[0_8px_30px_rgba(6,182,212,0.08)]"
             >
               {/* Category Identifier */}
               <div className="flex items-center gap-3">

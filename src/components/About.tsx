@@ -33,10 +33,10 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040b] via-[#020205] to-[#04040d] relative overflow-hidden border-t border-neutral-900/60 select-none">
+    <section id="about" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040d] via-[#05051c] to-[#03030b] relative overflow-hidden border-t border-white/[0.04] select-none">
       
       {/* Visual background atmospheric elements */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.025)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.07)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-16">
         
@@ -47,7 +47,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-450"
+            className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-sky-300 text-glow"
           >
             About Me
           </motion.h2>
@@ -118,14 +118,14 @@ export default function About() {
         </div>
 
         {/* High quality divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-neutral-900 to-transparent w-full my-8" />
+        <div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent w-full my-8" />
 
         {/* Sub-heading Approach */}
         <div className="space-y-3 text-center">
-          <h3 className="text-xl font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent tracking-tight">
+          <h3 className="text-xl font-bold bg-gradient-to-r from-white via-cyan-200 to-indigo-300 bg-clip-text text-transparent tracking-tight">
             My Approach
           </h3>
-          <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-indigo-500 mx-auto rounded" />
+          <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-indigo-500 mx-auto rounded shadow-[0_0_8px_#06b6d4]" />
         </div>
 
         {/* Tri-fold Horizontal Approach Bento Containers */}
@@ -177,7 +177,7 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ type: "spring", delay: sIdx * 0.1, duration: 0.6 }}
                 whileHover={{ scale: 1.03, y: -4, transition: { duration: 0.15 } }}
-                className={`space-y-1 glass-panel p-5 transition-all duration-300 relative overflow-hidden bg-[#0a0a10]/40 ${activeGrad.split(" ")[1] || "hover:border-indigo-500/30"}`}
+                className={`space-y-1 glass-panel p-5 transition-all duration-300 relative overflow-hidden bg-white/[0.02] hover:bg-white/[0.04] border-white/[0.04] backdrop-blur-md ${activeGrad.split(" ").slice(1).join(" ")}`}
               >
                 {/* Internal ambient backglow */}
                 <div className="absolute -inset-10 bg-radial from-indigo-500/[0.012] to-transparent pointer-events-none" />

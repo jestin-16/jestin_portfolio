@@ -46,10 +46,10 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#020205] to-[#04040b] relative overflow-hidden border-t border-neutral-900/60 select-none">
+    <section id="services" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#010104] to-[#04040d] relative overflow-hidden border-t border-white/[0.04] select-none">
       
       {/* Soft visual glow background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.015)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.06)_0%,transparent_75%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto text-center space-y-4 mb-16">
         <motion.h2
@@ -57,7 +57,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-neutral-400"
+          className="text-4xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow"
         >
           Services
         </motion.h2>
@@ -66,7 +66,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-neutral-400 font-sans text-sm sm:text-base max-w-xl mx-auto"
+          className="text-neutral-300 font-sans text-sm sm:text-base max-w-xl mx-auto font-medium"
         >
           Architecting clean, scalable backends and modern responsive interfaces
         </motion.p>
@@ -81,7 +81,7 @@ export default function Services() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.7, delay: sidx * 0.1 }}
             whileHover={{ y: -8, scale: 1.025, transition: { duration: 0.2, ease: "easeOut" } }}
-            className={`group relative glass-panel p-6 flex flex-col justify-between pointer-events-auto overflow-hidden bg-[#0a0a0f]/40 transition-all duration-350 hover:bg-[#0c0c16]/70 ${serv.hoverBorder}`}
+            className={`group relative glass-panel p-6 flex flex-col justify-between pointer-events-auto overflow-hidden bg-white/[0.02] border-white/[0.04] backdrop-blur-md transition-all duration-350 hover:bg-white/[0.05] ${serv.hoverBorder}`}
           >
             {/* Absolute radial glow centered around the hover position inside card */}
             <div className={`absolute -inset-40 bg-radial ${serv.glowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />

@@ -68,10 +68,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#030308] via-[#020205] to-[#04040a] relative overflow-hidden border-t border-white/[0.03]">
+    <section id="contact" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#020206] via-[#05051a] to-[#010103] relative overflow-hidden border-t border-white/[0.04]">
       {/* Dynamic background lights */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.045)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(240,46,170,0.035)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.12)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(240,46,170,0.09)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Title Block */}
@@ -82,10 +82,10 @@ export default function Contact() {
               06 / Transmission
             </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-indigo-300 mb-2">
+          <h2 className="text-3xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow mb-2">
             Get In Touch.
           </h2>
-          <p className="text-neutral-400 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
+          <p className="text-neutral-300 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
             Establish a secure connection with Jestin. Dispatch system inquiries, technical briefs, or academic collaborations instantly.
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function Contact() {
             {/* Quick click copy container */}
             <motion.div
               whileHover={{ y: -4, scale: 1.015, transition: { duration: 0.2 } }}
-              className="glass-panel p-6 relative overflow-hidden group hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] bg-[#0a0a11]/40 transition-all duration-300 animate-none"
+              className="glass-panel p-6 relative overflow-hidden group hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.18)] bg-white/[0.02] border-white/[0.04] backdrop-blur-md transition-all duration-300 animate-none"
             >
               <div className="flex items-start justify-between">
                 <div>
@@ -129,7 +129,7 @@ export default function Contact() {
             {/* Direct Dial Endpoint */}
             <motion.div
               whileHover={{ y: -4, scale: 1.015, transition: { duration: 0.2 } }}
-              className="glass-panel p-6 group hover:border-purple-500/40 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] bg-[#0a0a11]/40 transition-all duration-300"
+              className="glass-panel p-6 group hover:border-purple-500/40 hover:shadow-[0_0_20px_rgba(168,85,247,0.18)] bg-white/[0.02] border-white/[0.04] backdrop-blur-md transition-all duration-300"
             >
               <Phone className="w-5 h-5 text-purple-400 mb-4" />
               <span className="text-[10px] font-mono text-gray-450 block uppercase tracking-wider mb-1 font-bold">
@@ -165,7 +165,7 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
               whileHover={{ border: "1px solid rgba(62,184,212,0.25)", transition: { duration: 0.3 } }}
-              className="glass-panel p-6 md:p-8 space-y-6 relative hover:shadow-[0_0_25px_rgba(6,182,212,0.02)] transition-all duration-300 bg-[#0a0a11]/40"
+              className="glass-panel p-6 md:p-8 space-y-6 relative hover:shadow-[0_0_25px_rgba(6,182,212,0.05)] transition-all duration-300 bg-white/[0.02] border-white/[0.04] backdrop-blur-md"
             >
               <p className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-2 font-bold select-none">
                 &lt;Interactive Dispatch Protocol /&gt;
