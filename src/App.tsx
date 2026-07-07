@@ -164,280 +164,291 @@ export default function App() {
       </AnimatePresence>
 
       {/* 2. Refined Floating Pill Header/Navbar (Inspired by reference) */}
-      <header
-        id="navbar"
-        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
-          scrolled
-            ? "py-4 bg-[#050508]/40 backdrop-blur-xl border-b border-white/[0.05] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-            : "py-6 bg-transparent border-b border-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          
-          {/* Solid circular logo icon */}
-          <button
-            onClick={() => handleScrollToSection("home")}
-            className="w-10 h-10 rounded-full bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-cyan-500/30 flex items-center justify-center font-black text-white uppercase text-xs cursor-pointer select-none tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(6,182,212,0.18)] hover:scale-105 transition-all duration-300"
+      <AnimatePresence>
+        {!systemLoading && (
+          <motion.div
+            key="main-portfolio"
+            initial={{ opacity: 0, y: 20, filter: "blur(12px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.4, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            js
-          </button>
-
-          {/* Centered Floating Nav Bar (As shown in screenshot) */}
-          <nav role="navigation" className="hidden md:flex items-center gap-1.5 p-1 bg-white/[0.02] border border-white/[0.06] rounded-full backdrop-blur-xl relative">
-            {["home", "services", "about", "tech", "projects"].map((item) => {
-              const isActive = activeSection === item;
-              return (
-                <button
-                  key={item}
-                  onClick={() => handleScrollToSection(item)}
-                  className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-300 cursor-pointer rounded-full relative z-10`}
-                >
-                  <span className={`relative z-10 ${isActive ? "text-cyan-300 font-bold" : "text-neutral-400 hover:text-white"}`}>
-                    {item === "tech" ? "Skills" : item}
-                  </span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNavItem"
-                      className="absolute inset-0 bg-white/[0.06] border border-white/[0.05] rounded-full z-0 shadow-inner"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </nav>
-
-          {/* Let's Talk Pill shape trigger */}
-          <button
-            onClick={() => handleScrollToSection("contact")}
-            className="hidden md:inline-block px-5 py-2.5 bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 hover:from-cyan-500/20 hover:to-indigo-500/20 text-cyan-300 hover:text-white border border-cyan-500/20 hover:border-cyan-500/40 rounded-full text-xs font-black tracking-wide transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg backdrop-blur-md"
-          >
-            Let's Talk
-          </button>
-
-          {/* Handheld Trigger toggle */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-300 hover:text-white p-2 border border-white/10 bg-white/[0.03] backdrop-blur-md rounded-lg cursor-pointer"
-          >
-            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-
-        {/* Handheld Dropdown Navigation */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="md:hidden bg-[#07070b]/80 backdrop-blur-2xl border-b border-white/[0.05] overflow-hidden"
+            <header
+              id="navbar"
+              className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
+                scrolled
+                  ? "py-4 bg-[#050508]/40 backdrop-blur-xl border-b border-white/[0.05] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+                  : "py-6 bg-transparent border-b border-transparent"
+              }`}
             >
-              <nav role="navigation" className="flex flex-col p-6 gap-2 text-xs font-mono font-bold text-gray-400">
-                {[
-                  { id: "home", label: "Home" },
-                  { id: "services", label: "Services" },
-                  { id: "about", label: "About Me" },
-                  { id: "tech", label: "Skills Stack" },
-                  { id: "projects", label: "Projects" },
-                ].map((item, idx) => (
-                  <motion.button
-                    key={item.id}
-                    initial={{ x: -16, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: idx * 0.05, duration: 0.3 }}
-                    onClick={() => handleScrollToSection(item.id)}
-                    className="text-left py-2 border-b border-white/[0.03] hover:text-white uppercase tracking-wider cursor-pointer font-medium"
-                    style={{ textShadow: "0 0 10px rgba(0,0,0,0.5)" }}
-                  >
-                    // {item.label}
-                  </motion.button>
-                ))}
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.25 }}
+              <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+                
+                {/* Solid circular logo icon */}
+                <button
+                  onClick={() => handleScrollToSection("home")}
+                  className="w-10 h-10 rounded-full bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-cyan-500/30 flex items-center justify-center font-black text-white uppercase text-xs cursor-pointer select-none tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(6,182,212,0.18)] hover:scale-105 transition-all duration-300"
+                >
+                  js
+                </button>
+
+                {/* Centered Floating Nav Bar (As shown in screenshot) */}
+                <nav role="navigation" className="hidden md:flex items-center gap-1.5 p-1 bg-white/[0.02] border border-white/[0.06] rounded-full backdrop-blur-xl relative">
+                  {["home", "services", "about", "tech", "projects"].map((item) => {
+                    const isActive = activeSection === item;
+                    return (
+                      <button
+                        key={item}
+                        onClick={() => handleScrollToSection(item)}
+                        className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-300 cursor-pointer rounded-full relative z-10`}
+                      >
+                        <span className={`relative z-10 ${isActive ? "text-cyan-300 font-bold" : "text-neutral-400 hover:text-white"}`}>
+                          {item === "tech" ? "Skills" : item}
+                        </span>
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeNavItem"
+                            className="absolute inset-0 bg-white/[0.06] border border-white/[0.05] rounded-full z-0 shadow-inner"
+                            transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
+                </nav>
+
+                {/* Let's Talk Pill shape trigger */}
+                <button
                   onClick={() => handleScrollToSection("contact")}
-                  className="w-full text-center py-3 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/20 hover:border-cyan-500/40 rounded-full mt-4 font-black select-none cursor-pointer uppercase tracking-widest text-[11px] backdrop-blur-md"
+                  className="hidden md:inline-block px-5 py-2.5 bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 hover:from-cyan-500/20 hover:to-indigo-500/20 text-cyan-300 hover:text-white border border-cyan-500/20 hover:border-cyan-500/40 rounded-full text-xs font-black tracking-wide transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg backdrop-blur-md"
                 >
                   Let's Talk
+                </button>
+
+                {/* Handheld Trigger toggle */}
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="md:hidden text-gray-300 hover:text-white p-2 border border-white/10 bg-white/[0.03] backdrop-blur-md rounded-lg cursor-pointer"
+                >
+                  {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                </button>
+              </div>
+
+              {/* Handheld Dropdown Navigation */}
+              <AnimatePresence>
+                {isMenuOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="md:hidden bg-[#07070b]/80 backdrop-blur-2xl border-b border-white/[0.05] overflow-hidden"
+                  >
+                    <nav role="navigation" className="flex flex-col p-6 gap-2 text-xs font-mono font-bold text-gray-400">
+                      {[
+                        { id: "home", label: "Home" },
+                        { id: "services", label: "Services" },
+                        { id: "about", label: "About Me" },
+                        { id: "tech", label: "Skills Stack" },
+                        { id: "projects", label: "Projects" },
+                      ].map((item, idx) => (
+                        <motion.button
+                          key={item.id}
+                          initial={{ x: -16, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: idx * 0.05, duration: 0.3 }}
+                          onClick={() => handleScrollToSection(item.id)}
+                          className="text-left py-2 border-b border-white/[0.03] hover:text-white uppercase tracking-wider cursor-pointer font-medium"
+                          style={{ textShadow: "0 0 10px rgba(0,0,0,0.5)" }}
+                        >
+                          // {item.label}
+                        </motion.button>
+                      ))}
+                      <motion.button
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.25 }}
+                        onClick={() => handleScrollToSection("contact")}
+                        className="w-full text-center py-3 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/20 hover:border-cyan-500/40 rounded-full mt-4 font-black select-none cursor-pointer uppercase tracking-widest text-[11px] backdrop-blur-md"
+                      >
+                        Let's Talk
+                      </motion.button>
+                    </nav>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </header>
+
+            {/* Main visual sections contents */}
+            <main role="main">
+              {/* Cinematic Hero entry */}
+              <Hero
+                onScrollToProjects={() => handleScrollToSection("projects")}
+                onScrollToContact={() => handleScrollToSection("contact")}
+                onOpenChat={() => {
+                  // Programmatically active chatbot flow state - handled inside ChatBot floating wrapper
+                  const el = document.querySelector('[class*="fixed bottom-6 right-6"]') as HTMLElement;
+                  if (el) {
+                    const btn = el.querySelector("button") as HTMLButtonElement;
+                    if (btn) btn.click();
+                  }
+                }}
+              />
+
+              {/* Modular Tech Capabilities Services Grid */}
+              <Services />
+
+              {/* Details Profile info */}
+              <About />
+
+              {/* Interactive Stack cards */}
+              <TechStack />
+
+              {/* Alternate Interactive Cases */}
+              <Projects />
+
+              {/* Growth timeline history */}
+              <Experience />
+
+              {/* Engineering blog writeups */}
+              <Blog />
+
+              {/* Form submittals and Kopiers */}
+              <Contact />
+            </main>
+
+            {/* 3. Footer */}
+            <footer className="relative pt-20 pb-12 border-t border-white/[0.05] bg-[#050505] overflow-hidden select-none">
+              {/* Ambient bottom glow lights */}
+              <div className="absolute bottom-0 left-1/3 w-[500px] h-[300px] bg-gradient-to-t from-blue-500/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-gradient-to-t from-cyan-500/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
+
+              <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+                
+                {/* Main Footer Interaction Core */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/[0.05]">
+                  
+                  {/* Column 1: Brand & Bio Hook */}
+                  <div className="md:col-span-5 space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center font-bold text-white text-xs uppercase tracking-widest shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+                        JS
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-bold text-white tracking-wide">Jestin Shaji</h3>
+                        <p className="text-[10px] font-mono uppercase tracking-widest text-[#06B6D4] font-bold">
+                          Backend Developer &amp; Cloud Security Enthusiast
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 text-xs leading-relaxed max-w-sm font-sans font-medium">
+                      Designing ultra-scalable APIs, automated pipelines, and cloud-native systems with modular precision and high performance.
+                    </p>
+                  </div>
+
+                  {/* Column 2: System Status Indicators */}
+                  <div className="md:col-span-4 space-y-4">
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-extrabold pb-1">
+                      // ACTIVE SYSTEM STUDS
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+                      <div className="p-3 rounded-xl bg-neutral-950/60 border border-neutral-900 flex items-center gap-2.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                        <div>
+                          <span className="text-[9px] text-gray-500 uppercase block font-bold">DB FLOWS</span>
+                          <span className="text-gray-300 font-semibold text-[10px]">FIRESTORE SECURE</span>
+                        </div>
+                      </div>
+                      <div className="p-3 rounded-xl bg-neutral-950/60 border border-neutral-900 flex items-center gap-2.5">
+                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
+                        <div>
+                          <span className="text-[9px] text-gray-500 uppercase block font-bold">DEPLOY HOST</span>
+                          <span className="text-gray-300 font-semibold text-[10px]">CLOUD RUN READY</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Column 3: Communication & Socials */}
+                  <div className="md:col-span-3 space-y-4">
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-extrabold pb-1">
+                      // EXTERNAL CHANNELS
+                    </h4>
+                    <div className="flex gap-3">
+                      <a
+                        href="https://github.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-blue-500/30 hover:shadow-[0_0_12px_rgba(59,130,246,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
+                        title="GitHub profile"
+                      >
+                        <Github className="w-4.5 h-4.5" />
+                      </a>
+                      <a
+                        href="https://linkedin.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-indigo-500/30 hover:shadow-[0_0_12px_rgba(99,102,241,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
+                        title="LinkedIn profile"
+                      >
+                        <Linkedin className="w-4.5 h-4.5" />
+                      </a>
+                      <a
+                        href="mailto:jestinshaji777@gmail.com"
+                        className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-cyan-500/30 hover:shadow-[0_0_12px_rgba(6,182,212,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
+                        title="Email"
+                      >
+                        <Mail className="w-4.5 h-4.5" />
+                      </a>
+                    </div>
+                    <p className="text-[10px] text-gray-500 font-mono tracking-normal leading-relaxed">
+                      Response factor: Within 24 hours.
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* Sub Footer Row */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 font-mono text-[11px] text-gray-500">
+                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+                    <span className="tracking-wide text-gray-400">
+                      &copy; 2026 Jestin Shaji. All rights reserved.
+                    </span>
+                    <span className="hidden sm:inline text-neutral-800">|</span>
+                    <span className="text-[10px] text-gray-500">
+                      Engineered with React &amp; Tailwind CSS
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-4 text-gray-650 font-mono text-[10px] uppercase tracking-wider">
+                    <span className="hover:text-blue-400 transition-colors cursor-help" title="Modern React Frontend">React SPA</span>
+                    <span>•</span>
+                    <span className="hover:text-cyan-400 transition-colors cursor-help" title="NoSQL Serverless DB">Firebase</span>
+                    <span>•</span>
+                    <span className="hover:text-indigo-400 transition-colors cursor-help" title="Automated DevOps line">Automated Pipelines</span>
+                  </div>
+                </div>
+
+              </div>
+            </footer>
+
+            {/* 4. Floating AI Companion Assistant & Back to Top Widgets */}
+            <ChatBot />
+            <AdminDashboard />
+
+            <AnimatePresence>
+              {showScrollTop && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  onClick={handleBackToTop}
+                  title="Back to Top"
+                  className="fixed bottom-24 right-6 w-11 h-11 rounded-lg bg-[#0c0c12]/80 border border-white/10 hover:border-[#3B82F6]/50 text-white flex items-center justify-center cursor-pointer shadow-lg backdrop-blur"
+                >
+                  <ArrowUp className="w-4 h-4 text-gray-400 hover:text-white" />
                 </motion.button>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-
-      {/* Main visual sections contents */}
-      <main role="main">
-        {/* Cinematic Hero entry */}
-        <Hero
-          onScrollToProjects={() => handleScrollToSection("projects")}
-          onScrollToContact={() => handleScrollToSection("contact")}
-          onOpenChat={() => {
-            // Programmatically active chatbot flow state - handled inside ChatBot floating wrapper
-            const el = document.querySelector('[class*="fixed bottom-6 right-6"]') as HTMLElement;
-            if (el) {
-              const btn = el.querySelector("button") as HTMLButtonElement;
-              if (btn) btn.click();
-            }
-          }}
-        />
-
-        {/* Modular Tech Capabilities Services Grid */}
-        <Services />
-
-        {/* Details Profile info */}
-        <About />
-
-        {/* Interactive Stack cards */}
-        <TechStack />
-
-        {/* Alternate Interactive Cases */}
-        <Projects />
-
-        {/* Growth timeline history */}
-        <Experience />
-
-        {/* Engineering blog writeups */}
-        <Blog />
-
-        {/* Form submittals and Kopiers */}
-        <Contact />
-      </main>
-
-      {/* 3. Footer */}
-      <footer className="relative pt-20 pb-12 border-t border-white/[0.05] bg-[#050505] overflow-hidden select-none">
-        {/* Ambient bottom glow lights */}
-        <div className="absolute bottom-0 left-1/3 w-[500px] h-[300px] bg-gradient-to-t from-blue-500/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-gradient-to-t from-cyan-500/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
-          {/* Main Footer Interaction Core */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/[0.05]">
-            
-            {/* Column 1: Brand & Bio Hook */}
-            <div className="md:col-span-5 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center font-bold text-white text-xs uppercase tracking-widest shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
-                  JS
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-white tracking-wide">Jestin Shaji</h3>
-                  <p className="text-[10px] font-mono uppercase tracking-widest text-[#06B6D4] font-bold">
-                    Backend Developer &amp; Cloud Security Enthusiast
-                  </p>
-                </div>
-              </div>
-              <p className="text-gray-400 text-xs leading-relaxed max-w-sm font-sans font-medium">
-                Designing ultra-scalable APIs, automated pipelines, and cloud-native systems with modular precision and high performance.
-              </p>
-            </div>
-
-            {/* Column 2: System Status Indicators */}
-            <div className="md:col-span-4 space-y-4">
-              <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-extrabold pb-1">
-                // ACTIVE SYSTEM STUDS
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-neutral-950/60 border border-neutral-900 flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                  <div>
-                    <span className="text-[9px] text-gray-500 uppercase block font-bold">DB FLOWS</span>
-                    <span className="text-gray-300 font-semibold text-[10px]">FIRESTORE SECURE</span>
-                  </div>
-                </div>
-                <div className="p-3 rounded-xl bg-neutral-950/60 border border-neutral-900 flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
-                  <div>
-                    <span className="text-[9px] text-gray-500 uppercase block font-bold">DEPLOY HOST</span>
-                    <span className="text-gray-300 font-semibold text-[10px]">CLOUD RUN READY</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Column 3: Communication & Socials */}
-            <div className="md:col-span-3 space-y-4">
-              <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-extrabold pb-1">
-                // EXTERNAL CHANNELS
-              </h4>
-              <div className="flex gap-3">
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-blue-500/30 hover:shadow-[0_0_12px_rgba(59,130,246,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
-                  title="GitHub profile"
-                >
-                  <Github className="w-4.5 h-4.5" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-indigo-500/30 hover:shadow-[0_0_12px_rgba(99,102,241,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
-                  title="LinkedIn profile"
-                >
-                  <Linkedin className="w-4.5 h-4.5" />
-                </a>
-                <a
-                  href="mailto:jestinshaji777@gmail.com"
-                  className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-cyan-500/30 hover:shadow-[0_0_12px_rgba(6,182,212,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
-                  title="Email"
-                >
-                  <Mail className="w-4.5 h-4.5" />
-                </a>
-              </div>
-              <p className="text-[10px] text-gray-500 font-mono tracking-normal leading-relaxed">
-                Response factor: Within 24 hours.
-              </p>
-            </div>
-
-          </div>
-
-          {/* Sub Footer Row */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 font-mono text-[11px] text-gray-500">
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-              <span className="tracking-wide text-gray-400">
-                &copy; 2026 Jestin Shaji. All rights reserved.
-              </span>
-              <span className="hidden sm:inline text-neutral-800">|</span>
-              <span className="text-[10px] text-gray-500">
-                Engineered with React &amp; Tailwind CSS
-              </span>
-            </div>
-
-            <div className="flex items-center gap-4 text-gray-650 font-mono text-[10px] uppercase tracking-wider">
-              <span className="hover:text-blue-400 transition-colors cursor-help" title="Modern React Frontend">React SPA</span>
-              <span>•</span>
-              <span className="hover:text-cyan-400 transition-colors cursor-help" title="NoSQL Serverless DB">Firebase</span>
-              <span>•</span>
-              <span className="hover:text-indigo-400 transition-colors cursor-help" title="Automated DevOps line">Automated Pipelines</span>
-            </div>
-          </div>
-
-        </div>
-      </footer>
-
-      {/* 4. Floating AI Companion Assistant & Back to Top Widgets */}
-      <ChatBot />
-      <AdminDashboard />
-
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            onClick={handleBackToTop}
-            title="Back to Top"
-            className="fixed bottom-24 right-6 w-11 h-11 rounded-lg bg-[#0c0c12]/80 border border-white/10 hover:border-[#3B82F6]/50 text-white flex items-center justify-center cursor-pointer shadow-lg backdrop-blur"
-          >
-            <ArrowUp className="w-4 h-4 text-gray-400 hover:text-white" />
-          </motion.button>
+              )}
+            </AnimatePresence>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
