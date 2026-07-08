@@ -316,115 +316,179 @@ export default function App() {
             </main>
 
             {/* 3. Footer */}
-            <footer className="relative pt-20 pb-12 border-t border-white/[0.05] bg-[#050505] overflow-hidden select-none">
-              {/* Ambient bottom glow lights */}
-              <div className="absolute bottom-0 left-1/3 w-[500px] h-[300px] bg-gradient-to-t from-blue-500/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-gradient-to-t from-cyan-500/[0.03] to-transparent rounded-full blur-3xl pointer-events-none" />
+            <footer className="relative pt-24 pb-16 border-t border-white/[0.04] bg-[#020205] overflow-hidden select-none">
+              {/* Premium Top Glow Separator Line */}
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 via-indigo-500/40 to-transparent" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-[3px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent blur-[1px]" />
+              
+              {/* Ambient bottom glow lights (Enhanced color opacity) */}
+              <div className="absolute bottom-0 left-1/4 w-[600px] h-[350px] bg-gradient-to-t from-indigo-500/[0.06] to-transparent rounded-full blur-[140px] pointer-events-none" />
+              <div className="absolute bottom-0 right-1/4 w-[500px] h-[250px] bg-gradient-to-t from-cyan-500/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none" />
+
+              {/* Grid Background Overlay for high-end technical feel */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.005)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.005)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-40" />
 
               <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
                 
                 {/* Main Footer Interaction Core */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/[0.05]">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/[0.05]">
                   
-                  {/* Column 1: Brand & Bio Hook */}
-                  <div className="md:col-span-5 space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center font-bold text-white text-xs uppercase tracking-widest shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
-                        JS
-                      </div>
+                  {/* Column 1: Brand & Bio Hook (Enhanced visual weight and branding) */}
+                  <div className="md:col-span-5 space-y-6">
+                    <div className="flex items-center gap-4">
+                      {/* Premium holographic hexagonal or rounded logo container with visual breath */}
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        className="w-12 h-12 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-950 border border-white/[0.08] hover:border-cyan-500/50 flex items-center justify-center font-black text-white text-sm uppercase tracking-widest relative group transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.6)] cursor-pointer"
+                        onClick={() => handleScrollToSection("home")}
+                      >
+                        {/* Interactive neon circle backdrop */}
+                        <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 blur opacity-0 group-hover:opacity-100 transition duration-500" />
+                        <span className="relative z-10 font-mono tracking-tighter">JS</span>
+                      </motion.div>
                       <div>
-                        <h3 className="text-sm font-bold text-white tracking-wide">Jestin Shaji</h3>
-                        <p className="text-[10px] font-mono uppercase tracking-widest text-[#06B6D4] font-bold">
-                          Backend Developer &amp; Cloud Security Enthusiast
+                        <h3 className="text-base font-bold text-white tracking-wide flex items-center gap-1.5 font-sans">
+                          Jestin Shaji
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
+                        </h3>
+                        <p className="text-[9px] font-mono uppercase tracking-widest text-cyan-400 font-extrabold bg-cyan-500/[0.06] border border-cyan-500/20 px-2 py-0.5 rounded-md w-fit mt-1">
+                          System Architect &bull; Cloud Engineer
                         </p>
                       </div>
                     </div>
-                    <p className="text-gray-400 text-xs leading-relaxed max-w-sm font-sans font-medium">
-                      Designing ultra-scalable APIs, automated pipelines, and cloud-native systems with modular precision and high performance.
+                    <p className="text-neutral-400 text-xs leading-relaxed max-w-sm font-sans font-medium">
+                      Architecting robust server-side structures, lightning-fast endpoints, automated pipeline orchestration, and resilient cybersecure infrastructure.
                     </p>
                   </div>
 
-                  {/* Column 2: System Status Indicators */}
-                  <div className="md:col-span-4 space-y-4">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-extrabold pb-1">
-                      // ACTIVE SYSTEM STUDS
+                  {/* Column 2: System Portals (Quick navigation links) */}
+                  <div className="md:col-span-3 space-y-5">
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-black flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-indigo-500 rounded-sm" />
+                      System Portals
+                    </h4>
+                    <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-sans font-semibold">
+                      {[
+                        { id: "home", name: "Home Node" },
+                        { id: "services", name: "Services" },
+                        { id: "about", name: "About Spec" },
+                        { id: "tech", name: "Skills Core" },
+                        { id: "projects", name: "Projects" },
+                        { id: "contact", name: "Terminal Gate" }
+                      ].map((link) => (
+                        <li key={link.id}>
+                          <button
+                            onClick={() => handleScrollToSection(link.id)}
+                            className="text-neutral-400 hover:text-cyan-400 hover:translate-x-1.5 transition-all duration-300 flex items-center gap-1 cursor-pointer font-medium"
+                          >
+                            <span className="font-mono text-[9px] text-neutral-600 group-hover:text-cyan-500">&gt;</span>
+                            {link.name}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Column 3: Telemetry & Status Indicators (More attractive status metrics) */}
+                  <div className="md:col-span-4 space-y-5">
+                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-black flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-cyan-500 rounded-sm" />
+                      Network Telemetry
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
-                      <div className="p-3 rounded-xl bg-neutral-950/60 border border-neutral-900 flex items-center gap-2.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                      
+                      <div className="p-3 rounded-xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] hover:border-cyan-500/30 transition-all duration-300 flex items-center gap-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                        </span>
                         <div>
-                          <span className="text-[9px] text-gray-500 uppercase block font-bold">DB FLOWS</span>
-                          <span className="text-gray-300 font-semibold text-[10px]">FIRESTORE SECURE</span>
+                          <span className="text-[8px] text-neutral-500 block font-extrabold tracking-wider">DATABASE FLOW</span>
+                          <span className="text-emerald-300 font-bold text-[10px] tracking-wide">FIRESTORE ACTIVE</span>
                         </div>
                       </div>
-                      <div className="p-3 rounded-xl bg-neutral-950/60 border border-neutral-900 flex items-center gap-2.5">
-                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
-                        <div>
-                          <span className="text-[9px] text-gray-500 uppercase block font-bold">DEPLOY HOST</span>
-                          <span className="text-gray-300 font-semibold text-[10px]">CLOUD RUN READY</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  {/* Column 3: Communication & Socials */}
-                  <div className="md:col-span-3 space-y-4">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-extrabold pb-1">
-                      // EXTERNAL CHANNELS
-                    </h4>
-                    <div className="flex gap-3">
-                      <a
-                        href="https://github.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-blue-500/30 hover:shadow-[0_0_12px_rgba(59,130,246,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
-                        title="GitHub profile"
-                      >
-                        <Github className="w-4.5 h-4.5" />
-                      </a>
-                      <a
-                        href="https://linkedin.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-indigo-500/30 hover:shadow-[0_0_12px_rgba(99,102,241,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
-                        title="LinkedIn profile"
-                      >
-                        <Linkedin className="w-4.5 h-4.5" />
-                      </a>
-                      <a
-                        href="mailto:jestinshaji777@gmail.com"
-                        className="w-10 h-10 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-cyan-500/30 hover:shadow-[0_0_12px_rgba(6,182,212,0.15)] flex items-center justify-center text-gray-400 hover:text-white transition-all cursor-pointer"
-                        title="Email"
-                      >
-                        <Mail className="w-4.5 h-4.5" />
-                      </a>
+                      <div className="p-3 rounded-xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] hover:border-cyan-500/30 transition-all duration-300 flex items-center gap-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-cyan-500/20 border border-cyan-400 flex items-center justify-center shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                        </span>
+                        <div>
+                          <span className="text-[8px] text-neutral-500 block font-extrabold tracking-wider">ROUTER LATENCY</span>
+                          <span className="text-cyan-300 font-bold text-[10px] tracking-wide">14ms // EXTREME</span>
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] hover:border-indigo-500/30 transition-all duration-300 flex items-center gap-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)] sm:col-span-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-indigo-500/20 border border-indigo-400 flex items-center justify-center shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                        </span>
+                        <div className="flex-1 flex justify-between items-center pr-1">
+                          <div>
+                            <span className="text-[8px] text-neutral-500 block font-extrabold tracking-wider">HOST INGRESS</span>
+                            <span className="text-indigo-300 font-bold text-[10px] tracking-wide">CLOUD RUN SECURE</span>
+                          </div>
+                          <span className="text-[9px] px-1.5 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono font-bold">SSL_v3</span>
+                        </div>
+                      </div>
+
                     </div>
-                    <p className="text-[10px] text-gray-500 font-mono tracking-normal leading-relaxed">
-                      Response factor: Within 24 hours.
-                    </p>
                   </div>
 
                 </div>
 
                 {/* Sub Footer Row */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 font-mono text-[11px] text-gray-500">
-                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-                    <span className="tracking-wide text-gray-400">
-                      &copy; 2026 Jestin Shaji. All rights reserved.
-                    </span>
-                    <span className="hidden sm:inline text-neutral-800">|</span>
-                    <span className="text-[10px] text-gray-500">
-                      Engineered with React &amp; Tailwind CSS
-                    </span>
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-8 pt-10 relative">
+                  
+                  {/* Left element: Bio hook & channels */}
+                  <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                    
+                    <div className="space-y-1">
+                      <div className="text-neutral-400 font-mono text-xs font-semibold tracking-wide flex items-center justify-center sm:justify-start gap-2">
+                        <span>&copy; 2026 Jestin Shaji.</span>
+                        <span className="text-neutral-700">|</span>
+                        <span className="text-neutral-500 font-medium">All systems online.</span>
+                      </div>
+                      <p className="text-[10px] text-neutral-600 font-mono">
+                        Cryptographically secure interface built with React &amp; Tailwind CSS
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="flex items-center gap-4 text-gray-650 font-mono text-[10px] uppercase tracking-wider">
-                    <span className="hover:text-blue-400 transition-colors cursor-help" title="Modern React Frontend">React SPA</span>
-                    <span>•</span>
-                    <span className="hover:text-cyan-400 transition-colors cursor-help" title="NoSQL Serverless DB">Firebase</span>
-                    <span>•</span>
-                    <span className="hover:text-indigo-400 transition-colors cursor-help" title="Automated DevOps line">Automated Pipelines</span>
+                  {/* Middle element: Enhanced Social channels styled as keypad */}
+                  <div className="flex items-center gap-3 bg-white/[0.01] border border-white/[0.04] p-1.5 rounded-2xl backdrop-blur-md">
+                    <a
+                      href="https://github.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-white/30 hover:bg-white/[0.05] hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300 cursor-pointer"
+                      title="GitHub Transmission"
+                    >
+                      <Github className="w-4.5 h-4.5" />
+                    </a>
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-blue-500/30 hover:bg-blue-500/[0.03] hover:shadow-[0_0_15px_rgba(59,130,246,0.18)] flex items-center justify-center text-neutral-400 hover:text-blue-400 transition-all duration-300 cursor-pointer"
+                      title="LinkedIn Secure Link"
+                    >
+                      <Linkedin className="w-4.5 h-4.5" />
+                    </a>
+                    <a
+                      href="mailto:jestinshaji777@gmail.com"
+                      className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:bg-cyan-500/[0.03] hover:shadow-[0_0_15px_rgba(6,182,212,0.18)] flex items-center justify-center text-neutral-400 hover:text-cyan-400 transition-all duration-300 cursor-pointer"
+                      title="Direct Mail Dispatch"
+                    >
+                      <Mail className="w-4.5 h-4.5" />
+                    </a>
                   </div>
+
+                  {/* Right element: Tech pill metrics */}
+                  <div className="flex flex-wrap items-center justify-center gap-3 text-[10px] font-mono tracking-widest uppercase">
+                    <span className="px-2.5 py-1 rounded-md bg-[#020205] border border-white/[0.04] text-neutral-500 hover:text-blue-400 hover:border-blue-500/20 transition-all duration-300 cursor-help" title="Responsive React SPA">REACT_SPA</span>
+                    <span className="px-2.5 py-1 rounded-md bg-[#020205] border border-white/[0.04] text-neutral-500 hover:text-cyan-400 hover:border-cyan-500/20 transition-all duration-300 cursor-help" title="NoSQL Database Architecture">FIREBASE_FIRESTORE</span>
+                    <span className="px-2.5 py-1 rounded-md bg-[#020205] border border-white/[0.04] text-neutral-500 hover:text-indigo-400 hover:border-indigo-500/20 transition-all duration-300 cursor-help" title="Serverless Container Ingress">GCP_RUN</span>
+                  </div>
+
                 </div>
 
               </div>
