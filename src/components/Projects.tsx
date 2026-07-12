@@ -45,6 +45,54 @@ export default function Projects() {
     "Debussy - Clair de Lune"
   ]);
 
+  // OpsPilot Simulation states
+  const [selectedNamespace, setSelectedNamespace] = useState<"student-app-1" | "student-app-2" | "student-app-3">("student-app-1");
+  const [replicaCount, setReplicaCount] = useState<number>(2);
+  const [isDeployingTenant, setIsDeployingTenant] = useState<boolean>(false);
+  const [tenantLog, setTenantLog] = useState<string[]>([]);
+  const [cpuUsage, setCpuUsage] = useState<number>(30); // baseline
+  const [memUsage, setMemUsage] = useState<number>(40); // baseline
+
+  useEffect(() => {
+    if (isDeployingTenant) {
+      setTenantLog([
+        `[K8S] Dynamic request received for namespace: ${selectedNamespace}`,
+        `[RBAC] Authenticated deployment request from tenant identity.`,
+        `[QUOTA] Enforcing namespace limits: max CPU 2.0 / max MEM 4.0Gi`,
+      ]);
+      const t1 = setTimeout(() => {
+        setTenantLog(prev => [
+          ...prev,
+          `[SCHEDULER] Spawning ${replicaCount} replicas of Java Spring Boot microservice...`,
+          `[POD] Pod opspilot-app-replica-1 -> ContainerCreating`,
+          replicaCount > 1 ? `[POD] Pod opspilot-app-replica-2 -> ContainerCreating` : "",
+          replicaCount > 2 ? `[POD] Pod opspilot-app-replica-3 -> ContainerCreating` : "",
+          replicaCount > 3 ? `[POD] Pod opspilot-app-replica-4 -> ContainerCreating` : "",
+          replicaCount > 4 ? `[POD] Pod opspilot-app-replica-5 -> ContainerCreating` : "",
+        ].filter(Boolean));
+        setCpuUsage(15);
+        setMemUsage(25);
+      }, 700);
+
+      const t2 = setTimeout(() => {
+        setTenantLog(prev => [
+          ...prev,
+          `[POD] All target pods are running cleanly. Liveness/Readiness probes passed.`,
+          `[INGRESS] Generating dynamic virtual path mapping: http://${selectedNamespace}.opspilot.local`,
+          `[PROMETHEUS] Target telemetry initialized. Scraping CPU/Memory metrics live...`,
+        ]);
+        setCpuUsage(35 + Math.floor(Math.random() * 8));
+        setMemUsage(45 + Math.floor(Math.random() * 8));
+        setIsDeployingTenant(false);
+      }, 1800);
+
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+      };
+    }
+  }, [isDeployingTenant, selectedNamespace, replicaCount]);
+
   // Run simulated processes on component mounting
   useEffect(() => {
     if (jenkinsStatus === "building") {
@@ -286,6 +334,134 @@ export default function Projects() {
                     
                     {/* Shadow atmospheric overlays */}
                     <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#050505]/80 to-transparent pointer-events-none z-10" />
+
+                    {/* Simulation Module 0: OpsPilot Multi-tenant Orchestrator */}
+                    {proj.id === "opspilot" && (
+                      <div className="w-full h-full flex flex-col font-mono text-[11px] text-neutral-400 p-6 bg-[#0a0a0f] space-y-4 min-h-[280px]">
+                        <div className="flex items-center justify-between border-b border-neutral-900 pb-3">
+                          <div className="flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-cyan-500/80 animate-pulse" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-indigo-500/80" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-purple-500/80" />
+                            <span className="text-neutral-300 text-[10px] ml-2 font-black uppercase tracking-widest block">
+                              OpsPilot K8s Multitenancy Control
+                            </span>
+                          </div>
+                          <span className="text-[9px] text-[#22c55e] font-bold bg-[#14532d]/20 border border-[#22c55e]/20 px-2.5 py-1 rounded">
+                            CLUSTER ACTIVE
+                          </span>
+                        </div>
+
+                        {/* Top inputs */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-between gap-3 bg-black/40 p-3 rounded-xl border border-neutral-900">
+                          <div className="flex items-center gap-2">
+                            <span className="text-[8px] text-neutral-500 font-bold uppercase tracking-widest">Namespace:</span>
+                            <select
+                              value={selectedNamespace}
+                              onChange={(e) => {
+                                setSelectedNamespace(e.target.value as any);
+                                setTenantLog([`[INFO] Switched context to namespace: ${e.target.value}`]);
+                              }}
+                              disabled={isDeployingTenant}
+                              className="bg-neutral-950 text-[9px] text-cyan-300 font-bold uppercase outline-none cursor-pointer border border-neutral-800 rounded px-2 py-1 w-full"
+                            >
+                              <option value="student-app-1">student-proj-alpha</option>
+                              <option value="student-app-2">student-proj-beta</option>
+                              <option value="student-app-3">student-proj-gamma</option>
+                            </select>
+                          </div>
+
+                          <div className="flex items-center justify-center gap-3">
+                            <span className="text-[8px] text-neutral-500 font-bold uppercase tracking-widest">Replicas:</span>
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={() => setReplicaCount(prev => Math.max(1, prev - 1))}
+                                disabled={isDeployingTenant || replicaCount <= 1}
+                                className="bg-neutral-900 hover:bg-neutral-850 border border-neutral-800 text-white w-5 h-5 rounded flex items-center justify-center text-xs font-bold disabled:opacity-30 cursor-pointer"
+                              >
+                                -
+                              </button>
+                              <span className="text-xs font-bold text-white w-4 text-center">{replicaCount}</span>
+                              <button
+                                onClick={() => setReplicaCount(prev => Math.min(5, prev + 1))}
+                                disabled={isDeployingTenant || replicaCount >= 5}
+                                className="bg-neutral-900 hover:bg-neutral-850 border border-neutral-800 text-white w-5 h-5 rounded flex items-center justify-center text-xs font-bold disabled:opacity-30 cursor-pointer"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
+
+                          <button
+                            onClick={() => setIsDeployingTenant(true)}
+                            disabled={isDeployingTenant}
+                            className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:opacity-95 text-white px-3 py-1.5 rounded text-[9px] font-black tracking-widest cursor-pointer disabled:opacity-40 uppercase h-full flex items-center justify-center"
+                          >
+                            {isDeployingTenant ? "Deploying..." : "Deploy Tenant Pods"}
+                          </button>
+                        </div>
+
+                        {/* Middle panel with telemetry bars */}
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="bg-black/30 border border-neutral-900 p-3 rounded-xl flex flex-col justify-between">
+                            <span className="text-[8px] text-neutral-500 uppercase font-black">CPU QUOTA UTILIZATION</span>
+                            <div className="flex items-baseline gap-2 mt-1">
+                              <span className="text-sm font-bold text-white">{(cpuUsage * (replicaCount / 2)).toFixed(1)}%</span>
+                              <span className="text-[8px] text-neutral-500">of 2.0 vCPU max</span>
+                            </div>
+                            <div className="w-full bg-neutral-900 h-1.5 rounded-full overflow-hidden mt-2">
+                              <motion.div
+                                className="bg-gradient-to-r from-cyan-400 to-cyan-500 h-full"
+                                animate={{ width: `${Math.min(100, cpuUsage * (replicaCount / 2))}%` }}
+                                transition={{ type: "spring", stiffness: 60 }}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="bg-black/30 border border-neutral-900 p-3 rounded-xl flex flex-col justify-between">
+                            <span className="text-[8px] text-neutral-500 uppercase font-black">MEM QUOTA UTILIZATION</span>
+                            <div className="flex items-baseline gap-2 mt-1">
+                              <span className="text-sm font-bold text-white">{(memUsage * (replicaCount / 2.5)).toFixed(1)}%</span>
+                              <span className="text-[8px] text-neutral-500">of 4.0 GiB max</span>
+                            </div>
+                            <div className="w-full bg-neutral-900 h-1.5 rounded-full overflow-hidden mt-2">
+                              <motion.div
+                                className="bg-gradient-to-r from-purple-400 to-purple-500 h-full"
+                                animate={{ width: `${Math.min(100, memUsage * (replicaCount / 2.5))}%` }}
+                                transition={{ type: "spring", stiffness: 60 }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Lower terminal */}
+                        <div className="flex-1 bg-black/60 rounded-xl border border-neutral-900 p-4 overflow-y-auto space-y-1.5 text-[9px] max-h-[110px] scrollbar-none">
+                          {tenantLog.length === 0 ? (
+                            <div className="h-full flex flex-col justify-center items-center text-center text-neutral-600 font-sans py-4">
+                              <Terminal className="w-5 h-5 opacity-20 mb-1" />
+                              <span>Select a tenant namespace & replica count, then click Deploy Tenant Pods.</span>
+                            </div>
+                          ) : (
+                            tenantLog.map((log, lidx) => (
+                              <div
+                                key={lidx}
+                                className={`leading-relaxed font-mono ${
+                                  log.includes("[K8S]") || log.includes("[QUOTA]")
+                                    ? "text-cyan-400"
+                                    : log.includes("[POD]")
+                                    ? "text-yellow-400"
+                                    : log.includes("[INGRESS]") || log.includes("[PROMETHEUS]")
+                                    ? "text-green-400 font-semibold"
+                                    : "text-neutral-400"
+                                }`}
+                              >
+                                {log}
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Simulation Module 1: CI/CD Pipeline */}
                     {proj.id === "microservices-cicd" && (

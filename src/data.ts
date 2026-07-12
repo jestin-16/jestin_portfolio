@@ -24,6 +24,58 @@ export const JESTIN_BIO = {
 
 export const PROJECTS: Project[] = [
   {
+    id: "opspilot",
+    title: "OpsPilot",
+    subtitle: "AI-Assisted Internal Developer Platform",
+    description: "A unified Internal Developer Platform orchestrating GitHub, Docker, Kubernetes, Jenkins, and AWS to eliminate tool-switching and accelerate modern software delivery.",
+    longDescription: "OpsPilot is a unified, AI-assisted Internal Developer Platform built to orchestrate the entire development lifecycle. It unifies GitHub, Docker, Kubernetes, Jenkins, and AWS into a single developer dashboard to eliminate constant tool-switching. Backed by a Spring Boot microservices architecture and a React/TypeScript frontend, it features project management, deployment orchestration, RBAC-secured authentication, Kubernetes/Docker management, and centralized monitoring. It is a real multi-tenant system validated by onboarding 6+ independent projects deployed in isolated Kubernetes namespaces with enforced resource quotas.",
+    category: "devops",
+    tags: [
+      "Spring Boot",
+      "Spring Security",
+      "React",
+      "TypeScript",
+      "Docker",
+      "Kubernetes",
+      "PostgreSQL",
+      "Redis",
+      "Apache Kafka",
+      "Jenkins",
+      "GitHub Actions",
+      "Prometheus",
+      "Grafana",
+      "AWS"
+    ],
+    colorPreset: "indigo",
+    metrics: [
+      { label: "Multi-tenant Projects", value: "6+ Onboarded" },
+      { label: "Namespace Isolation", value: "100% Secured" },
+      { label: "Overhead Reduction", value: "Zero Switch" }
+    ],
+    features: [
+      "Unified developer dashboard consolidating GitHub, Docker, Kubernetes, Jenkins, and AWS workloads into one interface",
+      "Core modules for project management, deployment orchestration, and Kubernetes/Docker management",
+      "RBAC-secured authentication providing secure access control for multiple independent student projects",
+      "Real multi-tenancy with isolated Kubernetes namespaces and enforced resource quotas",
+      "Centralized monitoring and system alerting built on Prometheus and Grafana telemetry"
+    ],
+    architectureDiagramTitle: "OpsPilot Platform Orchestration Layout",
+    architectureDetails: [
+      "Developer initiates a deployment or project onboarding task in the React/TypeScript dashboard.",
+      "Spring Boot microservice gateways authenticate the user (RBAC) and dispatch commands via Apache Kafka.",
+      "CI/CD pipelines (Jenkins/GitHub Actions) execute in parallel to build, test, and tag Docker images.",
+      "Docker images are pushed to registries and deployed dynamically inside isolated Kubernetes namespaces.",
+      "Prometheus telemetry scrapes performance stats, reporting live CPU/memory metrics to Grafana."
+    ],
+    steps: [
+      { title: "Project Onboarding", description: "Tenant creates space, setting isolated namespace limits and role permissions.", time: "0.0s" },
+      { title: "Git Trigger & Build", description: "GitHub webhooks ping Jenkins, compiling Spring Boot source into lightweight Docker layers.", time: "+35s" },
+      { title: "Namespace Dispatch", description: "Orchestration module applies Kubernetes manifest specifications with CPU/memory quota validations.", time: "+1m 10s" },
+      { title: "Live Telemetry Bind", description: "Prometheus binds to the pod endpoints, initiating live dashboard statistics reporting.", time: "+1m 30s" }
+    ],
+    githubUrl: "https://github.com"
+  },
+  {
     id: "microservices-cicd",
     title: "Orchestrated CI/CD Microservices Pipeline",
     subtitle: "Enterprise DevOps Engineering Showcase",
