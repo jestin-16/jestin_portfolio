@@ -75,12 +75,12 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
         </motion.div>
 
         {/* Majestic Hero Display Heading */}
-        <div className="space-y-4 max-w-3xl">
+        <div className="space-y-4 max-w-4xl">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-6xl font-sans font-extrabold tracking-tight leading-[1.12] text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 via-sky-100 to-fuchsia-300"
+            className="text-4xl sm:text-6xl md:text-7xl font-heading font-extrabold tracking-tight leading-[1.08] text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 via-sky-200 to-indigo-200 drop-shadow-[0_4px_30px_rgba(6,182,212,0.3)]"
           >
             {bio.title}
           </motion.h1>
@@ -88,7 +88,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-lg font-sans font-extrabold bg-gradient-to-r from-cyan-400 via-indigo-300 to-fuchsia-400 bg-clip-text text-transparent tracking-wide leading-relaxed max-w-2xl mx-auto drop-shadow-[0_2px_15px_rgba(59,130,246,0.3)]"
+            className="text-base sm:text-xl font-heading font-bold bg-gradient-to-r from-cyan-400 via-indigo-300 to-fuchsia-400 bg-clip-text text-transparent tracking-wide leading-relaxed max-w-2xl mx-auto drop-shadow-[0_2px_15px_rgba(59,130,246,0.3)]"
           >
             {bio.subtitle}
           </motion.p>
