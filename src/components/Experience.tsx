@@ -22,7 +22,7 @@ export default function Experience() {
 
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
-          <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-indigo-300 mb-3">
+          <h2 className="text-4xl sm:text-6xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-indigo-300 mb-3">
             Developer Chronicles
           </h2>
           <p className="text-neutral-400 text-sm sm:text-base max-w-xl font-sans font-medium">

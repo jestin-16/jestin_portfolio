@@ -225,7 +225,7 @@ export default function Projects() {
               // CASE STUDIES
             </span>
           </div>
-          <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow mb-3">
+          <h2 className="text-4xl sm:text-6xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow mb-3">
             Featured Systems
           </h2>
           <p className="text-neutral-300 text-sm sm:text-base max-w-xl font-sans mt-3 font-medium">

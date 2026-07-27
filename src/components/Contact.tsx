@@ -82,7 +82,7 @@ export default function Contact() {
               06 / Transmission
             </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-sans font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow mb-2">
+          <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow mb-2">
             Get In Touch.
           </h2>
           <p className="text-neutral-300 text-sm sm:text-base max-w-xl font-medium leading-relaxed">

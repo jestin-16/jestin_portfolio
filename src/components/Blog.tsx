@@ -46,7 +46,7 @@ export default function Blog() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div>
-            <h2 className="text-4xl sm:text-6xl font-sans font-black tracking-tight text-white mb-3">
+            <h2 className="text-4xl sm:text-6xl font-heading font-extrabold tracking-tight text-white mb-3">
               Knowledge Archives
             </h2>
             <p className="text-neutral-500 text-sm sm:text-base max-w-xl font-sans mt-3">
