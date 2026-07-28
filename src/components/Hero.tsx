@@ -66,21 +66,21 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex items-center gap-2 px-3.5 py-1.5 bg-cyan-950/35 border border-cyan-400/40 rounded-full w-fit hover:border-cyan-300 transition-colors mx-auto shadow-[0_0_20px_rgba(6,182,212,0.15)]"
+          className="flex items-center gap-2.5 px-4 py-1.5 bg-cyan-950/40 border border-cyan-400/40 rounded-full w-fit hover:border-cyan-300 transition-colors mx-auto shadow-[0_0_20px_rgba(6,182,212,0.2)]"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="text-xs font-mono text-cyan-200 font-extrabold tracking-wide">
+          <span className="text-xs font-mono text-cyan-200 font-extrabold tracking-widest uppercase">
             SYSTEM ARCHITECT &bull; {bio.name}
           </span>
         </motion.div>
 
         {/* Majestic Hero Display Heading */}
-        <div className="space-y-4 max-w-4xl">
+        <div className="space-y-5 max-w-5xl">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-6xl md:text-7xl font-heading font-extrabold tracking-tight leading-[1.08] text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 via-sky-200 to-indigo-200 drop-shadow-[0_4px_30px_rgba(6,182,212,0.3)]"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-hero font-extrabold tracking-tighter leading-[1.03] text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 via-sky-200 to-indigo-200 drop-shadow-[0_4px_35px_rgba(6,182,212,0.35)]"
           >
             {bio.title}
           </motion.h1>
@@ -88,7 +88,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-xl font-heading font-bold bg-gradient-to-r from-cyan-400 via-indigo-300 to-fuchsia-400 bg-clip-text text-transparent tracking-wide leading-relaxed max-w-2xl mx-auto drop-shadow-[0_2px_15px_rgba(59,130,246,0.3)]"
+            className="text-lg sm:text-2xl md:text-3xl font-display font-bold bg-gradient-to-r from-cyan-400 via-indigo-300 to-fuchsia-400 bg-clip-text text-transparent tracking-tight leading-snug max-w-3xl mx-auto drop-shadow-[0_2px_15px_rgba(59,130,246,0.3)]"
           >
             {bio.subtitle}
           </motion.p>
@@ -99,7 +99,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-neutral-300 text-xs sm:text-base leading-relaxed font-sans max-w-2xl"
+          className="text-neutral-300 text-sm sm:text-lg leading-relaxed font-sans max-w-2xl font-medium tracking-normal"
         >
           {bio.tagline}
         </motion.p>
