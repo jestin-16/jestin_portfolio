@@ -88,7 +88,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg sm:text-2xl md:text-3xl font-display font-bold bg-gradient-to-r from-cyan-400 via-indigo-300 to-fuchsia-400 bg-clip-text text-transparent tracking-tight leading-snug max-w-3xl mx-auto drop-shadow-[0_2px_15px_rgba(59,130,246,0.3)]"
+            className="text-lg sm:text-2xl md:text-3xl font-heading font-extrabold bg-gradient-to-r from-cyan-400 via-indigo-300 to-fuchsia-400 bg-clip-text text-transparent tracking-tight leading-snug max-w-3xl mx-auto drop-shadow-[0_2px_15px_rgba(59,130,246,0.3)]"
           >
             {bio.subtitle}
           </motion.p>
