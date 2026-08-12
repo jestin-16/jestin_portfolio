@@ -8,7 +8,6 @@ export const JESTIN_BIO = {
   tagline: "I design ultra-scalable REST APIs, secure microservices, and high-performance backend systems running inside robust container clouds.",
   location: "Kerala, India",
   email: "jestinshaji777@gmail.com",
-  phone: "+91 9020336092",
   socials: {
     github: "https://github.com",
     linkedin: "https://linkedin.com",

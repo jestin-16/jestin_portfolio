@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useFirebase } from "../context/FirebaseContext";
-import { Mail, Phone, Copy, Check, Send, AlertTriangle, ShieldCheck } from "lucide-react";
+import { Mail, Copy, Check, Send, AlertTriangle, ShieldCheck } from "lucide-react";
 
 export default function Contact() {
   const { bio, submitMessage } = useFirebase();
@@ -115,23 +115,6 @@ export default function Contact() {
               <p className="text-xs sm:text-sm font-mono font-bold text-white break-all">
                 {bio.email}
               </p>
-            </div>
-
-            {/* Direct Phone */}
-            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-amber-400">
-                <Phone className="w-3.5 h-3.5" />
-                <span>Phone Line</span>
-              </div>
-              <a
-                href={`tel:${bio.phone}`}
-                className="text-xs sm:text-sm font-mono font-bold text-white hover:text-emerald-300 transition-colors block"
-              >
-                {bio.phone}
-              </a>
-              <span className="text-[10px] text-neutral-400 font-sans block">
-                Available: IST Working Hours
-              </span>
             </div>
 
             {/* Location */}
