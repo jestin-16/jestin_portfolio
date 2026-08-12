@@ -183,33 +183,32 @@ export default function App() {
             >
               <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
                 
-                {/* Cute logo icon pill */}
+                {/* Logo */}
                 <button
                   onClick={() => handleScrollToSection("home")}
-                  className="px-3.5 py-1.5 rounded-full bg-white/[0.05] backdrop-blur-md border border-pink-500/20 hover:border-pink-400/50 flex items-center gap-1.5 font-heading text-white text-sm font-bold cursor-pointer select-none tracking-wide shadow-md hover:scale-105 transition-all duration-300 group"
+                  className="font-sans text-white text-xs font-bold tracking-widest hover:text-emerald-400 transition-colors cursor-pointer select-none"
                 >
-                  <span className="text-pink-400 group-hover:rotate-12 transition-transform">✨</span>
-                  <span className="bg-gradient-to-r from-pink-200 to-purple-200 bg-clip-text text-transparent">JS</span>
+                  JESTIN SHAJI
                 </button>
 
                 {/* Centered Floating Nav Bar */}
-                <nav role="navigation" className="hidden md:flex items-center gap-1 p-1 bg-white/[0.04] border border-white/[0.08] rounded-full backdrop-blur-xl relative shadow-lg">
-                  {["home", "services", "about", "tech", "projects"].map((item) => {
+                <nav role="navigation" className="hidden md:flex items-center gap-6 px-6 py-2 bg-white/[0.02] border border-white/[0.06] rounded-full backdrop-blur-xl relative">
+                  {["home", "services", "about", "tech", "projects", "contact"].map((item) => {
                     const isActive = activeSection === item;
                     return (
                       <button
                         key={item}
                         onClick={() => handleScrollToSection(item)}
-                        className={`px-4 py-1.5 text-xs font-mono tracking-wide capitalize transition-colors duration-200 cursor-pointer rounded-full relative z-10`}
+                        className="text-xs font-sans tracking-wide capitalize transition-colors duration-200 cursor-pointer relative py-0.5"
                       >
-                        <span className={`relative z-10 ${isActive ? "text-emerald-300 font-bold" : "text-neutral-400 hover:text-white"}`}>
+                        <span className={isActive ? "text-white font-semibold" : "text-neutral-400 hover:text-neutral-200"}>
                           {item === "tech" ? "Skills" : item}
                         </span>
                         {isActive && (
                           <motion.div
                             layoutId="activeNavItem"
-                            className="absolute inset-0 bg-emerald-500/15 border border-emerald-500/30 rounded-full z-0"
-                            transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-500 rounded-full"
+                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
                           />
                         )}
                       </button>
@@ -217,12 +216,12 @@ export default function App() {
                   })}
                 </nav>
 
-                {/* Let's Talk Pill shape trigger */}
+                {/* Direct Action trigger */}
                 <button
                   onClick={() => handleScrollToSection("contact")}
-                  className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black rounded-full text-xs font-heading font-bold transition-all cursor-pointer shadow-sm"
+                  className="hidden md:inline-flex items-center px-4 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-black rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer"
                 >
-                  <span>Say Hello</span>
+                  Say Hello
                 </button>
 
                 {/* Handheld Trigger toggle */}

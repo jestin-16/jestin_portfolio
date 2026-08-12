@@ -4,7 +4,7 @@ export const JESTIN_BIO = {
   name: "Jestin Shaji",
   title: "Backend Java Developer",
   subtitle: "Spring Boot Architect & Cloud Security Enthusiast",
-  aboutFull: `I am a forward-thinking Backend Java & Spring Boot Developer currently pursuing my Master of Computer Applications (MCA). My core passion lies in engineering ultra-scalable backend systems, microservices coordination patterns, and designing highly secure API filter chains. Focusing deeply on REST APIs, JVM memory optimization, and decoupled architectures, I ensure absolute performance, data isolation, and cloud efficiency on JVM-based systems.`,
+  aboutFull: `I am a forward-thinking Backend Java & Spring Boot Developer currently pursuing my Master of Computer Applications (MCA) at Amal Jyothi College of Engineering, Kottayam. My core passion lies in engineering ultra-scalable backend systems, microservices coordination patterns, and designing highly secure API filter chains. Focusing deeply on REST APIs, JVM memory optimization, and decoupled architectures, I ensure absolute performance, data isolation, and cloud efficiency on JVM-based systems.`,
   tagline: "I design ultra-scalable REST APIs, secure microservices, and high-performance backend systems running inside robust container clouds.",
   location: "Kerala, India",
   email: "jestinshaji777@gmail.com",
@@ -264,45 +264,56 @@ export const TECH_STACK: TechItem[] = [
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
-    id: "exp-academic",
-    period: "2024 - Present",
-    role: "MCA Student (Master of Computer Applications)",
-    institution: "Federal Institute of Science and Technology (FISAT)",
-    location: "Kerala, India",
-    description: "Deepening theoretical and practical foundations in Advanced Database Systems, Algorithms Design, Software Engineering principles, Distributed Networks, and Computer Architectures.",
+    id: "exp-1-mca",
+    period: "2025 – Present (Pursuing)",
+    role: "Master of Computer Application (MCA)",
+    institution: "Amal Jyothi College of Engineering, Kottayam",
+    location: "APJ Abdul Kalam Technological University",
+    description: "Specializing in advanced software engineering, distributed cloud systems, Spring Boot microservices, and modern database architectures.",
     achievements: [
-      "Secured outstanding academic rankings in advanced data orchestration layers.",
-      "Formed an on-campus cloud & development community organizing bootcamps.",
-      "Authored a project blueprint mapping secure Spring API filters for cross-department academic records."
+      "Currently pursuing MCA degree",
+      "Affiliated with APJ Abdul Kalam Technological University (KTU)"
     ],
     category: "academic"
   },
   {
-    id: "exp-dev",
-    period: "2023 - Present",
-    role: "Independent Backend Engineer & Open-Source Contributor",
-    institution: "Digital Solutions & GitHub Lab Network",
-    location: "Remote / Kerala, India",
-    description: "Architecting, writing, and hosting high-performance software solutions and micro-services. Specialized in refactoring monolithic architectures into robust horizontal Spring Boot microservice networks with secure JWT endpoints.",
+    id: "exp-2-bca",
+    period: "2022 – 2025",
+    role: "Bachelor of Computer Application (BCA)",
+    institution: "NSS College, Rajakumari",
+    location: "Mahatma Gandhi University",
+    description: "Graduated with strong foundations in object-oriented programming, data structures, web development, and database management systems.",
     achievements: [
-      "Wrote and configured several deployment routines running cleanly on local Docker swarms and Kubernetes clusters.",
-      "Optimized query bottlenecks in multi-table PostgreSQL systems, reducing query latency by up to 45%.",
-      "Designed and mapped secure REST interfaces coupled with automated filter validation, CORS controls, and role privileges."
+      "Graduated with CGPA: 7.83 (2025)",
+      "Affiliated with Mahatma Gandhi University"
     ],
-    category: "development"
+    category: "academic"
   },
   {
-    id: "exp-cert",
-    period: "2024",
-    role: "Advanced Backend & DevOps Certifications",
-    institution: "Enterprise Platforms (Oracles, Docker Hub Network, Udemy)",
-    location: "Kerala, India",
-    description: "Rigorous self-directed curriculum mastery highlighting professional Docker orchestration, Spring Boot reactive programming models, and continuous deployment workflows.",
+    id: "exp-3-class12",
+    period: "2020 – 2022",
+    role: "Senior Secondary School (Class XII)",
+    institution: "SNV Higher Secondary School, NR City",
+    location: "Board of Higher Secondary Examinations, Kerala",
+    description: "Completed Class XII with distinction in Science and Computer Science subjects.",
     achievements: [
-      "Mastered multi-stage Docker builds, image slimming configurations, and layer caching techniques.",
-      "Certified in relational database design principles and PostgreSQL index tuning metrics."
+      "Percentage: 88.17% (2022)",
+      "Board of Higher Secondary Examinations, Kerala"
     ],
-    category: "certification"
+    category: "academic"
+  },
+  {
+    id: "exp-4-class10",
+    period: "2019 – 2020",
+    role: "Secondary School (Class X / SSLC)",
+    institution: "St. Sebastian's High School, Pottankad",
+    location: "Kerala Board of Public Examinations",
+    description: "Completed secondary school education with high distinction across all subjects.",
+    achievements: [
+      "Grade: A+ (2020)",
+      "Kerala Board of Public Examinations"
+    ],
+    category: "academic"
   }
 ];
 
