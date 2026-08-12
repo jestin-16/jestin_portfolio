@@ -58,10 +58,10 @@ export default function CinematicCanvas() {
         this.fadeSpeed = Math.random() * 0.002 + 0.0005;
 
         const colors = [
-          "rgba(59, 130, 246,", // Electric blue
-          "rgba(6, 182, 212,",  // Cyan
-          "rgba(168, 85, 247,", // Soft purple
-          "rgba(255, 255, 255," // Warm mist
+          "rgba(16, 185, 129,",  // Sage Emerald
+          "rgba(52, 211, 153,",  // Soft Mint
+          "rgba(251, 191, 36,",  // Warm Sand Amber
+          "rgba(148, 163, 184,"  // Slate Light
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
@@ -98,24 +98,24 @@ export default function CinematicCanvas() {
 
     // Render loop
     const render = () => {
-      ctx.fillStyle = "rgba(5, 5, 5, 0.15)"; // Soft trails for flowing fog look
+      ctx.fillStyle = "rgba(13, 15, 23, 0.2)"; // Soft trails for smooth aesthetic look
       ctx.fillRect(0, 0, width, height);
 
       // Damp mouse coordinates
       mouse.x += (mouse.targetX - mouse.x) * 0.05;
       mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-      // Subtle atmospheric volumetric fog orbs (cinematic)
+      // Subtle atmospheric warm glow orbs
       const gradient = ctx.createRadialGradient(
         mouse.x,
         mouse.y,
-        50,
+        30,
         mouse.x,
         mouse.y,
-        width * 0.6
+        width * 0.5
       );
-      gradient.addColorStop(0, "rgba(37, 99, 235, 0.04)");
-      gradient.addColorStop(0.5, "rgba(6, 182, 212, 0.02)");
+      gradient.addColorStop(0, "rgba(244, 114, 182, 0.05)");
+      gradient.addColorStop(0.5, "rgba(192, 132, 252, 0.03)");
       gradient.addColorStop(1, "transparent");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);

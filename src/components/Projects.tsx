@@ -210,88 +210,92 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040e] via-[#050519] to-[#020206] relative overflow-hidden select-none">
+    <section id="projects" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#0d0f17] via-[#10131f] to-[#0d0f17] relative overflow-hidden select-none">
       
-      {/* Background atmospheres */}
-      <div className="absolute top-1/3 left-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08)_0%,transparent_70%)] pointer-events-none" />
+      {/* Background soft ambient glow */}
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-pink-500/[0.04] blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-purple-500/[0.04] blur-[130px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         
         {/* Chapter Header */}
-        <div className="mb-24">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-[10px] font-mono tracking-widest bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent font-black uppercase">
-              // CASE STUDIES
-            </span>
-          </div>
-          <h2 className="text-4xl sm:text-6xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow mb-3">
-            Featured Systems
+        <div className="mb-16 text-center space-y-2">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium"
+          >
+            <span>FEATURED PROJECTS</span>
+          </motion.div>
+
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Systems &amp; Applications
           </h2>
-          <p className="text-neutral-300 text-sm sm:text-base max-w-xl font-sans mt-3 font-medium">
-            Interactive system sandboxes engineered to demonstrate enterprise readiness and cloud-native simulation loops.
+
+          <p className="text-neutral-400 text-xs sm:text-sm max-w-md mx-auto font-sans">
+            Full-stack microservices &amp; cloud architectures engineered for speed
           </p>
         </div>
 
         {/* Narrative columns of Project Worlds */}
-        <div className="space-y-40">
+        <div className="space-y-24">
           {projects.map((proj, idx) => {
             const isLeft = idx % 2 === 0;
 
             return (
               <div
                 key={proj.id}
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-16 items-center ${
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-10 items-center ${
                   isLeft ? "" : "lg:flex-row-reverse"
                 }`}
               >
                 {/* Information Block */}
                 <motion.div
-                  initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                  initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
-                  className={`lg:col-span-5 space-y-6 ${isLeft ? "lg:order-1" : "lg:order-2"}`}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.6 }}
+                  className={`lg:col-span-5 space-y-5 ${isLeft ? "lg:order-1" : "lg:order-2"}`}
                 >
-                  <div className="flex items-center gap-3 font-mono text-xs">
-                    <span className="text-cyan-400 font-extrabold uppercase block tracking-widest">
+                  <div className="flex items-center gap-2 font-mono text-xs">
+                    <span className="text-emerald-400 font-bold uppercase tracking-wider">
                       {proj.subtitle}
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/45" />
-                    <span className="text-[9px] uppercase bg-cyan-950/20 border border-cyan-500/20 px-2.5 py-1 rounded text-cyan-300 font-bold select-none shadow-[0_0_10px_rgba(6,182,212,0.04)]">
+                    <span className="w-1 h-1 rounded-full bg-neutral-600" />
+                    <span className="text-[10px] uppercase bg-white/[0.04] border border-white/10 px-2 py-0.5 rounded-full text-neutral-300 font-semibold">
                       {proj.category}
                     </span>
                   </div>
 
-                  <h3 className="text-3xl sm:text-4xl font-sans font-black tracking-tight text-white">
+                  <h3 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-white">
                     {proj.title}
                   </h3>
 
-                  <p className="text-neutral-300 text-sm sm:text-base leading-relaxed font-sans font-medium">
+                  <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-sans font-normal">
                     {proj.description}
                   </p>
 
                   {/* Highlights capsules */}
-                  <div className="flex flex-wrap gap-2 pt-2">
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {proj.tags.map((tg) => (
-                      <motion.span
+                      <span
                         key={tg}
-                        whileHover={{ scale: 1.05, y: -1 }}
-                        className="text-neutral-300 glass-chip px-3.5 py-1 text-[10px] font-mono hover:text-cyan-300 hover:border-cyan-500/20 active:scale-95 cursor-pointer shadow-sm font-semibold"
+                        className="text-neutral-300 bg-white/[0.04] border border-white/10 px-2.5 py-0.5 rounded-md text-[10px] font-mono"
                       >
                         #{tg}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
 
                   {/* Performance Indicators */}
-                  <div className="grid grid-cols-3 gap-4 border-t border-white/[0.05] pt-6 font-mono text-xs">
+                  <div className="grid grid-cols-3 gap-3 border-t border-white/[0.08] pt-4 font-mono text-xs">
                     {proj.metrics.map((met) => (
-                      <div key={met.label} className="space-y-1 division-line">
-                        <span className="bg-gradient-to-r from-cyan-400 to-indigo-300 bg-clip-text text-transparent font-black text-lg block">
+                      <div key={met.label} className="space-y-0.5">
+                        <span className="text-emerald-300 font-bold text-sm block">
                           {met.value}
                         </span>
-                        <span className="text-[9px] uppercase tracking-wider text-neutral-400 font-bold">
+                        <span className="text-[9px] uppercase tracking-wider text-neutral-400 font-medium">
                           {met.label}
                         </span>
                       </div>
@@ -299,19 +303,19 @@ export default function Projects() {
                   </div>
 
                   {/* CTAs */}
-                  <div className="flex items-center gap-4 pt-4">
+                  <div className="flex items-center gap-3 pt-2">
                     <button
                       onClick={() => setSelectedProject(proj)}
-                      className="px-6 py-3 rounded-full glass-button text-cyan-300 hover:text-white text-[11px] font-mono font-bold tracking-wider flex items-center gap-2 cursor-pointer uppercase shadow-[0_0_15px_rgba(6,182,212,0.04)]"
+                      className="px-5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-heading font-bold tracking-wider flex items-center gap-1.5 cursor-pointer shadow-sm transition-all"
                     >
-                      <Layers className="w-3.5 h-3.5 text-cyan-400 group-hover:text-cyan-300" />
-                      Analyze Blueprint
+                      <Layers className="w-3.5 h-3.5 text-black" />
+                      View Blueprint
                     </button>
                     <a
                       href={proj.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-5 py-2.5 rounded-full text-neutral-400 hover:text-cyan-400 text-[11px] font-mono tracking-wider transition-colors flex items-center gap-1.5 uppercase font-bold"
+                      className="px-4 py-2 rounded-full border border-white/10 hover:border-emerald-500/30 text-neutral-300 hover:text-white text-xs font-mono transition-colors flex items-center gap-1.5"
                     >
                       <Github className="w-3.5 h-3.5" />
                       Repository

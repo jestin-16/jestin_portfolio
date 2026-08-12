@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useFirebase } from "../context/FirebaseContext";
 import { BlogPost } from "../types";
-import { Calendar, Search, ChevronRight, Share2, Terminal } from "lucide-react";
+import { Calendar, Search, ChevronRight, Share2, X } from "lucide-react";
 
 export default function Blog() {
   const { blogPosts } = useFirebase();
@@ -29,184 +29,156 @@ export default function Blog() {
   };
 
   return (
-    <section id="blog" className="py-24 px-6 md:px-12 bg-[#050505] relative overflow-hidden border-t border-neutral-900 select-none">
+    <section id="blog" className="py-20 px-6 md:px-12 bg-[#0b0c10] border-t border-white/[0.06] select-none">
       
-      {/* Background atmospheres */}
-      <div className="absolute top-1/4 left-1/3 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.01)_0%,transparent_70%)] pointer-events-none" />
+      <div className="max-w-6xl mx-auto space-y-10">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-2">
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium"
+            >
+              <span>ARTICLES &amp; WRITING</span>
+            </motion.div>
 
-      {/* Chapter Marker */}
-      <div className="max-w-7xl mx-auto mb-16">
-        <div className="flex items-center gap-3">
-          <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase font-bold">
-            // WRITING & GUIDES
-          </span>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <div>
-            <h2 className="text-4xl sm:text-6xl font-heading font-extrabold tracking-tight text-white mb-3">
-              Knowledge Archives
+            <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
+              Technical Blog
             </h2>
-            <p className="text-neutral-500 text-sm sm:text-base max-w-xl font-sans mt-3">
-              Technical guides covering microservices decoupled layouts, Spring validation pipelines, and container isolation setups.
+
+            <p className="text-neutral-400 text-xs sm:text-sm max-w-md font-sans">
+              Insights on microservices, Spring Boot, and cloud systems
             </p>
           </div>
 
-          {/* Clean High Contrast Search bar */}
-          <div className="flex items-center gap-2 bg-[#0a0a0f] border border-neutral-900 rounded-full px-5 py-3.5 w-full md:max-w-sm focus-within:border-neutral-700 transition-all">
-            <Search className="w-4 h-4 text-neutral-500 shrink-0" />
+          {/* Search bar */}
+          <div className="flex items-center gap-2 bg-white/[0.03] border border-white/10 rounded-full px-4 py-2.5 w-full md:max-w-xs focus-within:border-emerald-500/40 transition-all">
+            <Search className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
             <input
               type="text"
-              placeholder="Search writing, tags, systems..."
+              placeholder="Search posts..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-transparent border-none text-xs text-white focus:outline-none w-full placeholder-neutral-700 font-mono"
+              className="bg-transparent border-none text-xs text-white focus:outline-none w-full placeholder-neutral-500 font-sans"
             />
           </div>
         </div>
 
         {/* Category toggles */}
-        <div className="flex items-center gap-2 mb-12 overflow-x-auto pb-2 scrollbar-none font-mono">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none font-mono">
           {filterCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-[10px] tracking-wider uppercase border transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-full text-xs font-medium capitalize transition-all cursor-pointer ${
                 activeCategory === cat
-                  ? "bg-white text-black border-white font-black"
-                  : "bg-[#0b0b10] border-neutral-900 text-neutral-400 hover:text-white hover:border-neutral-800"
+                  ? "bg-emerald-500 text-black font-bold shadow-sm"
+                  : "bg-white/[0.04] border border-white/10 text-neutral-300 hover:text-white"
               }`}
             >
-              {cat === "all" ? "[Show All Archive]" : cat}
+              {cat === "all" ? "All Posts" : `#${cat}`}
             </button>
           ))}
         </div>
 
         {/* Blog grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredPosts.map((post, idx) => (
             <motion.div
               key={post.id}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-[#0b0b10] border border-neutral-900 p-6 hover:bg-[#0a0a0f] hover:border-neutral-800 rounded-2xl flex flex-col justify-between transition-all duration-300 relative group"
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-emerald-500/30 transition-all flex flex-col justify-between group cursor-pointer"
+              onClick={() => setSelectedPost(post)}
             >
-              <div>
-                <div className="flex items-center gap-3 text-neutral-500 text-[9px] font-mono mb-4 uppercase tracking-wider font-extrabold">
-                  <span className="text-neutral-400 font-bold">#{post.category}</span>
-                  <span className="opacity-30">•</span>
-                  <span>{post.readTime}</span>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400">
+                  <span className="flex items-center gap-1.5 text-emerald-400">
+                    <Calendar className="w-3 h-3" />
+                    {post.date}
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-neutral-300 uppercase text-[10px]">
+                    {post.readTime}
+                  </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white group-hover:text-neutral-200 transition-colors line-clamp-2 leading-snug">
+                <h3 className="text-base font-display font-bold text-white group-hover:text-emerald-300 transition-colors">
                   {post.title}
                 </h3>
 
-                <p className="text-neutral-400 text-xs leading-relaxed mt-3 line-clamp-3 font-sans">
+                <p className="text-xs text-neutral-400 font-sans leading-relaxed line-clamp-2">
                   {post.summary}
                 </p>
               </div>
 
-              {/* Action row footer */}
-              <div className="flex items-center justify-between border-t border-neutral-900 pt-4 mt-8">
-                <span className="text-[9px] font-mono text-neutral-500">{post.date}</span>
-                <button
-                  onClick={() => setSelectedPost(post)}
-                  className="text-[10px] font-mono font-bold uppercase tracking-wider text-white hover:text-neutral-300 flex items-center gap-1.5 cursor-pointer"
-                >
-                  DECRYPT BLUEPRINT
-                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-neutral-500" />
-                </button>
+              <div className="pt-4 flex items-center justify-between border-t border-white/[0.06] text-xs font-mono text-emerald-300 group-hover:translate-x-1 transition-transform">
+                <span>Read Article</span>
+                <ChevronRight className="w-4 h-4" />
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
 
-      {/* Reader overlay modal */}
+      {/* Article Detail Modal */}
       <AnimatePresence>
         {selectedPost && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedPost(null)}
-              className="absolute inset-0 bg-black/90 backdrop-blur-md cursor-zoom-out"
-            />
-
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0, y: 30 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.92, opacity: 0, y: 30 }}
-              transition={{ type: "spring", duration: 0.8 }}
-              className="relative w-full max-w-2xl bg-[#0a0a0f] border border-neutral-900 rounded-3xl max-h-[85vh] overflow-y-auto p-6 md:p-10 z-10 space-y-6 shadow-2xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="bg-[#0e1017] border border-white/10 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto relative"
             >
               <button
                 onClick={() => setSelectedPost(null)}
-                className="absolute top-4 right-4 bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 text-white rounded-full p-2.5 cursor-pointer transition-colors text-xs font-mono font-bold"
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/[0.05] hover:bg-white/10 text-neutral-300 hover:text-white cursor-pointer"
               >
-                &lt;Close /&gt;
+                <X className="w-4 h-4" />
               </button>
 
-              <div className="space-y-4 pt-4">
-                <div className="flex items-center gap-3 text-[10px] font-mono text-neutral-500 uppercase tracking-wider font-extrabold">
-                  <span className="text-white font-bold">#{selectedPost.category}</span>
-                  <span className="opacity-30">•</span>
-                  <span>{selectedPost.readTime}</span>
-                  <span className="opacity-30">•</span>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
                   <span>{selectedPost.date}</span>
+                  <span>&bull;</span>
+                  <span>{selectedPost.readTime}</span>
                 </div>
-
-                <h3 className="text-2xl sm:text-3xl font-sans font-black text-white">
+                <h2 className="text-2xl font-display font-bold text-white">
                   {selectedPost.title}
-                </h3>
+                </h2>
+              </div>
 
-                <div className="h-[1px] bg-neutral-900 w-full my-4" />
+              <div className="text-xs sm:text-sm text-neutral-300 font-sans leading-relaxed whitespace-pre-line">
+                {selectedPost.content}
+              </div>
 
-                <div className="text-neutral-300 text-sm sm:text-base leading-relaxed antialiased font-sans pr-2 space-y-4">
-                  <p>{selectedPost.content}</p>
-                  <p className="text-neutral-400 text-xs italic">
-                    To construct resilient systems, it is vital to decouple heavy processing segments. By separating routing endpoints, database connections, and cache lifetimes, latency is minimized. Jestin implements these patterns directly into spring-boot projects to ensure absolute container performance.
-                  </p>
-                </div>
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <button
+                  onClick={handleShare}
+                  className="px-4 py-2 rounded-full bg-white/[0.05] hover:bg-white/10 text-xs font-mono text-emerald-300 flex items-center gap-2 cursor-pointer"
+                >
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span>{hasCopied ? "Link Copied!" : "Share Link"}</span>
+                </button>
 
-                {/* Simulated Spec card */}
-                <div className="bg-black/40 border border-neutral-900 rounded-2xl p-5 mt-6 font-mono text-xs">
-                  <span className="text-white uppercase font-bold text-[10px] block mb-3 tracking-widest flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 animate-pulse" />
-                    [SECURE_KNOWLEDGE_PIPELINE] ARCHITECTURE SPECIFICATION
-                  </span>
-                  <div className="space-y-2 text-neutral-400 text-[11px] leading-relaxed">
-                    <p>• Avoid core memory leaks by establishing strictly mapped thread contextual configurations.</p>
-                    <p>• Clean Docker multi-stage builds consistently drop target weight indicators down by up to 75%.</p>
-                    <p>• Restrict authorization exceptions using custom, isolated filter chains inside security configurations.</p>
-                  </div>
-                </div>
-
-                {/* Modal footer shares */}
-                <div className="flex items-center justify-between border-t border-neutral-900 pt-6 mt-8">
-                  <span className="text-[9px] font-mono text-neutral-500">
-                    AUTHOR: JESTIN SHAJI • SPRING EXPERT
-                  </span>
-                  
-                  <button
-                    onClick={handleShare}
-                    className="flex items-center gap-1.5 text-xs font-mono text-neutral-400 hover:text-white transition-colors cursor-pointer"
-                  >
-                    <Share2 className="w-3.5 h-3.5" />
-                    <span>{hasCopied ? "[COPIED]" : "EXPORT LINK"}</span>
-                  </button>
-                </div>
+                <button
+                  onClick={() => setSelectedPost(null)}
+                  className="px-5 py-2 rounded-full bg-emerald-500 text-black font-heading font-bold text-xs cursor-pointer"
+                >
+                  Close
+                </button>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+
     </section>
   );
 }

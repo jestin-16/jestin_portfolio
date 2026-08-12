@@ -30,151 +30,132 @@ export default function Contact() {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       setContactStatus("error");
-      setStatusMessage("Please provide your Name, Email, and Message before dispatching.");
+      setStatusMessage("Please fill in your Name, Email, and Message.");
       return;
     }
 
     setContactStatus("loading");
 
     try {
-      // 1. Double Dispatch - Save securely into Firestore collection
       await submitMessage(formData.name, formData.email, formData.subject, formData.message);
 
-      // 2. Also send to Express / Vercel API proxy route for backend telemetry log consistency
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-      const parsed = await res.json();
 
       if (res.ok) {
         setContactStatus("success");
-         setStatusMessage("Message and telemetry dispatch uploaded to dynamic cloud queue successfully.");
+        setStatusMessage("Message sent successfully! I'll get back to you soon.");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        // Fallback to success anyway since the Firestore commit succeeded!
         setContactStatus("success");
-         setStatusMessage("Message received and saved in Firestore successfully!");
+        setStatusMessage("Message saved! Thank you for reaching out.");
         setFormData({ name: "", email: "", subject: "", message: "" });
       }
     } catch (err: any) {
-      console.error("Form transmission error:", err);
-      // Fallback: If network is faulty but we entered offline retry
+      console.error("Form submission error:", err);
       setContactStatus("success");
-       setStatusMessage("Offline queuing initiated: Message captured successfully.");
+      setStatusMessage("Message saved! Thank you for reaching out.");
       setFormData({ name: "", email: "", subject: "", message: "" });
     }
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#020206] via-[#05051a] to-[#010103] relative overflow-hidden border-t border-white/[0.04]">
-      {/* Dynamic background lights */}
-      <div className="absolute top-1/2 left-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.12)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(240,46,170,0.09)_0%,transparent_70%)] pointer-events-none" />
+    <section id="contact" className="py-20 px-6 md:px-12 bg-[#0b0c10] border-t border-white/[0.06] select-none">
+      
+      <div className="max-w-6xl mx-auto space-y-12">
+        
+        {/* Title */}
+        <div className="text-center space-y-2">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium"
+          >
+            <span>SAY HELLO</span>
+          </motion.div>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Title Block */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="h-[2px] w-8 bg-gradient-to-r from-cyan-400 to-[#3B82F6]" />
-            <span className="text-xs font-mono tracking-widest bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent font-black uppercase">
-              06 / Transmission
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow mb-2">
-            Get In Touch.
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Get In Touch
           </h2>
-          <p className="text-neutral-300 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
-            Establish a secure connection with Jestin. Dispatch system inquiries, technical briefs, or academic collaborations instantly.
+
+          <p className="text-neutral-400 text-xs sm:text-sm max-w-md mx-auto font-sans">
+            Have a project, collaboration, or opportunity? Send a direct note.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Fast Connect and Info cards */}
+          {/* Quick Info Cards */}
           <motion.div
-            initial={{ opacity: 0, x: -35 }}
+            initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
-            className="lg:col-span-4 space-y-6"
+            className="lg:col-span-4 space-y-4"
           >
             
-            {/* Quick click copy container */}
-            <motion.div
-              whileHover={{ y: -4, scale: 1.015, transition: { duration: 0.2 } }}
-              className="glass-panel p-6 relative overflow-hidden group hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.18)] bg-white/[0.02] border-white/[0.04] backdrop-blur-md transition-all duration-300 animate-none"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <Mail className="w-5 h-5 text-cyan-400 mb-4" />
-                  <span className="text-[10px] font-mono text-gray-450 block uppercase tracking-wider mb-1 font-bold">
-                    Direct Email Endpoint
-                  </span>
-                  <p className="text-sm font-bold text-white font-mono break-all leading-tight select-all">
-                    {bio.email}
-                  </p>
+            {/* Direct Email */}
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>Direct Email</span>
                 </div>
-
                 <button
                   onClick={handleCopyEmail}
-                  className="bg-white/5 border border-white/10 hover:bg-white/10 p-2.5 rounded-lg text-white transition-colors cursor-pointer"
+                  className="p-1.5 rounded-lg bg-white/[0.04] hover:bg-white/10 text-neutral-300 transition-colors cursor-pointer"
+                  title="Copy Email"
                 >
-                  {copiedEmail ? <Check className="w-4 h-4 text-emerald-400 animate-pulse" /> : <Copy className="w-4 h-4" />}
+                  {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-neutral-400" />}
                 </button>
               </div>
-            </motion.div>
+              <p className="text-xs sm:text-sm font-mono font-bold text-white break-all">
+                {bio.email}
+              </p>
+            </div>
 
-            {/* Direct Dial Endpoint */}
-            <motion.div
-              whileHover={{ y: -4, scale: 1.015, transition: { duration: 0.2 } }}
-              className="glass-panel p-6 group hover:border-purple-500/40 hover:shadow-[0_0_20px_rgba(168,85,247,0.18)] bg-white/[0.02] border-white/[0.04] backdrop-blur-md transition-all duration-300"
-            >
-              <Phone className="w-5 h-5 text-purple-400 mb-4" />
-              <span className="text-[10px] font-mono text-gray-450 block uppercase tracking-wider mb-1 font-bold">
-                Direct Telephony Line
-              </span>
+            {/* Direct Phone */}
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono text-amber-400">
+                <Phone className="w-3.5 h-3.5" />
+                <span>Phone Line</span>
+              </div>
               <a
                 href={`tel:${bio.phone}`}
-                className="text-base font-bold text-white font-mono hover:text-[#3B82F6] transition-colors"
+                className="text-xs sm:text-sm font-mono font-bold text-white hover:text-emerald-300 transition-colors block"
               >
                 {bio.phone}
               </a>
-
-              <span className="text-[10px] text-neutral-450 block mt-2 font-medium">
-                Available: IST working hours
+              <span className="text-[10px] text-neutral-400 font-sans block">
+                Available: IST Working Hours
               </span>
-            </motion.div>
+            </div>
 
-            {/* Verification Security Notice */}
-            <div className="text-xs text-neutral-400 leading-relaxed space-y-2 select-none border-l-2 border-cyan-500/30 pl-4 py-1">
-              <span className="font-mono text-[10px] text-cyan-400 font-bold block uppercase tracking-wider">
-                [SECURE FILTER PIPELINE]
+            {/* Location */}
+            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] text-xs text-neutral-300 font-sans leading-relaxed">
+              <span className="font-mono text-emerald-400 font-bold block mb-1">
+                Location
               </span>
-              <p className="font-medium">All transmitted messages are safely validated and queued in memory on backend JVM nodes running inside secure container infrastructures.</p>
+              <p>{bio.location} &bull; India</p>
             </div>
           </motion.div>
 
-          {/* Right Column: Contact form */}
+          {/* Contact Form */}
           <div className="lg:col-span-8">
             <motion.form
               onSubmit={handleFormSubmit}
-              initial={{ opacity: 0, x: 35 }}
+              initial={{ opacity: 0, x: 15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
-              whileHover={{ border: "1px solid rgba(62,184,212,0.25)", transition: { duration: 0.3 } }}
-              className="glass-panel p-6 md:p-8 space-y-6 relative hover:shadow-[0_0_25px_rgba(6,182,212,0.05)] transition-all duration-300 bg-white/[0.02] border-white/[0.04] backdrop-blur-md"
+              className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-4"
             >
-              <p className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-2 font-bold select-none">
-                &lt;Interactive Dispatch Protocol /&gt;
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-xs font-mono text-cyan-400 uppercase tracking-widest block font-bold">
-                    YOUR NAME *
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label htmlFor="name" className="text-xs font-mono font-semibold text-neutral-300 block">
+                    Your Name *
                   </label>
                   <input
                     type="text"
@@ -183,84 +164,78 @@ export default function Contact() {
                     onChange={handleFormInputChange}
                     placeholder="e.g. Alexis Carter"
                     required
-                    className="w-full bg-[#08080c]/60 border border-neutral-900 focus:border-cyan-500/60 focus:shadow-[0_0_15px_rgba(6,182,212,0.18)] focus:ring-1 focus:ring-cyan-500/10 rounded-xl px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder-neutral-600 font-medium"
+                    className="w-full bg-white/[0.03] border border-white/10 focus:border-emerald-500/60 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none transition-all placeholder-neutral-500 font-sans"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-xs font-mono text-cyan-400 uppercase tracking-widest block font-bold">
-                    EMAIL ADDRESS *
+                <div className="space-y-1">
+                  <label htmlFor="email" className="text-xs font-mono font-semibold text-neutral-300 block">
+                    Email Address *
                   </label>
                   <input
                     type="email"
                     id="email"
                     value={formData.email}
                     onChange={handleFormInputChange}
-                    placeholder="e.g. alexis@cloud.org"
+                    placeholder="e.g. alexis@example.com"
                     required
-                    className="w-full bg-[#08080c]/60 border border-neutral-900 focus:border-cyan-500/60 focus:shadow-[0_0_15px_rgba(6,182,212,0.18)] focus:ring-1 focus:ring-cyan-500/10 rounded-xl px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder-neutral-600 font-medium"
+                    className="w-full bg-white/[0.03] border border-white/10 focus:border-emerald-500/60 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none transition-all placeholder-neutral-500 font-sans"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-xs font-mono text-cyan-400 uppercase tracking-widest block font-bold">
-                  SUBJECT TOPIC
+              <div className="space-y-1">
+                <label htmlFor="subject" className="text-xs font-mono font-semibold text-neutral-300 block">
+                  Subject Topic
                 </label>
                 <input
                   type="text"
                   id="subject"
                   value={formData.subject}
                   onChange={handleFormInputChange}
-                  placeholder="e.g. Scaling Spring Boot Microservices Blueprints"
-                  className="w-full bg-[#08080c]/60 border border-neutral-900 focus:border-cyan-500/60 focus:shadow-[0_0_15px_rgba(6,182,212,0.18)] focus:ring-1 focus:ring-cyan-500/10 rounded-xl px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder-neutral-600 font-medium"
+                  placeholder="e.g. Software Engineering Opportunity"
+                  className="w-full bg-white/[0.03] border border-white/10 focus:border-emerald-500/60 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none transition-all placeholder-neutral-500 font-sans"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-xs font-mono text-cyan-400 uppercase tracking-widest block font-bold">
-                  TRANSMISSION BODY *
+              <div className="space-y-1">
+                <label htmlFor="message" className="text-xs font-mono font-semibold text-neutral-300 block">
+                  Message *
                 </label>
                 <textarea
                   id="message"
                   value={formData.message}
                   onChange={handleFormInputChange}
                   rows={4}
-                  placeholder="Deconstruct your message content here..."
+                  placeholder="Write your note here..."
                   required
-                  className="w-full bg-[#08080c]/60 border border-neutral-900 focus:border-cyan-500/60 focus:shadow-[0_0_15px_rgba(6,182,212,0.18)] focus:ring-1 focus:ring-cyan-500/10 rounded-xl px-4 py-3.5 text-sm text-white outline-none transition-all duration-300 placeholder-neutral-600 font-medium resize-none"
+                  className="w-full bg-white/[0.03] border border-white/10 focus:border-emerald-500/60 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none transition-all placeholder-neutral-500 font-sans resize-none"
                 />
               </div>
 
-              {/* Submission status feedback notifications */}
+              {/* Status Notice */}
               <AnimatePresence mode="wait">
                 {contactStatus === "success" && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 p-4 rounded-xl flex items-start gap-3 text-xs"
+                    className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 p-3 rounded-xl flex items-center gap-2 text-xs font-mono"
                   >
-                    <ShieldCheck className="w-5 h-5 shrink-0 mt-0.5 text-emerald-400" />
-                    <div>
-                      <span className="font-extrabold uppercase font-mono tracking-wide block mb-1">DISPATCH RECEIVED</span>
-                      {statusMessage}
-                    </div>
+                    <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-400" />
+                    <div>{statusMessage}</div>
                   </motion.div>
                 )}
 
                 {contactStatus === "error" && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: -5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="bg-red-500/10 border border-red-500/25 text-red-500 p-4 rounded-xl flex items-start gap-3 text-xs"
+                    className="bg-red-500/10 border border-red-500/20 text-red-300 p-3 rounded-xl flex items-center gap-2 text-xs font-mono"
                   >
-                    <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5 text-red-500" />
-                    <div>
-                      <span className="font-extrabold uppercase font-mono tracking-wide block mb-1">TRANSMISSION OVERFLOW</span>
-                      {statusMessage}
-                    </div>
+                    <AlertTriangle className="w-4 h-4 shrink-0 text-red-400" />
+                    <div>{statusMessage}</div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -268,14 +243,14 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={contactStatus === "loading"}
-                className="w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-550 text-white py-4 px-6 rounded-xl font-black text-sm hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center gap-2 font-mono uppercase tracking-widest shadow-[0_0_20px_rgba(6,182,212,0.22)] hover:shadow-[0_0_30px_rgba(6,182,212,0.32)] disabled:opacity-50 border-none"
+                className="w-full bg-emerald-500 hover:bg-emerald-400 text-black py-3 px-6 rounded-xl font-heading font-bold text-xs transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm border-none disabled:opacity-50"
               >
                 {contactStatus === "loading" ? (
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className="w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <>
-                    <Send className="w-4 h-4" />
-                    <span>Transmit System Request</span>
+                    <Send className="w-3.5 h-3.5 text-black" />
+                    <span>Send Note</span>
                   </>
                 )}
               </button>

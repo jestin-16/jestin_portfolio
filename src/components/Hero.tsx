@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Github, Linkedin, Mail, ArrowDown, FileText, Compass } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, FileText, Sparkles, Terminal } from "lucide-react";
 import { useFirebase } from "../context/FirebaseContext";
 
 interface HeroProps {
@@ -12,7 +12,6 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
   const { bio } = useFirebase();
   
   const handleDownloadCV = () => {
-    // Elegant CV simulation download
     const cvText = `
     ====================================================
     JESTIN SHAJI - BACKEND JAVA & SPRING BOOT ARCHITECT
@@ -46,135 +45,149 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 lg:px-24 pt-32 pb-16 overflow-hidden bg-gradient-to-b from-[#020205] via-[#060618] to-[#010104] selection:bg-cyan-500/20">
+    <section id="home" className="relative min-h-[92vh] flex flex-col justify-center items-center px-6 md:px-12 lg:px-24 pt-28 pb-16 overflow-hidden bg-[#0b0c10] select-none">
       
-      {/* Background Cinematic Lighting (Ambient Vignettes) */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(6,182,212,0.08)_0%,transparent_65%)] pointer-events-none" />
+      {/* Subtle minimalist background glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[350px] bg-emerald-500/[0.04] blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[250px] bg-amber-500/[0.03] blur-[100px] pointer-events-none" />
 
-      {/* Cyberpunk Neon Color Vignettes */}
-      <div className="absolute top-1/4 left-1/3 w-[650px] h-[650px] rounded-full bg-indigo-600/[0.15] blur-[150px] pointer-events-none animate-[pulse_8s_infinite]" />
-      <div className="absolute bottom-1/4 right-1/3 w-[550px] h-[550px] rounded-full bg-cyan-500/[0.12] blur-[130px] pointer-events-none animate-[pulse_10s_infinite_reverse]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] rounded-full bg-fuchsia-500/[0.09] blur-[170px] pointer-events-none animate-pulse" />
-
-      {/* Grid Pattern overlays for fine structure */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-
-      <div className="w-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center z-10 flex-1 space-y-10">
+      <div className="w-full max-w-4xl mx-auto flex flex-col justify-center items-center text-center z-10 space-y-8">
         
-        {/* Subtle Accent Mini Hook */}
+        {/* Availability Badge */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex items-center gap-2.5 px-4 py-1.5 bg-cyan-950/40 border border-cyan-400/40 rounded-full w-fit hover:border-cyan-300 transition-colors mx-auto shadow-[0_0_20px_rgba(6,182,212,0.2)]"
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="text-xs font-mono text-cyan-200 font-extrabold tracking-widest uppercase">
-            SYSTEM ARCHITECT &bull; {bio.name}
-          </span>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span>Available for Full-Stack &amp; Backend Engineering</span>
         </motion.div>
 
-        {/* Majestic Hero Display Heading */}
-        <div className="space-y-5 max-w-5xl">
+        {/* Minimal Hero Header */}
+        <div className="space-y-4 max-w-3xl">
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-hero font-extrabold tracking-tighter leading-[1.03] text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 via-sky-200 to-indigo-200 drop-shadow-[0_4px_35px_rgba(6,182,212,0.35)]"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-4xl sm:text-6xl md:text-7xl font-display font-bold tracking-tight text-white leading-[1.1]"
           >
-            {bio.title}
+            Jestin Shaji
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg sm:text-2xl md:text-3xl font-heading font-extrabold bg-gradient-to-r from-cyan-400 via-indigo-300 to-fuchsia-400 bg-clip-text text-transparent tracking-tight leading-snug max-w-3xl mx-auto drop-shadow-[0_2px_15px_rgba(59,130,246,0.3)]"
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-xl sm:text-3xl font-serif italic text-emerald-300/90 tracking-wide"
           >
-            {bio.subtitle}
+            Backend Developer &amp; Cloud Systems Architect
           </motion.p>
         </div>
 
-        {/* Narrative contextual statements matching text block */}
+        {/* Short clean tagline */}
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-neutral-300 text-sm sm:text-lg leading-relaxed font-sans max-w-2xl font-medium tracking-normal"
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="text-neutral-300 text-sm sm:text-base font-sans font-normal max-w-lg leading-relaxed"
         >
-          {bio.tagline}
+          {bio.tagline || "Architecting high-performance Java Spring Boot APIs, containerized microservices, and secure relational data pipelines."}
         </motion.p>
 
-        {/* Call to action element buttons */}
+        {/* Action Buttons */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.98, y: 15 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto pt-2"
         >
           <button
             onClick={onScrollToProjects}
-            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 hover:from-cyan-300 hover:via-blue-400 hover:to-indigo-400 text-white rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-cyan-500/15 hover:shadow-cyan-500/25 border border-cyan-400/20"
+            className="w-full sm:w-auto px-7 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-heading font-bold text-xs rounded-full transition-all duration-200 cursor-pointer shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2"
           >
-            <Compass className="w-4 h-4 text-white" />
-            <span>Explore Works</span>
+            <Sparkles className="w-3.5 h-3.5 text-black" />
+            <span>Explore Work</span>
           </button>
 
           <button
             onClick={handleDownloadCV}
-            className="w-full sm:w-auto px-8 py-4 bg-[#0a0a10]/80 hover:bg-[#12121e]/80 text-[#eaeaea] hover:text-white border border-neutral-800 hover:border-cyan-500/30 rounded-full text-xs font-mono font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg flex items-center justify-center gap-2.5 cursor-pointer backdrop-blur-md"
+            className="w-full sm:w-auto px-7 py-3 bg-white/[0.05] hover:bg-white/10 text-white border border-white/10 hover:border-emerald-500/30 font-heading font-semibold text-xs rounded-full transition-all duration-200 cursor-pointer flex items-center justify-center gap-2"
           >
-            <FileText className="w-4 h-4 text-cyan-400" />
-            <span>Download CV</span>
+            <FileText className="w-3.5 h-3.5 text-emerald-300" />
+            <span>Resume</span>
           </button>
         </motion.div>
 
-        {/* Social connections cleanly arranged below button line */}
+        {/* Social Icons */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="flex items-center justify-center gap-4 pt-4"
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="flex items-center justify-center gap-3 pt-2"
         >
           <a
             href={bio.socials?.github || "https://github.com"}
             target="_blank"
             rel="noreferrer"
-            aria-label="GitHub Profile Link"
-            className="w-11 h-11 rounded-full bg-[#0a0a0f] hover:bg-black text-neutral-400 hover:text-cyan-400 border border-neutral-900 hover:border-cyan-500/50 font-mono text-sm flex items-center justify-center transition-all hover:scale-115 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)]"
+            aria-label="GitHub"
+            className="w-9 h-9 rounded-full bg-white/[0.04] hover:bg-white/10 border border-white/10 text-neutral-300 hover:text-emerald-300 flex items-center justify-center transition-colors"
           >
-            <Github className="w-4.5 h-4.5" />
+            <Github className="w-4 h-4" />
           </a>
           <a
             href={bio.socials?.linkedin || "https://linkedin.com"}
             target="_blank"
             rel="noreferrer"
-            aria-label="LinkedIn Profile Link"
-            className="w-11 h-11 rounded-full bg-[#0a0a0f] hover:bg-black text-neutral-400 hover:text-blue-400 border border-neutral-900 hover:border-blue-500/50 font-mono text-sm flex items-center justify-center transition-all hover:scale-115 hover:shadow-[0_0_15px_rgba(59,130,246,0.25)]"
+            aria-label="LinkedIn"
+            className="w-9 h-9 rounded-full bg-white/[0.04] hover:bg-white/10 border border-white/10 text-neutral-300 hover:text-emerald-300 flex items-center justify-center transition-colors"
           >
-            <Linkedin className="w-4.5 h-4.5" />
+            <Linkedin className="w-4 h-4" />
           </a>
           <button
             onClick={onScrollToContact}
-            title="Send Direct Message"
-            aria-label="Navigate to email direct channel"
-            className="w-11 h-11 rounded-full bg-[#0a0a0f] hover:bg-black text-neutral-400 hover:text-purple-400 border border-neutral-900 hover:border-purple-500/50 font-mono text-sm flex items-center justify-center transition-all hover:scale-115 cursor-pointer hover:shadow-[0_0_15px_rgba(168,85,247,0.25)]"
+            aria-label="Contact"
+            className="w-9 h-9 rounded-full bg-white/[0.04] hover:bg-white/10 border border-white/10 text-neutral-300 hover:text-emerald-300 flex items-center justify-center transition-colors cursor-pointer"
           >
-            <Mail className="w-4.5 h-4.5" />
+            <Mail className="w-4 h-4" />
           </button>
+        </motion.div>
+
+        {/* Clean Key Metrics Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 w-full max-w-2xl"
+        >
+          {[
+            { value: "15+", label: "Systems Built" },
+            { value: "< 120ms", label: "Avg Latency" },
+            { value: "99.9%", label: "Uptime Goal" },
+            { value: "MCA", label: "Computer Science" }
+          ].map((metric, idx) => (
+            <div
+              key={idx}
+              className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] text-center"
+            >
+              <div className="text-base sm:text-lg font-display font-bold text-white">{metric.value}</div>
+              <div className="text-[11px] font-sans text-neutral-400">{metric.label}</div>
+            </div>
+          ))}
         </motion.div>
 
       </div>
 
-      {/* Bounce continuous scrolling indicator matching design */}
+      {/* Scroll Down */}
       <div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-25 hover:opacity-100 transition-opacity cursor-pointer pointer-events-auto"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1 opacity-40 hover:opacity-100 transition-opacity cursor-pointer"
         onClick={onScrollToProjects}
       >
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown className="w-4 h-4 text-white" />
+          <ArrowDown className="w-4 h-4 text-emerald-300" />
         </motion.div>
       </div>
 

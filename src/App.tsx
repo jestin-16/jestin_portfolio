@@ -93,12 +93,12 @@ export default function App() {
   };
 
   return (
-    <div id="app-root" className="min-h-screen bg-[#050505] text-gray-100 overflow-x-hidden relative font-sans">
+    <div id="app-root" className="min-h-screen bg-[#0d0f17] text-gray-100 overflow-x-hidden relative font-sans">
       
       {/* 1. Cinematic Floating Particle & Volumetric Fog Backdrop Canvas */}
       <CinematicCanvas />
 
-      {/* 2. Premium Cinematic Entrance Sequence displaying Name */}
+      {/* 2. Premium Entrance Sequence displaying Name */}
       <AnimatePresence>
         {systemLoading && (
           <motion.div
@@ -106,24 +106,25 @@ export default function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, filter: "blur(20px)", y: -10 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[100] bg-[#050505] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden"
+            className="fixed inset-0 z-[100] bg-[#0d0f17] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden"
           >
             {/* Soft decorative background glow to frame the text */}
-            <div className="absolute w-[400px] h-[400px] rounded-full bg-blue-500/[0.03] blur-[120px] pointer-events-none" />
+            <div className="absolute w-[400px] h-[400px] rounded-full bg-pink-500/[0.08] blur-[120px] pointer-events-none" />
             
-            <div className="text-center space-y-5 relative z-10">
+            <div className="text-center space-y-4 relative z-10">
               
-              {/* Elegant Accent Tagline */}
+              {/* Cute Tagline */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="flex items-center justify-center gap-2 mb-2"
+                className="flex items-center justify-center gap-2 mb-1"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-[pulse_2s_infinite]" />
-                <span className="text-[10px] font-mono tracking-[0.25em] text-neutral-500 uppercase font-semibold">
-                  PORTFOLIO &bull; INTRO
+                <span className="text-pink-400 text-sm animate-bounce">✨</span>
+                <span className="text-xs font-heading tracking-widest text-pink-300 uppercase font-semibold">
+                  WELCOME &bull; PORTFOLIO
                 </span>
+                <span className="text-pink-400 text-sm animate-bounce">✨</span>
               </motion.div>
 
               {/* Main Display Typography Name */}
@@ -132,29 +133,29 @@ export default function App() {
                   initial={{ y: "100%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-4xl sm:text-6xl font-sans tracking-[0.3em] font-extrabold uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-neutral-400 pl-[0.3em]"
+                  className="block text-4xl sm:text-6xl font-heading tracking-tight font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-200 via-purple-100 to-indigo-200"
                 >
                   JESTIN SHAJI
                 </motion.span>
               </h1>
 
-              {/* Sub-label showing after short offset */}
+              {/* Sub-label */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.6 }}
-                className="text-xs sm:text-sm font-mono tracking-[0.16em] text-neutral-400 font-medium uppercase"
+                className="text-xs sm:text-sm font-sans tracking-wide text-neutral-300 font-medium"
               >
-                Backend Developer &amp; Cloud Security Architect
+                Backend Java Developer &amp; Cloud Security Specialist
               </motion.p>
               
               {/* Sleek minimal progress line ticker */}
-              <div className="w-[120px] h-[1px] bg-white/[0.05] relative overflow-hidden mx-auto mt-4">
+              <div className="w-[120px] h-[2px] bg-white/[0.08] rounded-full relative overflow-hidden mx-auto mt-4">
                 <motion.div
                   initial={{ left: "-100%" }}
                   animate={{ left: "100%" }}
                   transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
-                  className="absolute h-full w-[40%] bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+                  className="absolute h-full w-[40%] bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 rounded-full"
                 />
               </div>
 
@@ -163,7 +164,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* 2. Refined Floating Pill Header/Navbar (Inspired by reference) */}
+      {/* 2. Refined Floating Pill Header/Navbar */}
       <AnimatePresence>
         {!systemLoading && (
           <motion.div
@@ -176,37 +177,38 @@ export default function App() {
               id="navbar"
               className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
                 scrolled
-                  ? "py-4 bg-[#050508]/40 backdrop-blur-xl border-b border-white/[0.05] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-                  : "py-6 bg-transparent border-b border-transparent"
+                  ? "py-3 bg-[#0d0f17]/60 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+                  : "py-5 bg-transparent border-b border-transparent"
               }`}
             >
               <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
                 
-                {/* Solid circular logo icon */}
+                {/* Cute logo icon pill */}
                 <button
                   onClick={() => handleScrollToSection("home")}
-                  className="w-10 h-10 rounded-full bg-white/[0.03] backdrop-blur-md border border-white/10 hover:border-cyan-500/30 flex items-center justify-center font-black text-white uppercase text-xs cursor-pointer select-none tracking-wider shadow-lg hover:shadow-[0_0_15px_rgba(6,182,212,0.18)] hover:scale-105 transition-all duration-300"
+                  className="px-3.5 py-1.5 rounded-full bg-white/[0.05] backdrop-blur-md border border-pink-500/20 hover:border-pink-400/50 flex items-center gap-1.5 font-heading text-white text-sm font-bold cursor-pointer select-none tracking-wide shadow-md hover:scale-105 transition-all duration-300 group"
                 >
-                  js
+                  <span className="text-pink-400 group-hover:rotate-12 transition-transform">✨</span>
+                  <span className="bg-gradient-to-r from-pink-200 to-purple-200 bg-clip-text text-transparent">JS</span>
                 </button>
 
-                {/* Centered Floating Nav Bar (As shown in screenshot) */}
-                <nav role="navigation" className="hidden md:flex items-center gap-1.5 p-1 bg-white/[0.02] border border-white/[0.06] rounded-full backdrop-blur-xl relative">
+                {/* Centered Floating Nav Bar */}
+                <nav role="navigation" className="hidden md:flex items-center gap-1 p-1 bg-white/[0.04] border border-white/[0.08] rounded-full backdrop-blur-xl relative shadow-lg">
                   {["home", "services", "about", "tech", "projects"].map((item) => {
                     const isActive = activeSection === item;
                     return (
                       <button
                         key={item}
                         onClick={() => handleScrollToSection(item)}
-                        className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-300 cursor-pointer rounded-full relative z-10`}
+                        className={`px-4 py-1.5 text-xs font-mono tracking-wide capitalize transition-colors duration-200 cursor-pointer rounded-full relative z-10`}
                       >
-                        <span className={`relative z-10 ${isActive ? "text-cyan-300 font-bold" : "text-neutral-400 hover:text-white"}`}>
+                        <span className={`relative z-10 ${isActive ? "text-emerald-300 font-bold" : "text-neutral-400 hover:text-white"}`}>
                           {item === "tech" ? "Skills" : item}
                         </span>
                         {isActive && (
                           <motion.div
                             layoutId="activeNavItem"
-                            className="absolute inset-0 bg-white/[0.06] border border-white/[0.05] rounded-full z-0 shadow-inner"
+                            className="absolute inset-0 bg-emerald-500/15 border border-emerald-500/30 rounded-full z-0"
                             transition={{ type: "spring", stiffness: 350, damping: 30 }}
                           />
                         )}
@@ -218,9 +220,9 @@ export default function App() {
                 {/* Let's Talk Pill shape trigger */}
                 <button
                   onClick={() => handleScrollToSection("contact")}
-                  className="hidden md:inline-block px-5 py-2.5 bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 hover:from-cyan-500/20 hover:to-indigo-500/20 text-cyan-300 hover:text-white border border-cyan-500/20 hover:border-cyan-500/40 rounded-full text-xs font-black tracking-wide transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-lg backdrop-blur-md"
+                  className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black rounded-full text-xs font-heading font-bold transition-all cursor-pointer shadow-sm"
                 >
-                  Let's Talk
+                  <span>Say Hello</span>
                 </button>
 
                 {/* Handheld Trigger toggle */}
@@ -315,178 +317,112 @@ export default function App() {
               <Contact />
             </main>
 
-            {/* 3. Footer */}
-            <footer className="relative pt-24 pb-16 border-t border-white/[0.04] bg-[#020205] overflow-hidden select-none">
-              {/* Premium Top Glow Separator Line */}
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 via-indigo-500/40 to-transparent" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-[3px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent blur-[1px]" />
+            {/* 3. Studio Minimal Footer */}
+            <footer className="relative pt-16 pb-12 bg-[#0b0c10] border-t border-white/[0.06] select-none">
               
-              {/* Ambient bottom glow lights (Enhanced color opacity) */}
-              <div className="absolute bottom-0 left-1/4 w-[600px] h-[350px] bg-gradient-to-t from-indigo-500/[0.06] to-transparent rounded-full blur-[140px] pointer-events-none" />
-              <div className="absolute bottom-0 right-1/4 w-[500px] h-[250px] bg-gradient-to-t from-cyan-500/[0.06] to-transparent rounded-full blur-[120px] pointer-events-none" />
-
-              {/* Grid Background Overlay for high-end technical feel */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.005)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.005)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-40" />
-
-              <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+              <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
                 
-                {/* Main Footer Interaction Core */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/[0.05]">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/[0.06]">
                   
-                  {/* Column 1: Brand & Bio Hook (Enhanced visual weight and branding) */}
-                  <div className="md:col-span-5 space-y-6">
-                    <div className="flex items-center gap-4">
-                      {/* Premium holographic hexagonal or rounded logo container with visual breath */}
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        className="w-12 h-12 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-950 border border-white/[0.08] hover:border-cyan-500/50 flex items-center justify-center font-black text-white text-sm uppercase tracking-widest relative group transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.6)] cursor-pointer"
+                  {/* Brand & Bio */}
+                  <div className="md:col-span-6 space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="px-3 py-1 rounded-full bg-white/[0.04] border border-emerald-500/30 flex items-center gap-1 font-mono text-emerald-300 text-xs font-bold cursor-pointer"
                         onClick={() => handleScrollToSection("home")}
                       >
-                        {/* Interactive neon circle backdrop */}
-                        <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 blur opacity-0 group-hover:opacity-100 transition duration-500" />
-                        <span className="relative z-10 font-mono tracking-tighter">JS</span>
-                      </motion.div>
+                        JS
+                      </div>
                       <div>
-                        <h3 className="text-base font-bold text-white tracking-wide flex items-center gap-1.5 font-sans">
+                        <h3 className="text-sm font-display font-bold text-white tracking-wide">
                           Jestin Shaji
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
                         </h3>
-                        <p className="text-[9px] font-mono uppercase tracking-widest text-cyan-400 font-extrabold bg-cyan-500/[0.06] border border-cyan-500/20 px-2 py-0.5 rounded-md w-fit mt-1">
-                          System Architect &bull; Cloud Engineer
-                        </p>
                       </div>
                     </div>
-                    <p className="text-neutral-400 text-xs leading-relaxed max-w-sm font-sans font-medium">
-                      Architecting robust server-side structures, lightning-fast endpoints, automated pipeline orchestration, and resilient cybersecure infrastructure.
+                    <p className="text-neutral-400 text-xs font-sans max-w-sm leading-relaxed">
+                      Backend Engineer specialized in Java Spring Boot, microservices architecture, and cloud infrastructure.
                     </p>
                   </div>
 
-                  {/* Column 2: System Portals (Quick navigation links) */}
-                  <div className="md:col-span-3 space-y-5">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-black flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-indigo-500 rounded-sm" />
-                      System Portals
+                  {/* Navigation Links */}
+                  <div className="md:col-span-3 space-y-2">
+                    <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
+                      Quick Links
                     </h4>
-                    <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-sans font-semibold">
+                    <ul className="space-y-1 text-xs font-mono">
                       {[
-                        { id: "home", name: "Home Node" },
+                        { id: "home", name: "Home" },
                         { id: "services", name: "Services" },
-                        { id: "about", name: "About Spec" },
-                        { id: "tech", name: "Skills Core" },
+                        { id: "about", name: "About" },
+                        { id: "tech", name: "Skills" },
                         { id: "projects", name: "Projects" },
-                        { id: "contact", name: "Terminal Gate" }
+                        { id: "contact", name: "Contact" }
                       ].map((link) => (
                         <li key={link.id}>
                           <button
                             onClick={() => handleScrollToSection(link.id)}
-                            className="text-neutral-400 hover:text-cyan-400 hover:translate-x-1.5 transition-all duration-300 flex items-center gap-1 cursor-pointer font-medium"
+                            className="text-neutral-400 hover:text-emerald-300 transition-colors cursor-pointer flex items-center gap-1"
                           >
-                            <span className="font-mono text-[9px] text-neutral-600 group-hover:text-cyan-500">&gt;</span>
-                            {link.name}
+                            <span>&gt;</span>
+                            <span>{link.name}</span>
                           </button>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Column 3: Telemetry & Status Indicators (More attractive status metrics) */}
-                  <div className="md:col-span-4 space-y-5">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-black flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-cyan-500 rounded-sm" />
-                      Network Telemetry
+                  {/* Status Badge */}
+                  <div className="md:col-span-3 space-y-2">
+                    <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
+                      Availability
                     </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
-                      
-                      <div className="p-3 rounded-xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] hover:border-cyan-500/30 transition-all duration-300 flex items-center gap-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center shrink-0">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                        </span>
-                        <div>
-                          <span className="text-[8px] text-neutral-500 block font-extrabold tracking-wider">DATABASE FLOW</span>
-                          <span className="text-emerald-300 font-bold text-[10px] tracking-wide">FIRESTORE ACTIVE</span>
-                        </div>
+                    <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-xs font-mono font-bold text-emerald-300">Open to Roles</span>
                       </div>
-
-                      <div className="p-3 rounded-xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] hover:border-cyan-500/30 transition-all duration-300 flex items-center gap-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]">
-                        <span className="w-2.5 h-2.5 rounded-full bg-cyan-500/20 border border-cyan-400 flex items-center justify-center shrink-0">
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-                        </span>
-                        <div>
-                          <span className="text-[8px] text-neutral-500 block font-extrabold tracking-wider">ROUTER LATENCY</span>
-                          <span className="text-cyan-300 font-bold text-[10px] tracking-wide">14ms // EXTREME</span>
-                        </div>
-                      </div>
-
-                      <div className="p-3 rounded-xl bg-white/[0.01] border border-white/[0.04] hover:bg-white/[0.03] hover:border-indigo-500/30 transition-all duration-300 flex items-center gap-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)] sm:col-span-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-indigo-500/20 border border-indigo-400 flex items-center justify-center shrink-0">
-                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-                        </span>
-                        <div className="flex-1 flex justify-between items-center pr-1">
-                          <div>
-                            <span className="text-[8px] text-neutral-500 block font-extrabold tracking-wider">HOST INGRESS</span>
-                            <span className="text-indigo-300 font-bold text-[10px] tracking-wide">CLOUD RUN SECURE</span>
-                          </div>
-                          <span className="text-[9px] px-1.5 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono font-bold">SSL_v3</span>
-                        </div>
-                      </div>
-
+                      <p className="text-[11px] text-neutral-400 font-sans">
+                        Available for backend development &amp; cloud engineering roles.
+                      </p>
                     </div>
                   </div>
 
                 </div>
 
                 {/* Sub Footer Row */}
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-8 pt-10 relative">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
                   
-                  {/* Left element: Bio hook & channels */}
-                  <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-                    
-                    <div className="space-y-1">
-                      <div className="text-neutral-400 font-mono text-xs font-semibold tracking-wide flex items-center justify-center sm:justify-start gap-2">
-                        <span>&copy; 2026 Jestin Shaji.</span>
-                        <span className="text-neutral-700">|</span>
-                        <span className="text-neutral-500 font-medium">All systems online.</span>
-                      </div>
-                      <p className="text-[10px] text-neutral-600 font-mono">
-                        Cryptographically secure interface built with React &amp; Tailwind CSS
-                      </p>
-                    </div>
+                  <div className="text-neutral-400 font-sans text-xs text-center sm:text-left">
+                    &copy; 2026 Jestin Shaji &bull; All rights reserved.
                   </div>
 
-                  {/* Middle element: Enhanced Social channels styled as keypad */}
-                  <div className="flex items-center gap-3 bg-white/[0.01] border border-white/[0.04] p-1.5 rounded-2xl backdrop-blur-md">
+                  {/* Social Buttons */}
+                  <div className="flex items-center gap-2">
                     <a
                       href="https://github.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-white/30 hover:bg-white/[0.05] hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] flex items-center justify-center text-neutral-400 hover:text-white transition-all duration-300 cursor-pointer"
-                      title="GitHub Transmission"
+                      className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 hover:bg-white/10 flex items-center justify-center text-neutral-300 hover:text-emerald-300 transition-all cursor-pointer"
+                      title="GitHub"
                     >
-                      <Github className="w-4.5 h-4.5" />
+                      <Github className="w-3.5 h-3.5" />
                     </a>
                     <a
                       href="https://linkedin.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-blue-500/30 hover:bg-blue-500/[0.03] hover:shadow-[0_0_15px_rgba(59,130,246,0.18)] flex items-center justify-center text-neutral-400 hover:text-blue-400 transition-all duration-300 cursor-pointer"
-                      title="LinkedIn Secure Link"
+                      className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 hover:bg-white/10 flex items-center justify-center text-neutral-300 hover:text-emerald-300 transition-all cursor-pointer"
+                      title="LinkedIn"
                     >
-                      <Linkedin className="w-4.5 h-4.5" />
+                      <Linkedin className="w-3.5 h-3.5" />
                     </a>
                     <a
                       href="mailto:jestinshaji777@gmail.com"
-                      className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-cyan-500/30 hover:bg-cyan-500/[0.03] hover:shadow-[0_0_15px_rgba(6,182,212,0.18)] flex items-center justify-center text-neutral-400 hover:text-cyan-400 transition-all duration-300 cursor-pointer"
-                      title="Direct Mail Dispatch"
+                      className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 hover:bg-white/10 flex items-center justify-center text-neutral-300 hover:text-emerald-300 transition-all cursor-pointer"
+                      title="Direct Mail"
                     >
-                      <Mail className="w-4.5 h-4.5" />
+                      <Mail className="w-3.5 h-3.5" />
                     </a>
-                  </div>
-
-                  {/* Right element: Tech pill metrics */}
-                  <div className="flex flex-wrap items-center justify-center gap-3 text-[10px] font-mono tracking-widest uppercase">
-                    <span className="px-2.5 py-1 rounded-md bg-[#020205] border border-white/[0.04] text-neutral-500 hover:text-blue-400 hover:border-blue-500/20 transition-all duration-300 cursor-help" title="Responsive React SPA">REACT_SPA</span>
-                    <span className="px-2.5 py-1 rounded-md bg-[#020205] border border-white/[0.04] text-neutral-500 hover:text-cyan-400 hover:border-cyan-500/20 transition-all duration-300 cursor-help" title="NoSQL Database Architecture">FIREBASE_FIRESTORE</span>
-                    <span className="px-2.5 py-1 rounded-md bg-[#020205] border border-white/[0.04] text-neutral-500 hover:text-indigo-400 hover:border-indigo-500/20 transition-all duration-300 cursor-help" title="Serverless Container Ingress">GCP_RUN</span>
                   </div>
 
                 </div>

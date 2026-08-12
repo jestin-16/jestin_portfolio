@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useFirebase } from "../context/FirebaseContext";
-import { Cpu, Server, Database, Cloud, Terminal, CheckCircle } from "lucide-react";
+import { Cpu, Server, Database, Cloud, Terminal } from "lucide-react";
 import { TechItem } from "../types";
 
 interface TechNode {
@@ -14,11 +14,10 @@ export default function TechStack() {
   const { techStack } = useFirebase();
   const [selectedSkill, setSelectedSkill] = useState<TechNode>({
     name: "Spring Boot",
-    proficiency: "Expert / Core System",
-    specs: "Developing solid, high-throughput microservices, transaction filters, and secure token access.",
+    proficiency: "Expert",
+    specs: "Developing solid microservices, transaction filters, and Spring Security token validation.",
   });
 
-  // Align active skill on load
   useEffect(() => {
     if (techStack && techStack.length > 0) {
       const springBoot = techStack.find(t => t.name.toLowerCase().includes("spring"));
@@ -26,58 +25,21 @@ export default function TechStack() {
       setSelectedSkill({
         name: first.name,
         proficiency: first.proficiency || "Advanced",
-        specs: `Proficient execution of ${first.name} capabilities to drive stable backend logic.`
+        specs: `Proficient execution of ${first.name} capabilities across cloud microservices.`
       });
     }
   }, [techStack]);
 
-  // Dynamically map category names to titles and icons with rich colors
-  const categoryMetaData: Record<string, { title: string; icon: React.ReactNode; colorClass: string; hoverShadow: string }> = {
-    backend: { 
-      title: "Core Backend Stack", 
-      icon: <Server className="w-5 h-5 text-amber-400" />, 
-      colorClass: "text-amber-400/80 border-amber-500/10", 
-      hoverShadow: "group-hover:text-amber-400 group-hover:border-amber-500/35 group-hover:shadow-[0_0_12px_rgba(245,158,11,0.18)]" 
-    },
-    frontend: { 
-      title: "Frontend & UI Tech", 
-      icon: <Cpu className="w-5 h-5 text-cyan-400" />, 
-      colorClass: "text-cyan-400/80 border-cyan-500/10", 
-      hoverShadow: "group-hover:text-cyan-400 group-hover:border-cyan-500/35 group-hover:shadow-[0_0_12px_rgba(6,182,212,0.18)]" 
-    },
-    database: { 
-      title: "Database Ecosystems", 
-      icon: <Database className="w-5 h-5 text-fuchsia-400" />, 
-      colorClass: "text-fuchsia-400/80 border-fuchsia-500/10", 
-      hoverShadow: "group-hover:text-fuchsia-400 group-hover:border-fuchsia-500/35 group-hover:shadow-[0_0_12px_rgba(240,46,170,0.18)]" 
-    },
-    devops: { 
-      title: "DevOps & Cloud Systems", 
-      icon: <Cloud className="w-5 h-5 text-emerald-400" />, 
-      colorClass: "text-emerald-400/80 border-emerald-500/10", 
-      hoverShadow: "group-hover:text-emerald-400 group-hover:border-emerald-500/35 group-hover:shadow-[0_0_12px_rgba(16,185,129,0.18)]" 
-    },
-    programming: { 
-      title: "Languages & Frameworks", 
-      icon: <Terminal className="w-5 h-5 text-violet-400" />, 
-      colorClass: "text-violet-400/80 border-violet-500/10", 
-      hoverShadow: "group-hover:text-violet-400 group-hover:border-violet-500/35 group-hover:shadow-[0_0_12px_rgba(139,92,246,0.18)]" 
-    },
-    ai_ml: { 
-      title: "AI & Machine Learning", 
-      icon: <Database className="w-5 h-5 text-rose-400" />, 
-      colorClass: "text-rose-400/80 border-rose-500/10", 
-      hoverShadow: "group-hover:text-rose-400 group-hover:border-rose-500/35 group-hover:shadow-[0_0_12px_rgba(244,63,94,0.18)]" 
-    },
-    tools: { 
-      title: "Productivity Tools", 
-      icon: <Cpu className="w-5 h-5 text-sky-400" />, 
-      colorClass: "text-sky-400/80 border-sky-500/10", 
-      hoverShadow: "group-hover:text-sky-400 group-hover:border-sky-500/35 group-hover:shadow-[0_0_12px_rgba(56,189,248,0.18)]" 
-    },
+  const categoryMetaData: Record<string, { title: string; icon: React.ReactNode }> = {
+    backend: { title: "Backend Core", icon: <Server className="w-4 h-4 text-emerald-400" /> },
+    frontend: { title: "Frontend UI", icon: <Cpu className="w-4 h-4 text-amber-400" /> },
+    database: { title: "Databases", icon: <Database className="w-4 h-4 text-emerald-400" /> },
+    devops: { title: "DevOps & Cloud", icon: <Cloud className="w-4 h-4 text-amber-400" /> },
+    programming: { title: "Languages", icon: <Terminal className="w-4 h-4 text-emerald-400" /> },
+    ai_ml: { title: "AI & Tools", icon: <Database className="w-4 h-4 text-amber-400" /> },
+    tools: { title: "Developer Tools", icon: <Cpu className="w-4 h-4 text-emerald-400" /> },
   };
 
-  // Group techStack dynamically by category
   const categoriesMap = techStack.reduce((acc, tech) => {
     const cat = tech.category;
     if (!acc[cat]) acc[cat] = [];
@@ -85,99 +47,94 @@ export default function TechStack() {
     return acc;
   }, {} as Record<string, TechItem[]>);
 
-  // Render Category grids
   const categories = (Object.entries(categoriesMap) as [string, TechItem[]][]).map(([key, list]) => {
     const meta = categoryMetaData[key] || { 
       title: key.toUpperCase(), 
-      icon: <Cpu className="w-5 h-5 text-indigo-400" />, 
-      colorClass: "text-indigo-400/80 border-indigo-500/10", 
-      hoverShadow: "group-hover:text-indigo-400 group-hover:border-indigo-500/35"
+      icon: <Cpu className="w-4 h-4 text-emerald-400" />, 
     };
     return {
       title: meta.title,
       icon: meta.icon,
-      colorClass: meta.colorClass,
-      hoverShadow: meta.hoverShadow,
       skills: list.map(item => ({
         name: item.name,
         proficiency: item.proficiency || "Advanced",
-        specs: `Proficient execution of ${item.name} capabilities to drive stable backend logic.`
+        specs: `Proficient execution of ${item.name} capabilities.`
       }))
     };
   });
 
   return (
-    <section id="tech" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#04040d] via-[#060618] to-[#04040e] relative overflow-hidden border-t border-white/[0.04] select-none">
+    <section id="tech" className="py-20 px-6 md:px-12 bg-[#0b0c10] border-t border-white/[0.06] select-none">
       
-      {/* Background atmospheres */}
-      <div className="absolute top-1/3 right-1/4 w-[550px] h-[550px] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-1/4 w-[450px] h-[450px] bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.06)_0%,transparent_70%)] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto space-y-12">
         
         {/* Section Heading */}
-        <div className="text-center space-y-4 mb-20">
+        <div className="text-center space-y-2">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium"
+          >
+            <span>TECH STACK</span>
+          </motion.div>
+          
           <motion.h2
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl font-heading font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-indigo-300 text-glow"
+            transition={{ duration: 0.6 }}
+            className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight"
           >
-            Skills
+            Skills &amp; Technologies
           </motion.h2>
+          
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-neutral-300 text-sm sm:text-base max-w-xl mx-auto font-sans font-medium"
+            transition={{ duration: 0.6 }}
+            className="text-neutral-400 font-sans text-xs sm:text-sm max-w-md mx-auto"
           >
-            Crafting seamless enterprise backend components and super fluid front-end utilities
+            Core tools &amp; frameworks powering backend applications
           </motion.p>
         </div>
 
-        {/* 4-Column Skills Panels as illustrated in image */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Categories Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((cat, cidx) => (
             <motion.div
               key={cidx}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: cidx * 0.1 }}
-              whileHover={{ y: -6, scale: 1.015, transition: { duration: 0.2, ease: "easeOut" } }}
-              className="glass-panel p-6 space-y-6 transition-all duration-300 group overflow-hidden bg-white/[0.02] border-white/[0.04] backdrop-blur-md hover:bg-white/[0.05] hover:border-cyan-500/35 hover:shadow-[0_8px_30px_rgba(6,182,212,0.08)]"
+              transition={{ duration: 0.5, delay: cidx * 0.06 }}
+              className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-emerald-500/30 transition-all space-y-4"
             >
-              {/* Category Identifier */}
-              <div className="flex items-center gap-3">
-                <div className={`w-8 h-8 rounded-xl bg-neutral-950 border flex items-center justify-center transition-all ${cat.hoverShadow}`}>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center">
                   {cat.icon}
                 </div>
-                <h3 className="text-xs font-mono font-black tracking-widest text-[#999] uppercase group-hover:text-neutral-200 transition-colors">
+                <h3 className="text-xs font-mono font-bold tracking-wider text-white uppercase">
                   {cat.title}
                 </h3>
               </div>
 
-              {/* Tag Capsules Row layout - exact same styling as skills list in picture */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {cat.skills.map((skill, sidx) => {
                   const isActive = selectedSkill.name === skill.name;
                   return (
-                    <motion.button
+                    <button
                       key={sidx}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
                       onClick={() => setSelectedSkill(skill)}
-                      onMouseEnter={() => setSelectedSkill(skill)}
-                      className={`px-3.5 py-2 rounded-full text-xs font-sans tracking-tight transition-all duration-300 uppercase cursor-pointer border ${
+                      className={`px-2.5 py-1 rounded-full text-xs font-heading font-medium transition-all cursor-pointer ${
                         isActive
-                          ? "bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white border-transparent font-black shadow-[0_0_15px_rgba(6,182,212,0.35)] scale-[1.03]"
-                          : "bg-white/[0.02] border-white/[0.04] backdrop-blur-md text-neutral-400 hover:text-white hover:border-white/[0.12] hover:bg-white/[0.05]"
+                          ? "bg-emerald-500 text-black font-bold shadow-sm"
+                          : "bg-white/[0.04] border border-white/10 text-neutral-300 hover:text-white hover:bg-white/10"
                       }`}
                     >
                       {skill.name}
-                    </motion.button>
+                    </button>
                   );
                 })}
               </div>
@@ -185,52 +142,36 @@ export default function TechStack() {
           ))}
         </div>
 
-        {/* Interactive Spec Analyzer Reading HUD below the grid */}
-        <div className="mt-10 max-w-7xl mx-auto">
+        {/* Selected Skill Analyzer Box */}
+        <div className="max-w-6xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedSkill.name}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.3 }}
-              className="glass-panel-ultra p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] flex flex-col md:flex-row md:items-center justify-between gap-4"
             >
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-mono font-extrabold text-cyan-400 uppercase tracking-widest flex items-center gap-1.5">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-                    [Active Node Spec Analysis]
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                </div>
-                <h4 className="text-2xl font-sans font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-indigo-200">
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold tracking-wider">
+                  SELECTED SKILL SPEC
+                </span>
+                <h4 className="text-lg font-display font-bold text-white">
                   {selectedSkill.name}
                 </h4>
-                <p className="text-neutral-300 text-xs sm:text-sm font-sans leading-relaxed max-w-2xl font-medium">
+                <p className="text-neutral-400 text-xs font-sans max-w-xl">
                   {selectedSkill.specs}
                 </p>
               </div>
 
-              {/* Specs Badge */}
-              <div className="bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-xl p-5 self-start md:self-center font-mono text-xs space-y-2 shrink-0 shadow-lg min-w-[200px]">
-                <div className="space-y-1">
-                  <span className="text-[9px] text-neutral-500 block uppercase font-bold tracking-widest">PROFICIENCY COEFFICIENT</span>
-                  <span className="text-cyan-400 font-extrabold block text-sm">{selectedSkill.proficiency}</span>
-                </div>
-                {/* Micro Level Indicator */}
-                <div className="h-2 w-full bg-neutral-900 rounded-full overflow-hidden relative">
-                  <div 
-                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-full" 
-                    style={{ 
-                      width: selectedSkill.proficiency.toLowerCase().includes("expert") 
-                        ? "95%" 
-                        : selectedSkill.proficiency.toLowerCase().includes("advanced") 
-                        ? "85%" 
-                        : "70%" 
-                    }} 
-                  />
-                </div>
+              <div className="bg-white/[0.03] border border-white/10 rounded-xl p-3 text-xs font-mono space-y-1 shrink-0 min-w-[180px]">
+                <span className="text-[10px] text-neutral-400 block font-semibold uppercase">
+                  Proficiency
+                </span>
+                <span className="text-emerald-300 font-bold block text-xs">
+                  {selectedSkill.proficiency}
+                </span>
               </div>
             </motion.div>
           </AnimatePresence>
