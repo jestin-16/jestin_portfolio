@@ -14,6 +14,7 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import ChatBot from "./components/ChatBot";
 import AdminDashboard from "./components/AdminDashboard";
+import { Skiper31 } from "./components/ScrollShowcase";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -302,6 +303,9 @@ export default function App() {
 
               {/* Interactive Stack cards */}
               <TechStack />
+
+              {/* Scroll Animation Showcase (Skiper 31) */}
+              <Skiper31 />
 
               {/* Alternate Interactive Cases */}
               <Projects />
