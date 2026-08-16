@@ -30,13 +30,13 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
           <span>Available for backend &amp; cloud engineering roles</span>
         </motion.div>
 
-        {/* Headline & Subtitle in single clean sans-serif */}
+        {/* Headline & Subtitle in single clean modern font */}
         <div className="space-y-2">
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-7xl md:text-8xl font-sans font-black tracking-tight text-white leading-none"
+            className="text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight text-white leading-none"
           >
             Jestin Shaji
           </motion.h1>
@@ -45,7 +45,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-lg sm:text-2xl font-sans font-medium text-neutral-400 tracking-tight"
+            className="text-lg sm:text-2xl font-display font-semibold text-neutral-300 tracking-tight"
           >
             Backend Java Engineer &amp; Cloud Systems Architect
           </motion.p>

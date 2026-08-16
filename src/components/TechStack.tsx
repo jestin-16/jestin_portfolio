@@ -380,7 +380,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-emerald-300 drop-shadow-[0_0_25px_rgba(16,185,129,0.3)]"
+            className="text-4xl sm:text-6xl font-display font-black tracking-tight text-white uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-emerald-300 drop-shadow-[0_0_25px_rgba(16,185,129,0.3)]"
           >
             TECH STACK
           </motion.h2>
