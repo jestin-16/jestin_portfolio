@@ -295,16 +295,16 @@ function TechCard({ item }: { item: TechIconDef; key?: React.Key }) {
       onMouseLeave={() => setIsHovered(false)}
       className={`relative cursor-pointer flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 p-2 rounded-2xl transition-all duration-300 backdrop-blur-md ${
         isHovered
-          ? "bg-emerald-500/20 border-2 border-emerald-400 shadow-[0_0_25px_rgba(16,185,129,0.6)] z-30 scale-110"
-          : "bg-[#0e1017]/80 border border-white/[0.08] hover:border-emerald-500/40 hover:bg-emerald-950/20 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+          ? "bg-emerald-500/10 border border-emerald-400/50 shadow-[0_0_20px_rgba(16,185,129,0.35)] z-30 scale-110"
+          : "bg-[#0e1017]/80 border border-white/[0.08] hover:border-emerald-500/30 hover:bg-emerald-950/10 hover:shadow-[0_0_12px_rgba(16,185,129,0.15)]"
       }`}
     >
-      {/* Glowing corner dot matching portfolio emerald color theme */}
+      {/* Subtle corner dot */}
       <div
         className={`absolute top-1.5 right-1.5 w-1 h-1 rounded-full transition-all ${
           isHovered
-            ? "bg-emerald-300 shadow-[0_0_8px_#34d399]"
-            : "bg-emerald-500/30"
+            ? "bg-emerald-300 shadow-[0_0_6px_#34d399]"
+            : "bg-emerald-500/20"
         }`}
       />
 
@@ -319,18 +319,19 @@ function TechCard({ item }: { item: TechIconDef; key?: React.Key }) {
             style={{
               filter: isHovered
                 ? "drop-shadow(0 2px 4px rgba(0,0,0,0.6))"
-                : "brightness(0) saturate(100%) invert(64%) sepia(61%) saturate(497%) hue-rotate(108deg) brightness(98%) contrast(90%)",
-              transition: "filter 0.3s ease, transform 0.3s ease",
+                : "brightness(0) saturate(100%) invert(52%) sepia(30%) saturate(350%) hue-rotate(110deg) brightness(92%) contrast(88%)",
+              opacity: isHovered ? 1 : 0.82,
+              transition: "filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease",
             }}
             className="w-full h-full object-contain"
           />
         ) : (
-          <Code2 className="w-5 h-5 text-emerald-400" />
+          <Code2 className="w-5 h-5 text-emerald-400/70" />
         )}
       </div>
 
       {/* Minimal Label */}
-      <span className="mt-1 text-[9px] sm:text-[10px] font-sans font-medium text-neutral-300 truncate max-w-[56px] text-center leading-tight">
+      <span className="mt-1 text-[9px] sm:text-[10px] font-sans font-medium text-neutral-400 group-hover:text-neutral-200 truncate max-w-[56px] text-center leading-tight">
         {item.name}
       </span>
     </motion.div>
@@ -343,22 +344,22 @@ export default function TechStack() {
       id="tech"
       className="relative py-28 px-4 sm:px-8 bg-[#0a0b0e] text-white select-none overflow-hidden border-t border-white/[0.08]"
     >
-      {/* Radiant Glowing Emerald Mesh & Grid Background matching dark charcoal portfolio theme */}
+      {/* Radiant Subtle Emerald Mesh & Grid Background */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Central glowing emerald sphere */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] bg-emerald-500/10 rounded-full blur-[170px]" />
+        {/* Central soft glowing emerald sphere */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[750px] h-[500px] sm:h-[750px] bg-emerald-500/5 rounded-full blur-[180px]" />
         
         {/* Subtle grid mesh */}
         <div 
-          className="absolute inset-0 opacity-20" 
+          className="absolute inset-0 opacity-15" 
           style={{
-            backgroundImage: `radial-gradient(rgba(16, 185, 129, 0.35) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(rgba(16, 185, 129, 0.2) 1px, transparent 1px)`,
             backgroundSize: "28px 28px"
           }}
         />
 
         {/* Ambient top light beam */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[300px] bg-gradient-to-b from-emerald-500/10 via-emerald-500/5 to-transparent blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[250px] bg-gradient-to-b from-emerald-500/5 via-emerald-500/2 to-transparent blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto space-y-10">
@@ -369,9 +370,9 @@ export default function TechStack() {
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-widest shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/5 border border-emerald-500/20 text-emerald-400/90 text-xs font-mono uppercase tracking-widest shadow-[0_0_10px_rgba(16,185,129,0.1)]"
           >
-            <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400/80 animate-pulse" />
             <span>CORE CAPABILITIES</span>
           </motion.div>
 
@@ -380,7 +381,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl sm:text-6xl font-display font-black tracking-tight text-white uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-emerald-300 drop-shadow-[0_0_25px_rgba(16,185,129,0.3)]"
+            className="text-4xl sm:text-6xl font-display font-black tracking-tight text-white uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-emerald-200/80 drop-shadow-[0_0_15px_rgba(16,185,129,0.15)]"
           >
             TECH STACK
           </motion.h2>
