@@ -31,12 +31,12 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
         </motion.div>
 
         {/* Headline & Subtitle in single clean modern font */}
-        <div className="space-y-2">
+        <div className="space-y-3">
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight text-white leading-none"
+            className="text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-tight text-white leading-none drop-shadow-sm"
           >
             Jestin Shaji
           </motion.h1>
@@ -45,7 +45,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-lg sm:text-2xl font-display font-semibold text-neutral-300 tracking-tight"
+            className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-neutral-200 tracking-tight max-w-2xl mx-auto"
           >
             Backend Java Engineer &amp; Cloud Systems Architect
           </motion.p>
@@ -56,7 +56,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-neutral-400 text-sm sm:text-base font-sans font-normal max-w-lg leading-relaxed pt-1"
+          className="text-neutral-400 text-base sm:text-lg font-sans font-normal max-w-xl leading-relaxed pt-1"
         >
           Building high-throughput Spring Boot microservices, secure REST APIs, and containerized cloud architecture.
         </motion.p>
