@@ -110,22 +110,22 @@ export default function App() {
             className="fixed inset-0 z-[100] bg-[#0d0f17] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden"
           >
             {/* Soft decorative background glow to frame the text */}
-            <div className="absolute w-[400px] h-[400px] rounded-full bg-pink-500/[0.08] blur-[120px] pointer-events-none" />
+            <div className="absolute w-[400px] h-[400px] rounded-full bg-emerald-500/[0.12] blur-[120px] pointer-events-none" />
             
             <div className="text-center space-y-4 relative z-10">
               
-              {/* Cute Tagline */}
+              {/* Green Tagline */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                 className="flex items-center justify-center gap-2 mb-1"
               >
-                <span className="text-pink-400 text-sm animate-bounce">✨</span>
-                <span className="text-xs font-heading tracking-widest text-pink-300 uppercase font-semibold">
+                <span className="text-emerald-400 text-sm animate-pulse">✦</span>
+                <span className="text-xs font-mono tracking-widest text-emerald-400/90 uppercase font-semibold">
                   WELCOME &bull; PORTFOLIO
                 </span>
-                <span className="text-pink-400 text-sm animate-bounce">✨</span>
+                <span className="text-emerald-400 text-sm animate-pulse">✦</span>
               </motion.div>
 
               {/* Main Display Typography Name */}
@@ -134,7 +134,7 @@ export default function App() {
                   initial={{ y: "100%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-4xl sm:text-6xl font-heading tracking-tight font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-200 via-purple-100 to-indigo-200"
+                  className="block text-4xl sm:text-6xl font-display tracking-tight font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-100 to-emerald-300 drop-shadow-[0_0_20px_rgba(16,185,129,0.25)]"
                 >
                   JESTIN SHAJI
                 </motion.span>
@@ -151,12 +151,12 @@ export default function App() {
               </motion.p>
               
               {/* Sleek minimal progress line ticker */}
-              <div className="w-[120px] h-[2px] bg-white/[0.08] rounded-full relative overflow-hidden mx-auto mt-4">
+              <div className="w-[140px] h-[2px] bg-white/[0.08] rounded-full relative overflow-hidden mx-auto mt-4">
                 <motion.div
                   initial={{ left: "-100%" }}
                   animate={{ left: "100%" }}
-                  transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
-                  className="absolute h-full w-[40%] bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 rounded-full"
+                  transition={{ duration: 1.8, ease: "easeInOut", repeat: Infinity }}
+                  className="absolute h-full w-[45%] bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-300 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]"
                 />
               </div>
 
