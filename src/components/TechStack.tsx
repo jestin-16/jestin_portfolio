@@ -7,10 +7,11 @@ interface TechIconDef {
   category: "Languages" | "Backend" | "Frontend" | "Databases" | "Cloud" | "DevOps" | "AI" | "Tools";
   iconUrl: string;
   fallbackUrl?: string;
+  secondaryFallback?: string;
   badgeColor?: string;
 }
 
-// Inverted Triangle Grid structure matching portfolio layout: 11 -> 9 -> 7 -> 5 -> 3 -> 2 -> 1
+// Inverted Triangle Grid structure matching portfolio layout: 11 -> 9 -> 7 -> 6 -> 3 -> 2 -> 1
 const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
   // Row 1 (11 items - Top base of triangle)
   [
@@ -18,7 +19,8 @@ const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
       name: "Java",
       category: "Languages",
       iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/java/java-original.svg",
-      fallbackUrl: "https://cdn.simpleicons.org/openjdk/white",
+      fallbackUrl: "https://cdn.simpleicons.org/openjdk/ED8B00",
+      secondaryFallback: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/java/java-plain.svg",
       badgeColor: "#ED8B00",
     },
     {
@@ -46,7 +48,7 @@ const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
       name: "C",
       category: "Languages",
       iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/c/c-original.svg",
-      fallbackUrl: "https://cdn.simpleicons.org/c/A8B9CC",
+      fallbackUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/c/c-plain.svg",
       badgeColor: "#A8B9CC",
     },
     {
@@ -73,8 +75,9 @@ const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
     {
       name: "CSS3",
       category: "Frontend",
-      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/css3/css3-original.svg",
+      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/css3/css3-plain.svg",
       fallbackUrl: "https://cdn.simpleicons.org/css3/1572B6",
+      secondaryFallback: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/css3/css3-original-wordmark.svg",
       badgeColor: "#1572B6",
     },
     {
@@ -207,20 +210,30 @@ const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
     {
       name: "Azure",
       category: "Cloud",
-      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/azure/azure-original.svg",
-      fallbackUrl: "https://cdn.simpleicons.org/microsoftazure/0089D6",
+      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/azure/azure-plain.svg",
+      fallbackUrl: "https://cdn.simpleicons.org/microsoftazure/0078D4",
+      secondaryFallback: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/azure/azure-original.svg",
       badgeColor: "#0089D6",
     },
   ],
 
-  // Row 4 (5 items)
+  // Row 4 (6 items - including AWS, OCI, Git, GitHub, Linux, VS Code)
   [
     {
       name: "AWS",
       category: "Cloud",
-      iconUrl: "https://cdn.simpleicons.org/amazonwebservices/FF9900",
-      fallbackUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+      fallbackUrl: "https://cdn.simpleicons.org/amazonwebservices/FF9900",
+      secondaryFallback: "https://cdn.simpleicons.org/amazonaws/FF9900",
       badgeColor: "#FF9900",
+    },
+    {
+      name: "OCI",
+      category: "Cloud",
+      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/oracle/oracle-original.svg",
+      fallbackUrl: "https://cdn.simpleicons.org/oracle/F80000",
+      secondaryFallback: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/oracle/oracle-plain.svg",
+      badgeColor: "#F80000",
     },
     {
       name: "Git",
@@ -246,8 +259,9 @@ const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
     {
       name: "VS Code",
       category: "Tools",
-      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/vscode/vscode-original.svg",
+      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/vscode/vscode-plain.svg",
       fallbackUrl: "https://cdn.simpleicons.org/visualstudiocode/007ACC",
+      secondaryFallback: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/vscode/vscode-original.svg",
       badgeColor: "#007ACC",
     },
   ],
@@ -271,8 +285,9 @@ const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
     {
       name: "Photoshop",
       category: "Tools",
-      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/photoshop/photoshop-original.svg",
+      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/photoshop/photoshop-plain.svg",
       fallbackUrl: "https://cdn.simpleicons.org/adobephotoshop/31A8FF",
+      secondaryFallback: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/photoshop/photoshop-line.svg",
       badgeColor: "#31A8FF",
     },
   ],
@@ -300,8 +315,9 @@ const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
     {
       name: "Kubernetes",
       category: "DevOps",
-      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/kubernetes/kubernetes-original.svg",
-      fallbackUrl: "https://cdn.simpleicons.org/kubernetes/326CE5",
+      iconUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/kubernetes/kubernetes-plain.svg",
+      fallbackUrl: "https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/kubernetes/kubernetes-original.svg",
+      secondaryFallback: "https://cdn.simpleicons.org/kubernetes/326CE5",
       badgeColor: "#326CE5",
     },
   ],
@@ -330,7 +346,10 @@ function TechCard({
   const sources = [
     item.iconUrl,
     item.fallbackUrl,
+    item.secondaryFallback,
     `https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}-original.svg`,
+    `https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}-plain.svg`,
+    `https://cdn.simpleicons.org/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}`,
     `https://cdn.simpleicons.org/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}/white`,
   ].filter(Boolean) as string[];
 
@@ -527,7 +546,7 @@ export default function TechStack() {
           className="max-w-xl mx-auto text-center p-3.5 rounded-xl bg-[#0f1118]/80 border border-white/[0.06] backdrop-blur-sm"
         >
           <p className="text-xs text-neutral-400 font-sans">
-            <span className="text-emerald-400 font-mono font-medium">38+ technologies</span> across Java ecosystem, microservices, containerization, and relational &amp; NoSQL data tiers.
+            <span className="text-emerald-400 font-mono font-medium">39+ technologies</span> across Java ecosystem, cloud platforms (AWS, Azure, OCI), microservices, containerization, and distributed data tiers.
           </p>
         </motion.div>
 
