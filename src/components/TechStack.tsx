@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Sparkles, Code2, Layers, Cpu, Cloud, Database, Wrench } from "lucide-react";
+import { TechLogo } from "./TechIcons";
 
 interface TechIconDef {
   name: string;
@@ -340,26 +341,6 @@ function TechCard({
   key?: React.Key;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [currentSrcIndex, setCurrentSrcIndex] = useState(0);
-  const [hasFailedAll, setHasFailedAll] = useState(false);
-
-  const sources = [
-    item.iconUrl,
-    item.fallbackUrl,
-    item.secondaryFallback,
-    `https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}-original.svg`,
-    `https://cdn.jsdelivr.net/gh/devicon/devicon@latest/icons/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}-plain.svg`,
-    `https://cdn.simpleicons.org/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}`,
-    `https://cdn.simpleicons.org/${item.name.toLowerCase().replace(/[^a-z0-9]/g, "")}/white`,
-  ].filter(Boolean) as string[];
-
-  const handleImageError = () => {
-    if (currentSrcIndex < sources.length - 1) {
-      setCurrentSrcIndex((prev) => prev + 1);
-    } else {
-      setHasFailedAll(true);
-    }
-  };
 
   const isMatched =
     activeFilter === "ALL" ||
@@ -395,21 +376,15 @@ function TechCard({
 
       {/* Official Brand Logo */}
       <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center transition-transform">
-        {!hasFailedAll ? (
-          <img
-            src={sources[currentSrcIndex]}
-            alt={`${item.name} logo`}
-            referrerPolicy="no-referrer"
-            onError={handleImageError}
-            className={`w-full h-full object-contain transition-all duration-300 ${
-              isHovered
-                ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] scale-110 brightness-110"
-                : "brightness-100 contrast-105 opacity-90 hover:opacity-100"
-            }`}
-          />
-        ) : (
-          <Code2 className="w-5 h-5 text-emerald-400/90" />
-        )}
+        <TechLogo
+          name={item.name}
+          size={24}
+          className={`w-full h-full object-contain transition-all duration-300 ${
+            isHovered
+              ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] scale-110 brightness-110"
+              : "brightness-100 contrast-105 opacity-90 hover:opacity-100"
+          }`}
+        />
       </div>
 
       {/* Clean, Readable Label */}
