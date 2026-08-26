@@ -351,29 +351,18 @@ function TechCard({
 
   return (
     <motion.div
-      whileHover={{ scale: 1.14, y: -5 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.12, y: -4 }}
+      whileTap={{ scale: 0.96 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative cursor-pointer flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 p-2 rounded-2xl transition-all duration-300 backdrop-blur-md select-none ${
+      className={`relative cursor-pointer flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 p-2 rounded-xl transition-all duration-300 select-none ${
         isHovered
-          ? "bg-[#161a24] border-2 border-emerald-400/80 shadow-[0_0_24px_rgba(16,185,129,0.35)] z-30 scale-110"
+          ? "bg-[#181c28] border border-white/25 shadow-[0_8px_24px_rgba(0,0,0,0.6)] z-30"
           : isMatched
-          ? "bg-[#0e1017]/90 border border-white/[0.08] hover:border-emerald-500/40 hover:bg-[#141722] hover:shadow-[0_0_16px_rgba(16,185,129,0.2)] opacity-100"
-          : "bg-[#090b10]/60 border border-white/[0.03] opacity-35 grayscale"
+          ? "bg-[#12141c]/90 border border-white/[0.08] hover:border-white/20 hover:bg-[#161924] opacity-100"
+          : "bg-[#0c0e14]/50 border border-white/[0.03] opacity-20 scale-95 grayscale"
       }`}
     >
-      {/* Subtle glowing status dot */}
-      <div
-        className={`absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-          isHovered
-            ? "bg-emerald-400 shadow-[0_0_8px_#34d399] scale-125"
-            : isMatched
-            ? "bg-emerald-500/40"
-            : "bg-neutral-600/30"
-        }`}
-      />
-
       {/* Official Brand Logo */}
       <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center transition-transform">
         <TechLogo
@@ -381,15 +370,15 @@ function TechCard({
           size={24}
           className={`w-full h-full object-contain transition-all duration-300 ${
             isHovered
-              ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] scale-110 brightness-110"
-              : "brightness-100 contrast-105 opacity-90 hover:opacity-100"
+              ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] scale-110"
+              : "opacity-90 hover:opacity-100"
           }`}
         />
       </div>
 
       {/* Clean, Readable Label */}
       <span
-        className={`mt-1 text-[9px] sm:text-[10px] font-sans font-medium truncate max-w-[56px] text-center leading-tight transition-colors duration-200 ${
+        className={`mt-1.5 text-[9px] sm:text-[10px] font-sans font-medium truncate max-w-[56px] text-center leading-tight transition-colors duration-200 ${
           isHovered
             ? "text-white font-semibold"
             : isMatched
@@ -411,26 +400,19 @@ export default function TechStack() {
       id="tech"
       className="relative py-24 sm:py-28 px-4 sm:px-8 bg-[#0b0c10] text-white select-none overflow-hidden border-t border-white/[0.06]"
     >
-      {/* Warm Ambient Backdrop - Blending Obsidian Dark + Soft Emerald & Warm Bronze Glows */}
+      {/* Refined Ambient Backdrop - Harmonized with Hero & About */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Central soft warm emerald glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[850px] h-[550px] sm:h-[750px] bg-emerald-500/[0.07] rounded-full blur-[160px]" />
+        {/* Central soft ambient glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[750px] h-[450px] sm:h-[600px] bg-emerald-500/[0.03] rounded-full blur-[140px]" />
         
-        {/* Warm ambient secondary accent */}
-        <div className="absolute top-1/3 left-1/4 w-[350px] h-[350px] bg-teal-500/[0.04] rounded-full blur-[140px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-emerald-600/[0.05] rounded-full blur-[140px]" />
-
         {/* Subtle dot matrix grid */}
         <div 
-          className="absolute inset-0 opacity-[0.14]" 
+          className="absolute inset-0 opacity-[0.07]" 
           style={{
-            backgroundImage: `radial-gradient(rgba(16, 185, 129, 0.3) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)`,
             backgroundSize: "28px 28px"
           }}
         />
-
-        {/* Gentle top radiant beam */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[200px] bg-gradient-to-b from-emerald-500/[0.06] via-emerald-500/[0.02] to-transparent blur-2xl" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto space-y-10">
@@ -438,21 +420,21 @@ export default function TechStack() {
         {/* Section Header */}
         <div className="text-center space-y-3">
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium tracking-wider"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium tracking-wider"
           >
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
             <span>CORE CAPABILITIES &amp; ECOSYSTEM</span>
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-5xl font-display font-bold tracking-tight text-white uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-neutral-300"
+            className="text-2xl sm:text-4xl font-display font-bold tracking-tight text-white uppercase"
           >
             TECH STACK
           </motion.h2>
@@ -479,8 +461,8 @@ export default function TechStack() {
                 onClick={() => setActiveFilter(cat.id)}
                 className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-[0_0_12px_rgba(16,185,129,0.25)] font-semibold"
-                    : "bg-[#11131a]/80 text-neutral-400 border border-white/[0.06] hover:text-white hover:border-white/[0.15] hover:bg-[#161a24]"
+                    ? "bg-emerald-500/[0.15] text-emerald-300 border border-emerald-500/30 font-semibold shadow-sm"
+                    : "bg-white/[0.03] text-neutral-400 border border-white/[0.08] hover:text-white hover:border-white/20 hover:bg-white/[0.06]"
                 }`}
               >
                 <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-emerald-400" : "text-neutral-500"}`} />
@@ -491,15 +473,15 @@ export default function TechStack() {
         </div>
 
         {/* Inverted Triangle Glass Grid */}
-        <div className="flex flex-col items-center gap-2.5 sm:gap-3.5 py-4 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center gap-2.5 sm:gap-3 py-4 max-w-4xl mx-auto">
           {TECH_TRIANGLE_ROWS.map((row, rowIndex) => (
             <motion.div
               key={rowIndex}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: rowIndex * 0.06 }}
-              className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 w-full"
+              transition={{ duration: 0.4, delay: rowIndex * 0.05 }}
+              className="flex flex-wrap justify-center items-center gap-2 sm:gap-2.5 w-full"
             >
               {row.map((item) => (
                 <TechCard
@@ -514,11 +496,11 @@ export default function TechStack() {
 
         {/* Bottom Capability Summary Ribbon */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-xl mx-auto text-center p-3.5 rounded-xl bg-[#0f1118]/80 border border-white/[0.06] backdrop-blur-sm"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-xl mx-auto text-center p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-sm"
         >
           <p className="text-xs text-neutral-400 font-sans">
             <span className="text-emerald-400 font-mono font-medium">39+ technologies</span> across Java ecosystem, cloud platforms (AWS, Azure, OCI), microservices, containerization, and distributed data tiers.

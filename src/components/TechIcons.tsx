@@ -154,10 +154,9 @@ export const TechLogo: React.FC<{ name: string; className?: string; size?: numbe
     case "bash":
       return (
         <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
-          <rect width="256" height="256" rx="32" fill="#24292E" />
           <path
             fill="#4EAA25"
-            d="M48 64l48 48-48 48v-24l24-24-24-24V64zm64 80h80v16h-80v-16z"
+            d="M32 48l80 80-80 80v-32l48-48-48-48V48zm88 128h104v28H120v-28z"
           />
         </svg>
       );
@@ -214,7 +213,6 @@ export const TechLogo: React.FC<{ name: string; className?: string; size?: numbe
     case "django":
       return (
         <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
-          <rect width="256" height="256" rx="32" fill="#092E20" />
           <path
             fill="#44B78B"
             d="M128 48h32v120c-11.3 4.2-22.3 6.3-33 6.3-32.3 0-51-17.5-51-46.7 0-29.7 20.3-48.3 52-48.3 4 0 7.3.3 10 .8V48zm0 57.6c-2.7-.5-5.7-.8-8.9-.8-17.4 0-27.1 8.8-27.1 23.3 0 14.2 9.4 22.8 26.6 22.8 3.4 0 6.5-.4 9.4-1.1v-44.2zM168 80h32v94.3h-32V80z"
@@ -251,10 +249,13 @@ export const TechLogo: React.FC<{ name: string; className?: string; size?: numbe
     case "bootstrap":
       return (
         <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
-          <rect width="256" height="256" rx="48" fill="#7952B3" />
+          <path
+            fill="#7952B3"
+            d="M48 32h160c17.7 0 32 14.3 32 32v128c0 17.7-14.3 32-32 32H48c-17.7 0-32-14.3-32-32V64c0-17.7 14.3-32 32-32z"
+          />
           <path
             fill="#FFF"
-            d="M74.8 64h49.7c18.5 0 31.4 3.7 39.5 11.1 7.6 6.9 11.5 16.4 11.5 28.2 0 11.4-4.5 20.8-13.6 27.8 13 6.3 19.6 17.5 19.6 33.3 0 13.5-4.8 24.3-14.2 32.3-9.7 8.2-23.7 12.3-42 12.3H74.8V64zm32.8 54.3h16c8 0 13.7-1.5 17.1-4.6 3.6-3.2 5.4-7.8 5.4-13.7 0-6.2-1.9-10.8-5.7-13.8-3.7-3-9.5-4.5-17.5-4.5h-15.3v36.6zm0 62.7h18.3c8.9 0 15.4-1.8 19.4-5.3 4.2-3.7 6.4-8.8 6.4-15.5 0-6.9-2.2-12.2-6.7-15.8-4.3-3.5-11-5.3-20.1-5.3h-17.3v41.9z"
+            d="M82.8 68h49.7c18.5 0 31.4 3.7 39.5 11.1 7.6 6.9 11.5 16.4 11.5 28.2 0 11.4-4.5 20.8-13.6 27.8 13 6.3 19.6 17.5 19.6 33.3 0 13.5-4.8 24.3-14.2 32.3-9.7 8.2-23.7 12.3-42 12.3H82.8V68zm32.8 54.3h16c8 0 13.7-1.5 17.1-4.6 3.6-3.2 5.4-7.8 5.4-13.7 0-6.2-1.9-10.8-5.7-13.8-3.7-3-9.5-4.5-17.5-4.5h-15.3v36.6zm0 62.7h18.3c8.9 0 15.4-1.8 19.4-5.3 4.2-3.7 6.4-8.8 6.4-15.5 0-6.9-2.2-12.2-6.7-15.8-4.3-3.5-11-5.3-20.1-5.3h-17.3v41.9z"
           />
         </svg>
       );
@@ -263,12 +264,24 @@ export const TechLogo: React.FC<{ name: string; className?: string; size?: numbe
     case "opencv":
       return (
         <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
-          <circle cx="128" cy="72" r="48" fill="#EA2328" />
-          <circle cx="76" cy="164" r="48" fill="#00B050" />
-          <circle cx="180" cy="164" r="48" fill="#1F497D" />
-          <circle cx="128" cy="72" r="22" fill="#0e1017" />
-          <circle cx="76" cy="164" r="22" fill="#0e1017" />
-          <circle cx="180" cy="164" r="22" fill="#0e1017" />
+          {/* Top Red Ring */}
+          <path
+            fill="#EA2328"
+            fillRule="evenodd"
+            d="M128 24a48 48 0 100 96 48 48 0 000-96zm0 24a24 24 0 110 48 24 24 0 010-48z"
+          />
+          {/* Bottom Left Green Ring */}
+          <path
+            fill="#00B050"
+            fillRule="evenodd"
+            d="M76 116a48 48 0 100 96 48 48 0 000-96zm0 24a24 24 0 110 48 24 24 0 010-48z"
+          />
+          {/* Bottom Right Blue Ring */}
+          <path
+            fill="#1F497D"
+            fillRule="evenodd"
+            d="M180 116a48 48 0 100 96 48 48 0 000-96zm0 24a24 24 0 110 48 24 24 0 010-48z"
+          />
         </svg>
       );
 
@@ -276,10 +289,9 @@ export const TechLogo: React.FC<{ name: string; className?: string; size?: numbe
     case "numpy":
       return (
         <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
-          <rect width="256" height="256" rx="32" fill="#013243" />
           <path
             fill="#4DABCF"
-            d="M64 64h32v80l64-80h32v128h-32v-80l-64 80H64V64z"
+            d="M64 48h40v64l88-64h40v160h-40v-64l-88 64H64V48z"
           />
         </svg>
       );
@@ -415,7 +427,6 @@ export const TechLogo: React.FC<{ name: string; className?: string; size?: numbe
     case "oraclecloud":
       return (
         <svg viewBox="0 0 256 256" width={size} height={size} className={className}>
-          <rect width="256" height="256" rx="40" fill="#0e1017" />
           <path
             fill="#F80000"
             d="M172.8 64H83.2C48.4 64 20 92.4 20 127.2s28.4 63.2 63.2 63.2h89.6c34.8 0 63.2-28.4 63.2-63.2S207.6 64 172.8 64zm-1.6 98.4H84.8c-20 0-36.4-16.4-36.4-36.4s16.4-36.4 36.4-36.4h86.4c20 0 36.4 16.4 36.4 36.4s-16.4 36.4-36.4 36.4z"
