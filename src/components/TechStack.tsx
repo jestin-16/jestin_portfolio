@@ -402,7 +402,6 @@ export default function TechStack() {
     >
       {/* Refined Ambient Backdrop - Harmonized with Hero & About */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Central soft ambient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[750px] h-[450px] sm:h-[600px] bg-emerald-500/[0.03] rounded-full blur-[140px]" />
         
         {/* Subtle dot matrix grid */}
