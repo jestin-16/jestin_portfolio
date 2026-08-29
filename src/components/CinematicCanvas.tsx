@@ -105,7 +105,7 @@ export default function CinematicCanvas() {
       mouse.x += (mouse.targetX - mouse.x) * 0.05;
       mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
-      // Subtle atmospheric warm glow orbs
+      // Subtle atmospheric emerald & teal glow orbs
       const gradient = ctx.createRadialGradient(
         mouse.x,
         mouse.y,
@@ -114,8 +114,8 @@ export default function CinematicCanvas() {
         mouse.y,
         width * 0.5
       );
-      gradient.addColorStop(0, "rgba(244, 114, 182, 0.05)");
-      gradient.addColorStop(0.5, "rgba(192, 132, 252, 0.03)");
+      gradient.addColorStop(0, "rgba(16, 185, 129, 0.04)");
+      gradient.addColorStop(0.5, "rgba(20, 184, 166, 0.02)");
       gradient.addColorStop(1, "transparent");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);

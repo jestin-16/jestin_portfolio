@@ -213,8 +213,8 @@ export default function Projects() {
     <section id="projects" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#0d0f17] via-[#10131f] to-[#0d0f17] relative overflow-hidden select-none">
       
       {/* Background soft ambient glow */}
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-pink-500/[0.04] blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-purple-500/[0.04] blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-emerald-500/[0.03] blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-teal-500/[0.03] blur-[130px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         
