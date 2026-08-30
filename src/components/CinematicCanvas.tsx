@@ -90,7 +90,7 @@ export default function CinematicCanvas() {
     }
 
     const particles: Speck[] = [];
-    const particleCount = Math.min(65, Math.floor(width / 20));
+    const particleCount = Math.min(35, Math.max(16, Math.floor(width / 40)));
 
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Speck());
@@ -98,33 +98,17 @@ export default function CinematicCanvas() {
 
     // Render loop
     const render = () => {
-      ctx.fillStyle = "rgba(13, 15, 23, 0.2)"; // Soft trails for smooth aesthetic look
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
       // Damp mouse coordinates
-      mouse.x += (mouse.targetX - mouse.x) * 0.05;
-      mouse.y += (mouse.targetY - mouse.y) * 0.05;
+      mouse.x += (mouse.targetX - mouse.x) * 0.04;
+      mouse.y += (mouse.targetY - mouse.y) * 0.04;
 
-      // Subtle atmospheric emerald & teal glow orbs
-      const gradient = ctx.createRadialGradient(
-        mouse.x,
-        mouse.y,
-        30,
-        mouse.x,
-        mouse.y,
-        width * 0.5
-      );
-      gradient.addColorStop(0, "rgba(16, 185, 129, 0.04)");
-      gradient.addColorStop(0.5, "rgba(20, 184, 166, 0.02)");
-      gradient.addColorStop(1, "transparent");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, height);
-
-      // Render cosmic particles
-      particles.forEach((p) => {
-        p.update();
-        p.draw();
-      });
+      // Render specks
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
 
       animationId = requestAnimationFrame(render);
     };

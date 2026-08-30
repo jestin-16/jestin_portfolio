@@ -28,7 +28,7 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setSystemLoading(false);
-    }, 2400); // 2.4 seconds presentation before revealing portfolio
+    }, 1400); // Snappy 1.4s presentation before smoothly revealing portfolio
     return () => clearTimeout(timer);
   }, []);
 
@@ -105,9 +105,9 @@ export default function App() {
           <motion.div
             key="preloader"
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0, filter: "blur(20px)", y: -10 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[100] bg-[#0d0f17] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[100] bg-[#0d0f17] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden will-change-[opacity]"
           >
             {/* Soft decorative background glow to frame the text */}
             <div className="absolute w-[400px] h-[400px] rounded-full bg-emerald-500/[0.12] blur-[120px] pointer-events-none" />
@@ -118,7 +118,7 @@ export default function App() {
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+                transition={{ duration: 0.7, delay: 0.05, ease: "easeOut" }}
                 className="flex items-center justify-center gap-2 mb-1"
               >
                 <span className="text-emerald-400 text-sm animate-pulse">✦</span>
@@ -133,7 +133,7 @@ export default function App() {
                 <motion.span
                   initial={{ y: "100%" }}
                   animate={{ y: "0%" }}
-                  transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="block text-4xl sm:text-6xl font-display tracking-tight font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-100 to-emerald-300 drop-shadow-[0_0_20px_rgba(16,185,129,0.25)]"
                 >
                   JESTIN SHAJI
@@ -144,7 +144,7 @@ export default function App() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1.2, delay: 0.6 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
                 className="text-xs sm:text-sm font-sans tracking-wide text-neutral-300 font-medium"
               >
                 Backend Java Developer &amp; Cloud Security Specialist
@@ -155,7 +155,7 @@ export default function App() {
                 <motion.div
                   initial={{ left: "-100%" }}
                   animate={{ left: "100%" }}
-                  transition={{ duration: 1.8, ease: "easeInOut", repeat: Infinity }}
+                  transition={{ duration: 1.4, ease: "easeInOut", repeat: Infinity }}
                   className="absolute h-full w-[45%] bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-300 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]"
                 />
               </div>
@@ -166,22 +166,14 @@ export default function App() {
       </AnimatePresence>
 
       {/* 2. Refined Floating Pill Header/Navbar */}
-      <AnimatePresence>
-        {!systemLoading && (
-          <motion.div
-            key="main-portfolio"
-            initial={{ opacity: 0, y: 20, filter: "blur(12px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1.4, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <header
-              id="navbar"
-              className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
-                scrolled
-                  ? "py-3 bg-[#0d0f17]/60 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
-                  : "py-5 bg-transparent border-b border-transparent"
-              }`}
-            >
+      <header
+        id="navbar"
+        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
+          scrolled
+            ? "py-3 bg-[#0d0f17]/60 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+            : "py-5 bg-transparent border-b border-transparent"
+        }`}
+      >
               <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
                 
                 {/* Logo */}
@@ -445,15 +437,12 @@ export default function App() {
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={handleBackToTop}
                   title="Back to Top"
-                  className="fixed bottom-24 right-6 w-11 h-11 rounded-lg bg-[#0c0c12]/80 border border-white/10 hover:border-[#3B82F6]/50 text-white flex items-center justify-center cursor-pointer shadow-lg backdrop-blur"
+                  className="fixed bottom-24 right-6 w-11 h-11 rounded-lg bg-[#0c0c12]/80 border border-white/10 hover:border-emerald-500/50 text-white flex items-center justify-center cursor-pointer shadow-lg backdrop-blur"
                 >
                   <ArrowUp className="w-4 h-4 text-gray-400 hover:text-white" />
                 </motion.button>
               )}
             </AnimatePresence>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+          </div>
+        );
+      }

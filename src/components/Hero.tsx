@@ -63,21 +63,21 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
               {firstName.map((char, index) => (
                 <motion.span
                   key={`first-${index}`}
-                  initial={{ opacity: 0, y: 40, rotateX: -60, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.7,
-                    delay: 0.08 * index,
+                    duration: 0.6,
+                    delay: 0.04 * index,
                     ease: [0.215, 0.61, 0.355, 1],
                   }}
                   whileHover={{
-                    y: -10,
-                    scale: 1.14,
+                    y: -8,
+                    scale: 1.12,
                     color: "#34d399",
-                    textShadow: "0 0 24px rgba(52, 211, 153, 0.6)",
-                    transition: { type: "spring", stiffness: 450, damping: 12 },
+                    textShadow: "0 0 20px rgba(52, 211, 153, 0.6)",
+                    transition: { type: "spring", stiffness: 450, damping: 15 },
                   }}
-                  className="inline-block transition-colors duration-150 text-white hover:text-emerald-400 select-none"
+                  className="inline-block transition-colors duration-150 text-white hover:text-emerald-400 select-none will-change-transform"
                 >
                   {char}
                 </motion.span>
@@ -89,21 +89,21 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
               {lastName.map((char, index) => (
                 <motion.span
                   key={`last-${index}`}
-                  initial={{ opacity: 0, y: 40, rotateX: -60, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.7,
-                    delay: 0.08 * (firstName.length + index),
+                    duration: 0.6,
+                    delay: 0.04 * (firstName.length + index),
                     ease: [0.215, 0.61, 0.355, 1],
                   }}
                   whileHover={{
-                    y: -10,
-                    scale: 1.14,
+                    y: -8,
+                    scale: 1.12,
                     color: "#34d399",
-                    textShadow: "0 0 24px rgba(52, 211, 153, 0.6)",
-                    transition: { type: "spring", stiffness: 450, damping: 12 },
+                    textShadow: "0 0 20px rgba(52, 211, 153, 0.6)",
+                    transition: { type: "spring", stiffness: 450, damping: 15 },
                   }}
-                  className="inline-block transition-colors duration-150 text-white hover:text-emerald-400 select-none"
+                  className="inline-block transition-colors duration-150 text-white hover:text-emerald-400 select-none will-change-transform"
                 >
                   {char}
                 </motion.span>
@@ -116,11 +116,11 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             <AnimatePresence mode="wait">
               <motion.div
                 key={roleIndex}
-                initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -20, filter: "blur(4px)" }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                className="inline-flex items-center gap-2 text-xl sm:text-2xl md:text-3xl font-display font-semibold text-neutral-200 tracking-tight"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="inline-flex items-center gap-2 text-xl sm:text-2xl md:text-3xl font-display font-semibold text-neutral-200 tracking-tight will-change-transform"
               >
                 <Terminal className="w-5 h-5 text-emerald-400 hidden sm:inline-block shrink-0" />
                 <span className="bg-gradient-to-r from-white via-neutral-100 to-emerald-300 bg-clip-text text-transparent animate-text-shimmer">
