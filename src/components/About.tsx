@@ -25,7 +25,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 px-6 md:px-12 bg-[#0b0c10] border-t border-white/[0.06] select-none">
+    <section id="about" className="py-20 px-6 md:px-12 bg-[#0a0b0e] border-t border-white/[0.06] select-none">
       
       <div className="max-w-6xl mx-auto space-y-16">
         

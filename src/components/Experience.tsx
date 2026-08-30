@@ -6,7 +6,7 @@ export default function Experience() {
   const { experiences } = useFirebase();
 
   return (
-    <section id="experience" className="py-20 px-6 md:px-12 bg-[#0b0c10] border-t border-white/[0.06] select-none">
+    <section id="experience" className="py-20 px-6 md:px-12 bg-[#0a0b0e] border-t border-white/[0.06] select-none">
       
       <div className="max-w-4xl mx-auto space-y-12">
         

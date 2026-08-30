@@ -398,7 +398,7 @@ export default function TechStack() {
   return (
     <section
       id="tech"
-      className="relative py-24 sm:py-28 px-4 sm:px-8 bg-[#0b0c10] text-white select-none overflow-hidden border-t border-white/[0.06]"
+      className="relative py-24 sm:py-28 px-4 sm:px-8 bg-[#0a0b0e] text-white select-none overflow-hidden border-t border-white/[0.06]"
     >
       {/* Refined Ambient Backdrop - Harmonized with Hero & About */}
       <div className="absolute inset-0 pointer-events-none">

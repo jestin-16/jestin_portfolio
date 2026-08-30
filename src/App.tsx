@@ -94,7 +94,7 @@ export default function App() {
   };
 
   return (
-    <div id="app-root" className="min-h-screen bg-[#0d0f17] text-gray-100 overflow-x-hidden relative font-sans">
+    <div id="app-root" className="min-h-screen bg-[#0a0b0e] text-gray-100 overflow-x-hidden relative font-sans">
       
       {/* 1. Cinematic Floating Particle & Volumetric Fog Backdrop Canvas */}
       <CinematicCanvas />
@@ -107,7 +107,7 @@ export default function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[100] bg-[#0d0f17] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden will-change-[opacity]"
+            className="fixed inset-0 z-[100] bg-[#0a0b0e] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden will-change-[opacity]"
           >
             {/* Soft decorative background glow to frame the text */}
             <div className="absolute w-[400px] h-[400px] rounded-full bg-emerald-500/[0.12] blur-[120px] pointer-events-none" />
@@ -170,7 +170,7 @@ export default function App() {
         id="navbar"
         className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
           scrolled
-            ? "py-3 bg-[#0d0f17]/60 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+            ? "py-3 bg-[#0a0b0e]/75 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
             : "py-5 bg-transparent border-b border-transparent"
         }`}
       >
@@ -313,7 +313,7 @@ export default function App() {
             </main>
 
             {/* 3. Studio Minimal Footer */}
-            <footer className="relative pt-16 pb-12 bg-[#0b0c10] border-t border-white/[0.06] select-none">
+            <footer className="relative pt-16 pb-12 bg-[#0a0b0e] border-t border-white/[0.06] select-none">
               
               <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
                 

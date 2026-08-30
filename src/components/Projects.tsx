@@ -210,7 +210,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 bg-gradient-to-b from-[#0d0f17] via-[#10131f] to-[#0d0f17] relative overflow-hidden select-none">
+    <section id="projects" className="py-24 px-6 md:px-12 bg-[#0a0b0e] border-t border-white/[0.06] relative overflow-hidden select-none">
       
       {/* Background soft ambient glow */}
       <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-emerald-500/[0.03] blur-[130px] pointer-events-none" />
