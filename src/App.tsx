@@ -14,6 +14,7 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import ChatBot from "./components/ChatBot";
 import AdminDashboard from "./components/AdminDashboard";
+import Footer from "./components/Footer";
 import { Skiper31 } from "./components/ScrollShowcase";
 
 export default function App() {
@@ -312,118 +313,8 @@ export default function App() {
               <Contact />
             </main>
 
-            {/* 3. Studio Minimal Footer */}
-            <footer className="relative pt-16 pb-12 bg-[#0a0b0e] border-t border-white/[0.06] select-none">
-              
-              <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
-                
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/[0.06]">
-                  
-                  {/* Brand & Bio */}
-                  <div className="md:col-span-6 space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="px-3 py-1 rounded-full bg-white/[0.04] border border-emerald-500/30 flex items-center gap-1 font-mono text-emerald-300 text-xs font-bold cursor-pointer"
-                        onClick={() => handleScrollToSection("home")}
-                      >
-                        JS
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-display font-bold text-white tracking-wide">
-                          Jestin Shaji
-                        </h3>
-                      </div>
-                    </div>
-                    <p className="text-neutral-400 text-xs font-sans max-w-sm leading-relaxed">
-                      Backend Engineer specialized in Java Spring Boot, microservices architecture, and cloud infrastructure.
-                    </p>
-                  </div>
-
-                  {/* Navigation Links */}
-                  <div className="md:col-span-3 space-y-2">
-                    <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
-                      Quick Links
-                    </h4>
-                    <ul className="space-y-1 text-xs font-mono">
-                      {[
-                        { id: "home", name: "Home" },
-                        { id: "services", name: "Services" },
-                        { id: "about", name: "About" },
-                        { id: "tech", name: "Skills" },
-                        { id: "projects", name: "Projects" },
-                        { id: "contact", name: "Contact" }
-                      ].map((link) => (
-                        <li key={link.id}>
-                          <button
-                            onClick={() => handleScrollToSection(link.id)}
-                            className="text-neutral-400 hover:text-emerald-300 transition-colors cursor-pointer flex items-center gap-1"
-                          >
-                            <span>&gt;</span>
-                            <span>{link.name}</span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Status Badge */}
-                  <div className="md:col-span-3 space-y-2">
-                    <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
-                      Availability
-                    </h4>
-                    <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span className="text-xs font-mono font-bold text-emerald-300">Open to Roles</span>
-                      </div>
-                      <p className="text-[11px] text-neutral-400 font-sans">
-                        Available for backend development &amp; cloud engineering roles.
-                      </p>
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* Sub Footer Row */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
-                  
-                  <div className="text-neutral-400 font-sans text-xs text-center sm:text-left">
-                    &copy; 2026 Jestin Shaji &bull; All rights reserved.
-                  </div>
-
-                  {/* Social Buttons */}
-                  <div className="flex items-center gap-2">
-                    <a
-                      href="https://github.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 hover:bg-white/10 flex items-center justify-center text-neutral-300 hover:text-emerald-300 transition-all cursor-pointer"
-                      title="GitHub"
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                    </a>
-                    <a
-                      href="https://linkedin.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 hover:bg-white/10 flex items-center justify-center text-neutral-300 hover:text-emerald-300 transition-all cursor-pointer"
-                      title="LinkedIn"
-                    >
-                      <Linkedin className="w-3.5 h-3.5" />
-                    </a>
-                    <a
-                      href="mailto:jestinshaji777@gmail.com"
-                      className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/10 hover:border-emerald-500/30 hover:bg-white/10 flex items-center justify-center text-neutral-300 hover:text-emerald-300 transition-all cursor-pointer"
-                      title="Direct Mail"
-                    >
-                      <Mail className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-
-                </div>
-
-              </div>
-            </footer>
+            {/* 3. Enhanced Studio Footer */}
+            <Footer onNavigate={handleScrollToSection} />
 
             {/* 4. Floating AI Companion Assistant & Back to Top Widgets */}
             <ChatBot />
