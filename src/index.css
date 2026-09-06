@@ -9,6 +9,7 @@
   --font-serif: "Instrument Serif", serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-tech: "Space Grotesk", sans-serif;
+  --font-syne: "Syne", sans-serif;
 
   --color-sage: #10b981;
   --color-sage-light: #34d399;
@@ -51,6 +52,10 @@
 
 .font-serif {
   font-family: var(--font-serif);
+}
+
+.font-syne {
+  font-family: var(--font-syne);
 }
 
 @keyframes float-slow {
