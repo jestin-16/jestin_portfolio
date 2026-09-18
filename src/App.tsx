@@ -113,53 +113,65 @@ export default function App() {
             {/* Soft decorative background glow to frame the text */}
             <div className="absolute w-[400px] h-[400px] rounded-full bg-emerald-500/[0.12] blur-[120px] pointer-events-none" />
             
-            <div className="text-center space-y-4 relative z-10">
+            <div className="text-center space-y-4 relative z-10 max-w-xl mx-auto">
               
-              {/* Green Tagline */}
+              {/* Monospace System Header Tagline */}
               <motion.div
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.05, ease: "easeOut" }}
-                className="flex items-center justify-center gap-2 mb-1"
+                transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
+                className="flex items-center justify-center gap-2 mb-2 font-mono"
               >
-                <span className="text-emerald-400 text-sm animate-pulse">✦</span>
-                <span className="text-xs font-mono tracking-widest text-emerald-400/90 uppercase font-semibold">
-                  WELCOME &bull; PORTFOLIO
+                <span className="text-emerald-400 text-xs animate-pulse">✦</span>
+                <span className="text-[11px] sm:text-xs tracking-[0.28em] text-emerald-400 font-semibold uppercase">
+                  SYSTEM INITIALIZING
                 </span>
-                <span className="text-emerald-400 text-sm animate-pulse">✦</span>
+                <span className="text-emerald-400 text-xs animate-pulse">✦</span>
               </motion.div>
 
-              {/* Main Display Typography Name */}
+              {/* Main Display Typography in High-Impact Syne */}
               <h1 className="overflow-hidden py-1">
                 <motion.span
                   initial={{ y: "100%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-4xl sm:text-6xl font-display tracking-tight font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-neutral-100 to-emerald-300 drop-shadow-[0_0_20px_rgba(16,185,129,0.25)]"
+                  className="block text-5xl sm:text-7xl md:text-8xl font-syne font-extrabold tracking-[-0.03em] uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-emerald-200 drop-shadow-[0_0_35px_rgba(16,185,129,0.3)] leading-none"
                 >
                   JESTIN SHAJI
                 </motion.span>
               </h1>
 
-              {/* Sub-label */}
+              {/* Sub-label in clean geometric Outfit font */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-xs sm:text-sm font-sans tracking-wide text-neutral-300 font-medium"
+                transition={{ duration: 0.8, delay: 0.25 }}
+                className="text-xs sm:text-sm font-outfit tracking-wider text-neutral-300 font-medium uppercase"
               >
-                Backend Java Developer &amp; Cloud Security Specialist
+                Backend Java Architect <span className="text-emerald-400 mx-1.5">&bull;</span> Cloud Security
               </motion.p>
               
               {/* Sleek minimal progress line ticker */}
-              <div className="w-[140px] h-[2px] bg-white/[0.08] rounded-full relative overflow-hidden mx-auto mt-4">
+              <div className="w-[180px] h-[2px] bg-white/[0.08] rounded-full relative overflow-hidden mx-auto mt-5">
                 <motion.div
                   initial={{ left: "-100%" }}
                   animate={{ left: "100%" }}
-                  transition={{ duration: 1.4, ease: "easeInOut", repeat: Infinity }}
-                  className="absolute h-full w-[45%] bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-300 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]"
+                  transition={{ duration: 1.2, ease: "easeInOut", repeat: Infinity }}
+                  className="absolute h-full w-[45%] bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-300 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.9)]"
                 />
               </div>
+
+              {/* Monospace telemetry status indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex items-center justify-center gap-3 font-mono text-[10px] tracking-widest text-neutral-500 uppercase pt-1"
+              >
+                <span>LOC: IST (UTC+5:30)</span>
+                <span>&bull;</span>
+                <span className="text-emerald-400/80">SPRING BOOT 3.x</span>
+              </motion.div>
 
             </div>
           </motion.div>
