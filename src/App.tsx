@@ -129,26 +129,26 @@ export default function App() {
                 <span className="text-emerald-400 text-xs animate-pulse">✦</span>
               </motion.div>
 
-              {/* Main Display Typography in High-Impact Syne */}
+              {/* Main Display Typography in Clean Space Grotesk */}
               <h1 className="overflow-hidden py-1">
                 <motion.span
                   initial={{ y: "100%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-5xl sm:text-7xl md:text-8xl font-syne font-extrabold tracking-[-0.03em] uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-emerald-200 drop-shadow-[0_0_35px_rgba(16,185,129,0.3)] leading-none"
+                  className="block text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-emerald-200 drop-shadow-[0_0_30px_rgba(16,185,129,0.25)] leading-none"
                 >
                   JESTIN SHAJI
                 </motion.span>
               </h1>
 
-              {/* Sub-label in clean geometric Outfit font */}
+              {/* Sub-label */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.25 }}
-                className="text-xs sm:text-sm font-outfit tracking-wider text-neutral-300 font-medium uppercase"
+                className="text-xs sm:text-sm font-sans tracking-wide text-neutral-300 font-medium"
               >
-                Backend Java Architect <span className="text-emerald-400 mx-1.5">&bull;</span> Cloud Security
+                Backend Java Architect <span className="text-emerald-400 mx-1.5">&bull;</span> Cloud Security Specialist
               </motion.p>
               
               {/* Sleek minimal progress line ticker */}
