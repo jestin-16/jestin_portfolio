@@ -8,7 +8,7 @@ const Bracket = ({ className }: { className?: string }) => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 27 78"
-      className={className || "h-8 sm:h-10 text-emerald-400"}
+      className={className || "h-8 sm:h-10 text-black"}
     >
       <path
         fill="currentColor"
@@ -117,17 +117,14 @@ export function ScrollShowcase() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full py-24 bg-[#0a0b0e] text-white border-t border-b border-white/[0.06] select-none overflow-hidden"
+      className="relative w-full py-24 bg-white text-black border-t border-b border-black/[0.08] select-none overflow-hidden"
     >
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-emerald-500/[0.025] blur-[140px] pointer-events-none rounded-full" />
-
       <div className="w-full max-w-6xl mx-auto px-6 space-y-16 relative z-10">
 
         {/* Header Title with Scroll-Driven Kinetic Motion */}
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-emerald-400 font-mono text-xs font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 font-mono text-xs font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
             <span>KINETIC ARCHITECTURE SHOWCASE</span>
           </div>
 
@@ -135,14 +132,14 @@ export function ScrollShowcase() {
             style={{ x: headlineX, opacity: headlineOpacity }}
             className="flex items-center justify-center gap-3 sm:gap-6 pt-2"
           >
-            <Bracket className="h-8 sm:h-12 text-emerald-400 shrink-0" />
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-sans font-black tracking-tight text-white uppercase">
+            <Bracket className="h-8 sm:h-12 text-black shrink-0" />
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-sans font-black tracking-tight text-black uppercase">
               SPRING BOOT &amp; CLOUD ARCHITECTURE
             </h2>
-            <Bracket className="h-8 sm:h-12 scale-x-[-1] text-emerald-400 shrink-0" />
+            <Bracket className="h-8 sm:h-12 scale-x-[-1] text-black shrink-0" />
           </motion.div>
 
-          <p className="text-neutral-400 text-xs sm:text-sm font-sans max-w-xl mx-auto leading-relaxed">
+          <p className="text-neutral-600 text-xs sm:text-sm font-sans max-w-xl mx-auto leading-relaxed">
             Scalable backend engineering focusing on high-concurrency Java 21 microservices, containerization, and secure REST APIs.
           </p>
         </div>
@@ -162,8 +159,8 @@ export function ScrollShowcase() {
                   onClick={() => setSelectedTech(item.id)}
                   className={`p-4 rounded-xl text-left transition-all cursor-pointer border ${
                     isSelected
-                      ? "bg-emerald-500/10 border-emerald-500/40 shadow-lg shadow-emerald-500/5"
-                      : "bg-white/[0.02] border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04]"
+                      ? "bg-black text-white border-black shadow-md"
+                      : "bg-white border-black/10 hover:border-black text-black shadow-xs"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -171,17 +168,17 @@ export function ScrollShowcase() {
                     <span
                       className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
                         isSelected
-                          ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
-                          : "bg-white/[0.04] text-neutral-400 border-white/10"
+                          ? "bg-neutral-800 text-white border-neutral-700"
+                          : "bg-neutral-100 text-neutral-700 border-black/10"
                       }`}
                     >
                       {item.metric}
                     </span>
                   </div>
-                  <h3 className="text-sm font-sans font-bold text-white mb-0.5">
+                  <h3 className={`text-sm font-sans font-bold mb-0.5 ${isSelected ? "text-white" : "text-black"}`}>
                     {item.name}
                   </h3>
-                  <p className="text-[11px] font-mono text-neutral-400">
+                  <p className={`text-[11px] font-mono ${isSelected ? "text-neutral-300" : "text-neutral-500"}`}>
                     {item.category}
                   </p>
                 </motion.button>
@@ -190,42 +187,42 @@ export function ScrollShowcase() {
           </div>
 
           {/* Right Inspector Box */}
-          <div className="lg:col-span-5 p-6 rounded-2xl bg-[#0e1017] border border-white/10 space-y-5 shadow-2xl relative">
-            <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
+          <div className="lg:col-span-5 p-6 rounded-2xl bg-neutral-50 border border-black/10 space-y-5 shadow-xs relative text-black">
+            <div className="flex items-center justify-between pb-3 border-b border-black/[0.08]">
               <div className="flex items-center gap-2">
                 <span className="text-3xl">{activeTechItem.icon}</span>
                 <div>
-                  <h4 className="text-base font-sans font-bold text-white">
+                  <h4 className="text-base font-sans font-bold text-black">
                     {activeTechItem.name}
                   </h4>
-                  <span className="text-xs font-mono text-emerald-400">
+                  <span className="text-xs font-mono text-neutral-600">
                     {activeTechItem.category}
                   </span>
                 </div>
               </div>
-              <div className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 font-mono text-xs">
+              <div className="px-2.5 py-1 rounded bg-black text-white font-mono text-xs font-semibold">
                 {activeTechItem.metric}
               </div>
             </div>
 
-            <p className="text-xs font-sans text-neutral-300 leading-relaxed">
+            <p className="text-xs font-sans text-neutral-700 leading-relaxed">
               {activeTechItem.description}
             </p>
 
             <div className="space-y-2 pt-2">
-              <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">
+              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider block font-bold">
                 SYSTEM VERIFICATION METRICS
               </span>
-              <div className="space-y-1.5 text-xs font-mono text-neutral-300">
-                <div className="flex items-center gap-2 text-emerald-400">
+              <div className="space-y-1.5 text-xs font-mono text-neutral-800">
+                <div className="flex items-center gap-2 text-black">
                   <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
                   <span>Stateless JWT &amp; CORS Authorization Enforced</span>
                 </div>
-                <div className="flex items-center gap-2 text-emerald-400">
+                <div className="flex items-center gap-2 text-black">
                   <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
                   <span>Optimized PostgreSQL Connection Pooling</span>
                 </div>
-                <div className="flex items-center gap-2 text-emerald-400">
+                <div className="flex items-center gap-2 text-black">
                   <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
                   <span>Multi-Stage Docker Layer Caching Enabled</span>
                 </div>
@@ -242,21 +239,21 @@ export function ScrollShowcase() {
             return (
               <div
                 key={pillar.title}
-                className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-emerald-500/30 transition-all space-y-3"
+                className="p-5 rounded-2xl bg-white border border-black/10 hover:border-black transition-all space-y-3 shadow-xs"
               >
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                <div className="w-9 h-9 rounded-xl bg-neutral-100 border border-black/10 flex items-center justify-center text-black">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <h4 className="text-sm font-sans font-bold text-white">
+                    <h4 className="text-sm font-sans font-bold text-black">
                       {pillar.title}
                     </h4>
-                    <span className="text-[10px] font-mono text-emerald-400">
+                    <span className="text-[10px] font-mono text-neutral-600 font-semibold">
                       {pillar.metric}
                     </span>
                   </div>
-                  <p className="text-xs font-sans text-neutral-400 leading-relaxed">
+                  <p className="text-xs font-sans text-neutral-600 leading-relaxed">
                     {pillar.desc}
                   </p>
                 </div>

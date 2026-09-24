@@ -6,7 +6,7 @@ export default function Experience() {
   const { experiences } = useFirebase();
 
   return (
-    <section id="experience" className="py-20 px-6 md:px-12 bg-[#0a0b0e] border-t border-white/[0.06] select-none">
+    <section id="experience" className="py-20 px-6 md:px-12 bg-white text-black border-t border-black/[0.08] select-none">
       
       <div className="max-w-4xl mx-auto space-y-12">
         
@@ -16,7 +16,7 @@ export default function Experience() {
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium"
           >
             <span>TIMELINE &amp; EDUCATION</span>
           </motion.div>
@@ -26,7 +26,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight"
+            className="text-2xl sm:text-4xl font-display font-black text-black tracking-tight"
           >
             Experience &amp; Education
           </motion.h2>
@@ -36,14 +36,14 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-neutral-400 font-sans text-xs sm:text-sm max-w-md mx-auto"
+            className="text-neutral-600 font-sans text-xs sm:text-sm max-w-md mx-auto"
           >
             Academic background and hands-on software development
           </motion.p>
         </div>
 
         {/* Clean Vertical Timeline */}
-        <div className="space-y-6 relative before:absolute before:left-4 sm:before:left-1/2 before:top-2 before:bottom-2 before:w-px before:bg-white/10">
+        <div className="space-y-6 relative before:absolute before:left-4 sm:before:left-1/2 before:top-2 before:bottom-2 before:w-px before:bg-black/10">
           {experiences.map((exp, idx) => {
             const isEven = idx % 2 === 0;
 
@@ -59,30 +59,30 @@ export default function Experience() {
                 } sm:w-1/2`}
               >
                 {/* Pin */}
-                <div className="absolute left-2.5 sm:left-auto sm:right-0 sm:translate-x-1/2 top-4 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#0b0c10] shadow-sm z-10" />
+                <div className="absolute left-2.5 sm:left-auto sm:right-0 sm:translate-x-1/2 top-4 w-3 h-3 rounded-full bg-black border-2 border-white shadow-xs z-10" />
 
                 {/* Card */}
-                <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-emerald-500/30 transition-all space-y-2.5 w-full text-left">
-                  <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-medium">
-                    <GraduationCap className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="p-5 rounded-2xl bg-white border border-black/10 hover:border-black transition-all space-y-2.5 w-full text-left shadow-xs">
+                  <div className="flex items-center gap-2 text-neutral-600 text-xs font-mono font-medium">
+                    <GraduationCap className="w-4 h-4 text-black shrink-0" />
                     <span>{exp.period}</span>
                   </div>
 
-                  <h3 className="text-base font-display font-bold text-white">
+                  <h3 className="text-base font-display font-bold text-black">
                     {exp.role}
                   </h3>
                   
-                  <div className="text-xs font-mono text-neutral-400">
+                  <div className="text-xs font-mono text-neutral-500">
                     {exp.institution} &bull; {exp.location}
                   </div>
 
-                  <p className="text-xs text-neutral-300 font-sans leading-relaxed">
+                  <p className="text-xs text-neutral-600 font-sans leading-relaxed">
                     {exp.description}
                   </p>
 
-                  <div className="space-y-1 pt-2 border-t border-white/[0.06]">
+                  <div className="space-y-1 pt-2 border-t border-black/[0.08]">
                     {exp.achievements.map((ach, ai) => (
-                      <div key={ai} className="text-[11px] text-neutral-400 font-sans">
+                      <div key={ai} className="text-[11px] text-neutral-600 font-sans">
                         &bull; {ach}
                       </div>
                     ))}

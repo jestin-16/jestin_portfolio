@@ -357,10 +357,10 @@ function TechCard({
       onMouseLeave={() => setIsHovered(false)}
       className={`relative cursor-pointer flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 p-2 rounded-xl transition-all duration-300 select-none ${
         isHovered
-          ? "bg-[#181c28] border border-white/25 shadow-[0_8px_24px_rgba(0,0,0,0.6)] z-30"
+          ? "bg-black text-white border border-black shadow-md z-30"
           : isMatched
-          ? "bg-[#12141c]/90 border border-white/[0.08] hover:border-white/20 hover:bg-[#161924] opacity-100"
-          : "bg-[#0c0e14]/50 border border-white/[0.03] opacity-20 scale-95 grayscale"
+          ? "bg-white border border-black/10 hover:border-black opacity-100 shadow-xs"
+          : "bg-neutral-50 border border-black/5 opacity-25 scale-95 grayscale"
       }`}
     >
       {/* Official Brand Logo */}
@@ -370,7 +370,7 @@ function TechCard({
           size={24}
           className={`w-full h-full object-contain transition-all duration-300 ${
             isHovered
-              ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] scale-110"
+              ? "scale-110 invert"
               : "opacity-90 hover:opacity-100"
           }`}
         />
@@ -380,10 +380,10 @@ function TechCard({
       <span
         className={`mt-1.5 text-[9px] sm:text-[10px] font-sans font-medium truncate max-w-[56px] text-center leading-tight transition-colors duration-200 ${
           isHovered
-            ? "text-white font-semibold"
+            ? "text-white font-bold"
             : isMatched
-            ? "text-neutral-300"
-            : "text-neutral-500"
+            ? "text-black font-semibold"
+            : "text-neutral-400"
         }`}
       >
         {item.name}
@@ -398,17 +398,15 @@ export default function TechStack() {
   return (
     <section
       id="tech"
-      className="relative py-24 sm:py-28 px-4 sm:px-8 bg-[#0a0b0e] text-white select-none overflow-hidden border-t border-white/[0.06]"
+      className="relative py-24 sm:py-28 px-4 sm:px-8 bg-white text-black select-none overflow-hidden border-t border-black/[0.08]"
     >
-      {/* Refined Ambient Backdrop - Harmonized with Hero & About */}
+      {/* Refined Ambient Backdrop */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[750px] h-[450px] sm:h-[600px] bg-emerald-500/[0.03] rounded-full blur-[140px]" />
-        
         {/* Subtle dot matrix grid */}
         <div 
-          className="absolute inset-0 opacity-[0.07]" 
+          className="absolute inset-0 opacity-[0.04]" 
           style={{
-            backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(rgba(0, 0, 0, 0.4) 1px, transparent 1px)`,
             backgroundSize: "28px 28px"
           }}
         />
@@ -422,9 +420,9 @@ export default function TechStack() {
             initial={{ opacity: 0, y: -8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium tracking-wider"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium tracking-wider"
           >
-            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+            <Sparkles className="w-3.5 h-3.5 text-black" />
             <span>CORE CAPABILITIES &amp; ECOSYSTEM</span>
           </motion.div>
 
@@ -433,7 +431,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-4xl font-display font-bold tracking-tight text-white uppercase"
+            className="text-2xl sm:text-4xl font-display font-black tracking-tight text-black uppercase"
           >
             TECH STACK
           </motion.h2>
@@ -443,7 +441,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-neutral-400 font-sans text-xs sm:text-sm max-w-md mx-auto"
+            className="text-neutral-600 font-sans text-xs sm:text-sm max-w-md mx-auto"
           >
             Comprehensive architecture across backend services, distributed data, and cloud infrastructure
           </motion.p>
@@ -460,18 +458,18 @@ export default function TechStack() {
                 onClick={() => setActiveFilter(cat.id)}
                 className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? "bg-emerald-500/[0.15] text-emerald-300 border border-emerald-500/30 font-semibold shadow-sm"
-                    : "bg-white/[0.03] text-neutral-400 border border-white/[0.08] hover:text-white hover:border-white/20 hover:bg-white/[0.06]"
+                    ? "bg-black text-white border border-black font-bold shadow-xs"
+                    : "bg-white text-neutral-700 border border-black/10 hover:text-black hover:border-black hover:bg-neutral-50"
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-emerald-400" : "text-neutral-500"}`} />
+                <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-white" : "text-neutral-500"}`} />
                 <span>{cat.label}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Inverted Triangle Glass Grid */}
+        {/* Inverted Triangle Grid */}
         <div className="flex flex-col items-center gap-2.5 sm:gap-3 py-4 max-w-4xl mx-auto">
           {TECH_TRIANGLE_ROWS.map((row, rowIndex) => (
             <motion.div
@@ -499,10 +497,10 @@ export default function TechStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="max-w-xl mx-auto text-center p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-sm"
+          className="max-w-xl mx-auto text-center p-3 rounded-xl bg-neutral-50 border border-black/10"
         >
-          <p className="text-xs text-neutral-400 font-sans">
-            <span className="text-emerald-400 font-mono font-medium">39+ technologies</span> across Java ecosystem, cloud platforms (AWS, Azure, OCI), microservices, containerization, and distributed data tiers.
+          <p className="text-xs text-neutral-600 font-sans">
+            <span className="text-black font-mono font-bold">39+ technologies</span> across Java ecosystem, cloud platforms (AWS, Azure, OCI), microservices, containerization, and distributed data tiers.
           </p>
         </motion.div>
 

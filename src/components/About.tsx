@@ -25,7 +25,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 px-6 md:px-12 bg-[#0a0b0e] border-t border-white/[0.06] select-none">
+    <section id="about" className="py-20 px-6 md:px-12 bg-white text-black border-t border-black/[0.08] select-none">
       
       <div className="max-w-6xl mx-auto space-y-16">
         
@@ -35,7 +35,7 @@ export default function About() {
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium"
           >
             <span>ABOUT ME</span>
           </motion.div>
@@ -45,7 +45,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight"
+            className="text-2xl sm:text-4xl font-display font-black text-black tracking-tight"
           >
             Engineering Philosophy
           </motion.h2>
@@ -55,7 +55,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-emerald-400/90 text-xs font-mono font-medium"
+            className="text-neutral-600 text-xs font-mono font-medium"
           >
             Master of Computer Applications (MCA) Candidate
           </motion.p>
@@ -67,27 +67,27 @@ export default function About() {
           {/* Bio text */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="space-y-3">
-              <h3 className="text-xl sm:text-2xl font-display font-bold text-white leading-snug">
-                Building robust backend infrastructure with <span className="font-serif italic text-emerald-300 font-normal">precision &amp; clarity</span>.
+              <h3 className="text-xl sm:text-2xl font-display font-bold text-black leading-snug">
+                Building robust backend infrastructure with <span className="font-serif italic text-black font-normal">precision &amp; clarity</span>.
               </h3>
               
-              <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-sans font-normal whitespace-pre-line">
+              <p className="text-neutral-700 text-xs sm:text-sm leading-relaxed font-sans font-normal whitespace-pre-line">
                 {bio.aboutFull || "Passionate about software architecture, clean code principles, and distributed cloud computing. Currently pursuing MCA while engineering real-world microservice solutions."}
               </p>
             </div>
 
             {/* Quick Status Badges */}
             <div className="flex flex-wrap gap-2 text-xs font-mono pt-1">
-              <span className="px-3 py-1 bg-white/[0.03] border border-emerald-500/30 text-emerald-300 rounded-full flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="px-3 py-1 bg-neutral-100 border border-black/10 text-black rounded-full flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
                 Active Java Engineer
               </span>
-              <span className="px-3 py-1 bg-white/[0.03] border border-white/10 text-neutral-300 rounded-full flex items-center gap-1.5">
-                <BookOpen className="w-3 h-3 text-amber-400" />
+              <span className="px-3 py-1 bg-neutral-100 border border-black/10 text-neutral-800 rounded-full flex items-center gap-1.5">
+                <BookOpen className="w-3 h-3 text-black" />
                 MCA Candidate
               </span>
-              <span className="px-3 py-1 bg-white/[0.03] border border-white/10 text-neutral-300 rounded-full flex items-center gap-1.5">
-                <MapPin className="w-3 h-3 text-emerald-400" />
+              <span className="px-3 py-1 bg-neutral-100 border border-black/10 text-neutral-800 rounded-full flex items-center gap-1.5">
+                <MapPin className="w-3 h-3 text-black" />
                 {bio.location || "Kerala, India"}
               </span>
             </div>
@@ -109,13 +109,13 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-emerald-500/20 transition-all space-y-2"
+              className="p-6 rounded-2xl bg-white border border-black/10 hover:border-black transition-all space-y-2 shadow-xs"
             >
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold text-emerald-400">{p.num}.</span>
-                <h4 className="text-sm font-display font-bold text-white">{p.title}</h4>
+                <span className="text-xs font-mono font-bold text-black">{p.num}.</span>
+                <h4 className="text-sm font-display font-bold text-black">{p.title}</h4>
               </div>
-              <p className="text-xs text-neutral-400 font-sans leading-relaxed">
+              <p className="text-xs text-neutral-600 font-sans leading-relaxed">
                 {p.description}
               </p>
             </motion.div>

@@ -95,12 +95,12 @@ export default function App() {
   };
 
   return (
-    <div id="app-root" className="min-h-screen bg-[#0a0b0e] text-gray-100 overflow-x-hidden relative font-sans">
+    <div id="app-root" className="min-h-screen bg-white text-black overflow-x-hidden relative font-sans">
       
-      {/* 1. Cinematic Floating Particle & Volumetric Fog Backdrop Canvas */}
+      {/* 1. Cinematic Floating Particle Backdrop Canvas */}
       <CinematicCanvas />
 
-      {/* 2. Premium Entrance Sequence displaying Name */}
+      {/* 2. Minimal Entrance Sequence displaying Name */}
       <AnimatePresence>
         {systemLoading && (
           <motion.div
@@ -108,10 +108,10 @@ export default function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[100] bg-[#0a0b0e] flex flex-col justify-center items-center p-6 text-white select-none overflow-hidden will-change-[opacity]"
+            className="fixed inset-0 z-[100] bg-white flex flex-col justify-center items-center p-6 text-black select-none overflow-hidden will-change-[opacity]"
           >
             {/* Soft decorative background glow to frame the text */}
-            <div className="absolute w-[400px] h-[400px] rounded-full bg-emerald-500/[0.12] blur-[120px] pointer-events-none" />
+            <div className="absolute w-[420px] h-[420px] rounded-full bg-neutral-100 blur-[100px] pointer-events-none" />
             
             <div className="text-center space-y-4 relative z-10 max-w-xl mx-auto">
               
@@ -122,11 +122,11 @@ export default function App() {
                 transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
                 className="flex items-center justify-center gap-2 mb-2 font-mono"
               >
-                <span className="text-emerald-400 text-xs animate-pulse">✦</span>
-                <span className="text-[11px] sm:text-xs tracking-[0.28em] text-emerald-400 font-semibold uppercase">
+                <span className="text-neutral-400 text-xs animate-pulse">✦</span>
+                <span className="text-[11px] sm:text-xs tracking-[0.28em] text-neutral-600 font-semibold uppercase">
                   SYSTEM INITIALIZING
                 </span>
-                <span className="text-emerald-400 text-xs animate-pulse">✦</span>
+                <span className="text-neutral-400 text-xs animate-pulse">✦</span>
               </motion.div>
 
               {/* Main Display Typography in Clean Space Grotesk */}
@@ -135,7 +135,7 @@ export default function App() {
                   initial={{ y: "100%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-100 to-emerald-200 drop-shadow-[0_0_30px_rgba(16,185,129,0.25)] leading-none"
+                  className="block text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight uppercase text-black leading-none"
                 >
                   JESTIN SHAJI
                 </motion.span>
@@ -146,18 +146,18 @@ export default function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.25 }}
-                className="text-xs sm:text-sm font-sans tracking-wide text-neutral-300 font-medium"
+                className="text-xs sm:text-sm font-sans tracking-wide text-neutral-600 font-medium"
               >
-                Backend Java Architect <span className="text-emerald-400 mx-1.5">&bull;</span> Cloud Security Specialist
+                Backend Java Architect <span className="text-neutral-400 mx-1.5">&bull;</span> Cloud Security Specialist
               </motion.p>
               
               {/* Sleek minimal progress line ticker */}
-              <div className="w-[180px] h-[2px] bg-white/[0.08] rounded-full relative overflow-hidden mx-auto mt-5">
+              <div className="w-[180px] h-[2px] bg-neutral-200 rounded-full relative overflow-hidden mx-auto mt-5">
                 <motion.div
                   initial={{ left: "-100%" }}
                   animate={{ left: "100%" }}
                   transition={{ duration: 1.2, ease: "easeInOut", repeat: Infinity }}
-                  className="absolute h-full w-[45%] bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-300 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.9)]"
+                  className="absolute h-full w-[45%] bg-black rounded-full"
                 />
               </div>
 
@@ -166,11 +166,11 @@ export default function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex items-center justify-center gap-3 font-mono text-[10px] tracking-widest text-neutral-500 uppercase pt-1"
+                className="flex items-center justify-center gap-3 font-mono text-[10px] tracking-widest text-neutral-400 uppercase pt-1"
               >
                 <span>LOC: IST (UTC+5:30)</span>
                 <span>&bull;</span>
-                <span className="text-emerald-400/80">SPRING BOOT 3.x</span>
+                <span className="text-neutral-800 font-semibold">SPRING BOOT 3.x</span>
               </motion.div>
 
             </div>
@@ -183,106 +183,105 @@ export default function App() {
         id="navbar"
         className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 font-sans ${
           scrolled
-            ? "py-3 bg-[#0a0b0e]/75 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+            ? "py-3 bg-white/90 backdrop-blur-xl border-b border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
             : "py-5 bg-transparent border-b border-transparent"
         }`}
       >
-              <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-                
-                {/* Logo */}
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+          
+          {/* Logo */}
+          <button
+            onClick={() => handleScrollToSection("home")}
+            className="font-sans text-black text-xs font-bold tracking-widest hover:opacity-60 transition-opacity cursor-pointer select-none"
+          >
+            JESTIN SHAJI
+          </button>
+
+          {/* Centered Floating Nav Bar */}
+          <nav role="navigation" className="hidden md:flex items-center gap-6 px-6 py-2 bg-neutral-100/90 border border-black/[0.08] rounded-full backdrop-blur-xl relative">
+            {["home", "services", "about", "tech", "projects", "contact"].map((item) => {
+              const isActive = activeSection === item;
+              return (
                 <button
-                  onClick={() => handleScrollToSection("home")}
-                  className="font-sans text-white text-xs font-bold tracking-widest hover:text-emerald-400 transition-colors cursor-pointer select-none"
+                  key={item}
+                  onClick={() => handleScrollToSection(item)}
+                  className="text-xs font-sans tracking-wide capitalize transition-colors duration-200 cursor-pointer relative py-0.5"
                 >
-                  JESTIN SHAJI
+                  <span className={isActive ? "text-black font-bold" : "text-neutral-500 hover:text-black"}>
+                    {item === "tech" ? "Skills" : item}
+                  </span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavItem"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-black rounded-full"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </button>
+              );
+            })}
+          </nav>
 
-                {/* Centered Floating Nav Bar */}
-                <nav role="navigation" className="hidden md:flex items-center gap-6 px-6 py-2 bg-white/[0.02] border border-white/[0.06] rounded-full backdrop-blur-xl relative">
-                  {["home", "services", "about", "tech", "projects", "contact"].map((item) => {
-                    const isActive = activeSection === item;
-                    return (
-                      <button
-                        key={item}
-                        onClick={() => handleScrollToSection(item)}
-                        className="text-xs font-sans tracking-wide capitalize transition-colors duration-200 cursor-pointer relative py-0.5"
-                      >
-                        <span className={isActive ? "text-white font-semibold" : "text-neutral-400 hover:text-neutral-200"}>
-                          {item === "tech" ? "Skills" : item}
-                        </span>
-                        {isActive && (
-                          <motion.div
-                            layoutId="activeNavItem"
-                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-500 rounded-full"
-                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                          />
-                        )}
-                      </button>
-                    );
-                  })}
-                </nav>
+          {/* Direct Action trigger */}
+          <button
+            onClick={() => handleScrollToSection("contact")}
+            className="hidden md:inline-flex items-center px-4 py-1.5 bg-black hover:bg-neutral-800 text-white rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer shadow-sm"
+          >
+            Say Hello
+          </button>
 
-                {/* Direct Action trigger */}
-                <button
-                  onClick={() => handleScrollToSection("contact")}
-                  className="hidden md:inline-flex items-center px-4 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-black rounded-md text-xs font-sans font-semibold transition-colors cursor-pointer"
-                >
-                  Say Hello
-                </button>
+          {/* Handheld Trigger toggle */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-neutral-800 hover:text-black p-2 border border-black/10 bg-white/90 backdrop-blur-md rounded-lg cursor-pointer"
+          >
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
 
-                {/* Handheld Trigger toggle */}
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="md:hidden text-gray-300 hover:text-white p-2 border border-white/10 bg-white/[0.03] backdrop-blur-md rounded-lg cursor-pointer"
-                >
-                  {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                </button>
-              </div>
-
-              {/* Handheld Dropdown Navigation */}
-              <AnimatePresence>
-                {isMenuOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="md:hidden bg-[#07070b]/80 backdrop-blur-2xl border-b border-white/[0.05] overflow-hidden"
+        {/* Handheld Dropdown Navigation */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="md:hidden bg-white/98 backdrop-blur-2xl border-b border-black/[0.08] overflow-hidden"
+            >
+              <nav role="navigation" className="flex flex-col p-6 gap-2 text-xs font-mono font-bold text-neutral-700">
+                {[
+                  { id: "home", label: "Home" },
+                  { id: "services", label: "Services" },
+                  { id: "about", label: "About Me" },
+                  { id: "tech", label: "Skills Stack" },
+                  { id: "projects", label: "Projects" },
+                ].map((item, idx) => (
+                  <motion.button
+                    key={item.id}
+                    initial={{ x: -16, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: idx * 0.05, duration: 0.3 }}
+                    onClick={() => handleScrollToSection(item.id)}
+                    className="text-left py-2 border-b border-black/[0.04] text-neutral-700 hover:text-black uppercase tracking-wider cursor-pointer font-medium"
                   >
-                    <nav role="navigation" className="flex flex-col p-6 gap-2 text-xs font-mono font-bold text-gray-400">
-                      {[
-                        { id: "home", label: "Home" },
-                        { id: "services", label: "Services" },
-                        { id: "about", label: "About Me" },
-                        { id: "tech", label: "Skills Stack" },
-                        { id: "projects", label: "Projects" },
-                      ].map((item, idx) => (
-                        <motion.button
-                          key={item.id}
-                          initial={{ x: -16, opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          transition={{ delay: idx * 0.05, duration: 0.3 }}
-                          onClick={() => handleScrollToSection(item.id)}
-                          className="text-left py-2 border-b border-white/[0.03] hover:text-white uppercase tracking-wider cursor-pointer font-medium"
-                          style={{ textShadow: "0 0 10px rgba(0,0,0,0.5)" }}
-                        >
-                          // {item.label}
-                        </motion.button>
-                      ))}
-                      <motion.button
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.25 }}
-                        onClick={() => handleScrollToSection("contact")}
-                        className="w-full text-center py-3 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/20 hover:border-cyan-500/40 rounded-full mt-4 font-black select-none cursor-pointer uppercase tracking-widest text-[11px] backdrop-blur-md"
-                      >
-                        Let's Talk
-                      </motion.button>
-                    </nav>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </header>
+                    // {item.label}
+                  </motion.button>
+                ))}
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.25 }}
+                  onClick={() => handleScrollToSection("contact")}
+                  className="w-full text-center py-3 bg-black text-white hover:bg-neutral-800 rounded-full mt-4 font-bold select-none cursor-pointer uppercase tracking-widest text-[11px]"
+                >
+                  Let's Talk
+                </motion.button>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
 
             {/* Main visual sections contents */}
             <main role="main">
@@ -340,9 +339,9 @@ export default function App() {
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={handleBackToTop}
                   title="Back to Top"
-                  className="fixed bottom-24 right-6 w-11 h-11 rounded-lg bg-[#0c0c12]/80 border border-white/10 hover:border-emerald-500/50 text-white flex items-center justify-center cursor-pointer shadow-lg backdrop-blur"
+                  className="fixed bottom-24 right-6 w-11 h-11 rounded-lg bg-white/90 border border-black/10 hover:border-black text-black flex items-center justify-center cursor-pointer shadow-lg backdrop-blur hover:bg-black hover:text-white transition-colors"
                 >
-                  <ArrowUp className="w-4 h-4 text-gray-400 hover:text-white" />
+                  <ArrowUp className="w-4 h-4" />
                 </motion.button>
               )}
             </AnimatePresence>

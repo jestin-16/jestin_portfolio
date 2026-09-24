@@ -210,12 +210,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 bg-[#0a0b0e] border-t border-white/[0.06] relative overflow-hidden select-none">
-      
-      {/* Background soft ambient glow */}
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-emerald-500/[0.03] blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-teal-500/[0.03] blur-[130px] pointer-events-none" />
-
+    <section id="projects" className="py-24 px-6 md:px-12 bg-white text-black border-t border-black/[0.08] relative overflow-hidden select-none">
       <div className="max-w-7xl mx-auto">
         
         {/* Chapter Header */}
@@ -224,16 +219,16 @@ export default function Projects() {
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-300 text-xs font-mono font-medium"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium"
           >
             <span>FEATURED PROJECTS</span>
           </motion.div>
 
-          <h2 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-display font-black text-black tracking-tight">
             Systems &amp; Applications
           </h2>
 
-          <p className="text-neutral-400 text-xs sm:text-sm max-w-md mx-auto font-sans">
+          <p className="text-neutral-600 text-xs sm:text-sm max-w-md mx-auto font-sans">
             Full-stack microservices &amp; cloud architectures engineered for speed
           </p>
         </div>
@@ -259,20 +254,20 @@ export default function Projects() {
                   className={`lg:col-span-5 space-y-5 ${isLeft ? "lg:order-1" : "lg:order-2"}`}
                 >
                   <div className="flex items-center gap-2 font-mono text-xs">
-                    <span className="text-emerald-400 font-bold uppercase tracking-wider">
+                    <span className="text-black font-bold uppercase tracking-wider">
                       {proj.subtitle}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-neutral-600" />
-                    <span className="text-[10px] uppercase bg-white/[0.04] border border-white/10 px-2 py-0.5 rounded-full text-neutral-300 font-semibold">
+                    <span className="w-1 h-1 rounded-full bg-neutral-400" />
+                    <span className="text-[10px] uppercase bg-neutral-100 border border-black/10 px-2 py-0.5 rounded-full text-neutral-800 font-semibold">
                       {proj.category}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-white">
+                  <h3 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-black">
                     {proj.title}
                   </h3>
 
-                  <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-sans font-normal">
+                  <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-sans font-normal">
                     {proj.description}
                   </p>
 
@@ -281,7 +276,7 @@ export default function Projects() {
                     {proj.tags.map((tg) => (
                       <span
                         key={tg}
-                        className="text-neutral-300 bg-white/[0.04] border border-white/10 px-2.5 py-0.5 rounded-md text-[10px] font-mono"
+                        className="text-neutral-700 bg-neutral-100 border border-black/10 px-2.5 py-0.5 rounded-md text-[10px] font-mono"
                       >
                         #{tg}
                       </span>
@@ -289,13 +284,13 @@ export default function Projects() {
                   </div>
 
                   {/* Performance Indicators */}
-                  <div className="grid grid-cols-3 gap-3 border-t border-white/[0.08] pt-4 font-mono text-xs">
+                  <div className="grid grid-cols-3 gap-3 border-t border-black/[0.08] pt-4 font-mono text-xs">
                     {proj.metrics.map((met) => (
                       <div key={met.label} className="space-y-0.5">
-                        <span className="text-emerald-300 font-bold text-sm block">
+                        <span className="text-black font-bold text-sm block">
                           {met.value}
                         </span>
-                        <span className="text-[9px] uppercase tracking-wider text-neutral-400 font-medium">
+                        <span className="text-[9px] uppercase tracking-wider text-neutral-500 font-medium">
                           {met.label}
                         </span>
                       </div>
@@ -306,16 +301,16 @@ export default function Projects() {
                   <div className="flex items-center gap-3 pt-2">
                     <button
                       onClick={() => setSelectedProject(proj)}
-                      className="px-5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-heading font-bold tracking-wider flex items-center gap-1.5 cursor-pointer shadow-sm transition-all"
+                      className="px-5 py-2.5 rounded-full bg-black hover:bg-neutral-800 text-white text-xs font-heading font-bold tracking-wider flex items-center gap-1.5 cursor-pointer shadow-sm transition-all"
                     >
-                      <Layers className="w-3.5 h-3.5 text-black" />
+                      <Layers className="w-3.5 h-3.5 text-white" />
                       View Blueprint
                     </button>
                     <a
                       href={proj.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-4 py-2 rounded-full border border-white/10 hover:border-emerald-500/30 text-neutral-300 hover:text-white text-xs font-mono transition-colors flex items-center gap-1.5"
+                      className="px-4 py-2 rounded-full border border-black/15 hover:border-black text-neutral-800 hover:text-black text-xs font-mono transition-colors flex items-center gap-1.5 bg-white"
                     >
                       <Github className="w-3.5 h-3.5" />
                       Repository
@@ -331,10 +326,7 @@ export default function Projects() {
                   transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
                   className={`lg:col-span-7 relative ${isLeft ? "lg:order-2" : "lg:order-1"} group/console`}
                 >
-                  {/* Outer atmospheric dynamic glow blur */}
-                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/15 rounded-[2rem] blur-xl opacity-0 group-hover/console:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  
-                  <div className="relative aspect-video rounded-3xl overflow-hidden glass-panel p-1 shadow-2xl hover:border-cyan-500/20 transition-all duration-500 z-10 bg-[#09090e]/80">
+                  <div className="relative aspect-video rounded-3xl overflow-hidden border border-black/10 p-1 shadow-md hover:border-black transition-all duration-300 z-10 bg-white">
                     
                     {/* Shadow atmospheric overlays */}
                     <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#050505]/80 to-transparent pointer-events-none z-10" />

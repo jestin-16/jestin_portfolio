@@ -58,12 +58,13 @@ export default function CinematicCanvas() {
         this.fadeSpeed = Math.random() * 0.002 + 0.0005;
 
         const colors = [
-          "rgba(16, 185, 129,",  // Sage Emerald
-          "rgba(52, 211, 153,",  // Soft Mint
-          "rgba(251, 191, 36,",  // Warm Sand Amber
-          "rgba(148, 163, 184,"  // Slate Light
+          "rgba(0, 0, 0,",
+          "rgba(40, 40, 40,",
+          "rgba(90, 90, 90,",
+          "rgba(140, 140, 140,"
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.opacity = Math.random() * 0.18 + 0.04;
       }
 
       update() {
@@ -90,7 +91,7 @@ export default function CinematicCanvas() {
     }
 
     const particles: Speck[] = [];
-    const particleCount = Math.min(35, Math.max(16, Math.floor(width / 40)));
+    const particleCount = Math.min(30, Math.max(12, Math.floor(width / 50)));
 
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Speck());
@@ -126,7 +127,6 @@ export default function CinematicCanvas() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full pointer-events-none z-0"
-      style={{ mixBlendMode: "screen" }}
     />
   );
 }

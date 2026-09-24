@@ -166,20 +166,20 @@ export default function InteractiveConsole() {
   };
 
   return (
-    <div className="relative w-full max-w-[460px] aspect-[4/5] sm:aspect-square md:max-w-none md:w-[480px] lg:w-[440px] xl:w-[480px] rounded-2xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col font-sans group select-none relative z-10 bg-[#0e1017]/95 border border-white/10">
+    <div className="relative w-full max-w-[460px] aspect-[4/5] sm:aspect-square md:max-w-none md:w-[480px] lg:w-[440px] xl:w-[480px] rounded-2xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col font-sans group select-none relative z-10 bg-white border border-black/10 text-black">
       
-      {/* Decorative top glass bar */}
-      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-400 to-amber-500 opacity-90" />
+      {/* Decorative top minimal line */}
+      <div className="absolute top-0 inset-x-0 h-0.5 bg-black" />
 
       {/* Control console head tabs */}
-      <div className="flex justify-between items-center bg-[#0d0d14]/90 px-4 py-3 border-b border-white/[0.08] shrink-0">
+      <div className="flex justify-between items-center bg-neutral-50 px-4 py-3 border-b border-black/[0.08] shrink-0">
         <div className="flex items-center gap-1.5">
-          <div className="flex gap-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+          <div className="flex gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-neutral-300" />
+            <span className="w-2.5 h-2.5 rounded-full bg-neutral-300" />
+            <span className="w-2.5 h-2.5 rounded-full bg-neutral-300" />
           </div>
-          <span className="text-[10px] font-mono text-neutral-500 font-bold uppercase tracking-wider ml-2.5">
+          <span className="text-[10px] font-mono text-neutral-600 font-bold uppercase tracking-wider ml-2.5">
             SPRING_BOOT_ACTUATOR_V3
           </span>
         </div>
@@ -187,19 +187,19 @@ export default function InteractiveConsole() {
         {/* Status indicator pill */}
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isRunningGc ? "bg-amber-400" : "bg-emerald-400"}`}></span>
-            <span className={`relative inline-flex rounded-full h-2 w-2 ${isRunningGc ? "bg-amber-500" : "bg-emerald-500"}`}></span>
+            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isRunningGc ? "bg-amber-400" : "bg-black"}`}></span>
+            <span className={`relative inline-flex rounded-full h-2 w-2 ${isRunningGc ? "bg-amber-500" : "bg-black"}`}></span>
           </span>
-          <span className="text-[9px] font-mono font-bold tracking-widest text-[#0e0]">LIVE</span>
+          <span className="text-[9px] font-mono font-bold tracking-widest text-black">LIVE</span>
         </div>
       </div>
 
       {/* Mode selectors */}
-      <div className="flex bg-[#07070a] border-b border-white/[0.04] p-1 shrink-0 gap-1">
+      <div className="flex bg-neutral-100 border-b border-black/[0.08] p-1 shrink-0 gap-1">
         <button
           onClick={() => setActiveTab("terminal")}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-[10px] font-mono uppercase tracking-wider transition-all cursor-pointer ${
-            activeTab === "terminal" ? "bg-white/[0.06] text-white font-extrabold border border-white/[0.08]" : "text-neutral-500 hover:text-neutral-300"
+            activeTab === "terminal" ? "bg-white text-black font-extrabold border border-black/10 shadow-xs" : "text-neutral-500 hover:text-black"
           }`}
         >
           <TerminalIcon className="w-3.5 h-3.5" />
@@ -208,7 +208,7 @@ export default function InteractiveConsole() {
         <button
           onClick={() => setActiveTab("architecture")}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-[10px] font-mono uppercase tracking-wider transition-all cursor-pointer ${
-            activeTab === "architecture" ? "bg-white/[0.06] text-white font-extrabold border border-white/[0.08]" : "text-neutral-500 hover:text-neutral-300"
+            activeTab === "architecture" ? "bg-white text-black font-extrabold border border-black/10 shadow-xs" : "text-neutral-500 hover:text-black"
           }`}
         >
           <Network className="w-3.5 h-3.5" />
@@ -217,7 +217,7 @@ export default function InteractiveConsole() {
         <button
           onClick={() => setActiveTab("jvm")}
           className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-[10px] font-mono uppercase tracking-wider transition-all cursor-pointer ${
-            activeTab === "jvm" ? "bg-white/[0.06] text-white font-extrabold border border-white/[0.08]" : "text-neutral-500 hover:text-neutral-300"
+            activeTab === "jvm" ? "bg-white text-black font-extrabold border border-black/10 shadow-xs" : "text-neutral-500 hover:text-black"
           }`}
         >
           <Cpu className="w-3.5 h-3.5" />
@@ -226,7 +226,7 @@ export default function InteractiveConsole() {
       </div>
 
       {/* Main active subview mapping */}
-      <div className="flex-1 overflow-hidden relative flex flex-col p-4 bg-[#050508]/95 select-text">
+      <div className="flex-1 overflow-hidden relative flex flex-col p-4 bg-neutral-50/50 select-text">
 
         {/* VIEW 1: TERMINAL LOGGER */}
         {activeTab === "terminal" && (
@@ -537,12 +537,12 @@ export default function InteractiveConsole() {
       </div>
 
       {/* Actuator control visual bar */}
-      <div className="px-4 py-2 border-t border-white/[0.06] bg-[#09090d] text-[8px] font-mono text-neutral-500 flex justify-between items-center shrink-0">
+      <div className="px-4 py-2 border-t border-black/[0.08] bg-neutral-50 text-[8px] font-mono text-neutral-600 flex justify-between items-center shrink-0">
         <span className="flex items-center gap-1">
-          <Zap className="w-3 h-3 text-[#06B6D4]" />
+          <Zap className="w-3 h-3 text-black" />
           <span>SERVER HEALTH STATUS: 100% HEALTHY</span>
         </span>
-        <span className="text-neutral-500">PING: 29MS</span>
+        <span className="text-neutral-500 font-bold">PING: 29MS</span>
       </div>
 
     </div>
