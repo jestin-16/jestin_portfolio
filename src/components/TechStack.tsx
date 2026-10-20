@@ -414,16 +414,15 @@ export default function TechStack() {
 
       <div className="relative z-10 max-w-6xl mx-auto space-y-10">
         
-        {/* Section Header */}
+        {/* Section Header with Zero-Pill Editorial Discipline */}
         <div className="text-center space-y-3">
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium tracking-wider"
+            className="text-xs font-mono tracking-widest text-neutral-500 uppercase font-semibold"
           >
-            <Sparkles className="w-3.5 h-3.5 text-black" />
-            <span>CORE CAPABILITIES &amp; ECOSYSTEM</span>
+            03 · Core Ecosystem &amp; Stack
           </motion.div>
 
           <motion.h2
@@ -431,9 +430,9 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-4xl font-display font-black tracking-tight text-black uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-black"
           >
-            TECH STACK
+            Technical Ecosystem
           </motion.h2>
 
           <motion.p
@@ -441,9 +440,9 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-neutral-600 font-sans text-xs sm:text-sm max-w-md mx-auto"
+            className="text-neutral-600 font-sans text-xs sm:text-sm max-w-lg mx-auto leading-relaxed"
           >
-            Comprehensive architecture across backend services, distributed data, and cloud infrastructure
+            Comprehensive tooling across Java virtual runtime, distributed database tiers, containerization, and modern frontend interfaces.
           </motion.p>
         </div>
 

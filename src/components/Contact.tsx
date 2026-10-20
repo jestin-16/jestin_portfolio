@@ -67,23 +67,23 @@ export default function Contact() {
       
       <div className="max-w-6xl mx-auto space-y-12">
         
-        {/* Title */}
-        <div className="text-center space-y-2">
+        {/* Title with Zero-Pill Editorial Discipline */}
+        <div className="text-center space-y-3">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium"
+            className="text-xs font-mono tracking-widest text-neutral-500 uppercase font-semibold"
           >
-            <span>SAY HELLO</span>
+            07 · Connect &amp; Inquiries
           </motion.div>
 
-          <h2 className="text-2xl sm:text-4xl font-display font-black text-black tracking-tight">
-            Get In Touch
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-black tracking-tight">
+            Initiate Conversation
           </h2>
 
-          <p className="text-neutral-600 text-xs sm:text-sm max-w-md mx-auto font-sans">
-            Have a project, collaboration, or opportunity? Send a direct note.
+          <p className="text-neutral-600 text-xs sm:text-sm max-w-md mx-auto font-sans leading-relaxed">
+            Interested in hiring, collaboration, or technical discussions? Send a direct message.
           </p>
         </div>
 

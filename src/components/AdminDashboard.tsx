@@ -223,30 +223,30 @@ export default function AdminDashboard() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 30 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-5xl max-h-[85vh] bg-[#09090d]/95 border border-white/10 rounded-3xl overflow-hidden shadow-2xl z-10 flex flex-col font-sans"
+              className="relative w-full max-w-5xl max-h-[85vh] bg-white border border-black/15 text-black rounded-3xl overflow-hidden shadow-2xl z-10 flex flex-col font-sans"
             >
               {/* Header bar visual */}
-              <div className="flex justify-between items-center bg-[#0d0d14]/80 px-6 py-4 border-b border-white/[0.08]">
+              <div className="flex justify-between items-center bg-neutral-50 px-6 py-4 border-b border-black/[0.08]">
                 <div className="flex items-center gap-3">
-                  <Terminal className="w-5 h-5 text-[#3B82F6]" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#06B6D4]">
-                    Cloud Architecture control Deck
+                  <Terminal className="w-5 h-5 text-black" />
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-black">
+                    Content &amp; Systems Control Deck
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   {isAdmin && (
                     <button
                       onClick={handleSeed}
-                      className="px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 rounded-md text-[10px] font-mono hover:bg-yellow-500/20 cursor-pointer"
+                      className="px-3 py-1 bg-neutral-100 border border-black/10 text-black rounded-md text-[10px] font-mono hover:bg-black hover:text-white cursor-pointer transition-colors"
                     >
                       Seed DB
                     </button>
                   )}
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="text-neutral-500 hover:text-white transition-all cursor-pointer text-xs"
+                    className="text-neutral-500 hover:text-black transition-all cursor-pointer text-xs font-mono font-bold"
                   >
-                    &lt;Exit /&gt;
+                    Close ✕
                   </button>
                 </div>
               </div>
@@ -254,34 +254,34 @@ export default function AdminDashboard() {
               {/* Security authentication gate status */}
               {!currentUser ? (
                 <div className="p-12 text-center space-y-6 flex-1 flex flex-col justify-center items-center">
-                  <Lock className="w-12 h-12 text-neutral-600 animate-pulse" />
-                  <h3 className="text-xl font-bold text-white uppercase tracking-tight font-display">
+                  <Lock className="w-12 h-12 text-neutral-400" />
+                  <h3 className="text-xl font-bold text-black uppercase tracking-tight font-display">
                     Secure Admin Handshake Required
                   </h3>
-                  <p className="text-gray-400 text-xs font-mono max-w-sm">
+                  <p className="text-neutral-600 text-xs font-mono max-w-sm">
                     Access restricted solely to the system owner. Authenticate credentials via Google Portal.
                   </p>
                   <button
                     onClick={loginWithGoogle}
-                    className="px-6 py-3 bg-white text-black font-semibold text-xs uppercase font-mono tracking-widest rounded-lg hover:bg-gray-200 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                    className="px-6 py-3 bg-black text-white font-semibold text-xs uppercase font-mono tracking-widest rounded-lg hover:bg-neutral-800 cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-md"
                   >
-                    Authenticate Access
+                    Authenticate with Google
                   </button>
                 </div>
               ) : !isAdmin ? (
                 <div className="p-12 text-center space-y-6 flex-1 flex flex-col justify-center items-center">
                   <ShieldCheck className="w-12 h-12 text-red-500" />
-                  <h3 className="text-xl font-bold text-white uppercase tracking-tight">
+                  <h3 className="text-xl font-bold text-black uppercase tracking-tight">
                     ACCESS DENIED
                   </h3>
-                  <p className="text-gray-400 text-xs font-mono max-w-sm">
-                    Authenticated session under <span className="text-red-400 font-bold">{currentUser.email}</span> lacks absolute administrator scopes.
+                  <p className="text-neutral-600 text-xs font-mono max-w-sm">
+                    Authenticated session under <span className="text-red-500 font-bold">{currentUser.email}</span> lacks administrator scopes.
                   </p>
                   <button
                     onClick={logout}
-                    className="px-5 py-2.5 bg-red-500/10 border border-red-500/20 text-red-400 font-semibold text-xs uppercase font-mono tracking-widest rounded-lg hover:bg-red-500/20 cursor-pointer"
+                    className="px-5 py-2.5 bg-neutral-100 border border-black/10 text-black font-semibold text-xs uppercase font-mono tracking-widest rounded-lg hover:bg-neutral-200 cursor-pointer"
                   >
-                    De-Authorize and Disconnect
+                    Disconnect
                   </button>
                 </div>
               ) : (

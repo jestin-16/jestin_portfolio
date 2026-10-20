@@ -123,18 +123,17 @@ export function ScrollShowcase() {
 
         {/* Header Title with Scroll-Driven Kinetic Motion */}
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 font-mono text-xs font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
-            <span>KINETIC ARCHITECTURE SHOWCASE</span>
+          <div className="text-xs font-mono tracking-widest text-neutral-500 uppercase font-semibold">
+            Kinetic Architecture Showcase · Specification
           </div>
 
           <motion.div
             style={{ x: headlineX, opacity: headlineOpacity }}
-            className="flex items-center justify-center gap-3 sm:gap-6 pt-2"
+            className="flex items-center justify-center gap-3 sm:gap-6 pt-1"
           >
             <Bracket className="h-8 sm:h-12 text-black shrink-0" />
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-sans font-black tracking-tight text-black uppercase">
-              SPRING BOOT &amp; CLOUD ARCHITECTURE
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-black">
+              Spring Boot &amp; Cloud Mesh
             </h2>
             <Bracket className="h-8 sm:h-12 scale-x-[-1] text-black shrink-0" />
           </motion.div>

@@ -33,24 +33,24 @@ export default function Blog() {
       
       <div className="max-w-6xl mx-auto space-y-10">
         
-        {/* Section Header */}
+        {/* Section Header with Zero-Pill Editorial Discipline */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-2">
+          <div className="space-y-3">
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium"
+              className="text-xs font-mono tracking-widest text-neutral-500 uppercase font-semibold"
             >
-              <span>ARTICLES &amp; WRITING</span>
+              06 · Articles &amp; Insights
             </motion.div>
 
-            <h2 className="text-2xl sm:text-4xl font-display font-black text-black tracking-tight">
-              Technical Blog
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-black tracking-tight">
+              Technical Writing
             </h2>
 
-            <p className="text-neutral-600 text-xs sm:text-sm max-w-md font-sans">
-              Insights on microservices, Spring Boot, and cloud systems
+            <p className="text-neutral-600 text-xs sm:text-sm max-w-md font-sans leading-relaxed">
+              In-depth breakdowns on microservices, Spring Boot internals, and cloud deployments.
             </p>
           </div>
 

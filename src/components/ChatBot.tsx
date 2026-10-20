@@ -128,7 +128,7 @@ export default function ChatBot() {
               className="relative"
             >
               <MessageSquare className="w-6 h-6" />
-              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-black animate-ping opacity-60" />
             </motion.div>
           )}
         </AnimatePresence>

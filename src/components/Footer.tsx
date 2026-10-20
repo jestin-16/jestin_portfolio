@@ -138,8 +138,8 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="space-y-2 max-w-xl">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-neutral-200/80 border border-black/10 text-neutral-800 text-xs font-mono font-medium tracking-wide">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-black" />
               </span>
               <span>Available for Backend Roles &amp; High-Scale Architectures</span>
             </div>

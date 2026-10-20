@@ -10,35 +10,35 @@ export default function Experience() {
       
       <div className="max-w-4xl mx-auto space-y-12">
         
-        {/* Section Header */}
-        <div className="text-center space-y-2">
+        {/* Section Header with Zero-Pill Editorial Discipline */}
+        <div className="text-center space-y-3">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium"
+            className="text-xs font-mono tracking-widest text-neutral-500 uppercase font-semibold"
           >
-            <span>TIMELINE &amp; EDUCATION</span>
+            05 · Timeline &amp; Education
           </motion.div>
           
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-4xl font-display font-black text-black tracking-tight"
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-black tracking-tight"
           >
-            Experience &amp; Education
+            Academic &amp; Engineering Track
           </motion.h2>
           
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-neutral-600 font-sans text-xs sm:text-sm max-w-md mx-auto"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-neutral-600 font-sans text-xs sm:text-sm max-w-md mx-auto leading-relaxed"
           >
-            Academic background and hands-on software development
+            Master's specialization in computer applications and enterprise backend development.
           </motion.p>
         </div>
 

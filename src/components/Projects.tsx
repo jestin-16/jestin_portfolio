@@ -213,23 +213,23 @@ export default function Projects() {
     <section id="projects" className="py-24 px-6 md:px-12 bg-white text-black border-t border-black/[0.08] relative overflow-hidden select-none">
       <div className="max-w-7xl mx-auto">
         
-        {/* Chapter Header */}
-        <div className="mb-16 text-center space-y-2">
+        {/* Chapter Header with Zero-Pill Editorial Discipline */}
+        <div className="mb-16 text-center space-y-3">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 border border-black/10 text-neutral-800 text-xs font-mono font-medium"
+            className="text-xs font-mono tracking-widest text-neutral-500 uppercase font-semibold"
           >
-            <span>FEATURED PROJECTS</span>
+            04 · Featured Work &amp; Case Studies
           </motion.div>
 
-          <h2 className="text-2xl sm:text-4xl font-display font-black text-black tracking-tight">
-            Systems &amp; Applications
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-black tracking-tight">
+            Systems &amp; Architecture
           </h2>
 
-          <p className="text-neutral-600 text-xs sm:text-sm max-w-md mx-auto font-sans">
-            Full-stack microservices &amp; cloud architectures engineered for speed
+          <p className="text-neutral-600 text-xs sm:text-sm max-w-lg mx-auto font-sans leading-relaxed">
+            Full-stack microservices, automated cloud infrastructure, and distributed database systems engineered for production.
           </p>
         </div>
 
@@ -253,12 +253,12 @@ export default function Projects() {
                   transition={{ duration: 0.6 }}
                   className={`lg:col-span-5 space-y-5 ${isLeft ? "lg:order-1" : "lg:order-2"}`}
                 >
-                  <div className="flex items-center gap-2 font-mono text-xs">
+                  <div className="flex items-center gap-2 font-mono text-xs text-neutral-500">
                     <span className="text-black font-bold uppercase tracking-wider">
                       {proj.subtitle}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-neutral-400" />
-                    <span className="text-[10px] uppercase bg-neutral-100 border border-black/10 px-2 py-0.5 rounded-full text-neutral-800 font-semibold">
+                    <span className="text-neutral-300">·</span>
+                    <span className="text-xs uppercase font-semibold text-neutral-600">
                       {proj.category}
                     </span>
                   </div>
@@ -271,14 +271,12 @@ export default function Projects() {
                     {proj.description}
                   </p>
 
-                  {/* Highlights capsules */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {proj.tags.map((tg) => (
-                      <span
-                        key={tg}
-                        className="text-neutral-700 bg-neutral-100 border border-black/10 px-2.5 py-0.5 rounded-md text-[10px] font-mono"
-                      >
-                        #{tg}
+                  {/* Highlights unboxed text with separators */}
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-mono text-neutral-600 pt-1">
+                    {proj.tags.map((tg, ti) => (
+                      <span key={tg} className="flex items-center gap-1.5">
+                        <span className="text-neutral-800 font-medium">{tg}</span>
+                        {ti < proj.tags.length - 1 && <span className="text-neutral-300">·</span>}
                       </span>
                     ))}
                   </div>
@@ -748,44 +746,44 @@ export default function Projects() {
 
             {/* Diagnostic Box panel */}
             <motion.div
-              initial={{ scale: 0.92, opacity: 0, y: 30 }}
+              initial={{ scale: 0.94, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.92, opacity: 0, y: 30 }}
-              transition={{ type: "spring", duration: 0.8 }}
-              className="relative w-full max-w-4xl max-h-[90vh] bg-[#0c0c12]/95 border border-white/10 rounded-3xl overflow-y-auto shadow-2xl z-10 p-6 md:p-10 space-y-8"
+              exit={{ scale: 0.94, opacity: 0, y: 20 }}
+              transition={{ type: "spring", duration: 0.6 }}
+              className="relative w-full max-w-4xl max-h-[90vh] bg-white border border-black/15 text-black rounded-3xl overflow-y-auto shadow-2xl z-10 p-6 md:p-10 space-y-8"
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-full p-2.5 hover:scale-105 transition-all cursor-pointer text-xs"
+                className="absolute top-5 right-5 bg-neutral-100 border border-black/10 hover:bg-black hover:text-white text-black rounded-full px-3 py-1.5 transition-all cursor-pointer text-xs font-mono font-bold"
               >
-                &lt;Close /&gt;
+                Close ✕
               </button>
 
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#06B6D4] font-bold">
-                  System Architecture Diagnostic Blueprint
+                <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-bold block mb-1">
+                  Architecture Blueprint · {selectedProject.category}
                 </span>
-                <h3 className="text-3xl font-display font-black text-white mt-1">
+                <h3 className="text-3xl font-display font-black text-black">
                   {selectedProject.title}
                 </h3>
-                <p className="text-gray-400 text-sm mt-3 leading-relaxed font-sans">
+                <p className="text-neutral-600 text-sm mt-3 leading-relaxed font-sans">
                   {selectedProject.longDescription}
                 </p>
               </div>
 
               {/* Grid properties */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-white/[0.05]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-black/[0.08]">
                 
                 {/* Specs */}
                 <div className="space-y-4">
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-[#3B82F6] font-extrabold flex items-center gap-2">
-                    <Cpu className="w-4 h-4" />
-                    SYSTEM CAPABILITIES & SPECS
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-black font-extrabold flex items-center gap-2">
+                    <Cpu className="w-4 h-4 text-black" />
+                    SYSTEM CAPABILITIES &amp; SPECS
                   </h4>
-                  <ul className="space-y-3 font-sans text-xs text-gray-400">
+                  <ul className="space-y-3 font-sans text-xs text-neutral-700">
                     {selectedProject.features.map((feat, fi) => (
                       <li key={fi} className="flex items-start gap-2.5 leading-relaxed">
-                        <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-black shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -794,19 +792,19 @@ export default function Projects() {
 
                 {/* Timing dispatch step sequencer */}
                 <div className="space-y-4">
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-purple-400 font-extrabold flex items-center gap-2">
-                    <Server className="w-4 h-4" />
-                    TIMELINE SEQUENCE WORKFLOW
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-black font-extrabold flex items-center gap-2">
+                    <Server className="w-4 h-4 text-black" />
+                    LIFECYCLE SEQUENCE WORKFLOW
                   </h4>
                   <div className="space-y-4 font-mono text-xs">
                     {selectedProject.steps.map((stp, si) => (
-                      <div key={si} className="border-l border-white/10 pl-4 relative">
-                        <span className="absolute -left-1 top-1.5 w-2 h-2 rounded-full bg-[#06B6D4] border border-black" />
-                        <div className="flex items-center justify-between text-[#06B6D4]">
+                      <div key={si} className="border-l-2 border-black/15 pl-4 relative">
+                        <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-black" />
+                        <div className="flex items-center justify-between text-black">
                           <span className="font-bold">{stp.title}</span>
-                          <span className="text-[10px] text-gray-500">{stp.time}</span>
+                          <span className="text-[10px] text-neutral-400">{stp.time}</span>
                         </div>
-                        <p className="text-gray-400 text-[11px] leading-relaxed mt-1 font-sans">{stp.description}</p>
+                        <p className="text-neutral-600 text-[11px] leading-relaxed mt-1 font-sans">{stp.description}</p>
                       </div>
                     ))}
                   </div>
@@ -815,15 +813,15 @@ export default function Projects() {
               </div>
 
               {/* Graphic architecture block */}
-              <div className="bg-white/[0.01] border border-white/[0.05] rounded-2xl p-6">
-                <h4 className="text-xs font-mono uppercase tracking-widest text-white font-extrabold mb-4 flex items-center gap-2">
-                  <Layers className="w-4 h-4 text-[#06B6D4]" />
+              <div className="bg-neutral-50 border border-black/10 rounded-2xl p-6">
+                <h4 className="text-xs font-mono uppercase tracking-widest text-black font-extrabold mb-4 flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-black" />
                   {selectedProject.architectureDiagramTitle}
                 </h4>
-                <div className="space-y-3 text-xs text-gray-400 leading-relaxed font-sans">
+                <div className="space-y-3 text-xs text-neutral-700 leading-relaxed font-sans">
                   {selectedProject.architectureDetails.map((detStr, di) => (
                     <p key={di} className="flex items-start gap-2">
-                      <span className="font-mono text-[#06B6D4] font-bold">[{di+1}]</span>
+                      <span className="font-mono text-black font-bold">[{di+1}]</span>
                       <span>{detStr}</span>
                     </p>
                   ))}
@@ -831,18 +829,18 @@ export default function Projects() {
               </div>
 
               {/* Core references link */}
-              <div className="flex justify-between items-center pt-6 border-t border-white/[0.05]">
+              <div className="flex justify-between items-center pt-6 border-t border-black/[0.08]">
                 <a
                   href={selectedProject.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase font-bold"
+                  className="flex items-center gap-2 text-xs font-mono text-neutral-600 hover:text-black transition-colors uppercase font-bold"
                 >
-                  <Github className="w-4 h-4 animate-pulse" />
-                  Source Code Hub
+                  <Github className="w-4 h-4" />
+                  Repository Source
                 </a>
-                <span className="text-[10px] font-mono text-gray-600 font-black tracking-wider uppercase">
-                  Verified Production Spec
+                <span className="text-[10px] font-mono text-neutral-500 font-bold tracking-wider uppercase">
+                  Verified Production Specification
                 </span>
               </div>
 
