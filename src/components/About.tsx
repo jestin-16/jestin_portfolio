@@ -112,7 +112,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-6 rounded-2xl bg-white border border-black/10 hover:border-black hover:shadow-lg transition-all space-y-3"
+              className="surface-card p-6 space-y-3"
             >
               <div className="flex items-center gap-2">
                 <span className="text-xs font-mono font-bold text-neutral-400">{p.num}.</span>

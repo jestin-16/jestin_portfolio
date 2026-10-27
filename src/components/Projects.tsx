@@ -17,12 +17,15 @@ import {
   Search,
   Settings,
   ShieldAlert,
-  Compass
+  Compass,
+  ArrowUpRight,
+  X,
 } from "lucide-react";
 
 export default function Projects() {
   const { projects } = useFirebase();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeDemoId, setActiveDemoId] = useState<string | null>(null);
 
   // Simulation pipeline states
   const [deploymentTarget, setDeploymentTarget] = useState<"Minikube" | "AWS EKS" | "Cloud Run">("Minikube");
@@ -324,7 +327,16 @@ export default function Projects() {
                   transition={{ duration: 0.8, type: "spring", bounce: 0.1 }}
                   className={`lg:col-span-7 relative ${isLeft ? "lg:order-2" : "lg:order-1"} group/console`}
                 >
-                  <div className="relative aspect-video rounded-3xl overflow-hidden border border-black/10 p-1 shadow-md hover:border-black transition-all duration-300 z-10 bg-white">
+                  <AnimatePresence mode="wait" initial={false}>
+                    {activeDemoId === proj.id ? (
+                      <motion.div
+                        key={`demo-${proj.id}`}
+                        initial={{ opacity: 0, y: 12, scale: 0.985 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.985 }}
+                        transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                        className="relative aspect-video min-h-[300px] overflow-hidden rounded-2xl border border-black/10 bg-white p-1 sm:min-h-[340px]"
+                      >
                     
                     {/* Shadow atmospheric overlays */}
                     <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#050505]/80 to-transparent pointer-events-none z-10" />
@@ -722,7 +734,47 @@ export default function Projects() {
                       </div>
                     )}
 
-                  </div>
+                        <button
+                          onClick={() => setActiveDemoId(null)}
+                          aria-label={`Close ${proj.title} interactive demo`}
+                          className="absolute right-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-neutral-950/90 px-2.5 py-1.5 text-[9px] font-medium text-white backdrop-blur transition-colors hover:bg-[#b9e878] hover:text-neutral-950"
+                        >
+                          <X size={11} /> Close
+                        </button>
+                      </motion.div>
+                    ) : (
+                      <motion.button
+                        key={`launcher-${proj.id}`}
+                        type="button"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        whileHover={{ y: -3 }}
+                        whileTap={{ scale: 0.99 }}
+                        onClick={() => setActiveDemoId(proj.id)}
+                        aria-label={`Open ${proj.title} interactive demo`}
+                        aria-expanded={false}
+                        className="group/demo relative flex aspect-video min-h-[300px] w-full flex-col justify-between overflow-hidden rounded-2xl border border-black/[0.09] bg-[#f5f4ef] p-6 text-left transition-colors hover:border-[#b9d88c] sm:min-h-[340px] sm:p-8"
+                      >
+                        <motion.span
+                          aria-hidden="true"
+                          animate={{ x: ["-20%", "110%"] }}
+                          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+                          className="pointer-events-none absolute -left-1/2 top-0 h-px w-1/2 bg-gradient-to-r from-transparent via-[#9acb54]/70 to-transparent"
+                        />
+                        <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-neutral-400">Interactive project demo</span>
+                        <span className="flex items-end justify-between gap-4">
+                          <span className="max-w-sm">
+                            <span className="mb-2 block font-display text-2xl font-medium tracking-tight text-neutral-900 sm:text-3xl">Explore the system</span>
+                            <span className="block text-xs leading-6 text-neutral-500">Try a small live walkthrough of {proj.title}.</span>
+                          </span>
+                          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white text-neutral-800 transition-all duration-300 group-hover/demo:border-[#b9e878] group-hover/demo:bg-[#b9e878] group-hover/demo:translate-x-1">
+                            <ArrowUpRight className="h-4 w-4" />
+                          </span>
+                        </span>
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               </div>
             );

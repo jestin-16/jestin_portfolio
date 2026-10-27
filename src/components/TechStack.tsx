@@ -12,7 +12,7 @@ interface TechIconDef {
   badgeColor?: string;
 }
 
-// Inverted Triangle Grid structure matching portfolio layout: 11 -> 9 -> 7 -> 6 -> 3 -> 2 -> 1
+// Ordered tech directory, grouped by practical use in the portfolio.
 const TECH_TRIANGLE_ROWS: TechIconDef[][] = [
   // Row 1 (11 items - Top base of triangle)
   [
@@ -351,40 +351,30 @@ function TechCard({
 
   return (
     <motion.div
-      whileHover={{ scale: 1.12, y: -4 }}
-      whileTap={{ scale: 0.96 }}
+      whileHover={{ scale: 1.035, y: -2 }}
+      whileTap={{ scale: 0.98 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative cursor-pointer flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 p-2 rounded-xl transition-all duration-300 select-none ${
+      className={`group relative cursor-pointer flex min-h-14 w-full items-center justify-start gap-3 rounded-xl border px-3 py-2.5 text-left transition-all duration-300 ${
         isHovered
-          ? "bg-black text-white border border-black shadow-md z-30"
+          ? "bg-[#f1f6e8] text-black border-[#b9d88c] shadow-sm z-10"
           : isMatched
-          ? "bg-white border border-black/10 hover:border-black opacity-100 shadow-xs"
-          : "bg-neutral-50 border border-black/5 opacity-25 scale-95 grayscale"
+          ? "bg-white/70 border-black/[0.08] opacity-100"
+          : "bg-transparent border-black/[0.04] opacity-30 grayscale"
       }`}
     >
       {/* Official Brand Logo */}
-      <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center transition-transform">
+      <div className="h-6 w-6 shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
         <TechLogo
           name={item.name}
           size={24}
-          className={`w-full h-full object-contain transition-all duration-300 ${
-            isHovered
-              ? "scale-110 invert"
-              : "opacity-90 hover:opacity-100"
-          }`}
+          className="h-full w-full object-contain opacity-90 transition-opacity duration-300"
         />
       </div>
 
       {/* Clean, Readable Label */}
       <span
-        className={`mt-1.5 text-[9px] sm:text-[10px] font-sans font-medium truncate max-w-[56px] text-center leading-tight transition-colors duration-200 ${
-          isHovered
-            ? "text-white font-bold"
-            : isMatched
-            ? "text-black font-semibold"
-            : "text-neutral-400"
-        }`}
+        className={`truncate text-xs font-medium leading-tight transition-colors duration-200 ${isMatched ? "text-neutral-800" : "text-neutral-400"}`}
       >
         {item.name}
       </span>
@@ -398,21 +388,9 @@ export default function TechStack() {
   return (
     <section
       id="tech"
-      className="relative py-24 sm:py-28 px-4 sm:px-8 bg-white text-black select-none overflow-hidden border-t border-black/[0.08]"
+      className="relative overflow-hidden border-t border-black/[0.08] px-6 py-20 text-black sm:px-10 sm:py-24 lg:px-12"
     >
-      {/* Refined Ambient Backdrop */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Subtle dot matrix grid */}
-        <div 
-          className="absolute inset-0 opacity-[0.04]" 
-          style={{
-            backgroundImage: `radial-gradient(rgba(0, 0, 0, 0.4) 1px, transparent 1px)`,
-            backgroundSize: "28px 28px"
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto space-y-10">
+      <div className="relative z-10 mx-auto max-w-6xl space-y-10">
         
         {/* Section Header with Zero-Pill Editorial Discipline */}
         <div className="text-center space-y-3">
@@ -420,7 +398,7 @@ export default function TechStack() {
             initial={{ opacity: 0, y: -8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-mono tracking-widest text-neutral-500 uppercase font-semibold"
+            className="text-[10px] font-mono tracking-[0.18em] text-neutral-500 uppercase font-medium"
           >
             03 · Core Ecosystem &amp; Stack
           </motion.div>
@@ -430,7 +408,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-black"
+            className="text-3xl sm:text-4xl md:text-5xl font-display font-medium tracking-tight text-black"
           >
             Technical Ecosystem
           </motion.h2>
@@ -457,35 +435,28 @@ export default function TechStack() {
                 onClick={() => setActiveFilter(cat.id)}
                 className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? "bg-black text-white border border-black font-bold shadow-xs"
-                    : "bg-white text-neutral-700 border border-black/10 hover:text-black hover:border-black hover:bg-neutral-50"
+                  ? "bg-[#eaf2dd] text-neutral-950 border border-[#cfdfaf] font-semibold shadow-none"
+                    : "bg-transparent text-neutral-700 border border-black/[0.09] hover:text-black hover:border-black/30 hover:bg-white"
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-white" : "text-neutral-500"}`} />
+                <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-neutral-800" : "text-neutral-500"}`} />
                 <span>{cat.label}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Inverted Triangle Grid */}
-        <div className="flex flex-col items-center gap-2.5 sm:gap-3 py-4 max-w-4xl mx-auto">
-          {TECH_TRIANGLE_ROWS.map((row, rowIndex) => (
+        {/* Flat, scannable skill directory */}
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-5">
+          {TECH_TRIANGLE_ROWS.flat().map((item, index) => (
             <motion.div
-              key={rowIndex}
-              initial={{ opacity: 0, y: 14 }}
+              key={item.name}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: rowIndex * 0.05 }}
-              className="flex flex-wrap justify-center items-center gap-2 sm:gap-2.5 w-full"
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.42, delay: (index % 10) * 0.035 }}
             >
-              {row.map((item) => (
-                <TechCard
-                  key={item.name}
-                  item={item}
-                  activeFilter={activeFilter}
-                />
-              ))}
+              <TechCard item={item} activeFilter={activeFilter} />
             </motion.div>
           ))}
         </div>

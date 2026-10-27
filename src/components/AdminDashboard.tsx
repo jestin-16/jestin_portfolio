@@ -198,10 +198,10 @@ export default function AdminDashboard() {
         <button
           onClick={handleOpenDeck}
           title="Open Admin Settings Dashboard"
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/90 border border-black/10 hover:border-black text-black hover:bg-black hover:text-white text-[10px] font-mono tracking-widest uppercase cursor-pointer transition-all duration-300 shadow-md backdrop-blur"
+          aria-label="Open admin settings dashboard"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-[#fbfaf7]/90 text-neutral-700 shadow-[0_8px_30px_rgba(24,24,22,0.12)] backdrop-blur transition-all duration-300 hover:border-[#b9e878] hover:bg-[#b9e878] hover:text-neutral-950"
         >
-          {isAdmin ? <Unlock className="w-3.5 h-3.5 text-black" /> : <Lock className="w-3.5 h-3.5 text-neutral-500" />}
-          <span>Control Panel</span>
+          {isAdmin ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
         </button>
       </div>
 

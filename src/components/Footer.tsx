@@ -1,282 +1,100 @@
-import React, { useState, useEffect } from "react";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ArrowUp,
-  ArrowUpRight,
-  MapPin,
-  Clock,
-  Sparkles,
-  Check,
-  Copy,
-  Terminal,
-  ShieldCheck,
-  Cpu,
-  Layers,
-  Type
-} from "lucide-react";
+import { useState } from "react";
+import { motion } from "motion/react";
+import { ArrowUpRight, Check, Copy, Github, Linkedin, Mail } from "lucide-react";
 import { JESTIN_BIO } from "../data";
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
 }
 
-export type FooterFontTheme = "outfit" | "grotesk" | "mono" | "syne" | "sans";
-
 export default function Footer({ onNavigate }: FooterProps) {
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [currentTime, setCurrentTime] = useState<string>("");
-  const [fontTheme, setFontTheme] = useState<FooterFontTheme>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("portfolio_footer_font") as FooterFontTheme;
-      if (saved && ["outfit", "grotesk", "mono", "syne", "sans"].includes(saved)) {
-        return saved;
-      }
-    }
-    return "outfit";
-  });
 
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString("en-US", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true,
-      });
-      setCurrentTime(timeStr);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleSelectFont = (theme: FooterFontTheme) => {
-    setFontTheme(theme);
+  const handleCopyEmail = async () => {
     try {
-      localStorage.setItem("portfolio_footer_font", theme);
+      await navigator.clipboard.writeText(JESTIN_BIO.email);
+      setCopiedEmail(true);
+      window.setTimeout(() => setCopiedEmail(false), 1800);
     } catch {
-      // ignore
+      window.location.href = `mailto:${JESTIN_BIO.email}`;
     }
   };
-
-  const handleCopyEmail = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(JESTIN_BIO.email);
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2200);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const navLinks = [
-    { id: "home", label: "Home", index: "01" },
-    { id: "services", label: "Services", index: "02" },
-    { id: "about", label: "About", index: "03" },
-    { id: "tech", label: "Skills", index: "04" },
-    { id: "projects", label: "Projects", index: "05" },
-    { id: "experience", label: "Experience", index: "06" },
-    { id: "blog", label: "Articles", index: "07" },
-    { id: "contact", label: "Contact", index: "08" },
-  ];
-
-  const focusDomains = [
-    { name: "Spring Boot Microservices", tag: "Java 21" },
-    { name: "Zero-Trust API Security", tag: "OAuth2 / JWT" },
-    { name: "Cloud & Kubernetes", tag: "Docker / K8s" },
-    { name: "Event-Driven Streams", tag: "Kafka" },
-    { name: "High-Speed Caching", tag: "Redis & Postgres" },
-  ];
 
   const socialLinks = [
-    {
-      name: "GitHub",
-      url: JESTIN_BIO.socials.github,
-      icon: Github,
-      tag: "Code Repositories",
-    },
-    {
-      name: "LinkedIn",
-      url: JESTIN_BIO.socials.linkedin,
-      icon: Linkedin,
-      tag: "Professional Network",
-    },
-    {
-      name: "Email",
-      url: JESTIN_BIO.socials.email,
-      icon: Mail,
-      tag: "Direct Inbox",
-    },
+    { name: "GitHub", url: JESTIN_BIO.socials.github, icon: Github },
+    { name: "LinkedIn", url: JESTIN_BIO.socials.linkedin, icon: Linkedin },
+    { name: "Email", url: JESTIN_BIO.socials.email, icon: Mail },
   ];
 
-  // Map theme to corresponding CSS class
-  const fontClasses: Record<FooterFontTheme, string> = {
-    outfit: "font-outfit",
-    grotesk: "font-display",
-    mono: "font-mono",
-    syne: "font-syne",
-    sans: "font-sans",
-  };
+  const footerLinks = [
+    { id: "about", label: "About" },
+    { id: "projects", label: "Work" },
+    { id: "experience", label: "Experience" },
+    { id: "blog", label: "Writing" },
+  ];
 
   return (
-    <footer
-      className={`relative bg-white text-black border-t border-black/[0.08] select-none transition-all duration-300 overflow-hidden ${fontClasses[fontTheme]}`}
-    >
-      {/* Top micro hairline accent */}
-      <div className="absolute top-0 inset-x-0 h-px bg-black/[0.08] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-6 md:px-12 pt-14 pb-10 relative z-10 space-y-12">
-        
-        {/* 1. Sleek Modern Callout Strip */}
-        <div className="p-6 md:p-8 rounded-2xl bg-neutral-50 border border-black/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
-          <div className="space-y-2 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-neutral-200/80 border border-black/10 text-neutral-800 text-xs font-mono font-medium tracking-wide">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-black" />
-              </span>
-              <span>Available for Backend Roles &amp; High-Scale Architectures</span>
-            </div>
-            
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black tracking-tight leading-tight">
-              Ready to engineer robust distributed systems?
-            </h3>
-            
-            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
-              Let&apos;s build scalable microservices, low-latency APIs, or containerize cloud infrastructure.
-            </p>
+    <footer className="border-t border-black/[0.08] bg-[#f5f4ef] px-6 py-16 sm:px-10 sm:py-20 lg:px-12">
+      <div className="mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col justify-between gap-8 border-b border-black/10 pb-12 sm:pb-14 md:flex-row md:items-end"
+        >
+          <div className="max-w-2xl">
+            <span className="mb-4 block text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-500">Have a system to build?</span>
+            <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-[-0.06em] sm:text-5xl lg:text-6xl">
+              Let&apos;s make it <span className="font-serif italic text-neutral-500">reliable.</span>
+            </h2>
           </div>
+          <motion.button
+            whileHover={{ y: -3, backgroundColor: "#b9e878", color: "#171714" }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => onNavigate("contact")}
+            className="inline-flex shrink-0 items-center justify-center gap-3 rounded-full bg-neutral-950 px-6 py-4 text-xs font-medium text-white transition-colors"
+          >
+            Start a conversation <ArrowUpRight size={15} />
+          </motion.button>
+        </motion.div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0 w-full md:w-auto">
-            <button
-              onClick={() => onNavigate("contact")}
-              className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-black hover:bg-neutral-800 text-white font-bold text-xs sm:text-sm transition-all shadow-xs cursor-pointer active:scale-95"
-            >
-              <Sparkles className="w-4 h-4 text-white" />
-              <span>Get in Touch</span>
+        <div className="grid gap-10 border-b border-black/10 py-10 sm:grid-cols-2 sm:py-12 lg:grid-cols-[1.5fr_1fr_1fr]">
+          <div>
+            <button onClick={() => onNavigate("home")} className="group mb-4 flex items-center gap-2.5 text-left">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-950 text-[10px] font-semibold text-white transition-transform duration-300 group-hover:rotate-[-8deg]">JS</span>
+              <span className="font-display text-sm font-semibold tracking-tight">Jestin Shaji</span>
             </button>
-
+            <p className="max-w-sm text-xs leading-6 text-neutral-500">
+              Backend Java and cloud engineering. Based in {JESTIN_BIO.location}.
+            </p>
             <button
               onClick={handleCopyEmail}
-              className="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-neutral-100 border border-black/15 text-neutral-800 hover:text-black text-xs font-mono transition-all cursor-pointer active:scale-95"
-              title="Copy Email Address"
+              className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-neutral-800 transition-colors hover:text-[#668d35]"
             >
-              {copiedEmail ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-black animate-bounce" />
-                  <span className="text-black font-semibold">Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5 text-neutral-600" />
-                  <span>Copy Email</span>
-                </>
-              )}
+              {copiedEmail ? <Check size={14} /> : <Copy size={13} />}
+              {copiedEmail ? "Email copied" : JESTIN_BIO.email}
             </button>
           </div>
-        </div>
 
-        {/* 2. Structured Architectural Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-black/[0.08]">
-          
-          {/* Col 1: Identity & Time (4 cols) */}
-          <div className="md:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => onNavigate("home")}
-                className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center font-mono font-bold text-xs cursor-pointer hover:bg-neutral-800 hover:scale-105 transition-all shadow-xs"
-                title="Jestin Shaji"
-              >
-                JS
-              </button>
-              <div>
-                <h4 className="text-base font-bold text-black tracking-tight leading-tight">
-                  Jestin Shaji
-                </h4>
-                <p className="text-xs text-neutral-600 font-mono font-medium tracking-wide">
-                  Backend Java &bull; Cloud Engineer
-                </p>
-              </div>
-            </div>
-
-            <p className="text-xs text-neutral-600 leading-relaxed max-w-sm font-normal">
-              Architecting secure Spring Boot microservices, high-concurrency event pipelines, and cloud-native Kubernetes environments.
-            </p>
-
-            {/* Timezone & Location Pill */}
-            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-neutral-100 border border-black/10 text-xs font-mono text-neutral-800">
-              <div className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-black" />
-                <span>{JESTIN_BIO.location}</span>
-              </div>
-              <span className="text-neutral-400">&bull;</span>
-              <div className="flex items-center gap-1.5 text-black font-semibold">
-                <Clock className="w-3.5 h-3.5 text-black" />
-                <span>{currentTime || "IST (UTC+5:30)"}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Col 2: Navigation Directory (3 cols) */}
-          <div className="md:col-span-3 space-y-3">
-            <h5 className="text-xs font-mono font-bold uppercase tracking-widest text-black flex items-center gap-2">
-              <Terminal className="w-3.5 h-3.5 text-black" />
-              <span>Index</span>
-            </h5>
-            
-            <div className="grid grid-cols-2 gap-y-2 text-xs">
-              {navLinks.map((link) => (
+          <div>
+            <h3 className="mb-4 text-[10px] font-medium uppercase tracking-[0.18em] text-neutral-400">Explore</h3>
+            <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-x-5 gap-y-3">
+              {footerLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => onNavigate(link.id)}
-                  className="group text-left text-neutral-600 hover:text-black transition-colors cursor-pointer flex items-center justify-between py-1 px-1.5 rounded-md hover:bg-neutral-100"
+                  className="w-fit text-left text-xs text-neutral-600 transition-colors hover:text-neutral-950"
                 >
-                  <span className="group-hover:translate-x-0.5 transition-transform tracking-tight font-medium">
-                    {link.label}
-                  </span>
-                  <span className="text-[10px] font-mono text-neutral-400 group-hover:text-black transition-colors">
-                    {link.index}
-                  </span>
+                  {link.label}
                 </button>
               ))}
-            </div>
+            </nav>
           </div>
 
-          {/* Col 3: Focus Domains (2 cols) */}
-          <div className="md:col-span-2 space-y-3">
-            <h5 className="text-xs font-mono font-bold uppercase tracking-widest text-black flex items-center gap-2">
-              <Layers className="w-3.5 h-3.5 text-black" />
-              <span>Stack</span>
-            </h5>
-
-            <ul className="space-y-2 text-xs">
-              {focusDomains.map((domain, idx) => (
-                <li key={idx} className="flex flex-col">
-                  <span className="text-black font-medium text-xs tracking-tight">
-                    {domain.name}
-                  </span>
-                  <span className="text-[10px] font-mono text-neutral-500">
-                    {domain.tag}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Col 4: Network Channels (3 cols) */}
-          <div className="md:col-span-3 space-y-3">
-            <h5 className="text-xs font-mono font-bold uppercase tracking-widest text-black flex items-center gap-2">
-              <Cpu className="w-3.5 h-3.5 text-black" />
-              <span>Channels</span>
-            </h5>
-
-            <div className="space-y-2">
+          <div>
+            <h3 className="mb-4 text-[10px] font-medium uppercase tracking-[0.18em] text-neutral-400">Elsewhere</h3>
+            <div className="grid gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -285,79 +103,22 @@ export default function Footer({ onNavigate }: FooterProps) {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between p-2.5 rounded-xl bg-neutral-50 border border-black/10 hover:border-black hover:bg-white transition-all shadow-2xs"
+                    className="group inline-flex w-fit items-center gap-2 text-xs text-neutral-600 transition-colors hover:text-neutral-950"
                   >
-                    <div className="flex items-center gap-2.5">
-                      <Icon className="w-4 h-4 text-neutral-600 group-hover:text-black transition-colors" />
-                      <div className="flex flex-col">
-                        <span className="text-xs font-medium text-neutral-800 group-hover:text-black transition-colors tracking-tight">
-                          {social.name}
-                        </span>
-                        <span className="text-[10px] font-mono text-neutral-500">
-                          {social.tag}
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-neutral-500 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <Icon size={14} />
+                    {social.name}
+                    <ArrowUpRight size={11} className="opacity-0 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
                   </a>
                 );
               })}
             </div>
           </div>
-
         </div>
 
-        {/* 3. Bottom Minimal Bar with Font Style Selector */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-600 pt-2">
-          
-          <div className="flex items-center gap-2 font-mono text-[11px] text-center md:text-left">
-            <span>&copy; {new Date().getFullYear()} Jestin Shaji</span>
-            <span className="text-neutral-400">&bull;</span>
-            <span className="text-neutral-500">All rights reserved</span>
-          </div>
-
-          {/* Interactive Font Selector Pill */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-neutral-100 border border-black/10 font-mono text-[11px]">
-            <span className="flex items-center gap-1 px-2 text-neutral-600 text-[10px] font-bold uppercase tracking-wider">
-              <Type className="w-3 h-3 text-black" />
-              <span>Font:</span>
-            </span>
-            {(
-              [
-                { key: "outfit", label: "Outfit" },
-                { key: "grotesk", label: "Space Grotesk" },
-                { key: "mono", label: "JetBrains" },
-                { key: "syne", label: "Syne" },
-                { key: "sans", label: "Jakarta" },
-              ] as const
-            ).map((f) => (
-              <button
-                key={f.key}
-                onClick={() => handleSelectFont(f.key)}
-                className={`px-2.5 py-1 rounded-lg transition-all text-[10px] cursor-pointer ${
-                  fontTheme === f.key
-                    ? "bg-black text-white font-bold shadow-xs"
-                    : "text-neutral-600 hover:text-black hover:bg-white border border-transparent"
-                }`}
-                title={`Switch footer typography to ${f.label}`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Back to top */}
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-xs font-mono text-neutral-600 hover:text-black transition-colors cursor-pointer px-3 py-1 rounded-lg hover:bg-neutral-100"
-            title="Return to top"
-          >
-            <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5 text-black" />
-          </button>
-
+        <div className="flex flex-col gap-2 pt-5 text-[10px] text-neutral-400 sm:flex-row sm:items-center sm:justify-between">
+          <span>© {new Date().getFullYear()} Jestin Shaji</span>
+          <span>Made with intention in Kerala, India</span>
         </div>
-
       </div>
     </footer>
   );

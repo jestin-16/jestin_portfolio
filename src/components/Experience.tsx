@@ -62,7 +62,7 @@ export default function Experience() {
                 <div className="absolute left-2.5 sm:left-auto sm:right-0 sm:translate-x-1/2 top-4 w-3 h-3 rounded-full bg-black border-2 border-white shadow-xs z-10" />
 
                 {/* Card */}
-                <div className="p-5 rounded-2xl bg-white border border-black/10 hover:border-black transition-all space-y-2.5 w-full text-left shadow-xs">
+                <div className="surface-card p-5 space-y-2.5 w-full text-left">
                   <div className="flex items-center gap-2 text-neutral-600 text-xs font-mono font-medium">
                     <GraduationCap className="w-4 h-4 text-black shrink-0" />
                     <span>{exp.period}</span>

@@ -93,7 +93,7 @@ export default function Blog() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="p-5 rounded-2xl bg-white border border-black/10 hover:border-black shadow-xs hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer"
+              className="surface-card p-5 flex flex-col justify-between group cursor-pointer"
               onClick={() => setSelectedPost(post)}
             >
               <div className="space-y-3">

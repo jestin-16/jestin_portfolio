@@ -98,7 +98,7 @@ export default function Contact() {
           >
             
             {/* Direct Email */}
-            <div className="p-5 rounded-2xl bg-white border border-black/10 space-y-2 shadow-xs">
+            <div className="surface-card p-5 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-mono text-black font-semibold">
                   <Mail className="w-3.5 h-3.5 text-black" />
@@ -118,7 +118,7 @@ export default function Contact() {
             </div>
 
             {/* Location */}
-            <div className="p-5 rounded-2xl bg-white border border-black/10 text-xs text-neutral-700 font-sans leading-relaxed shadow-xs">
+            <div className="surface-card p-5 text-xs text-neutral-700 font-sans leading-relaxed">
               <span className="font-mono text-black font-bold block mb-1">
                 Location
               </span>
@@ -133,7 +133,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: 15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-6 rounded-2xl bg-white border border-black/10 space-y-4 shadow-xs"
+              className="surface-card p-6 space-y-4"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">

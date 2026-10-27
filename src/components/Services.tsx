@@ -80,11 +80,11 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: sidx * 0.08 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-7 rounded-2xl bg-white border border-black/10 hover:border-black hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+              className="surface-card p-7 flex flex-col justify-between group relative overflow-hidden"
             >
               {/* Subtle top corner index */}
               <div className="flex items-center justify-between mb-6">
-                <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-black/10 flex items-center justify-center text-black group-hover:bg-black group-hover:text-white transition-colors duration-200">
+                <div className="w-10 h-10 rounded-xl bg-[#f2f5ea] border border-[#e8eddd] flex items-center justify-center text-black group-hover:bg-[#b9e878] group-hover:border-[#b9e878] transition-colors duration-300">
                   {serv.icon}
                 </div>
                 <span className="text-xs font-mono font-bold text-neutral-400 group-hover:text-black transition-colors">
