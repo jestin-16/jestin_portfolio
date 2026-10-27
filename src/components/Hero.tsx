@@ -23,6 +23,24 @@ const metrics = [
   { value: "Docker + K8s", label: "Cloud delivery" },
 ];
 
+const focusAreas = [
+  {
+    number: "01",
+    title: "Clear service boundaries",
+    description: "Cohesive Java services with responsibilities that stay easy to reason about.",
+  },
+  {
+    number: "02",
+    title: "Secure API design",
+    description: "Stateless authentication, predictable contracts, and deliberate data access.",
+  },
+  {
+    number: "03",
+    title: "Ready to ship",
+    description: "Containerized delivery with repeatable CI/CD and cloud operations.",
+  },
+];
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProps) {
@@ -71,7 +89,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
             <span>{bio.location || "Kerala, India"}</span>
           </motion.div>
 
-          <h1 className="font-display text-[clamp(4.25rem,13vw,9.5rem)] font-semibold leading-[0.82] tracking-[-0.085em]">
+          <h1 className="font-hero text-[clamp(4.25rem,13vw,9.5rem)] leading-[0.9]">
             <span className="block overflow-hidden pb-3">
               <motion.span
                 initial={{ y: "110%", rotate: 2 }}
@@ -87,7 +105,7 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
                 initial={{ y: "110%", rotate: 2 }}
                 animate={{ y: 0, rotate: 0 }}
                 transition={{ duration: 0.95, delay: 0.16, ease }}
-                className="block origin-bottom font-serif font-normal italic tracking-[-0.07em]"
+                className="block origin-bottom"
               >
                 Shaji<span className="text-[#8fbd4e]">.</span>
               </motion.span>
@@ -164,36 +182,61 @@ export default function Hero({ onScrollToProjects, onScrollToContact }: HeroProp
           initial={{ opacity: 0, x: 24, y: 8 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease }}
-          className="relative hidden border-l border-black/10 pl-7 lg:block xl:pl-10"
+          className="relative hidden overflow-hidden rounded-[1.75rem] bg-[#191a16] px-7 py-8 text-white shadow-[0_24px_70px_rgba(23,24,20,0.12)] lg:block xl:px-9 xl:py-10"
         >
-          <div className="mb-8 flex items-center justify-between">
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-neutral-400">Engineering focus</span>
-            <motion.span
-              aria-hidden="true"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-black/10 text-xs text-[#6e9d32]"
-            >
-              <Sparkles size={14} />
-            </motion.span>
-          </div>
-          <div className="divide-y divide-black/[0.08]">
-            {metrics.map((metric, index) => (
-              <motion.div
-                key={metric.value}
-                initial={{ opacity: 0, x: 14 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.55, delay: 0.46 + index * 0.09, ease }}
-                className="group flex items-center justify-between gap-5 py-4"
+          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(185,232,120,0.17),transparent_68%)]" />
+          <div className="relative">
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.18em] text-neutral-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#b9e878]" />
+                Engineering focus
+              </span>
+              <motion.span
+                aria-hidden="true"
+                animate={{ rotate: [0, 8, 0, -8, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-[#b9e878]"
               >
-                <span className="text-sm font-medium tracking-tight text-neutral-800 transition-transform duration-300 group-hover:translate-x-1">{metric.value}</span>
-                <span className="text-right text-[10px] text-neutral-400">{metric.label}</span>
-              </motion.div>
-            ))}
-          </div>
-          <div className="mt-8 flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-neutral-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#9acb54]" />
-            Building for scale, designing for clarity
+                <Sparkles size={14} />
+              </motion.span>
+            </div>
+
+            <h2 className="mt-9 max-w-[16rem] font-display text-3xl font-medium leading-tight tracking-[-0.055em] text-white xl:text-4xl">
+              Thoughtful at every <span className="font-serif italic text-[#b9e878]">layer.</span>
+            </h2>
+            <p className="mt-3 max-w-sm text-xs leading-6 text-neutral-400">
+              Reliable systems start with simple decisions made well.
+            </p>
+
+            <div className="relative mt-7">
+              <motion.div
+                aria-hidden="true"
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ duration: 0.8, delay: 0.7, ease }}
+                className="absolute bottom-5 left-[11px] top-5 w-px origin-top bg-white/10"
+              />
+              <div className="divide-y divide-white/10">
+                {focusAreas.map((area, index) => (
+                  <motion.div
+                    key={area.number}
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.55, delay: 0.52 + index * 0.12, ease }}
+                    whileHover={{ x: 3 }}
+                    className="group relative grid grid-cols-[24px_1fr] gap-3 py-4"
+                  >
+                    <span className="relative z-10 mt-0.5 flex h-6 w-6 items-center justify-center rounded-full border border-white/15 bg-[#191a16] font-mono text-[8px] text-[#b9e878] transition-colors group-hover:border-[#b9e878]">
+                      {area.number}
+                    </span>
+                    <span>
+                      <span className="block text-xs font-medium text-neutral-100">{area.title}</span>
+                      <span className="mt-1.5 block text-[10px] leading-5 text-neutral-400">{area.description}</span>
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.aside>
 
