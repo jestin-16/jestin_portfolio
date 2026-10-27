@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, MotionConfig, motion, useScroll, useSpring } from "motion/react";
+import { AnimatePresence, MotionConfig, motion, useReducedMotion, useScroll, useSpring } from "motion/react";
 import { ArrowUp, ArrowUpRight, Menu, X } from "lucide-react";
 
 import Hero from "./components/Hero";
@@ -27,7 +27,9 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const reduceMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, {
@@ -66,9 +68,20 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const footer = document.getElementById("footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { rootMargin: "0px 0px 80px 0px" },
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
   const navigateTo = (id: string) => {
     setIsMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById(id)?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   };
 
   return (
@@ -190,14 +203,14 @@ export default function App() {
         <AdminDashboard />
 
         <AnimatePresence>
-          {showScrollTop && (
+          {showScrollTop && !footerVisible && (
             <motion.button
               initial={{ opacity: 0, y: 12, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 12, scale: 0.9 }}
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.94 }}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })}
               aria-label="Back to top"
               className="fixed bottom-24 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-[#fbfaf7]/90 text-neutral-900 shadow-[0_8px_30px_rgba(24,24,22,0.12)] backdrop-blur-lg transition-colors hover:bg-[#b9e878] sm:bottom-28 sm:right-8"
             >

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useFirebase } from "../context/FirebaseContext";
 import InteractiveConsole from "./InteractiveConsole";
-import { BookOpen, MapPin, Terminal, Award, CheckCircle2 } from "lucide-react";
+import { BookOpen, MapPin } from "lucide-react";
 
 export default function About() {
   const { bio } = useFirebase();
@@ -67,8 +67,8 @@ export default function About() {
           {/* Bio text */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="space-y-4">
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-black leading-snug">
-                Building resilient backend architectures with <span className="font-serif italic font-normal text-black">precision &amp; clarity</span>.
+              <h3 className="text-2xl sm:text-3xl font-display font-medium text-[#303b27] leading-snug">
+                Building resilient backend architectures with <span className="font-serif italic font-normal text-[#71854e]">precision &amp; clarity</span>.
               </h3>
               
               <p className="text-neutral-700 text-sm sm:text-base leading-relaxed font-sans whitespace-pre-line">
@@ -79,7 +79,7 @@ export default function About() {
             {/* Unboxed Status Metadata Line */}
             <div className="pt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-neutral-600 border-t border-black/[0.08]">
               <div className="flex items-center gap-1.5 text-black font-semibold">
-                <span className="w-2 h-2 rounded-full bg-black animate-pulse" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#829b57]" aria-hidden="true" />
                 <span>Active Java Engineer</span>
               </div>
               <span className="text-neutral-300">·</span>
